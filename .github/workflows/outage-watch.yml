@@ -41,7 +41,7 @@ jobs:
           python3 scripts/channels.py outage "$RUNNER_TEMP/ch"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add secure/state.enc && git commit -qm "Outage switch $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
+          git add secure && git commit -qm "Outage switch $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
           gh issue list --state open --search "Main service down - using backup in:title" --json number -q '.[].number' | grep -q . || \
             gh issue create --title "Main service down - using backup" --assignee "$GITHUB_REPOSITORY_OWNER" \
               --body "The main service stopped logging in twice in a row, so every channel was switched to the backup service. It switches back automatically during the 4-7 AM (India) check-up once the main service works again."

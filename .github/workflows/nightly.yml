@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add secure/state.enc 2>/dev/null || true
+          git add secure 2>/dev/null || true
           git diff --cached --quiet || { git commit -qm "Check-up $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull -q --rebase origin main; git push -q; }
 
       - uses: actions/upload-artifact@v4
@@ -126,6 +126,7 @@ jobs:
           R="$RUNNER_TEMP"
           mkdir out out/logs
           cp "$R/guide.xml.gz" REPORT.md "$R/site/index.html" "$R/ch/channels.json" out/
+          cp "$R/ch/review.enc" out/ 2>/dev/null || true
           cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
           (cd "$R" && ls -la *.xml *.gz 2>/dev/null | awk '{print $5, $9}') > out/logs/downloads.txt
           cd out

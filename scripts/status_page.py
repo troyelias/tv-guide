@@ -49,6 +49,16 @@ if ch:
                 warn.append(f"{label} renewal due")
     if ch.get("upload_error"):
         warn.append("Playlist upload failing")
+    if ch.get("hold"):
+        rows.append(("Playlist updates", "paused (undo used)"))
+        warn.append("Playlist updates paused")
+    mo = ch.get("missing_on", {})
+    if mo:
+        rows.append(("Not found on a service", ", ".join(f"{'main' if p == 'main' else 'backup'}: {n}" for p, n in mo.items())))
+    if any(ch.get("newly_missing", {}).values()):
+        warn.append("Some channels no longer found")
+    if ch.get("missed_hours"):
+        warn.append("A check-up was missed")
 
 state = "All good" if not warn else " · ".join(warn)
 cells = "\n".join(f"<tr><th>{html.escape(k)}</th><td>{html.escape(str(v))}</td></tr>" for k, v in rows)

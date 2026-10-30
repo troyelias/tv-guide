@@ -36,7 +36,20 @@ bad = sorted(set(ch.get("down_on_both", [])) & must)
 if bad:
     alerts["Must-have channel down"] = ("These must-have channels didn't play on either service at the last check-up: "
                                         + ", ".join(bad) + ".")
-KNOWN = ["Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
+nm = ch.get("newly_missing", {})
+lost = {p: v for p, v in nm.items() if v}
+if lost:
+    alerts["Channels no longer found on a service"] = ("These channels were found last time but not at the latest check-up "
+        "(the service may have renamed or dropped them - ask Claude to add a matching rule): "
+        + "; ".join(f"{'main' if p == 'main' else 'backup'} service: {', '.join(v)}" for p, v in lost.items()) + ".")
+if ch.get("missed_hours"):
+    alerts["A check-up was missed"] = (f"The previous check-up was {ch['missed_hours']} hours earlier instead of about 24. "
+                                       "GitHub may have skipped a scheduled run.")
+if ch.get("hold"):
+    alerts["Playlist updates paused (undo used)"] = ("The previous playlist was restored and automatic updates are paused. "
+                                                    "Run 'Playlist undo' with 'resume' when you want them back on.")
+KNOWN = ["Channels no longer found on a service", "A check-up was missed", "Playlist updates paused (undo used)",
+         "Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
          "Guide coverage dropped", "Playlist upload failing", "Must-have channel down"]
 
 repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")

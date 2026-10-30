@@ -1,0 +1,35 @@
+name: Playlist undo
+
+# Tap "Run workflow" to put the previous channel list back in Dropbox (pauses automatic updates),
+# or choose "resume" to switch automatic updates back on.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "restore = put the previous playlist back and pause updates; resume = turn automatic updates back on"
+        type: choice
+        default: restore
+        options: [restore, resume]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tv
+  cancel-in-progress: false
+
+jobs:
+  undo:
+    runs-on: ubuntu-latest
+    env:
+      DBX_KEY: ${{ secrets.DBX_KEY }}
+      DBX_SECRET: ${{ secrets.DBX_SECRET }}
+      DBX_PATH: ${{ secrets.DBX_PATH }}
+    steps:
+      - uses: actions/checkout@v5
+      - run: python3 scripts/undo.py "${{ inputs.action }}"
+      - name: Save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add secure && git commit -qm "Playlist ${{ inputs.action }} $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q

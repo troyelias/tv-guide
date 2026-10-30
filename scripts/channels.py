@@ -17,6 +17,9 @@ from datetime import datetime, timedelta, timezone
 sys.path.insert(0, os.path.dirname(__file__))
 from catalog_lib import match_lineup  # noqa: E402
 from streamtest import Provider, plays  # noqa: E402
+from dropbox_upload import upload  # noqa: E402
+import difflib  # noqa: E402
+from catalog_lib import key as name_key, region as name_region, clean_name  # noqa: E402
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 os.makedirs(OUT, exist_ok=True)
@@ -85,6 +88,30 @@ for p, prov in provs.items():
             if tag:
                 epg[p].setdefault(cid, tag)
                 break
+# ---------- "couldn't match" report ----------
+names = {c["id"]: c["name"] for c in catalog}
+by_id = {c["id"]: c for c in catalog}
+prev_matched = state.get("matched_ids", {})
+missing, newly, review = {}, {}, {"unmatched": {}, "suggestions": {}}
+for p in cands:
+    miss = [cid for cid in names if cid not in cands[p]]
+    missing[p] = len(miss)
+    if p in prev_matched:
+        newly[p] = [names[c] for c in prev_matched[p] if c in names and c not in cands[p]]
+    state.setdefault("matched_ids", {})[p] = sorted(cands[p])
+    review["unmatched"][p] = [names[c] for c in miss]
+    pool = {}
+    for s_ in lineup[p].values():
+        pool.setdefault(name_key(s_.get("name") or ""), clean_name(s_.get("name") or ""))
+    sug = {}
+    for cid in miss:  # closest names the service does have, to help add a matching rule
+        close = difflib.get_close_matches(by_id[cid]["keys"][0] if by_id[cid]["keys"] else "", list(pool), n=3, cutoff=0.75)
+        if close:
+            sug[names[cid]] = [pool[k] for k in close]
+    review["suggestions"][p] = sug
+summary["missing_on"] = missing
+summary["newly_missing"] = newly
+
 summary["login"] = {p: ("ok" if v.get("auth") == 1 and str(v.get("status", "")).lower() == "active" else "problem")
                     for p, v in info.items()}
 summary["matched"] = {p: len(v) for p, v in cands.items()}
@@ -92,6 +119,16 @@ summary["main_days_left"] = (round((int(info["main"]["exp_date"]) - NOW.timestam
                              if info.get("main", {}).get("exp_date") else None)
 summary["backup_days_left"] = (round((int(info["backup"]["exp_date"]) - NOW.timestamp()) / 86400, 1)
                                if info.get("backup", {}).get("exp_date") else None)
+
+if MODE == "nightly":
+    last = state.get("last_checkup_utc")
+    if last:
+        gap = (NOW - datetime.strptime(last, "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)).total_seconds() / 3600
+        if gap > 30:
+            summary["missed_hours"] = round(gap)
+    state["last_checkup_utc"] = summary["checkup_utc"] = NOW.strftime("%Y-%m-%d %H:%M")
+elif state.get("last_checkup_utc"):
+    summary["checkup_utc"] = state["last_checkup_utc"]
 
 # ---------- test-play (nightly / dry-run) ----------
 results = {"main": {}, "backup": {}}  # cid -> working stream id, or None if all tried candidates failed
@@ -259,24 +296,29 @@ json.dump({p: {tag: next(c["guide_id"] for c in catalog if c["id"] == cid) for c
 changed = digest != state.get("uploaded_hash")
 summary["playlist_changed"] = changed
 may_upload = MODE in ("outage", "restore") or (MODE == "nightly" and in_window)
+summary["hold"] = bool(state.get("hold"))
+if state.get("hold") and MODE != "outage":
+    may_upload = False  # updates paused after an undo, until resumed
 if changed and may_upload and lineup:
     try:
-        key, sec, path = (os.environ.get(k, "").strip() for k in ("DBX_KEY", "DBX_SECRET", "DBX_PATH"))
-        refresh = subprocess.run(["openssl", "enc", "-d", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-pass", "env:DBX_SECRET"],
-                                 input=open("secure/dropbox.enc", "rb").read(), capture_output=True, check=True).stdout.decode()
-        req = urllib.request.Request("https://api.dropboxapi.com/oauth2/token",
-                                     data=urllib.parse.urlencode({"grant_type": "refresh_token", "refresh_token": refresh}).encode())
-        req.add_header("Authorization", "Basic " + base64.b64encode(f"{key}:{sec}".encode()).decode())
-        token = json.load(urllib.request.urlopen(req, timeout=60))["access_token"]
-        up = urllib.request.Request("https://content.dropboxapi.com/2/files/upload", data=text.encode("utf-8"))
-        up.add_header("Authorization", f"Bearer {token}")
-        up.add_header("Content-Type", "application/octet-stream")
-        up.add_header("Dropbox-API-Arg", json.dumps({"path": path, "mode": "overwrite", "mute": True}))
-        urllib.request.urlopen(up, timeout=120).read()
+        upload(text)
         state["uploaded_hash"] = digest
         summary["uploaded"] = True
+        # keep this and the previous playlist (encrypted) so an undo is one tap away
+        if os.path.exists("secure/playlist_cur.enc"):
+            os.replace("secure/playlist_cur.enc", "secure/playlist_prev.enc")
+        open("secure/playlist_cur.enc", "wb").write(crypt(text.encode()))
     except Exception as e:
         summary["upload_error"] = type(e).__name__
+
+# private review for Claude (encrypted with the main login): what couldn't be matched + close names
+if os.environ.get("PRO"):
+    review["summary"] = {k: v for k, v in summary.items()}
+    review["unmatched_must"] = {p: [n for n in v if any(c["name"] == n and c.get("must") for c in catalog)]
+                                for p, v in review["unmatched"].items()}
+    enc = subprocess.run(["openssl", "enc", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-salt", "-pass", "env:PRO"],
+                         input=json.dumps(review, ensure_ascii=False).encode(), capture_output=True, check=True).stdout
+    open(os.path.join(OUT, "review.enc"), "wb").write(enc)
 if MODE in ("dry-run", "preview") and os.environ.get("DRYRUN_OUT"):
     open(os.environ["DRYRUN_OUT"], "w", encoding="utf-8").write(text)  # local testing only
 
