@@ -1,0 +1,55 @@
+name: Outage watch
+
+# Every hour: checks that the main service still logs in (no channel is played).
+# If it fails twice in a row, every channel is switched to the backup service right away.
+on:
+  schedule:
+    - cron: "47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: tv
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PRO: ${{ secrets.PRO }}
+      PRO_2: ${{ secrets.PRO_2 }}
+      DBX_KEY: ${{ secrets.DBX_KEY }}
+      DBX_SECRET: ${{ secrets.DBX_SECRET }}
+      DBX_PATH: ${{ secrets.DBX_PATH }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check the main service's login
+        id: w
+        run: |
+          git fetch -q origin watch 2>/dev/null && git show FETCH_HEAD:watch.json > "$RUNNER_TEMP/watch.json" 2>/dev/null || echo '{}' > "$RUNNER_TEMP/watch.json"
+          echo "action=$(python3 scripts/outage_watch.py "$RUNNER_TEMP/watch.json")" >> "$GITHUB_OUTPUT"
+
+      - name: Switch everything to the backup service
+        if: steps.w.outputs.action == 'switch'
+        run: |
+          python3 scripts/channels.py outage "$RUNNER_TEMP/ch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add secure/state.enc && git commit -qm "Outage switch $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
+          gh issue list --state open --search "Main service down - using backup in:title" --json number -q '.[].number' | grep -q . || \
+            gh issue create --title "Main service down - using backup" --assignee "$GITHUB_REPOSITORY_OWNER" \
+              --body "The main service stopped logging in twice in a row, so every channel was switched to the backup service. It switches back automatically during the 4-7 AM (India) check-up once the main service works again."
+
+      - name: Remember the result
+        run: |
+          mkdir w && cp "$RUNNER_TEMP/watch.json" w/ && cd w
+          git init -q -b watch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "watch" && git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" watch

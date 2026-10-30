@@ -1,7 +1,7 @@
-"""Open / close GitHub issues as discreet alerts (you get them as GitHub notifications).
+"""Open / close GitHub issues as discreet alerts (they reach you as GitHub notifications).
 
-Usage: alerts.py STATS.json STATUS.json CHANGES.json PLAYLIST.json
-Wording never names the service or account.
+Usage: alerts.py STATS.json CHANNELS.json
+Wording never names a service or account.
 """
 import json, os, sys, urllib.request
 
@@ -13,27 +13,31 @@ def load(p):
         return {}
 
 
-stats, status, changes, pl = (load(p) for p in sys.argv[1:5])
-alerts = {}  # title -> body, for conditions that are currently true
+stats, ch = load(sys.argv[1]), load(sys.argv[2])
+cat = load("catalog.json") or []
+must = {c["name"] for c in cat if c.get("must")}
+alerts = {}
 
-days = status.get("days_left")
-if isinstance(days, (int, float)) and days <= 7:
-    alerts["Renewal due soon"] = (f"The TV subscription ends in about **{max(days, 0):.0f} days**. "
-                                  "Renew it to keep the channels and guide working.")
-if status and (status.get("error") or status.get("auth") != 1 or str(status.get("status", "")).lower() != "active"):
-    alerts["Subscription check failing"] = ("The subscription didn't log in normally on the last check "
-                                            f"(state: {status.get('status') or status.get('error') or 'unknown'}). "
-                                            "It may have expired, been suspended, or the server may be down.")
+for who, label in (("main_days_left", "main"), ("backup_days_left", "backup")):
+    d = ch.get(who)
+    if isinstance(d, (int, float)) and d <= 7:
+        alerts[f"Renewal due soon ({label} service)"] = (f"The {label} TV subscription ends in about **{max(d, 0):.0f} days**. "
+                                                         "Renew it to keep its channels working.")
+if ch.get("outage"):
+    alerts["Main service down - using backup"] = ("The main service stopped logging in, so every channel was switched to the "
+                                                 "backup service. It will switch back automatically during the 4-7 AM (India) "
+                                                 "check-up once the main service works again.")
 total, have = stats.get("channels_total", 0), stats.get("channels_with_listings", 0)
 if total and have < 0.75 * total:
-    alerts["Guide coverage dropped"] = f"Only **{have} of {total}** channels got listings in the last build."
-if pl.get("upload_error"):
+    alerts["Guide coverage dropped"] = f"Only **{have} of {total}** guide channels got listings in the last build."
+if ch.get("upload_error"):
     alerts["Playlist upload failing"] = "The updated playlist couldn't be uploaded to Dropbox. The Dropbox connection may need setting up again."
-elif pl.get("waiting_for_dropbox") and (pl.get("added") or pl.get("removed") or pl.get("renumbered")):
-    alerts["Playlist changes waiting"] = (f"The channel lineup changed (+{pl.get('added', 0)} / -{pl.get('removed', 0)} / "
-                                          f"{pl.get('renumbered', 0)} renumbered) but Dropbox isn't connected, so the playlist wasn't updated.")
-KNOWN = ["Renewal due soon", "Subscription check failing", "Guide coverage dropped",
-         "Playlist upload failing", "Playlist changes waiting"]
+bad = sorted(set(ch.get("down_on_both", [])) & must)
+if bad:
+    alerts["Must-have channel down"] = ("These must-have channels didn't play on either service at the last check-up: "
+                                        + ", ".join(bad) + ".")
+KNOWN = ["Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
+         "Guide coverage dropped", "Playlist upload failing", "Must-have channel down"]
 
 repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")
 if not (repo and token):
@@ -51,9 +55,9 @@ def api(method, path, body=None):
 
 
 open_issues = {i["title"]: i for i in api("GET", "/issues?state=open&per_page=100") if "pull_request" not in i}
+owner = os.environ.get("GITHUB_REPOSITORY_OWNER")
 for title in KNOWN:
     if title in alerts and title not in open_issues:
-        owner = os.environ.get("GITHUB_REPOSITORY_OWNER")  # assigning = a push notification in the GitHub app
         api("POST", "/issues", {"title": title, "body": alerts[title], **({"assignees": [owner]} if owner else {})})
         print("Opened alert:", title)
     elif title in alerts:

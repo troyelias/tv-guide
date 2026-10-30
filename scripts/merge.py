@@ -1,7 +1,9 @@
 """Merge several XMLTV guides into one, keeping only the channels in channel-ids.txt.
 
 Usage:
-  merge.py channel-ids.txt OUTPUT.xml.gz REPORT.md STATS.json [--previous=FILE] name=file [name=file ...]
+  merge.py channel-ids.txt OUTPUT.xml.gz REPORT.md STATS.json [--previous=FILE] [--map=FILE] name=file[#mapkey] ...
+  A source written as name=file#key has its channel IDs renamed using section "key" of the --map file
+  (a service's own guide tags -> our guide IDs).
 
 For each channel:
   1. Base listings come from the source with the most real (not "Movie") upcoming titles;
@@ -17,7 +19,12 @@ from datetime import datetime, timedelta, timezone
 
 args = sys.argv[1:]
 previous = next((a.split("=", 1)[1] for a in args if a.startswith("--previous=")), None)
-args = [a for a in args if not a.startswith("--previous=")]
+mapfile = next((a.split("=", 1)[1] for a in args if a.startswith("--map=")), None)
+args = [a for a in args if not a.startswith(("--previous=", "--map="))]
+try:
+    MAPS = json.load(open(mapfile)) if mapfile else {}
+except Exception:
+    MAPS = {}
 ids_file, out_file, report_file, stats_file, *sources = args
 
 wanted = [l.strip() for l in open(ids_file, encoding="utf-8") if l.strip() and not l.startswith("#")]
@@ -44,11 +51,16 @@ def parse_time(s):
         return None
 
 
-def read(path):
+def read(path, rename=None):
     """Return {channel_id: channel element}, {channel_id: [(start, stop, programme)]} for wanted IDs."""
     chans, progs = {}, defaultdict(list)
+    rename = rename or {}
     try:
         for _, el in ET.iterparse(open_any(path), events=("end",)):
+            if rename:
+                for attr in ("id", "channel"):
+                    if el.get(attr) in rename:
+                        el.set(attr, rename[el.get(attr)])
             if el.tag == "channel":
                 if el.get("id") in wanted_set:
                     chans[el.get("id")] = el
@@ -98,7 +110,8 @@ loaded = []  # (source name, chans, progs) in priority order
 stats = {}
 for spec in sources:
     name, path = spec.split("=", 1)
-    chans, progs = read(path)
+    path, _, mkey = path.partition("#")
+    chans, progs = read(path, MAPS.get(mkey) if mkey else None)
     stats[name] = sum(len(v) for v in progs.values())
     print(f"{name}: {len(progs)} channels, {stats[name]} shows")
     loaded.append((name, chans, progs))

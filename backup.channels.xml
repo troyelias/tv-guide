@@ -352,4 +352,41 @@
   <channel site="sky.com" lang="en" xmltv_id="madanichannel.uk" site_id="GB#4460">Madani Chnl</channel>
   <channel site="sky.com" lang="en" xmltv_id="islamchurdu.uk" site_id="GB#5211">Islam Ch Urdu</channel>
   <channel site="sky.com" lang="en" xmltv_id="emanchannel.uk" site_id="GB#3111">Eman Channel</channel>
+  <!-- Channels added Oct 2026 -->
+  <channel site="airtelxstream.in" lang="en" xmltv_id="zing.nl" site_id="LIVETV_LIVETVCHANNEL_ZING">Zing</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="zing.nl" site_id="144484">Zing</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="abpnews.uk" site_id="LIVETV_LIVETVCHANNEL_ABP_NEWS">ABP News</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="abpnews.uk" site_id="158138">ABP News</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="DishCineActive" site_id="142897">Dish Cine Active</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts818" site_id="LIVETV_LIVETVCHANNEL_SHEMAROO_TV">Shemaroo TV</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts818" site_id="143778">Shemaroo TV</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="pitaara.in" site_id="LIVETV_LIVETVCHANNEL_PITAARA">Pitaara</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="pitaara.in" site_id="143650">Pitaara</channel>
+  <channel site="sky.com" lang="en" xmltv_id="pitaara.in" site_id="GB#1260">Pitaara</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts103" site_id="LIVETV_LIVETVCHANNEL_MTV">MTV</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts103" site_id="143558">MTV</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts174" site_id="LIVETV_LIVETVCHANNEL_ROMEDY_NOW">ROMEDY NOW</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts174" site_id="143729">Romedy Now</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts706" site_id="LIVETV_LIVETVCHANNEL_TV9_BHARATVARSH">TV9 Bharatvarsh</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts706" site_id="144027">TV9 Bharatvarsh</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts414" site_id="LIVETV_LIVETVCHANNEL_NEWS_1_INDIA">News 1 India</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="KNewsIndia" site_id="143244">K News India</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="MH1News" site_id="143540">MH1 News</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts204" site_id="LIVETV_LIVETVCHANNEL_CNBC_AWAAZ">CNBC AWAAZ</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts204" site_id="142745">CNBC-Awaaz</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts208" site_id="LIVETV_LIVETVCHANNEL_NDTV_24X7">NDTV 24x7</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts208" site_id="154895">NDTV 24x7</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts90" site_id="LIVETV_LIVETVCHANNEL_TIMES_NOW">TIMES NOW</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts90" site_id="144006">Times Now</channel>
+  <channel site="sky.com" lang="en" xmltv_id="EuroNews.uk" site_id="GB#4604">Euronews</channel>
+  <channel site="sky.com" lang="en" xmltv_id="EuroNews.uk" site_id="IT#801">Euronews</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ComedyActive" site_id="142898">Comedy Active</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts219" site_id="LIVETV_LIVETVCHANNEL_DISCOVERY_CHANNEL">Discovery Channel</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts219" site_id="100869">Discovery Channel</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="News9Live" site_id="LIVETV_LIVETVCHANNEL_NEWS9">NEWS9</channel>
+  <channel site="zee5.com" lang="en" xmltv_id="News9Live" site_id="0-9-261">News 9</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="ts181" site_id="LIVETV_LIVETVCHANNEL_BHOJPURI_CINEMA">BHOJPURI CINEMA</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="ts181" site_id="142713">Bhojpuri Cinema</channel>
+  <channel site="dishtv.in" lang="en" xmltv_id="SangeetBhojpuri" site_id="143757">Sangeet Bhojpuri</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="GoodNewsTV" site_id="LIVETV_LIVETVCHANNEL_GOODNEWS_TV">Goodnews TV</channel>
 </channels>

@@ -215,4 +215,18 @@
   <channel site="airtelxstream.in" lang="en" xmltv_id="Alankar" site_id="LIVETV_LIVETVCHANNEL_ALANKAR">Alankar</channel>
   <channel site="airtelxstream.in" lang="en" xmltv_id="TarangMusic" site_id="LIVETV_LIVETVCHANNEL_TARANG_MUSIC">Tarang Music</channel>
   <channel site="dishtv.in" lang="en" xmltv_id="ManoranjanGrand" site_id="143302">Manoranjan Grand</channel>
+  <!-- Channels added Oct 2026 -->
+  <channel site="tataplay.com" lang="en" xmltv_id="zing.nl" site_id="517">Zing</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="abpnews.uk" site_id="177">ABP News</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts818" site_id="818">Shemaroo TV</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts103" site_id="103">MTV</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts174" site_id="174">Romedy Now</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts706" site_id="706">TV9 Bharatvarsh</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts414" site_id="414">News 1 India</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts204" site_id="204">CNBC Awaaz</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts208" site_id="208">NDTV 24x7</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts90" site_id="90">TIMES NOW</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts219" site_id="219">Discovery Channel</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts181" site_id="181">Bhojpuri Cinema</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts805" site_id="805">Nandighosha TV</channel>
 </channels>

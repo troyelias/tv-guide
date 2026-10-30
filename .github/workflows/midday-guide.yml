@@ -1,0 +1,90 @@
+name: Midday guide refresh
+
+# About 1:00 PM India time. Refreshes programme listings only: no contact with either TV service,
+# no change to the playlist.
+on:
+  schedule:
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: tv
+  cancel-in-progress: false
+
+jobs:
+  guide:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: iptv-org/epg
+          path: grabber
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install grabber
+        working-directory: grabber
+        run: npm install --no-audit --no-fund
+
+      - name: Grab listings
+        run: scripts/grab.sh
+
+      - name: Download fallback guides and the current guide
+        run: |
+          cd "$RUNNER_TEMP"
+          curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || true
+          curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || true
+          curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || true
+          mkdir -p ch && curl -fsSL -o ch/channels.json "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > ch/channels.json
+
+      - name: Merge (the current guide fills anything the free sources lack)
+        run: |
+          R="$RUNNER_TEMP"
+          python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
+            --previous="$R/previous.xml.gz" \
+            "Main=$R/main.xml" "Backup=$R/backup.xml" \
+            "mitthu786 Tata Play=$R/tataplay.xml.gz" "mitthu786 Combined=$R/combined.xml.gz" \
+            "Current guide=$R/previous.xml.gz"
+          mkdir -p "$R/site"
+          python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json"
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          R="$RUNNER_TEMP"
+          mkdir out out/logs
+          cp "$R/guide.xml.gz" REPORT.md "$R/site/index.html" "$R/ch/channels.json" out/
+          cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
+          cd out
+          git init -q -b guide
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Guide $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" guide
+          cd .. && cp "$R/grabber.lock" grabber.lock 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in REPORT.md grabber.lock; do if [ -e "$f" ]; then git add "$f"; fi; done
+          git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull -q --rebase origin main && git push -q
+
+      - uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/site
+
+      - uses: actions/deploy-pages@v4
+        continue-on-error: true

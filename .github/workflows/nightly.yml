@@ -1,0 +1,152 @@
+name: Nightly check-up
+
+# Runs at about 4:05 AM India time. Tests channels on both services, switches broken ones,
+# updates the playlist in Dropbox, rebuilds the guide, status page and alerts.
+on:
+  schedule:
+    - cron: "35 22 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "preview = no testing, nothing changed (safe any time). nightly = full check-up (only acts 4:00-6:30 AM India time)."
+        type: choice
+        default: preview
+        options: [preview, nightly]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: tv
+  cancel-in-progress: false
+
+jobs:
+  channels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PRO: ${{ secrets.PRO }}
+      PRO_2: ${{ secrets.PRO_2 }}
+      DBX_KEY: ${{ secrets.DBX_KEY }}
+      DBX_SECRET: ${{ secrets.DBX_SECRET }}
+      DBX_PATH: ${{ secrets.DBX_PATH }}
+      MODE: ${{ inputs.mode || 'nightly' }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Test channels, switch broken ones, update playlist
+        run: python3 scripts/channels.py "$MODE" "$RUNNER_TEMP/ch"
+
+      - name: Save switch-over memory (encrypted)
+        if: env.MODE == 'nightly'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add secure/state.enc 2>/dev/null || true
+          git diff --cached --quiet || { git commit -qm "Check-up $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull -q --rebase origin main; git push -q; }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: channels
+          path: ${{ runner.temp }}/ch/
+
+  guide:
+    needs: channels
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: iptv-org/epg
+          path: grabber
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install grabber
+        working-directory: grabber
+        run: npm install --no-audit --no-fund
+
+      - name: Grab listings (paced; falls back to the last working grabber)
+        run: scripts/grab.sh
+
+      - name: Download fallback guides, previous guide and both services' own guides
+        env:
+          PRO: ${{ secrets.PRO }}
+          PRO_2: ${{ secrets.PRO_2 }}
+        run: |
+          cd "$RUNNER_TEMP"
+          curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "fallback 1 failed"
+          curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "fallback 2 failed"
+          curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || echo "no previous guide"
+          [ -n "$PRO" ] && { curl -fsSL --retry 2 --max-time 900 -A "Mozilla/5.0" -o svc1.xml "$PRO" || echo "service 1 guide failed"; }
+          [ -n "$PRO_2" ] && { curl -fsSL --retry 2 --max-time 900 -A "Mozilla/5.0" -o svc2.xml "$PRO_2" || echo "service 2 guide failed"; }
+          ls -la
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: channels
+          path: ${{ runner.temp }}/ch
+
+      - name: Merge into one guide
+        run: |
+          R="$RUNNER_TEMP"
+          python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
+            --previous="$R/previous.xml.gz" --map="$R/ch/provmap.json" \
+            "Main=$R/main.xml" "Backup=$R/backup.xml" \
+            "mitthu786 Tata Play=$R/tataplay.xml.gz" "mitthu786 Combined=$R/combined.xml.gz" \
+            "Service 1=$R/svc1.xml#main" "Service 2=$R/svc2.xml#backup"
+
+      - name: Copy any new logos into the repo
+        run: python3 scripts/logos.py
+
+      - name: Status page and alerts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          R="$RUNNER_TEMP"; mkdir -p "$R/site"
+          [ -f "$R/ch/channels.json" ] || curl -fsSL -o "$R/ch/channels.json" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > "$R/ch/channels.json"
+          python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json"
+          python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json"
+
+      - name: Publish guide to the 'guide' branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          R="$RUNNER_TEMP"
+          mkdir out out/logs
+          cp "$R/guide.xml.gz" REPORT.md "$R/site/index.html" "$R/ch/channels.json" out/
+          cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
+          cd out
+          git init -q -b guide
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Guide $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" guide
+
+      - name: Save report, logos and grabber version on main
+        run: |
+          cp "$RUNNER_TEMP/grabber.lock" grabber.lock 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in REPORT.md grabber.lock logos; do if [ -e "$f" ]; then git add "$f"; fi; done
+          git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull -q --rebase origin main && git push -q
+
+      - uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/site
+
+      - uses: actions/deploy-pages@v4
+        continue-on-error: true

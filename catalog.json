@@ -1,0 +1,7933 @@
+[
+ {
+  "id": "star-plus-hd-hindi-entertainment",
+  "name": "Star Plus HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts8",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-25307-jhrhflww-v1/imageContent-25307-jhrhflww-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARPLUS"
+  ],
+  "tags": [
+   "ts8"
+  ],
+  "must": true
+ },
+ {
+  "id": "zee-tv-hd-hindi-entertainment",
+  "name": "Zee TV HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts63",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeTVHD._Thumbnail_39bf8ba9-ef02-465b-b800-ea1e222945d0.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEE"
+  ],
+  "tags": [
+   "ts63"
+  ],
+  "must": true
+ },
+ {
+  "id": "sony-hd-hindi-entertainment",
+  "name": "Sony HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts15",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-43-j5fca4k0-v3/imageContent-43-j5fca4k0-m4.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONY"
+  ],
+  "tags": [
+   "ts15"
+  ],
+  "must": true
+ },
+ {
+  "id": "star-bharat-hd-hindi-entertainment",
+  "name": "Star Bharat HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts244",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-6895-j6vqhqnc-v2/imageContent-6895-j6vqhqnc-m2.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARBHARAT"
+  ],
+  "tags": [
+   "ts244"
+  ],
+  "must": true
+ },
+ {
+  "id": "colors-hd-hindi-entertainment",
+  "name": "Colors HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts52",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-155-j5frd2uo-v1/imageContent-155-j5frd2uo-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORS"
+  ],
+  "tags": [
+   "ts52"
+  ],
+  "must": true
+ },
+ {
+  "id": "tv-hd-hindi-entertainment",
+  "name": "&TV HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts40",
+  "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-tvhd_0/channel_web/1920x1080list8cecf80ef6884ff09063a5abd21f81d6.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AND"
+  ],
+  "tags": [
+   "ts40"
+  ],
+  "must": true
+ },
+ {
+  "id": "sony-sab-hd-hindi-entertainment",
+  "name": "Sony SAB HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts559",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12081-j9oc38xc-v8/imageContent-12081-j9oc38xc-m7.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYSAB"
+  ],
+  "tags": [
+   "ts559"
+  ],
+  "must": true
+ },
+ {
+  "id": "big-magic-hd-hindi-entertainment",
+  "name": "Big Magic HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts297",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/BigMagic_Thumbnail_93c73886-2047-4afd-8bda-c8a7f694f30c.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BIGMAGIC"
+  ],
+  "tags": [
+   "ts297"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-pal-hindi-entertainment",
+  "name": "Sony Pal",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts554",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12071-j9oa4gbc-v5/imageContent-12071-j9oa4gbc-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYPAL"
+  ],
+  "tags": [
+   "ts554"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-utsav-hindi-entertainment",
+  "name": "Star Utsav",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts551",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12060-j9o91vfc-v2/imageContent-12060-j9o91vfc-m2.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARUTSAV"
+  ],
+  "tags": [
+   "ts551"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-national-hd-hindi-entertainment",
+  "name": "DD National HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts1218",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDNH_Thumbnail-v1/DDNH_Thumbnail.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDNATIONAL"
+  ],
+  "tags": [
+   "ts1218"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-bharati-hindi-entertainment",
+  "name": "DD Bharati",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts316",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDBH_Thumbnail-v2/DDBH_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDBHARATI"
+  ],
+  "tags": [
+   "ts316"
+  ],
+  "must": false
+ },
+ {
+  "id": "tata-play-classic-tv-hindi-entertainment",
+  "name": "Tata Play Classic TV",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts964",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/TPCTV_Thumbnail-v4/TPCTV_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TATAPLAYCLASSIC"
+  ],
+  "tags": [
+   "ts964"
+  ],
+  "must": false
+ },
+ {
+  "id": "e24-hindi-entertainment",
+  "name": "E24",
+  "folder": "Hindi Entertainment",
+  "guide_id": "E24",
+  "logo": "https://img.logo-cdn.cc/e24.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "E24"
+  ],
+  "tags": [
+   "e24"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-anmol-hindi-entertainment",
+  "name": "Zee Anmol",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ZeeAnmol",
+  "logo": "https://img.logo-cdn.cc/zeeanmol.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEANMOL"
+  ],
+  "tags": [
+   "zeeanmol"
+  ],
+  "must": false
+ },
+ {
+  "id": "dangal-hindi-entertainment",
+  "name": "Dangal",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts51",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-158-j5frd560-v2/imageContent-158-j5frd560-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DANGAL"
+  ],
+  "tags": [
+   "ts51"
+  ],
+  "must": false
+ },
+ {
+  "id": "airtel-comedy-masala-hindi-entertainment",
+  "name": "Airtel Comedy Masala",
+  "folder": "Hindi Entertainment",
+  "guide_id": "AirtelComedyMasala",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AIRTELCOMEDYMASALA"
+  ],
+  "tags": [
+   "airtelcomedymasala"
+  ],
+  "must": false
+ },
+ {
+  "id": "dangal-2-hd-hindi-entertainment",
+  "name": "Dangal 2 HD",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts194",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-798-j5m7esnc-v4/imageContent-798-j5m7esnc-m11.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DANGAL2"
+  ],
+  "tags": [
+   "ts194"
+  ],
+  "must": false
+ },
+ {
+  "id": "ishaara-tv-hindi-entertainment",
+  "name": "Ishaara TV",
+  "folder": "Hindi Entertainment",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ISHAARA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "the-q-hindi-entertainment",
+  "name": "The Q",
+  "folder": "Hindi Entertainment",
+  "guide_id": "TheQ",
+  "logo": "https://img.logo-cdn.cc/theqyou.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "THEQ",
+   "THEQYOU"
+  ],
+  "tags": [
+   "theq"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-gold-hd-hindi-movies",
+  "name": "Star Gold HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts632",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-19212-jd2xwa4w-v1/imageContent-19212-jd2xwa4w-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARGOLD"
+  ],
+  "tags": [
+   "ts632"
+  ],
+  "must": true
+ },
+ {
+  "id": "zee-cinema-hd-hindi-movies",
+  "name": "Zee Cinema HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts123",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeCinema_Thumbnail_df08abb5-8c94-474d-938b-358885158f58.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEECINEMA"
+  ],
+  "tags": [
+   "ts123"
+  ],
+  "must": true
+ },
+ {
+  "id": "sony-max-hd-hindi-movies",
+  "name": "Sony Max HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts132",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-441-j5jt3mmg-v3/imageContent-441-j5jt3mmg-m3.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MAX",
+   "SONYMAX"
+  ],
+  "tags": [
+   "ts132"
+  ],
+  "must": true
+ },
+ {
+  "id": "pictures-hd-hindi-movies",
+  "name": "&Pictures HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts267",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/AndPicturesHD_Thumbnail_b69c8bc8-ebee-48fc-8d7e-d7e2d120855e.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ANDPICTURES"
+  ],
+  "tags": [
+   "ts267"
+  ],
+  "must": true
+ },
+ {
+  "id": "star-gold-select-hd-hindi-movies",
+  "name": "Star Gold Select HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts461",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11798-j9kyvqi8-v1/imageContent-11798-j9kyvqi8-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARGOLDSELECT"
+  ],
+  "tags": [
+   "ts461"
+  ],
+  "must": true
+ },
+ {
+  "id": "sony-max-2-hindi-movies",
+  "name": "Sony Max 2",
+  "folder": "Hindi Movies",
+  "guide_id": "ts120",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-402-j5jq1gko-v3/imageContent-402-j5jq1gko-m4.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYMAX2"
+  ],
+  "tags": [
+   "ts120"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-gold-2-hindi-movies",
+  "name": "Star Gold 2",
+  "folder": "Hindi Movies",
+  "guide_id": "ts1072",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/SG2HD_Thumbnail-v1/SG2HD_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARGOLD2"
+  ],
+  "tags": [
+   "ts1072"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-gold-thrills-hindi-movies",
+  "name": "Star Gold Thrills",
+  "folder": "Hindi Movies",
+  "guide_id": "ts494",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/STRGLDTH_Thumbnail-v1/STRGLDTH_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARGOLDTHRILLS"
+  ],
+  "tags": [
+   "ts494"
+  ],
+  "must": true
+ },
+ {
+  "id": "star-gold-romance-hindi-movies",
+  "name": "Star Gold Romance",
+  "folder": "Hindi Movies",
+  "guide_id": "ts493",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/STGRR_Thumbnail-v1/STGRR_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARGOLDROMANCE"
+  ],
+  "tags": [
+   "ts493"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-utsav-movies-hindi-movies",
+  "name": "Star Utsav Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "ts470",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11819-j9kzbejs-v1/imageContent-11819-j9kzbejs-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARUTSAVMOVIES"
+  ],
+  "tags": [
+   "ts470"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-wah-hindi-movies",
+  "name": "Sony Wah",
+  "folder": "Hindi Movies",
+  "guide_id": "ts56",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-198-j5fsr7mw-v2/imageContent-198-j5fsr7mw-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYWAH"
+  ],
+  "tags": [
+   "ts56"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-bollywood-hindi-movies",
+  "name": "Zee Bollywood",
+  "folder": "Hindi Movies",
+  "guide_id": "ts175",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeBollywood_Thumbnail_72e76b5f-2995-4089-853e-f932a8fe2ec0.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEBOLLWOOD",
+   "ZEEBOLLYWOOD"
+  ],
+  "tags": [
+   "ts175"
+  ],
+  "must": false
+ },
+ {
+  "id": "b4u-movies-hindi-movies",
+  "name": "B4U Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "ts7",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-18-j5f9ui8g-v1/imageContent-18-j5f9ui8g-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "B4UMOVIES"
+  ],
+  "tags": [
+   "ts7"
+  ],
+  "must": false
+ },
+ {
+  "id": "b4u-kadak-hindi-movies",
+  "name": "B4U Kadak",
+  "folder": "Hindi Movies",
+  "guide_id": "ts730",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/B4UKad_Thumbnail-v5/B4UKad_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "B4UKADAK"
+  ],
+  "tags": [
+   "ts730"
+  ],
+  "must": false
+ },
+ {
+  "id": "goldmines-movies-hindi-movies",
+  "name": "Goldmines Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "ts1499",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/GoldminesMovies_Thumbnail_de06b8fe-ec61-4f81-9151-87a13e515368.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "GOLDMINEMOVIES",
+   "GOLDMINESMOVIES"
+  ],
+  "tags": [
+   "ts1499"
+  ],
+  "must": false
+ },
+ {
+  "id": "tata-play-bollywood-premiere-hd-hindi-movies",
+  "name": "Tata Play Bollywood Premiere HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts319",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11332-j9jovnog-v3/imageContent-11332-j9jovnog-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TATAPLAYBOLLYWOODPREMIER",
+   "TATAPLAYBOLLYWOODPREMIERE",
+   "TATASKYBOLLYWOOD"
+  ],
+  "tags": [
+   "ts319"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-action-hindi-movies",
+  "name": "Zee Action",
+  "folder": "Hindi Movies",
+  "guide_id": "ZeeAction",
+  "logo": "https://img.logo-cdn.cc/zeeaction.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEACTION"
+  ],
+  "tags": [
+   "zeeaction"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-classic-hindi-movies",
+  "name": "Zee Classic",
+  "folder": "Hindi Movies",
+  "guide_id": "ts727",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeClassic_Thumbnail_8a0a88d4-484a-464c-a991-0084bbf33cd6.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEECLASSIC",
+   "ZEECLASSICS"
+  ],
+  "tags": [
+   "ts727"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-cineplex-hd-hindi-movies",
+  "name": "Colors Cineplex HD",
+  "folder": "Hindi Movies",
+  "guide_id": "ts61",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-183-j5fsqz5c-v2/imageContent-183-j5fsqz5c-m2.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CINEPLEX",
+   "COLORSCINEPLEX"
+  ],
+  "tags": [
+   "ts61"
+  ],
+  "must": false
+ },
+ {
+  "id": "enterr10-movies-hindi-movies",
+  "name": "Enterr10 Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "enterr10.in",
+  "logo": "https://img.logo-cdn.cc/enter10movies.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ENTER10MOVIES",
+   "ENTERR10MOVIES"
+  ],
+  "tags": [
+   "enterr10.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "miniplex-hd-hindi-movies",
+  "name": "Miniplex HD",
+  "folder": "Hindi Movies",
+  "guide_id": "MiniplexHD",
+  "logo": "https://img.logo-cdn.cc/miniplex.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MINIPLEX"
+  ],
+  "tags": [
+   "miniplexhd"
+  ],
+  "must": false
+ },
+ {
+  "id": "maha-movies-hindi-movies",
+  "name": "Maha Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "skystar.in",
+  "logo": "https://img.logo-cdn.cc/skystarmovies.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MAHAMOVIES"
+  ],
+  "tags": [
+   "skystar.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-anmol-cinema-hindi-movies",
+  "name": "Zee Anmol Cinema",
+  "folder": "Hindi Movies",
+  "guide_id": "ZeeAnmolCinema",
+  "logo": "https://img.logo-cdn.cc/zeeanmolcinema.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEANMOLCINEMA"
+  ],
+  "tags": [
+   "zeeanmolcinema"
+  ],
+  "must": false
+ },
+ {
+  "id": "cinema-tv-hindi-movies",
+  "name": "Cinema TV",
+  "folder": "Hindi Movies",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/cinema.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CINEMA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "movies-plus-hindi-movies",
+  "name": "Movies Plus",
+  "folder": "Hindi Movies",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/moviehouse.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MOVIESPLUS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "evergreen-classic-hindi-movies",
+  "name": "Evergreen Classic",
+  "folder": "Hindi Movies",
+  "guide_id": "EvergreenClassic",
+  "logo": "https://img.logo-cdn.cc/evergreen.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "EVERGREENCLASSIC"
+  ],
+  "tags": [
+   "evergreenclassic"
+  ],
+  "must": false
+ },
+ {
+  "id": "dhinchak-2-hindi-movies",
+  "name": "Dhinchak 2",
+  "folder": "Hindi Movies",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DHINCHAK2",
+   "DHINCHAK2MOVIES"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "enterr10-hindi-movies",
+  "name": "Enterr10",
+  "folder": "Hindi Movies",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ENTER10",
+   "ENTERR10"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "shubh-cinema-tv-hindi-movies",
+  "name": "Shubh Cinema TV",
+  "folder": "Hindi Movies",
+  "guide_id": "",
+  "logo": "https://i.imgur.com/RQhorAG.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SHUBHCINEMA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "9xm-hindi-music",
+  "name": "9XM",
+  "folder": "Hindi Music",
+  "guide_id": "ts139",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-468-j5jwdbi8-v1/imageContent-468-j5jwdbi8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "9XM",
+   "9XMUSIC"
+  ],
+  "tags": [
+   "ts139"
+  ],
+  "must": true
+ },
+ {
+  "id": "zing-hindi-music",
+  "name": "Zing",
+  "folder": "Hindi Music",
+  "guide_id": "ts517",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/Zing_Thumbnail_b8adf6f0-f786-4d48-9fc6-110fd5445ca9.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZING"
+  ],
+  "tags": [
+   "ts517"
+  ],
+  "must": true
+ },
+ {
+  "id": "b4u-music-hindi-music",
+  "name": "B4U Music",
+  "folder": "Hindi Music",
+  "guide_id": "ts9",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-24-j5fb33y0-v1/imageContent-24-j5fb33y0-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "B4UMUSIC"
+  ],
+  "tags": [
+   "ts9"
+  ],
+  "must": true
+ },
+ {
+  "id": "zoom-hindi-music",
+  "name": "Zoom",
+  "folder": "Hindi Music",
+  "guide_id": "ts96",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-24696-jgrq09a8-v1/imageContent-24696-jgrq09a8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZOOM"
+  ],
+  "tags": [
+   "ts96"
+  ],
+  "must": true
+ },
+ {
+  "id": "9x-jalwa-hindi-music",
+  "name": "9X Jalwa",
+  "folder": "Hindi Music",
+  "guide_id": "9XJalwa",
+  "logo": "https://img.logo-cdn.cc/9xjalwa.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "9XJALWA"
+  ],
+  "tags": [
+   "9xjalwa"
+  ],
+  "must": true
+ },
+ {
+  "id": "mtv-beats-hd-hindi-music",
+  "name": "MTV Beats HD",
+  "folder": "Hindi Music",
+  "guide_id": "mtvbeats.in",
+  "logo": "https://img.logo-cdn.cc/mtvbeats.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MTVBEATS"
+  ],
+  "tags": [
+   "mtvbeats.in"
+  ],
+  "must": true
+ },
+ {
+  "id": "mtv-plus-hd-hindi-music",
+  "name": "MTV Plus HD",
+  "folder": "Hindi Music",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/mtvhd.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MTVPLUS"
+  ],
+  "tags": [],
+  "must": true
+ },
+ {
+  "id": "9x-tashan-hindi-music",
+  "name": "9X Tashan",
+  "folder": "Hindi Music",
+  "guide_id": "9XTashan",
+  "logo": "https://dtil.tmsimg.com/assets/s142504_ld_h15_aa.png?lock=720x540",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "9XTASHAN"
+  ],
+  "tags": [
+   "9xtashan"
+  ],
+  "must": false
+ },
+ {
+  "id": "music-india-hindi-music",
+  "name": "Music India",
+  "folder": "Hindi Music",
+  "guide_id": "MusicIndia",
+  "logo": "https://img.logo-cdn.cc/musicindia.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MUSICINDIA"
+  ],
+  "tags": [
+   "musicindia"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-etc-bollywood-hindi-music",
+  "name": "Zee ETC Bollywood",
+  "folder": "Hindi Music",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/zeeetcbollywood.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEETCBOLLYWOOD"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "showbox-hindi-music",
+  "name": "Showbox",
+  "folder": "Hindi Music",
+  "guide_id": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0032BWBW.png?lock=720x540",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SHOWBOX"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "aaj-tak-hd-hindi-news",
+  "name": "Aaj Tak HD",
+  "folder": "Hindi News",
+  "guide_id": "ts689",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-34652-jpmey8gw-v1/imageContent-34652-jpmey8gw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AAJTAK"
+  ],
+  "tags": [
+   "ts689"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-india-hindi-news",
+  "name": "News18 India",
+  "folder": "Hindi News",
+  "guide_id": "ts106",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-339-j5jm6kko-v1/imageContent-339-j5jm6kko-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18",
+   "NEWS18INDIA"
+  ],
+  "tags": [
+   "ts106"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-news-hindi-news",
+  "name": "Zee News",
+  "folder": "Hindi News",
+  "guide_id": "ts1497",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeNewsHD_Thumbnail_fc1348b3-6fe0-41fc-97a7-6afb446e9254.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEENEWS"
+  ],
+  "tags": [
+   "ts1497"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-tv-hindi-news",
+  "name": "India TV",
+  "folder": "Hindi News",
+  "guide_id": "ts104",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8568-j7lnde80-v1/imageContent-8568-j7lnde80-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIA"
+  ],
+  "tags": [
+   "ts104"
+  ],
+  "must": false
+ },
+ {
+  "id": "ndtv-india-hindi-news",
+  "name": "NDTV India",
+  "folder": "Hindi News",
+  "guide_id": "ts179",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/NDTVIndia._Thumbnail_a5c1aae7-ec75-47de-b612-23da2f191a71.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NDTVINDIA"
+  ],
+  "tags": [
+   "ts179"
+  ],
+  "must": false
+ },
+ {
+  "id": "news-nation-hindi-news",
+  "name": "News Nation",
+  "folder": "Hindi News",
+  "guide_id": "ts36",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-114-j5fl632o-v1/imageContent-114-j5fl632o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSNATION"
+  ],
+  "tags": [
+   "ts36"
+  ],
+  "must": false
+ },
+ {
+  "id": "times-now-navbharat-hd-hindi-news",
+  "name": "Times Now Navbharat HD",
+  "folder": "Hindi News",
+  "guide_id": "ts932",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-64606-krslbshs-v1/imageContent-64606-krslbshs-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TIMESNOWNAVBHARAT"
+  ],
+  "tags": [
+   "ts932"
+  ],
+  "must": false
+ },
+ {
+  "id": "news-24-hindi-news",
+  "name": "News 24",
+  "folder": "Hindi News",
+  "guide_id": "ts209",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-849-j5m9tmf4-v1/imageContent-849-j5m9tmf4-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS24"
+  ],
+  "tags": [
+   "ts209"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-news-hindi-news",
+  "name": "India News",
+  "folder": "Hindi News",
+  "guide_id": "ts183",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-774-j5m3h6nk-v1/imageContent-774-j5m3h6nk-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIANEWS"
+  ],
+  "tags": [
+   "ts183"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-news-hd-hindi-news",
+  "name": "DD News HD",
+  "folder": "Hindi News",
+  "guide_id": "ts691",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-34886-jqc7dybs-v2/imageContent-34886-jqc7dybs-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDNEWS"
+  ],
+  "tags": [
+   "ts691"
+  ],
+  "must": false
+ },
+ {
+  "id": "sudarshan-news-hindi-news",
+  "name": "Sudarshan News",
+  "folder": "Hindi News",
+  "guide_id": "ts475",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11831-j9kzkn40-v1/imageContent-11831-j9kzkn40-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SUDARSHANNEWS"
+  ],
+  "tags": [
+   "ts475"
+  ],
+  "must": false
+ },
+ {
+  "id": "hindi-khabar-hindi-news",
+  "name": "Hindi Khabar",
+  "folder": "Hindi News",
+  "guide_id": "ts344",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11467-j9jr3k80-v2/imageContent-11467-j9jr3k80-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HINDIKHABAR"
+  ],
+  "tags": [
+   "ts344"
+  ],
+  "must": false
+ },
+ {
+  "id": "janta-tv-hindi-news",
+  "name": "Janta TV",
+  "folder": "Hindi News",
+  "guide_id": "ts371",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11502-j9jtlmi8-v3/imageContent-11502-j9jtlmi8-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "JANTA"
+  ],
+  "tags": [
+   "ts371"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-voice-hindi-news",
+  "name": "India Voice",
+  "folder": "Hindi News",
+  "guide_id": "ts685",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-34516-jp9bj0qg-v4/imageContent-34516-jp9bj0qg-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIAVOICE"
+  ],
+  "tags": [
+   "ts685"
+  ],
+  "must": false
+ },
+ {
+  "id": "apn-news-hindi-news",
+  "name": "APN News",
+  "folder": "Hindi News",
+  "guide_id": "ts286",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-17573-jclve4rc-v1/imageContent-17573-jclve4rc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "APNNEWS"
+  ],
+  "tags": [
+   "ts286"
+  ],
+  "must": false
+ },
+ {
+  "id": "sadhna-prime-news-hindi-news",
+  "name": "Sadhna Prime News",
+  "folder": "Hindi News",
+  "guide_id": "ts1400",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/SadhnaPrimeNews_Thumbnail_69babd41-2e1d-4521-92ba-7fc3d04ef24f.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SADHNAPRIMENEWS"
+  ],
+  "tags": [
+   "ts1400"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-up-uttarakhand-hindi-news",
+  "name": "News18 UP Uttarakhand",
+  "folder": "Hindi News",
+  "guide_id": "ts79",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-23223-jeyhnzfs-v1/imageContent-23223-jeyhnzfs-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18UPAND",
+   "NEWS18UPUTTARAKHAND"
+  ],
+  "tags": [
+   "ts79"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-mp-chhattisgarh-hindi-news",
+  "name": "News18 MP Chhattisgarh",
+  "folder": "Hindi News",
+  "guide_id": "ts203",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-23266-jez523so-v1/imageContent-23266-jez523so-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18MPANDCHATTISGARH",
+   "NEWS18MPCHHATTISGARH"
+  ],
+  "tags": [
+   "ts203"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-bihar-jharkhand-hindi-news",
+  "name": "News18 Bihar Jharkhand",
+  "folder": "Hindi News",
+  "guide_id": "ts166",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-23206-jey39grs-v1/imageContent-23206-jey39grs-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18BIHAR",
+   "NEWS18BIHARJHARKHAND"
+  ],
+  "tags": [
+   "ts166"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-rajasthan-hindi-news",
+  "name": "News18 Rajasthan",
+  "folder": "Hindi News",
+  "guide_id": "ts205",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-23226-jeyiac80-v1/imageContent-23226-jeyiac80-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18RAJASTHAN"
+  ],
+  "tags": [
+   "ts205"
+  ],
+  "must": false
+ },
+ {
+  "id": "news-state-up-uk-hindi-news",
+  "name": "News State UP UK",
+  "folder": "Hindi News",
+  "guide_id": "ts613",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12252-j9qrkgu8-v3/imageContent-12252-j9qrkgu8-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSSTATEUP"
+  ],
+  "tags": [
+   "ts613"
+  ],
+  "must": false
+ },
+ {
+  "id": "news-state-mp-chg-hindi-news",
+  "name": "News State MP Chg",
+  "folder": "Hindi News",
+  "guide_id": "ts643",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-31191-jldnwhhs-v1/imageContent-31191-jldnwhhs-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSSTATEMPCHG"
+  ],
+  "tags": [
+   "ts643"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-news-haryana-hindi-news",
+  "name": "India News Haryana",
+  "folder": "Hindi News",
+  "guide_id": "ts13",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8968-j7rcix2w-v1/imageContent-8968-j7rcix2w-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIANEWSHARYANA"
+  ],
+  "tags": [
+   "ts13"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-news-rajasthan-hindi-news",
+  "name": "India News Rajasthan",
+  "folder": "Hindi News",
+  "guide_id": "ts14",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-9012-j7ssufeo-v1/imageContent-9012-j7ssufeo-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIANEWSRAJASTHAN"
+  ],
+  "tags": [
+   "ts14"
+  ],
+  "must": false
+ },
+ {
+  "id": "ibc-24-hindi-news",
+  "name": "IBC 24",
+  "folder": "Hindi News",
+  "guide_id": "ts27",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-78-j5fikkk8-v1/imageContent-78-j5fikkk8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "IBC24"
+  ],
+  "tags": [
+   "ts27"
+  ],
+  "must": false
+ },
+ {
+  "id": "aaj-tak-tez-hindi-news",
+  "name": "Aaj Tak Tez",
+  "folder": "Hindi News",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aajtaktez.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AAJTAKTEZ"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "abp-news-hindi-news",
+  "name": "ABP News",
+  "folder": "Hindi News",
+  "guide_id": "ts177",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-759-j5m13014-v2/imageContent-759-j5m13014-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ABPNEWS",
+   "ABPNEWSINDIA"
+  ],
+  "tags": [
+   "ts177"
+  ],
+  "must": false
+ },
+ {
+  "id": "hindi-times-hindi-news",
+  "name": "Hindi Times",
+  "folder": "Hindi News",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/housefullaction.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HINDITIMES"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "news-state-hindi-news",
+  "name": "News State",
+  "folder": "Hindi News",
+  "guide_id": "newsstateupuk.in",
+  "logo": "https://img.logo-cdn.cc/newsstate.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSSTATE"
+  ],
+  "tags": [
+   "newsstateupuk.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-hindustan-hindi-news",
+  "name": "Zee Hindustan",
+  "folder": "Hindi News",
+  "guide_id": "zeehindustan.in",
+  "logo": "https://img.logo-cdn.cc/zeehindustannews.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEHINDUSTAN",
+   "ZEEHINDUSTANNEWS"
+  ],
+  "tags": [
+   "zeehindustan.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-bihar-jharkhand-hindi-news",
+  "name": "Zee Bihar Jharkhand",
+  "folder": "Hindi News",
+  "guide_id": "ts20",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeBiharJharkhand_Thumbnail_d1cd3a1d-ce4c-4549-ae7d-1fad8d2aa4e0.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEBIHARJHARKHAND",
+   "ZEENEWSBIHAR"
+  ],
+  "tags": [
+   "ts20"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-mp-chhattisgarh-hindi-news",
+  "name": "Zee MP Chhattisgarh",
+  "folder": "Hindi News",
+  "guide_id": "ts512",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZEEMPCG_Thumbnail_73bc476e-f497-4e3b-9213-c4c4797c961b.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEMADHYAPRADESHCHHATTISGARH",
+   "ZEEMPCHHATTISGARH",
+   "ZEENEWSMPANDCH",
+   "ZEENEWSMPCHATTISGARH"
+  ],
+  "tags": [
+   "ts512"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-up-uttarakhand-hindi-news",
+  "name": "Zee UP Uttarakhand",
+  "folder": "Hindi News",
+  "guide_id": "ts637",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeUttarPradeshUttarakhand_Thumbnail_513daf30-e5e2-4e24-83b2-a4ad73060ea7.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEENEWSUP",
+   "ZEEUPUTTARAKHAND"
+  ],
+  "tags": [
+   "ts637"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-rajasthan-news-hindi-news",
+  "name": "Zee Rajasthan News",
+  "folder": "Hindi News",
+  "guide_id": "ts583",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeRajasthanNews_Thumbnail_adfc39a7-ed91-4ac7-9038-86e43a2786a1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEERAJASTHAN",
+   "ZEERAJASTHANNEWS"
+  ],
+  "tags": [
+   "ts583"
+  ],
+  "must": false
+ },
+ {
+  "id": "republic-bharat-hindi-news",
+  "name": "Republic Bharat",
+  "folder": "Hindi News",
+  "guide_id": "RepublicBharat",
+  "logo": "https://img.logo-cdn.cc/republictvbharat.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "REPUBLICBHARAT"
+  ],
+  "tags": [
+   "republicbharat"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-news-mp-cg-hindi-news",
+  "name": "India News MP CG",
+  "folder": "Hindi News",
+  "guide_id": "ts222",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8971-j7rffd40-v1/imageContent-8971-j7rffd40-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIANEWSMP",
+   "INDIANEWSMPCG"
+  ],
+  "tags": [
+   "ts222"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-news-up-uk-hindi-news",
+  "name": "India News UP UK",
+  "folder": "Hindi News",
+  "guide_id": "ts30",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-9007-j7ss7x80-v1/imageContent-9007-j7ss7x80-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIANEWSUP"
+  ],
+  "tags": [
+   "ts30"
+  ],
+  "must": false
+ },
+ {
+  "id": "first-india-news-hindi-news",
+  "name": "First India News",
+  "folder": "Hindi News",
+  "guide_id": "ts650",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-25048-jhir0kko-v1/imageContent-25048-jhir0kko-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "FIRSTINDIANEWS"
+  ],
+  "tags": [
+   "ts650"
+  ],
+  "must": false
+ },
+ {
+  "id": "total-tv-hindi-news",
+  "name": "Total TV",
+  "folder": "Hindi News",
+  "guide_id": "ts485",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11859-j9l2n36w-v2/imageContent-11859-j9l2n36w-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TOTAL",
+   "TOTALHARYANA"
+  ],
+  "tags": [
+   "ts485"
+  ],
+  "must": false
+ },
+ {
+  "id": "news-india-24x7-hindi-news",
+  "name": "News India 24x7",
+  "folder": "Hindi News",
+  "guide_id": "NewsIndia24x7",
+  "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/India24x7.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSINDIA24X7"
+  ],
+  "tags": [
+   "newsindia24x7"
+  ],
+  "must": false
+ },
+ {
+  "id": "cnbc-tv18-hd-business-news",
+  "name": "CNBC TV18 HD",
+  "folder": "Business News",
+  "guide_id": "ts168",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/CNBCTV18_Thumbnail_de38c065-5ef4-4363-90b9-a3a1deb9af61.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CNBCPRIME",
+   "CNBCTV18",
+   "CNBCTV18NEWS",
+   "CNBCTV18PRIME"
+  ],
+  "tags": [
+   "ts168"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-business-business-news",
+  "name": "Zee Business",
+  "folder": "Business News",
+  "guide_id": "ts260",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeBusiness._Thumbnail_14fa6388-c28c-4f98-af02-c2a9b630129b.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEBUSINESS"
+  ],
+  "tags": [
+   "ts260"
+  ],
+  "must": false
+ },
+ {
+  "id": "et-now-hd-business-news",
+  "name": "ET Now HD",
+  "folder": "Business News",
+  "guide_id": "ts88",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-6904-j6vreaps-v1/imageContent-6904-j6vreaps-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ETNOW"
+  ],
+  "tags": [
+   "ts88"
+  ],
+  "must": false
+ },
+ {
+  "id": "ndtv-profit-business-news",
+  "name": "NDTV Profit",
+  "folder": "Business News",
+  "guide_id": "ts93",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/NDTPRNW_Thumbnail-v3/NDTPRNW_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NDTVPROFIT"
+  ],
+  "tags": [
+   "ts93"
+  ],
+  "must": false
+ },
+ {
+  "id": "bloomberg-india-business-news",
+  "name": "Bloomberg India",
+  "folder": "Business News",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/bloomberg.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BLOOMBERGINDIA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "india-today-english-news",
+  "name": "India Today",
+  "folder": "English News",
+  "guide_id": "ts1",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-3-j5dkuhwo-v1/imageContent-3-j5dkuhwo-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIATODAY"
+  ],
+  "tags": [
+   "ts1"
+  ],
+  "must": false
+ },
+ {
+  "id": "republic-tv-english-news",
+  "name": "Republic TV",
+  "folder": "English News",
+  "guide_id": "ts72",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-231-j5fxh0ag-v1/imageContent-231-j5fxh0ag-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "REPUBLIC",
+   "REPUBLICNEWS"
+  ],
+  "tags": [
+   "ts72"
+  ],
+  "must": false
+ },
+ {
+  "id": "times-now-world-hd-english-news",
+  "name": "Times Now World HD",
+  "folder": "English News",
+  "guide_id": "ts547",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11853-j9l1tvhs-v4/imageContent-11853-j9l1tvhs-m5.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TIMESNOWWORLD"
+  ],
+  "tags": [
+   "ts547"
+  ],
+  "must": false
+ },
+ {
+  "id": "mirror-now-english-news",
+  "name": "Mirror Now",
+  "folder": "English News",
+  "guide_id": "ts591",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12189-j9plqlf4-v1/imageContent-12189-j9plqlf4-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MIRRORNOW"
+  ],
+  "tags": [
+   "ts591"
+  ],
+  "must": false
+ },
+ {
+  "id": "cnn-news-english-news",
+  "name": "CNN News",
+  "folder": "English News",
+  "guide_id": "ts206",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-843-j5m9oyzc-v1/imageContent-843-j5m9oyzc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CNNNEWS"
+  ],
+  "tags": [
+   "ts206"
+  ],
+  "must": false
+ },
+ {
+  "id": "wion-english-news",
+  "name": "WION",
+  "folder": "English News",
+  "guide_id": "ts255",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-9000-j7rkz0m0-v1/imageContent-9000-j7rkz0m0-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "WION",
+   "WIONNEWS"
+  ],
+  "tags": [
+   "ts255"
+  ],
+  "must": false
+ },
+ {
+  "id": "newsx-english-news",
+  "name": "NewsX",
+  "folder": "English News",
+  "guide_id": "ts189",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8012-j7a2doxc-v1/imageContent-8012-j7a2doxc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWSX"
+  ],
+  "tags": [
+   "ts189"
+  ],
+  "must": false
+ },
+ {
+  "id": "al-jazeera-hd-english-news",
+  "name": "Al Jazeera HD",
+  "folder": "English News",
+  "guide_id": "ts190",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-789-j5m5m0uw-v1/imageContent-789-j5m5m0uw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ALJAZEERA"
+  ],
+  "tags": [
+   "ts190"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-india-english-news",
+  "name": "DD India",
+  "folder": "English News",
+  "guide_id": "ts324",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDIND_Thumbnail.png-v4/DDIND_Thumbnail.png.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDINDIA"
+  ],
+  "tags": [
+   "ts324"
+  ],
+  "must": false
+ },
+ {
+  "id": "india-ahead-english-news",
+  "name": "India Ahead",
+  "folder": "English News",
+  "guide_id": "IndiaAhead",
+  "logo": "https://i.imgur.com/hBkTmf9.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "INDIAAHEAD"
+  ],
+  "tags": [
+   "indiaahead"
+  ],
+  "must": false
+ },
+ {
+  "id": "cvr-english-english-news",
+  "name": "CVR English",
+  "folder": "English News",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CVRENGLISH",
+   "CVRENGLISHNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "star-movies-hd-english-movies",
+  "name": "Star Movies HD",
+  "folder": "English Movies",
+  "guide_id": "ts273",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11191-j9i49t0w-v2/imageContent-11191-j9i49t0w-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "STARMOVIES"
+  ],
+  "tags": [
+   "ts273"
+  ],
+  "must": true
+ },
+ {
+  "id": "star-movies-select-hd-english-movies",
+  "name": "Star Movies Select HD",
+  "folder": "English Movies",
+  "guide_id": "ts593",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12193-j9q33dpc-v2/imageContent-12193-j9q33dpc-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "STARMOVIESSELECT"
+  ],
+  "tags": [
+   "ts593"
+  ],
+  "must": true
+ },
+ {
+  "id": "sony-pix-hd-english-movies",
+  "name": "Sony Pix HD",
+  "folder": "English Movies",
+  "guide_id": "ts32",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-93-j5fjv614-v3/imageContent-93-j5fjv614-m3.png",
+  "catchup_days": 1,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "SONYPIX"
+  ],
+  "tags": [
+   "ts32"
+  ],
+  "must": true
+ },
+ {
+  "id": "movies-now-hd-english-movies",
+  "name": "Movies Now HD",
+  "folder": "English Movies",
+  "guide_id": "ts173",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-748-j5l5fnts-v1/imageContent-748-j5l5fnts-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "MOVIESNOW"
+  ],
+  "tags": [
+   "ts173"
+  ],
+  "must": false
+ },
+ {
+  "id": "mn-hd-english-movies",
+  "name": "MN+ HD",
+  "folder": "English Movies",
+  "guide_id": "ts210",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-826-j5m9kx5c-v1/imageContent-826-j5m9kx5c-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "MNPLUS"
+  ],
+  "tags": [
+   "ts210"
+  ],
+  "must": true
+ },
+ {
+  "id": "mnx-hd-english-movies",
+  "name": "MNX HD",
+  "folder": "English Movies",
+  "guide_id": "ts234",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-1017-j5ngpo2g-v1/imageContent-1017-j5ngpo2g-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "MNX"
+  ],
+  "tags": [
+   "ts234"
+  ],
+  "must": false
+ },
+ {
+  "id": "tata-play-theatre-hd-english-movies",
+  "name": "Tata Play Theatre HD",
+  "folder": "English Movies",
+  "guide_id": "ts666",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-31419-jmb48u74-v3/imageContent-31419-jmb48u74-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "TATAPLAYTHEATRE"
+  ],
+  "tags": [
+   "ts666"
+  ],
+  "must": false
+ },
+ {
+  "id": "flix-hd-english-movies",
+  "name": "&Flix HD",
+  "folder": "English Movies",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/andflix.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "ANDFLIX"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "colors-infinity-hd-english-entertainment",
+  "name": "Colors Infinity HD",
+  "folder": "English Entertainment",
+  "guide_id": "ts544",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-18305-jcqmvp7s-v1/imageContent-18305-jcqmvp7s-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSINFINITY"
+  ],
+  "tags": [
+   "ts544"
+  ],
+  "must": true
+ },
+ {
+  "id": "discovery-world-hd-infotainment",
+  "name": "Discovery World HD",
+  "folder": "Infotainment",
+  "guide_id": "ts341",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11396-j9jq7jg0-v1/imageContent-11396-j9jq7jg0-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERYWORLD"
+  ],
+  "tags": [
+   "ts341"
+  ],
+  "must": false
+ },
+ {
+  "id": "national-geographic-hd-infotainment",
+  "name": "National Geographic HD",
+  "folder": "Infotainment",
+  "guide_id": "ts137",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-462-j5jw44hk-v2/imageContent-462-j5jw44hk-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NATGEO",
+   "NATGEOENGLISH",
+   "NATIONALGEOGRAPHIC"
+  ],
+  "tags": [
+   "ts137"
+  ],
+  "must": false
+ },
+ {
+  "id": "nat-geo-wild-hd-infotainment",
+  "name": "Nat Geo Wild HD",
+  "folder": "Infotainment",
+  "guide_id": "ts184",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-438-j5jt26xc-v2/imageContent-438-j5jt26xc-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NATGEOWILD"
+  ],
+  "tags": [
+   "ts184"
+  ],
+  "must": false
+ },
+ {
+  "id": "animal-planet-hd-infotainment",
+  "name": "Animal Planet HD",
+  "folder": "Infotainment",
+  "guide_id": "ts287",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/AnimalPlanetHD_Thumbnail_1b51a3e5-0513-45bf-b17f-7f78d34ab56e.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ANIMALPLANET"
+  ],
+  "tags": [
+   "ts287"
+  ],
+  "must": false
+ },
+ {
+  "id": "history-tv18-hd-infotainment",
+  "name": "History TV18 HD",
+  "folder": "Infotainment",
+  "guide_id": "ts172",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-745-j5l54bnc-v2/imageContent-745-j5l54bnc-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HISTORYTV18"
+  ],
+  "tags": [
+   "ts172"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-bbc-earth-hd-infotainment",
+  "name": "Sony BBC Earth HD",
+  "folder": "Infotainment",
+  "guide_id": "ts460",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/SOBBHD1_Thumbnail-v4/SOBBHD1_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYBBCEARTH"
+  ],
+  "tags": [
+   "ts460"
+  ],
+  "must": false
+ },
+ {
+  "id": "investigation-discovery-hd-infotainment",
+  "name": "Investigation Discovery HD",
+  "folder": "Infotainment",
+  "guide_id": "ts1276",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/InvestigationDiscoveryHD_Thumbnail_c628b7d4-5cd1-471f-ba84-d171fae140ae.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERYID",
+   "INVESTIGATIONDISCOVERY"
+  ],
+  "tags": [
+   "ts1276"
+  ],
+  "must": false
+ },
+ {
+  "id": "discovery-science-infotainment",
+  "name": "Discovery Science",
+  "folder": "Infotainment",
+  "guide_id": "ts113",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-369-j5jo9i3s-v1/imageContent-369-j5jo9i3s-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERYSCIENCE"
+  ],
+  "tags": [
+   "ts113"
+  ],
+  "must": false
+ },
+ {
+  "id": "discovery-turbo-infotainment",
+  "name": "Discovery Turbo",
+  "folder": "Infotainment",
+  "guide_id": "ts228",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-967-j5mr8tw8-v1/imageContent-967-j5mr8tw8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERYTURBO"
+  ],
+  "tags": [
+   "ts228"
+  ],
+  "must": false
+ },
+ {
+  "id": "epic-hd-infotainment",
+  "name": "Epic HD",
+  "folder": "Infotainment",
+  "guide_id": "ts126",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/EPIC_Thumbnail_3caab1bc-bd40-484b-8c9e-02dd28f6b8c4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "EPIC"
+  ],
+  "tags": [
+   "ts126"
+  ],
+  "must": false
+ },
+ {
+  "id": "xplor-hd-infotainment",
+  "name": "&Xplor HD",
+  "folder": "Infotainment",
+  "guide_id": "AndXplorHD",
+  "logo": "https://img.logo-cdn.cc/andexplorer.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ANDEXPLORER",
+   "ANDXPLOR"
+  ],
+  "tags": [
+   "andxplorhd"
+  ],
+  "must": true
+ },
+ {
+  "id": "animal-planet-world-hd-infotainment",
+  "name": "Animal Planet World HD",
+  "folder": "Infotainment",
+  "guide_id": "ts287",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/AnimalPlanetHD_Thumbnail_1b51a3e5-0513-45bf-b17f-7f78d34ab56e.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ANIMALPLANETWORLD"
+  ],
+  "tags": [
+   "ts287"
+  ],
+  "must": false
+ },
+ {
+  "id": "tlc-hd-infotainment",
+  "name": "TLC HD",
+  "folder": "Infotainment",
+  "guide_id": "ts480",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11858-j9l1v6k8-v3/imageContent-11858-j9l1v6k8-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TLC",
+   "TLCWORLD"
+  ],
+  "tags": [
+   "ts480"
+  ],
+  "must": false
+ },
+ {
+  "id": "food-food-hd-lifestyle",
+  "name": "Food Food HD",
+  "folder": "Lifestyle",
+  "guide_id": "ts117",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-384-j5jpj9hc-v1/imageContent-384-j5jpj9hc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "FOODFOOD"
+  ],
+  "tags": [
+   "ts117"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-zest-hd-lifestyle",
+  "name": "Zee Zest HD",
+  "folder": "Lifestyle",
+  "guide_id": "ts382",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeZestHD_Thumbnail_3896179b-ce59-4e5e-aada-4d7a4160e25a.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEZEST"
+  ],
+  "tags": [
+   "ts382"
+  ],
+  "must": false
+ },
+ {
+  "id": "travel-xp-hd-lifestyle",
+  "name": "Travel XP HD",
+  "folder": "Lifestyle",
+  "guide_id": "ts484",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11862-j9l2p61c-v1/imageContent-11862-j9l2p61c-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TRAVELXP"
+  ],
+  "tags": [
+   "ts484"
+  ],
+  "must": false
+ },
+ {
+  "id": "ndtv-good-times-lifestyle",
+  "name": "NDTV Good Times",
+  "folder": "Lifestyle",
+  "guide_id": "ts136",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-42020-jxb7qjw8-v1/imageContent-42020-jxb7qjw8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NDTVGOODTIMES"
+  ],
+  "tags": [
+   "ts136"
+  ],
+  "must": false
+ },
+ {
+  "id": "cartoon-network-kids",
+  "name": "Cartoon Network",
+  "folder": "Kids",
+  "guide_id": "ts238",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11161-j99h67u8-v1/imageContent-11161-j99h67u8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CARTOONNETWORK"
+  ],
+  "tags": [
+   "ts238"
+  ],
+  "must": false
+ },
+ {
+  "id": "cartoon-network-hd-kids",
+  "name": "Cartoon Network HD+",
+  "folder": "Kids",
+  "guide_id": "ts681",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/CartoonNetworkHD%2B_Thumbnail_659c99be-8487-48d8-b5b1-cec0963a64e3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CARTOONNETWORKPLUS",
+   "CNPLUS"
+  ],
+  "tags": [
+   "ts681"
+  ],
+  "must": false
+ },
+ {
+  "id": "pogo-kids",
+  "name": "Pogo",
+  "folder": "Kids",
+  "guide_id": "ts239",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-2694-j638bugw-v1/imageContent-2694-j638bugw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "POGO",
+   "POGOKIDS"
+  ],
+  "tags": [
+   "ts239"
+  ],
+  "must": false
+ },
+ {
+  "id": "disney-channel-hd-kids",
+  "name": "Disney Channel HD",
+  "folder": "Kids",
+  "guide_id": "ts114",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-1356-j5tdnwmw-v1/imageContent-1356-j5tdnwmw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISNEY"
+  ],
+  "tags": [
+   "ts114"
+  ],
+  "must": false
+ },
+ {
+  "id": "disney-international-hd-kids",
+  "name": "Disney International HD",
+  "folder": "Kids",
+  "guide_id": "ts265",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11162-j99oso8o-v2/imageContent-11162-j99oso8o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISNEYINTERNATIONAL"
+  ],
+  "tags": [
+   "ts265"
+  ],
+  "must": false
+ },
+ {
+  "id": "disney-junior-kids",
+  "name": "Disney Junior",
+  "folder": "Kids",
+  "guide_id": "ts144",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-35368-jr3xz7xs-v1/imageContent-35368-jr3xz7xs-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISNEYJUNIOR"
+  ],
+  "tags": [
+   "ts144"
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-kids",
+  "name": "Hungama",
+  "folder": "Kids",
+  "guide_id": "ts345",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11479-j9jr9a8o-v1/imageContent-11479-j9jr9a8o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMA",
+   "HUNGAMAKIDS"
+  ],
+  "tags": [
+   "ts345"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-yay-kids",
+  "name": "Sony Yay",
+  "folder": "Kids",
+  "guide_id": "ts45",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-132-j5fpedbs-v4/imageContent-132-j5fpedbs-m6.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SONYYAY"
+  ],
+  "tags": [
+   "ts45"
+  ],
+  "must": false
+ },
+ {
+  "id": "discovery-kids-kids",
+  "name": "Discovery Kids",
+  "folder": "Kids",
+  "guide_id": "ts119",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-24724-jgvwokqw-v1/imageContent-24724-jgvwokqw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERYKIDS"
+  ],
+  "tags": [
+   "ts119"
+  ],
+  "must": false
+ },
+ {
+  "id": "nick-hd-kids",
+  "name": "Nick HD+",
+  "folder": "Kids",
+  "guide_id": "ts433",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/NickHDPlus_Thumbnail_c2d3ac26-019f-4f66-9dec-8c1228f92ddf.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NICKPLUS"
+  ],
+  "tags": [
+   "ts433"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-1-hd-sports",
+  "name": "Star Sports 1 HD",
+  "folder": "Sports",
+  "guide_id": "ts78",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8301-j7hc0820-v1/imageContent-8301-j7hc0820-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS1",
+   "STARSPORTS1ENGLISH"
+  ],
+  "tags": [
+   "ts78"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-1-hindi-hd-sports",
+  "name": "Star Sports 1 Hindi HD",
+  "folder": "Sports",
+  "guide_id": "ts24",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-60-j5fdr6a0-v1/imageContent-60-j5fdr6a0-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS1HINDI"
+  ],
+  "tags": [
+   "ts24"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-2-hd-sports",
+  "name": "Star Sports 2 HD",
+  "folder": "Sports",
+  "guide_id": "ts235",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-1021-j5nj3c68-v1/imageContent-1021-j5nj3c68-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS2"
+  ],
+  "tags": [
+   "ts235"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-3-sports",
+  "name": "Star Sports 3",
+  "folder": "Sports",
+  "guide_id": "ts664",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-31405-jm2isen4-v1/imageContent-31405-jm2isen4-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS3"
+  ],
+  "tags": [
+   "ts664"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-select-1-hd-sports",
+  "name": "Star Sports Select 1 HD",
+  "folder": "Sports",
+  "guide_id": "ts246",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-7891-j75vq7k0-v1/imageContent-7891-j75vq7k0-m1.PNG",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTSSELECT1"
+  ],
+  "tags": [
+   "ts246"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-select-2-hd-sports",
+  "name": "Star Sports Select 2 HD",
+  "folder": "Sports",
+  "guide_id": "ts603",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12223-j9qo0an4-v2/imageContent-12223-j9qo0an4-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTSSELECT2"
+  ],
+  "tags": [
+   "ts603"
+  ],
+  "must": false
+ },
+ {
+  "id": "eurosport-hd-sports",
+  "name": "Eurosport HD",
+  "folder": "Sports",
+  "guide_id": "ts812",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/EurosportHD_Thumbnail_61c45f7e-f67d-482f-8dc2-ae993aaa56c6.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "EUROSPORT"
+  ],
+  "tags": [
+   "ts812"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-sports-sports",
+  "name": "DD Sports",
+  "folder": "Sports",
+  "guide_id": "ts1191",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDSPTSHD_Thumbnail-v1/DDSPTSHD_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "DDSPORTS"
+  ],
+  "tags": [
+   "ts1191"
+  ],
+  "must": false
+ },
+ {
+  "id": "sports18-1-sports",
+  "name": "Sports18 1",
+  "folder": "Sports",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/sport18.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SPORTS18",
+   "SPORTS181"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "sports18-english-sports",
+  "name": "Sports18 English",
+  "folder": "Sports",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/sport18.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SPORTS18ENGLISH"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "t-sports-2-sports",
+  "name": "T Sports 2",
+  "folder": "Sports",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/tsports2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "TSPORTS2"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "sony-ten-5-hd-sports",
+  "name": "Sony Ten 5 HD",
+  "folder": "Sports",
+  "guide_id": "ts35",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-108-j5fl5wwg-v3/imageContent-108-j5fl5wwg-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SONYSIX",
+   "SONYTEN5"
+  ],
+  "tags": [
+   "ts35"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-1-tamil-sports",
+  "name": "Star Sports 1 Tamil",
+  "folder": "Sports",
+  "guide_id": "ts1067",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/SS1TAMHD_Thumbnail-v1/SS1TAMHD_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS1TAMIL",
+   "STARSPORTSTAMIL"
+  ],
+  "tags": [
+   "ts1067"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-1-telugu-sports",
+  "name": "Star Sports 1 Telugu",
+  "folder": "Sports",
+  "guide_id": "StarSports1Telugu",
+  "logo": "https://img.logo-cdn.cc/starsports1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTS1TELUGU"
+  ],
+  "tags": [
+   "starsports1telugu"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-ten-1-hd-sports",
+  "name": "Sony Ten 1 HD",
+  "folder": "Sports",
+  "guide_id": "ts81",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-261-j5fz9bvk-v4/imageContent-261-j5fz9bvk-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SONYTEN1",
+   "TEN1"
+  ],
+  "tags": [
+   "ts81"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-ten-2-hd-sports",
+  "name": "Sony Ten 2 HD",
+  "folder": "Sports",
+  "guide_id": "ts462",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11784-j9kylfd4-v2/imageContent-11784-j9kylfd4-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SONYTEN2",
+   "TEN2"
+  ],
+  "tags": [
+   "ts462"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-ten-3-hindi-hd-sports",
+  "name": "Sony Ten 3 Hindi HD",
+  "folder": "Sports",
+  "guide_id": "ts464",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/SONYSPORTSTEN3HindiHD_Thumbnail_64ad47a7-9e0b-4761-83ba-98cb38f31c2c.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SONYTEN3HINDI",
+   "TEN3"
+  ],
+  "tags": [
+   "ts464"
+  ],
+  "must": false
+ },
+ {
+  "id": "willow-cricket-hd-sports",
+  "name": "Willow Cricket HD",
+  "folder": "Sports",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/willowcricket.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "WILLOWCRICKET"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "aastha-devotional",
+  "name": "Aastha",
+  "folder": "Devotional",
+  "guide_id": "ts38",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-105-j5fl5t1k-v1/imageContent-105-j5fl5t1k-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AASTHA"
+  ],
+  "tags": [
+   "ts38"
+  ],
+  "must": false
+ },
+ {
+  "id": "sanskar-tv-devotional",
+  "name": "Sanskar TV",
+  "folder": "Devotional",
+  "guide_id": "ts43",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-123-j5fnf1fc-v1/imageContent-123-j5fnf1fc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SANSKAR"
+  ],
+  "tags": [
+   "ts43"
+  ],
+  "must": false
+ },
+ {
+  "id": "satsang-tv-devotional",
+  "name": "Satsang TV",
+  "folder": "Devotional",
+  "guide_id": "ts456",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11767-j9kwretk-v1/imageContent-11767-j9kwretk-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SATSANG"
+  ],
+  "tags": [
+   "ts456"
+  ],
+  "must": false
+ },
+ {
+  "id": "shubh-tv-devotional",
+  "name": "Shubh TV",
+  "folder": "Devotional",
+  "guide_id": "ts458",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11775-j9kwuk8w-v1/imageContent-11775-j9kwuk8w-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SHUBH"
+  ],
+  "tags": [
+   "ts458"
+  ],
+  "must": false
+ },
+ {
+  "id": "divya-tv-devotional",
+  "name": "Divya TV",
+  "folder": "Devotional",
+  "guide_id": "ts775",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11408-j9jqmlvs-v6/imageContent-11408-j9jqmlvs-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DIVYA"
+  ],
+  "tags": [
+   "ts775"
+  ],
+  "must": false
+ },
+ {
+  "id": "peace-of-mind-hd-devotional",
+  "name": "Peace of Mind HD",
+  "folder": "Devotional",
+  "guide_id": "ts420",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11664-j9kcouh4-v1/imageContent-11664-j9kcouh4-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PEACEOFMIND"
+  ],
+  "tags": [
+   "ts420"
+  ],
+  "must": false
+ },
+ {
+  "id": "mh1-shraddha-devotional",
+  "name": "MH1 Shraddha",
+  "folder": "Devotional",
+  "guide_id": "ts397",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11590-j9jyx4so-v1/imageContent-11590-j9jyx4so-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MH1SHARADDHA",
+   "MH1SHRADDHA",
+   "MH1SHRADDHA4"
+  ],
+  "tags": [
+   "ts397"
+  ],
+  "must": false
+ },
+ {
+  "id": "anaadi-tv-devotional",
+  "name": "Anaadi TV",
+  "folder": "Devotional",
+  "guide_id": "ts937",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-65108-ksr7d028-v1/imageContent-65108-ksr7d028-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ANAADI"
+  ],
+  "tags": [
+   "ts937"
+  ],
+  "must": false
+ },
+ {
+  "id": "svbc-devotional",
+  "name": "SVBC",
+  "folder": "Devotional",
+  "guide_id": "ts450",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11739-j9kw7774-v1/imageContent-11739-j9kw7774-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SVBC"
+  ],
+  "tags": [
+   "ts450"
+  ],
+  "must": false
+ },
+ {
+  "id": "aastha-bhajan-devotional",
+  "name": "Aastha Bhajan",
+  "folder": "Devotional",
+  "guide_id": "AasthaBhajan",
+  "logo": "https://img.logo-cdn.cc/aastha.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "AASTHABHAJAN"
+  ],
+  "tags": [
+   "aasthabhajan"
+  ],
+  "must": false
+ },
+ {
+  "id": "arihant-devotional",
+  "name": "Arihant",
+  "folder": "Devotional",
+  "guide_id": "arihant.in",
+  "logo": "https://img.logo-cdn.cc/arihant.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ARIHANT"
+  ],
+  "tags": [
+   "arihant.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "paras-tv-devotional",
+  "name": "Paras TV",
+  "folder": "Devotional",
+  "guide_id": "parastv.in",
+  "logo": "https://img.logo-cdn.cc/parastv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PARAS"
+  ],
+  "tags": [
+   "parastv.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "vedic-tv-devotional",
+  "name": "Vedic TV",
+  "folder": "Devotional",
+  "guide_id": "Vedic",
+  "logo": "https://img.logo-cdn.cc/vedic.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "VEDIC"
+  ],
+  "tags": [
+   "vedic"
+  ],
+  "must": false
+ },
+ {
+  "id": "om-shanti-devotional",
+  "name": "Om Shanti",
+  "folder": "Devotional",
+  "guide_id": "964",
+  "logo": "https://img.logo-cdn.cc/omshanti.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "OMSHANTI"
+  ],
+  "tags": [
+   "964"
+  ],
+  "must": false
+ },
+ {
+  "id": "prarthana-bhawan-devotional",
+  "name": "Prarthana Bhawan",
+  "folder": "Devotional",
+  "guide_id": "PrarthanaBhawan",
+  "logo": "https://img.logo-cdn.cc/prarthanabhawan.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PRARTHANABHAWAN"
+  ],
+  "tags": [
+   "prarthanabhawan"
+  ],
+  "must": false
+ },
+ {
+  "id": "hare-krishna-hd-devotional",
+  "name": "Hare Krishna HD",
+  "folder": "Devotional",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HAREKRISHNA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "nazara-tv-devotional",
+  "name": "Nazara TV",
+  "folder": "Devotional",
+  "guide_id": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0032BW6T.png?lock=720x540",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NAZARA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "colors-kannada-hd-kannada",
+  "name": "Colors Kannada HD",
+  "folder": "Kannada",
+  "guide_id": "ts612",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ColorsKannadaHD_Thumbnail_46b9c73f-0883-47d5-84dc-b52fabc9010d.png",
+  "catchup_days": 1,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSKANNADA"
+  ],
+  "tags": [
+   "ts612"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-kannada-hd-kannada",
+  "name": "Zee Kannada HD",
+  "folder": "Kannada",
+  "guide_id": "ts256",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeKannada_Thumbnail_0aa1ddde-4782-4ef9-98b0-e1104f1a94d1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEKANNADA"
+  ],
+  "tags": [
+   "ts256"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-suvarna-hd-kannada",
+  "name": "Star Suvarna HD",
+  "folder": "Kannada",
+  "guide_id": "ts467",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11816-j9kz224o-v1/imageContent-11816-j9kz224o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARSUVARNA"
+  ],
+  "tags": [
+   "ts467"
+  ],
+  "must": false
+ },
+ {
+  "id": "sun-udaya-hd-kannada",
+  "name": "Sun Udaya HD",
+  "folder": "Kannada",
+  "guide_id": "ts492",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/SunUdayaHD_Thumbnail_4236c1a5-5e19-48fd-961f-edba99e59d85.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SUNUDAYA",
+   "UDAYA"
+  ],
+  "tags": [
+   "ts492"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-super-kannada",
+  "name": "Colors Super",
+  "folder": "Kannada",
+  "guide_id": "ts533",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ColorsSUPER_Thumbnail_5796a912-57d4-4093-98e6-0ac42fde8efe.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSSUPER"
+  ],
+  "tags": [
+   "ts533"
+  ],
+  "must": false
+ },
+ {
+  "id": "star-suvarna-plus-kannada",
+  "name": "Star Suvarna Plus",
+  "folder": "Kannada",
+  "guide_id": "ts540",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-12038-j9o0554o-v2/imageContent-12038-j9o0554o-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "STARSUVARNAPLUS"
+  ],
+  "tags": [
+   "ts540"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-kannada-cinema-kannada",
+  "name": "Colors Kannada Cinema",
+  "folder": "Kannada",
+  "guide_id": "ts667",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ColorsKannadaCinema_Thumbnail_13c0f128-c9cd-4321-af65-18fa22686307.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSKANNADACINEMA",
+   "COLORSKANNADAMOVIES"
+  ],
+  "tags": [
+   "ts667"
+  ],
+  "must": false
+ },
+ {
+  "id": "sun-udaya-movies-kannada",
+  "name": "Sun Udaya Movies",
+  "folder": "Kannada",
+  "guide_id": "ts231",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/SunUdayaMovies_Thumbnail_8a95ff3b-700e-42d0-833c-c1b49c49225b.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SUNUDAYAMOVIES",
+   "UDAYAMOVIES"
+  ],
+  "tags": [
+   "ts231"
+  ],
+  "must": false
+ },
+ {
+  "id": "tata-play-kannada-cinema-kannada",
+  "name": "Tata Play Kannada Cinema",
+  "folder": "Kannada",
+  "guide_id": "ts785",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-48007-k3jkp6y8-v2/imageContent-48007-k3jkp6y8-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TATAPLAYKANNADACINEMA"
+  ],
+  "tags": [
+   "ts785"
+  ],
+  "must": false
+ },
+ {
+  "id": "public-movies-kannada",
+  "name": "Public Movies",
+  "folder": "Kannada",
+  "guide_id": "ts661",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-31188-jldk0joo-v2/imageContent-31188-jldk0joo-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PUBLICMOVIES"
+  ],
+  "tags": [
+   "ts661"
+  ],
+  "must": false
+ },
+ {
+  "id": "public-music-kannada",
+  "name": "Public Music",
+  "folder": "Kannada",
+  "guide_id": "ts424",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11676-j9khi3cw-v1/imageContent-11676-j9khi3cw-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PUBLICMUSIC"
+  ],
+  "tags": [
+   "ts424"
+  ],
+  "must": false
+ },
+ {
+  "id": "tv9-kannada-kannada",
+  "name": "TV9 Kannada",
+  "folder": "Kannada",
+  "guide_id": "ts152",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-531-j5kuelug-v2/imageContent-531-j5kuelug-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TV9",
+   "TV9KANNADA"
+  ],
+  "tags": [
+   "ts152"
+  ],
+  "must": false
+ },
+ {
+  "id": "asianet-suvarna-news-kannada",
+  "name": "Asianet Suvarna News",
+  "folder": "Kannada",
+  "guide_id": "ts555",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11963-j9lui4rc-v3/imageContent-11963-j9lui4rc-m4.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ASIANETSUVARNANEWS",
+   "STARSUVARNANEWS",
+   "SUVARNANEWS"
+  ],
+  "tags": [
+   "ts555"
+  ],
+  "must": false
+ },
+ {
+  "id": "public-tv-kannada",
+  "name": "Public TV",
+  "folder": "Kannada",
+  "guide_id": "ts33",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-98-j5fjwu7s-v2/imageContent-98-j5fjwu7s-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PUBLIC"
+  ],
+  "tags": [
+   "ts33"
+  ],
+  "must": false
+ },
+ {
+  "id": "tv5-kannada-kannada",
+  "name": "TV5 Kannada",
+  "folder": "Kannada",
+  "guide_id": "ts629",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-19066-jczvvocg-v1/imageContent-19066-jczvvocg-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TV5",
+   "TV5KANNADA"
+  ],
+  "tags": [
+   "ts629"
+  ],
+  "must": false
+ },
+ {
+  "id": "raj-news-kannada-kannada",
+  "name": "Raj News Kannada",
+  "folder": "Kannada",
+  "guide_id": "ts510",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11948-j9ltrfc8-v1/imageContent-11948-j9ltrfc8-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "RAJNEWSKANNADA"
+  ],
+  "tags": [
+   "ts510"
+  ],
+  "must": false
+ },
+ {
+  "id": "sri-sankara-tv-kannada",
+  "name": "Sri Sankara TV",
+  "folder": "Kannada",
+  "guide_id": "ts477",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11788-j9kypa94-v1/imageContent-11788-j9kypa94-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SHREESANKARA",
+   "SRISANKARA"
+  ],
+  "tags": [
+   "ts477"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-kannada-kannada",
+  "name": "News18 Kannada",
+  "folder": "Kannada",
+  "guide_id": "ts85",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-9824-j85wb88o-v1/imageContent-9824-j85wb88o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18",
+   "NEWS18KANNADA"
+  ],
+  "tags": [
+   "ts85"
+  ],
+  "must": false
+ },
+ {
+  "id": "raj-musix-kannada-kannada",
+  "name": "Raj Musix Kannada",
+  "folder": "Kannada",
+  "guide_id": "ts427",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11685-j9kipky0-v1/imageContent-11685-j9kipky0-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "RAJMUSIC",
+   "RAJMUSICKANNADA",
+   "RAJMUSIXKANNADA"
+  ],
+  "tags": [
+   "ts427"
+  ],
+  "must": false
+ },
+ {
+  "id": "sun-udaya-comedy-kannada",
+  "name": "Sun Udaya Comedy",
+  "folder": "Kannada",
+  "guide_id": "sun194400",
+  "logo": "https://sund-images.sunnxt.com/194400/1600x1200_SunUdayaComedy_194400_9931174b-67b1-471f-bc1f-ad81c9dc1504.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SUNUDAYACOMEDY",
+   "UDAYACOMEDY"
+  ],
+  "tags": [
+   "sun194400"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-chandana-kannada",
+  "name": "DD Chandana",
+  "folder": "Kannada",
+  "guide_id": "DDChandana",
+  "logo": "https://img.logo-cdn.cc/ddchandana.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDCHANDANA"
+  ],
+  "tags": [
+   "ddchandana"
+  ],
+  "must": false
+ },
+ {
+  "id": "sun-udaya-music-kannada",
+  "name": "Sun Udaya Music",
+  "folder": "Kannada",
+  "guide_id": "sun194401",
+  "logo": "https://sund-images.sunnxt.com/194401/1600x1200_SunUdayaMusic_194401_f93b90bb-7233-4ccd-9624-13f0b563c2fc.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SUNUDAYAMUSIC",
+   "UDAYAMUSIC"
+  ],
+  "tags": [
+   "sun194401"
+  ],
+  "must": false
+ },
+ {
+  "id": "dighvijay-news-kannada",
+  "name": "Dighvijay News",
+  "folder": "Kannada",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/dighvijaynews.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DIGHVIJAYNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "zee-picchar-hd-kannada",
+  "name": "Zee Picchar HD",
+  "folder": "Kannada",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEPICCHAR",
+   "ZEEPICHHAR"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "dangal-kannada-kannada",
+  "name": "Dangal Kannada",
+  "folder": "Kannada",
+  "guide_id": "",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DANGALKANNADA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "channel-win-regional-dd",
+  "name": "Channel Win",
+  "folder": "Regional & DD",
+  "guide_id": "ts161",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-7906-j7684flk-v1/imageContent-7906-j7684flk-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "WIN"
+  ],
+  "tags": [
+   "ts161"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-goa-regional-dd",
+  "name": "DD Goa",
+  "folder": "Regional & DD",
+  "guide_id": "ts1215",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDGOA_Thumbnail-v1/DDGOA_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDGOA"
+  ],
+  "tags": [
+   "ts1215"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-haryana-regional-dd",
+  "name": "DD Haryana",
+  "folder": "Regional & DD",
+  "guide_id": "ts1212",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDHY_Thumbnail-v1/DDHY_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDHARYANA"
+  ],
+  "tags": [
+   "ts1212"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-jharkhand-regional-dd",
+  "name": "DD Jharkhand",
+  "folder": "Regional & DD",
+  "guide_id": "ts1188",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDJH_Thumbnail-v2/DDJH_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDJHARKHAND"
+  ],
+  "tags": [
+   "ts1188"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-kisan-regional-dd",
+  "name": "DD Kisan",
+  "folder": "Regional & DD",
+  "guide_id": "ts326",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11350-j9jpk8pk-v1/imageContent-11350-j9jpk8pk-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDKISAN"
+  ],
+  "tags": [
+   "ts326"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-mp-regional-dd",
+  "name": "DD MP",
+  "folder": "Regional & DD",
+  "guide_id": "ts330",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11351-j9jpmdvc-v1/imageContent-11351-j9jpmdvc-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDMP"
+  ],
+  "tags": [
+   "ts330"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-manipur-regional-dd",
+  "name": "DD Manipur",
+  "folder": "Regional & DD",
+  "guide_id": "ts329",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11357-j9jpoz8g-v1/imageContent-11357-j9jpoz8g-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDMANIPUR"
+  ],
+  "tags": [
+   "ts329"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-meghalaya-regional-dd",
+  "name": "DD Meghalaya",
+  "folder": "Regional & DD",
+  "guide_id": "ts991",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-71497-l4stx05k-v3/imageContent-71497-l4stx05k-m5.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDMEGHALAYA"
+  ],
+  "tags": [
+   "ts991"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-nagaland-regional-dd",
+  "name": "DD Nagaland",
+  "folder": "Regional & DD",
+  "guide_id": "ts1214",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDNL_Thumbnail-v1/DDNL_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDNAGALAND"
+  ],
+  "tags": [
+   "ts1214"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-rajasthan-regional-dd",
+  "name": "DD Rajasthan",
+  "folder": "Regional & DD",
+  "guide_id": "ts332",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11375-j9jpws3k-v1/imageContent-11375-j9jpws3k-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDRAJASTHAN"
+  ],
+  "tags": [
+   "ts332"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-saptigiri-regional-dd",
+  "name": "DD Saptigiri",
+  "folder": "Regional & DD",
+  "guide_id": "ts337",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11381-j9jq1pkg-v1/imageContent-11381-j9jq1pkg-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDSAPTGIRI",
+   "DDSAPTIGIRI"
+  ],
+  "tags": [
+   "ts337"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-tripura-regional-dd",
+  "name": "DD Tripura",
+  "folder": "Regional & DD",
+  "guide_id": "ts1210",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDTP_Thumbnail-v1/DDTP_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDTRIPURA"
+  ],
+  "tags": [
+   "ts1210"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-up-regional-dd",
+  "name": "DD UP",
+  "folder": "Regional & DD",
+  "guide_id": "ts339",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11389-j9jq2ybk-v1/imageContent-11389-j9jq2ybk-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDUP"
+  ],
+  "tags": [
+   "ts339"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-urdu-regional-dd",
+  "name": "DD Urdu",
+  "folder": "Regional & DD",
+  "guide_id": "ts338",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11384-j9jq29mo-v2/imageContent-11384-j9jq29mo-m3.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDURDU"
+  ],
+  "tags": [
+   "ts338"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-uttarakhand-regional-dd",
+  "name": "DD Uttarakhand",
+  "folder": "Regional & DD",
+  "guide_id": "ts1213",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDUK_Thumbnail-v1/DDUK_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDUTTARAKHAND"
+  ],
+  "tags": [
+   "ts1213"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-yadagiri-regional-dd",
+  "name": "DD Yadagiri",
+  "folder": "Regional & DD",
+  "guide_id": "ts548",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11392-j9jq3lgw-v3/imageContent-11392-j9jq3lgw-m2.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDYADAGIRI"
+  ],
+  "tags": [
+   "ts548"
+  ],
+  "must": false
+ },
+ {
+  "id": "prag-news-regional-dd",
+  "name": "Prag News",
+  "folder": "Regional & DD",
+  "guide_id": "ts423",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11673-j9kfe73s-v1/imageContent-11673-j9kfe73s-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PRAGNEWS"
+  ],
+  "tags": [
+   "ts423"
+  ],
+  "must": false
+ },
+ {
+  "id": "ramdhenu-regional-dd",
+  "name": "Ramdhenu",
+  "folder": "Regional & DD",
+  "guide_id": "ts449",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11728-j9kw1zp4-v1/imageContent-11728-j9kw1zp4-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "RAMDHENU"
+  ],
+  "tags": [
+   "ts449"
+  ],
+  "must": false
+ },
+ {
+  "id": "rang-regional-dd",
+  "name": "Rang",
+  "folder": "Regional & DD",
+  "guide_id": "ts101",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-333-j5jl5q6o-v1/imageContent-333-j5jl5q6o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "RANG"
+  ],
+  "tags": [
+   "ts101"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-yuva-regional-dd",
+  "name": "Zee Yuva",
+  "folder": "Regional & DD",
+  "guide_id": "ts248",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeYuva_Thumbnail_17ddd027-8cd0-43ce-8017-d78723c37fc6.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEYUVA"
+  ],
+  "tags": [
+   "ts248"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-odia-regional-dd",
+  "name": "DD Odia",
+  "folder": "Regional & DD",
+  "guide_id": "ts333",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-11366-j9jpvkw0-v1/imageContent-11366-j9jpvkw0-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDODIA",
+   "DDORIYA"
+  ],
+  "tags": [
+   "ts333"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-ganga-regional-dd",
+  "name": "Zee Ganga",
+  "folder": "Regional & DD",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ganga.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEGANGA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "mahaa-news-regional-dd",
+  "name": "Mahaa News",
+  "folder": "Regional & DD",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/mahamovie.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MAHAANEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "rengoni-tv-regional-dd",
+  "name": "Rengoni TV",
+  "folder": "Regional & DD",
+  "guide_id": "ts214",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-860-j5mao56o-v1/imageContent-860-j5mao56o-m1.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "RENGONI"
+  ],
+  "tags": [
+   "ts214"
+  ],
+  "must": false
+ },
+ {
+  "id": "tarang-tv-regional-dd",
+  "name": "Tarang TV",
+  "folder": "Regional & DD",
+  "guide_id": "TarangTV",
+  "logo": "https://img.logo-cdn.cc/tarangtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TARANG"
+  ],
+  "tags": [
+   "tarangtv"
+  ],
+  "must": false
+ },
+ {
+  "id": "alankar-tv-regional-dd",
+  "name": "Alankar TV",
+  "folder": "Regional & DD",
+  "guide_id": "Alankar",
+  "logo": "https://img.logo-cdn.cc/alankartv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ALANKAR"
+  ],
+  "tags": [
+   "alankar"
+  ],
+  "must": false
+ },
+ {
+  "id": "tarang-music-regional-dd",
+  "name": "Tarang Music",
+  "folder": "Regional & DD",
+  "guide_id": "TarangMusic",
+  "logo": "https://img.logo-cdn.cc/tarangtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TARANGMUSIC"
+  ],
+  "tags": [
+   "tarangmusic"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-sarthak-regional-dd",
+  "name": "Zee Sarthak",
+  "folder": "Regional & DD",
+  "guide_id": "ts597",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://dvdh7g0f0hwck.cloudfront.net/assets/images/channel/ZeeSarthak_Thumbnail_2ae93af1-571b-4eee-8089-96a5bffba646.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SARTHAK",
+   "ZEESARTHAK"
+  ],
+  "tags": [
+   "ts597"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-kalinga-regional-dd",
+  "name": "Zee Kalinga",
+  "folder": "Regional & DD",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/zeekalinga.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEKALINGA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "dd-mizoram-regional-dd",
+  "name": "DD Mizoram",
+  "folder": "Regional & DD",
+  "guide_id": "ts1211",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDMZ_Thumbnail-v1/DDMZ_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDMEZORAM",
+   "DDMIZORAM"
+  ],
+  "tags": [
+   "ts1211"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-himachal-regional-dd",
+  "name": "DD Himachal",
+  "folder": "Regional & DD",
+  "guide_id": "ts1217",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDHC_Thumbnail-v1/DDHC_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDHIMACHAL",
+   "DDHIMACHALPARDESH"
+  ],
+  "tags": [
+   "ts1217"
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-chhattisgarh-regional-dd",
+  "name": "DD Chhattisgarh",
+  "folder": "Regional & DD",
+  "guide_id": "ts1216",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/DDCG_Thumbnail-v1/DDCG_Thumbnail.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDCHATTISGARH",
+   "DDCHHATTISGARH"
+  ],
+  "tags": [
+   "ts1216"
+  ],
+  "must": false
+ },
+ {
+  "id": "manoranjan-grand-regional-dd",
+  "name": "Manoranjan Grand",
+  "folder": "Regional & DD",
+  "guide_id": "ManoranjanGrand",
+  "logo": "https://dtil.tmsimg.com/assets/s143302_ld_h15_aa.png?lock=720x540",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MANORANJANGRAND"
+  ],
+  "tags": [
+   "manoranjangrand"
+  ],
+  "must": false
+ },
+ {
+  "id": "utsav-plus-hd-uk-india-uk-feeds",
+  "name": "Utsav Plus HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "starplus.uk",
+  "logo": "https://img.logo-cdn.cc/utsavplus.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "UTSAVPLUS"
+  ],
+  "tags": [
+   "starplus.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "utsav-gold-hd-uk-india-uk-feeds",
+  "name": "Utsav Gold HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "stargold.uk",
+  "logo": "https://img.logo-cdn.cc/stargold.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "UTSAVGOLD"
+  ],
+  "tags": [
+   "stargold.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-tv-fhd-uk-india-uk-feeds",
+  "name": "Zee TV FHD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "zeetv.uk",
+  "logo": "https://img.logo-cdn.cc/zeetv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "ZEE"
+  ],
+  "tags": [
+   "zeetv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "zee-cinema-hd-uk-india-uk-feeds",
+  "name": "Zee Cinema HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "zeecinema.uk",
+  "logo": "https://img.logo-cdn.cc/zeecinema.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "ZEECINEMA"
+  ],
+  "tags": [
+   "zeecinema.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-hd-uk-india-uk-feeds",
+  "name": "Colors HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "colors.uk",
+  "logo": "https://img.logo-cdn.cc/colors.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "COLORS"
+  ],
+  "tags": [
+   "colors.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-asia-hd-uk-india-uk-feeds",
+  "name": "Sony Asia HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sonyentertainmenttvasia.uk",
+  "logo": "https://img.logo-cdn.cc/sonychannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SONY",
+   "SONYASIA"
+  ],
+  "tags": [
+   "sonyentertainmenttvasia.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-max-hd-uk-india-uk-feeds",
+  "name": "Sony Max HD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sonymax.uk",
+  "logo": "https://img.logo-cdn.cc/sonymax.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SONYMAX"
+  ],
+  "tags": [
+   "sonymax.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-max-2-sd-uk-india-uk-feeds",
+  "name": "Sony Max 2 SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sonymax2.uk",
+  "logo": "https://img.logo-cdn.cc/sonymax2.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SONYMAX2"
+  ],
+  "tags": [
+   "sonymax2.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sony-sab-sd-uk-india-uk-feeds",
+  "name": "Sony SAB SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sonysab.uk",
+  "logo": "https://img.logo-cdn.cc/sonysab.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SONYSAB"
+  ],
+  "tags": [
+   "sonysab.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "utsav-bharat-sd-uk-india-uk-feeds",
+  "name": "Utsav Bharat SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "starbharat.uk",
+  "logo": "https://img.logo-cdn.cc/starbharat.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "UTSAVBHARAT"
+  ],
+  "tags": [
+   "starbharat.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-rishtey-tv-sd-uk-india-uk-feeds",
+  "name": "Colors Rishtey TV SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "colorsrishtey.uk",
+  "logo": "https://img.logo-cdn.cc/colorsrishtey.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "COLORSRISHTEY"
+  ],
+  "tags": [
+   "colorsrishtey.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "colors-cineplex-sd-uk-india-uk-feeds",
+  "name": "Colors Cineplex SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "colorscineplex.uk",
+  "logo": "https://img.logo-cdn.cc/colorscineplex.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "COLORSCINEPLEX"
+  ],
+  "tags": [
+   "colorscineplex.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "b4u-movies-sd-uk-india-uk-feeds",
+  "name": "B4U Movies SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "b4umovies.uk",
+  "logo": "https://img.logo-cdn.cc/b4umovies.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "B4UMOVIES"
+  ],
+  "tags": [
+   "b4umovies.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "b4u-music-sd-uk-india-uk-feeds",
+  "name": "B4U Music SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "b4umusic.uk",
+  "logo": "https://img.logo-cdn.cc/b4umusic.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "B4UMUSIC"
+  ],
+  "tags": [
+   "b4umusic.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "zing-uk-india-uk-feeds",
+  "name": "Zing (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "zing.nl",
+  "logo": "https://img.logo-cdn.cc/zing.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "ZING"
+  ],
+  "tags": [
+   "zing.nl"
+  ],
+  "must": false
+ },
+ {
+  "id": "abp-news-uk-india-uk-feeds",
+  "name": "ABP News (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "abpnews.uk",
+  "logo": "https://img.logo-cdn.cc/abpnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "ABPNEWS"
+  ],
+  "tags": [
+   "abpnews.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "aaj-tak-uk-india-uk-feeds",
+  "name": "AAJ TAK (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "aajtak.uk",
+  "logo": "https://img.logo-cdn.cc/aajtak.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "AAJTAK"
+  ],
+  "tags": [
+   "aajtak.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "ndtv-uk-india-uk-feeds",
+  "name": "NDTV (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "ndtv247.uk",
+  "logo": "https://img.logo-cdn.cc/ndtv24x7.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "NDTV",
+   "NDTV24X7"
+  ],
+  "tags": [
+   "ndtv247.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "aastha-sd-uk-india-uk-feeds",
+  "name": "Aastha SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "aastha.uk",
+  "logo": "https://img.logo-cdn.cc/aastha.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "AASTHA"
+  ],
+  "tags": [
+   "aastha.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "ptc-punjabi-uk-india-uk-feeds",
+  "name": "PTC Punjabi (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "ptcpunjabi.uk",
+  "logo": "https://img.logo-cdn.cc/ptcpunjabi.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "PTCPUNJABI"
+  ],
+  "tags": [
+   "ptcpunjabi.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sikh-channel-sd-uk-india-uk-feeds",
+  "name": "Sikh Channel SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sikhchannel.uk",
+  "logo": "https://img.logo-cdn.cc/sikhchannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SIKH"
+  ],
+  "tags": [
+   "sikhchannel.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "akaal-channel-sd-uk-india-uk-feeds",
+  "name": "Akaal Channel SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "akaalchannel.uk",
+  "logo": "https://img.logo-cdn.cc/akaalchannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "AKAAL"
+  ],
+  "tags": [
+   "akaalchannel.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "sangat-sd-uk-india-uk-feeds",
+  "name": "Sangat SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "sangat.uk",
+  "logo": "https://img.logo-cdn.cc/sangat.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SANGAT"
+  ],
+  "tags": [
+   "sangat.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "matv-national-uk-india-uk-feeds",
+  "name": "MATV National (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "matvnational.uk",
+  "logo": "https://img.logo-cdn.cc/matvnational.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "MATVNATIONAL"
+  ],
+  "tags": [
+   "matvnational.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "kanshi-tv-sd-uk-india-uk-feeds",
+  "name": "Kanshi TV SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "kanshitv.uk",
+  "logo": "https://img.logo-cdn.cc/kanshitv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "KANSHI"
+  ],
+  "tags": [
+   "kanshitv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "arise-news-sd-uk-india-uk-feeds",
+  "name": "Arise News SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/arisenews.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "ARISENEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "sankar-tv-sd-uk-india-uk-feeds",
+  "name": "Sankar TV SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/sankartv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "SANKAR"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "channels-24-sd-uk-india-uk-feeds",
+  "name": "Channels 24 SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/channels24.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "CHANNELS24"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "uk-politics-punjab-sd-uk-india-uk-feeds",
+  "name": "Uk| Politics Punjab SD (UK)",
+  "folder": "India UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/politicspunjab.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "in"
+  ],
+  "keys": [
+   "POLITICSPUNJAB"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ary-digital-uk-pakistan-uk-feeds",
+  "name": "ARY Digital (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/arydigital.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "ARYDIGITAL"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-tv-uk-pakistan-uk-feeds",
+  "name": "GEO TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "geotv.uk",
+  "logo": "https://img.logo-cdn.cc/geotv.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "GEO"
+  ],
+  "tags": [
+   "geotv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "geo-news-uk-pakistan-uk-feeds",
+  "name": "GEO News (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "geonews.uk",
+  "logo": "https://img.logo-cdn.cc/geonews.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "GEONEWS"
+  ],
+  "tags": [
+   "geonews.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "geo-kahani-uk-pakistan-uk-feeds",
+  "name": "GEO Kahani (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "geokahani.uk",
+  "logo": "https://img.logo-cdn.cc/geokahani.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "GEOKAHANI"
+  ],
+  "tags": [
+   "geokahani.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "hum-eu-tv-uk-pakistan-uk-feeds",
+  "name": "HUM EU TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "humeurope.uk",
+  "logo": "https://img.logo-cdn.cc/humeurope.png",
+  "catchup_days": 1,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "HUM",
+   "HUMEUROPE"
+  ],
+  "tags": [
+   "humeurope.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "hum-masala-uk-pakistan-uk-feeds",
+  "name": "HUM Masala (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "hummasala.uk",
+  "logo": "https://img.logo-cdn.cc/hummasala.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "HUMMASALA"
+  ],
+  "tags": [
+   "hummasala.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "hum-news-uk-pakistan-uk-feeds",
+  "name": "HUM News (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "humnews.uk",
+  "logo": "https://img.logo-cdn.cc/humnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "HUMNEWS"
+  ],
+  "tags": [
+   "humnews.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "dunya-news-uk-pakistan-uk-feeds",
+  "name": "Dunya News (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "dunyanews.uk",
+  "logo": "https://img.logo-cdn.cc/dunyanews.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "DUNYANEWS"
+  ],
+  "tags": [
+   "dunyanews.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "92-news-uk-pakistan-uk-feeds",
+  "name": "92 News (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "4seven.uk",
+  "logo": "https://img.logo-cdn.cc/92newsuk.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "92NEWS"
+  ],
+  "tags": [
+   "4seven.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "new-vision-tv-uk-pakistan-uk-feeds",
+  "name": "New Vision TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/newvisiontv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "VISION"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "takbeer-uk-pakistan-uk-feeds",
+  "name": "Takbeer (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "takbeertv.uk",
+  "logo": "https://img.logo-cdn.cc/takbeer.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "TAKBEER"
+  ],
+  "tags": [
+   "takbeertv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "noor-tv-uk-pakistan-uk-feeds",
+  "name": "Noor TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "noortv.uk",
+  "logo": "https://img.logo-cdn.cc/noortv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "NOOR",
+   "NOORTV"
+  ],
+  "tags": [
+   "noortv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "iqra-tv-uk-pakistan-uk-feeds",
+  "name": "IQRA TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "iqratv.uk",
+  "logo": "https://img.logo-cdn.cc/iqra.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "IQRA"
+  ],
+  "tags": [
+   "iqratv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "islam-channel-uk-pakistan-uk-feeds",
+  "name": "Islam Channel (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "islamchannel.uk",
+  "logo": "https://img.logo-cdn.cc/islamchannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "ISLAM"
+  ],
+  "tags": [
+   "islamchannel.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "mta-muslim-uk-pakistan-uk-feeds",
+  "name": "Mta Muslim (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/mtaworld.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "MTAMUSLIM"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "madani-channel-uk-pakistan-uk-feeds",
+  "name": "Madani Channel (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "madanichannel.uk",
+  "logo": "https://img.logo-cdn.cc/madanichannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "MADANI",
+   "MADANICHNLURDU"
+  ],
+  "tags": [
+   "madanichannel.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "peace-tv-uk-pakistan-uk-feeds",
+  "name": "Peace TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/peacetvurdu.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "PEACE",
+   "PEACEENG"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "peace-tv-urdu-uk-pakistan-uk-feeds",
+  "name": "Peace TV Urdu (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/peacetvurdu.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "PEACEURD",
+   "PEACEURDU"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "islam-channel-urdu-uk-pakistan-uk-feeds",
+  "name": "Islam Channel Urdu (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "islamchurdu.uk",
+  "logo": "https://img.logo-cdn.cc/islamchannelurdu.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "ISLAMCHURDU",
+   "ISLAMURDU"
+  ],
+  "tags": [
+   "islamchurdu.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "ahlebait-tv-uk-pakistan-uk-feeds",
+  "name": "Ahlebait TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ahlulbayt.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "AHLEBAIT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hidayat-tv-uk-pakistan-uk-feeds",
+  "name": "Hidayat TV (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "hidayattv.uk",
+  "logo": "https://img.logo-cdn.cc/hidayattv.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "HIDAYAT"
+  ],
+  "tags": [
+   "hidayattv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "eman-channel-uk-pakistan-uk-feeds",
+  "name": "Eman Channel (UK)",
+  "folder": "Pakistan UK Feeds",
+  "guide_id": "emanchannel.uk",
+  "logo": "https://img.logo-cdn.cc/eman.png",
+  "catchup_days": 0,
+  "regions": [
+   "uk",
+   "pk"
+  ],
+  "keys": [
+   "EMAN"
+  ],
+  "tags": [
+   "emanchannel.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "ary-digital-pakistan",
+  "name": "ARY Digital",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/arydigital.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ARYDIGITAL"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ary-news-pakistan",
+  "name": "ARY News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/arynews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ARYNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hum-news-hd-pakistan",
+  "name": "HUM News HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/humnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HUMNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hum-tv-hd-pakistan",
+  "name": "HUM TV HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/humeurope.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HUM"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hum-sitary-pakistan",
+  "name": "HUM Sitary",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/humsitary.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HUMSITARAY",
+   "HUMSITARY"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hum-masala-tv-pakistan",
+  "name": "HUM Masala TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/hummasala.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HUMMASALA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "92-news-hd-pakistan",
+  "name": "92 News HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/92newsuk.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "92NEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "dunya-news-pakistan",
+  "name": "Dunya News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/dunyanews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "DUNYANEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "bol-news-fhd-pakistan",
+  "name": "BOL News FHD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/bolnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "BOLNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "aaj-entertainment-pakistan",
+  "name": "AAJ Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aajentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "AAJENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "express-entertainment-pakistan",
+  "name": "Express Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/expressentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "EXPRESSENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "express-news-pakistan",
+  "name": "Express News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/expressnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "EXPRESSNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "atv-entertainment-pakistan",
+  "name": "ATV Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/atventertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ATVENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ary-zindagi-pakistan",
+  "name": "ARY Zindagi",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aryzindagi.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ARYZINDAGI"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "a-plus-pakistan",
+  "name": "A Plus",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aplus.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "APLUS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "urdu-1-hd-pakistan",
+  "name": "Urdu 1 HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/urdu1.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "URDU1"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-news-pakistan",
+  "name": "GEO News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/geonews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GEONEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-kahani-pakistan",
+  "name": "GEO Kahani",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/geokahani.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GEOKAHANI"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-entertainment-pakistan",
+  "name": "GEO Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/geotv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GEOENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "aaj-news-pakistan",
+  "name": "AAJ News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aajnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "AAJNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "dawn-news-pakistan",
+  "name": "Dawn News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/dawnnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "DAWNNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "saama-news-pakistan",
+  "name": "Saama News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/saamanews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SAAMANEWS",
+   "SAMAANEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "gtv-hd-pakistan",
+  "name": "Gtv HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/gtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GTV"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "capital-tv-pakistan",
+  "name": "Capital TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/capitaltv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CAPITAL"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "city-41-pakistan",
+  "name": "City 41",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/city41.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CITY41"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "city-42-pakistan",
+  "name": "City 42",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/city42.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CITY42"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "gnn-hd-pakistan",
+  "name": "GNN HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/gnn.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GNN"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "public-news-hd-pakistan",
+  "name": "Public News HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/publicnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PUBLICNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "khyber-news-pakistan",
+  "name": "Khyber News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/khybernews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KHYBERNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ptv-news-pakistan",
+  "name": "PTV News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ptvnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PTVNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "roze-news-pakistan",
+  "name": "Roze News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/rozenews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ROZENEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "kohinoor-news-pakistan",
+  "name": "Kohinoor News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/kohinoornews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KOHINOORNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "channel-24-hd-pakistan",
+  "name": "Channel 24 HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/channel24.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "24"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "filmazia-entertainment-pakistan",
+  "name": "Filmazia Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/filmaziaentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "FILMAZIAENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "avt-khyber-pakistan",
+  "name": "Avt Khyber",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/avtkhyber.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "AVTKHYBER"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "apna-channel-pakistan",
+  "name": "Apna Channel",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/apnachannel.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "APNA"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "abbtakk-news-pakistan",
+  "name": "Abbtakk News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/abbtakknews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ABBTAKK",
+   "ABBTAKKNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "news-one-pakistan",
+  "name": "News One",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/newsone-spuwinubra.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "NEWSONE"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "neo-news-hd-pakistan",
+  "name": "Neo News HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/neonews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "NEONEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "lahore-news-hd-pakistan",
+  "name": "Lahore News HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/lahorenews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "LAHORENEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "rohi-tv-pakistan",
+  "name": "Rohi TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/rohi.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ROHI"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "lahroe-rang-hd-pakistan",
+  "name": "Lahroe Rang HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/lahroerang.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "LAHORERUNG",
+   "LAHROERANG"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-tezz-pakistan",
+  "name": "GEO Tezz",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/geotv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GEOTEZZ"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "channel-5-pakistan",
+  "name": "Channel 5",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/channel5.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "5"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "tv-one-pakistan",
+  "name": "TV One",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/tvone.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ONE"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ktn-news-pakistan",
+  "name": "KTN News",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ktnnews.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KTNNEWS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ary-qtv-pakistan",
+  "name": "ARY QTV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/aryqtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ARYQTV"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "saudi-quran-pakistan",
+  "name": "Saudi Quran",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/saudiquran.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SAUDIQURAN"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "saudi-sunnah-pakistan",
+  "name": "Saudi Sunnah",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/saudisunnah.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SAUDISUNNAH"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "peace-tv-urdu-pakistan",
+  "name": "Peace TV Urdu",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/peacetvurdu.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PEACEURD",
+   "PEACEURDU"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "peace-tv-english-pakistan",
+  "name": "Peace TV English",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/peacetvenglish.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PEACEENG",
+   "PEACEENGLISH"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "madni-tv-pakistan",
+  "name": "Madni TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/madnitv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "MADNI"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "kashish-pakistan",
+  "name": "Kashish",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/KASHISH.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KASHISH"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "hadi-tv-pakistan",
+  "name": "Hadi TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/haditv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HADI",
+   "HADI1"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "bol-entertainment-hd-pakistan",
+  "name": "BOL Entertainment HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/bolentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "BOLENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "sindh-entertainment-pakistan",
+  "name": "Sindh Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/sindhentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SINDHENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ktn-entertainment-pakistan",
+  "name": "KTN Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ktnentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KTNENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "green-entertainment-pakistan",
+  "name": "Green Entertainment",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/greenentertainment.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GREENENTERTAINMENT"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ptv-home-pakistan",
+  "name": "PTV Home",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ptvhome.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PTVHOME"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ptv-world-pakistan",
+  "name": "PTV World",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ptvworld.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PTVWORLD"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ptv-sports-hd-pakistan",
+  "name": "PTV Sports HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ptvsports.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PTVSPORTS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "a-sports-pakistan",
+  "name": "A-sports",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/asports.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ASPORTS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ten-sports-hd-pakistan",
+  "name": "Ten Sports HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/tensports.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "TENSPORTS",
+   "TENSSPORTS"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "geo-super-pakistan",
+  "name": "GEO Super",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/geotv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "GEOSUPER"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ary-musik-pakistan",
+  "name": "ARY Musik",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/arymusik.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ARYMUSIK"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "jalwa-music-pakistan",
+  "name": "Jalwa Music",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/jalwa.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "JALWAMUSIC"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "8xm-hd-pakistan",
+  "name": "8XM HD",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/8xm.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "8XM"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "filmworld-pakistan",
+  "name": "Filmworld",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/filmworld.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "FILMWORLD"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "ltn-family-pakistan",
+  "name": "Ltn Family",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/ltnfamily.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "LTNFAMILY"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "pashtoo-1-pakistan",
+  "name": "Pashtoo 1",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/pashtoo1.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PASHTOO1"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "paigam-urdu-pakistan",
+  "name": "Paigam Urdu",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/paigamurdu.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PAIGAAM",
+   "PAIGAMURDU"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "paigam-pashtoo-pakistan",
+  "name": "Paigam Pashtoo",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/paigampashtoo.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PAIGAMPASHTOO"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "play-tv-pakistan",
+  "name": "Play TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/playtv-clivebesle.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "PLAY"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "waseeb-tv-pakistan",
+  "name": "Waseeb TV",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/waseebtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "WASEEB"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "raavi-pakistan",
+  "name": "Raavi",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/raavi.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "RAAVI"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "kay-2-pakistan",
+  "name": "KAY-2",
+  "folder": "Pakistan",
+  "guide_id": "",
+  "logo": "https://img.logo-cdn.cc/kay2.png",
+  "catchup_days": 0,
+  "regions": [
+   "pk",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "KAY2"
+  ],
+  "tags": [],
+  "must": false
+ },
+ {
+  "id": "movie-house-hindi-movies",
+  "name": "Movie House",
+  "folder": "Hindi Movies",
+  "guide_id": "MovieHouse",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/MOVIE-HOUSE.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MOVIEHOUSE"
+  ],
+  "tags": [
+   "moviehouse",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "housefull-movies-hindi-movies",
+  "name": "Housefull Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "HousefullMovies",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/housefullmovies.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HOUSEFULLMOVIES"
+  ],
+  "tags": [
+   "housefullmovies",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "housefull-action-hindi-movies",
+  "name": "Housefull Action",
+  "folder": "Hindi Movies",
+  "guide_id": "HousefullAction",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/housefullaction.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HOUSEFULLACTION"
+  ],
+  "tags": [
+   "housefullaction",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "dabangg-hindi-entertainment",
+  "name": "Dabangg",
+  "folder": "Hindi Entertainment",
+  "guide_id": "Dabangg",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/dabangg.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DABANGG"
+  ],
+  "tags": [
+   "dabangg",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "box-cinema-hindi-movies",
+  "name": "Box Cinema",
+  "folder": "Hindi Movies",
+  "guide_id": "BoxCinema",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/boxcinema.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BOXCINEMA"
+  ],
+  "tags": [
+   "boxcinema",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "dish-cine-active-hindi-movies",
+  "name": "Dish Cine Active",
+  "folder": "Hindi Movies",
+  "guide_id": "DishCineActive",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/DISH-CINE-ACTIVE.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISHCINEACTIVE"
+  ],
+  "tags": [
+   "dishcineactive",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "utv-movies-hindi-movies",
+  "name": "UTV Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "UTVMovies.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/UTV-MOVIES.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "UTVMOVIES"
+  ],
+  "tags": [
+   "utvmovies.in",
+   "utvmovies.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "utv-action-hindi-movies",
+  "name": "UTV Action",
+  "folder": "Hindi Movies",
+  "guide_id": "UTVAction.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/UTV-ACTION.jpeg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "UTVACTION"
+  ],
+  "tags": [
+   "utvaction.in",
+   "utvaction.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "shemaroo-tv-hindi-entertainment",
+  "name": "Shemaroo TV",
+  "folder": "Hindi Entertainment",
+  "guide_id": "ts818",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/SHEMAROO-TV.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SHEMAROO"
+  ],
+  "tags": [
+   "ts818",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "sahara-one-hindi-entertainment",
+  "name": "Sahara One",
+  "folder": "Hindi Entertainment",
+  "guide_id": "SaharaOne",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/saharaone.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SAHARAONE"
+  ],
+  "tags": [
+   "saharaone",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "pitaara-india-uk-feeds",
+  "name": "Pitaara",
+  "folder": "India UK Feeds",
+  "guide_id": "pitaara.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/2306.png?89928",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk"
+  ],
+  "keys": [
+   "PITAARA"
+  ],
+  "tags": [
+   "pitaara.in",
+   "pitaara.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "brit-asia-tv-india-uk-feeds",
+  "name": "Brit Asia TV",
+  "folder": "India UK Feeds",
+  "guide_id": "BritAsiaTV.uk",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/9384.jpg?47849",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk"
+  ],
+  "keys": [
+   "BRITASIA"
+  ],
+  "tags": [
+   "britasiatv.uk",
+   "britasiatv.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-kadak-hits-hindi-music",
+  "name": "Hungama Kadak Hits",
+  "folder": "Hindi Music",
+  "guide_id": "HungamaKadakHits",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hungama.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMAKADAKHITS"
+  ],
+  "tags": [
+   "hungamakadakhits",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-pop-pataka-hindi-music",
+  "name": "Hungama Pop Pataka",
+  "folder": "Hindi Music",
+  "guide_id": "HungamaPopPataka",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hungama.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMAPOPPATAKA"
+  ],
+  "tags": [
+   "hungamapoppataka",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-nazrana-hd-hindi-music",
+  "name": "Hungama Nazrana HD",
+  "folder": "Hindi Music",
+  "guide_id": "HungamaNazranaHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hungama.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMANAZRANA"
+  ],
+  "tags": [
+   "hungamanazranahd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-dil-se-hd-hindi-music",
+  "name": "Hungama Dil Se HD",
+  "folder": "Hindi Music",
+  "guide_id": "HungamaDilSeHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hungama.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMADILDE",
+   "HUNGAMADILSE"
+  ],
+  "tags": [
+   "hungamadilsehd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "hungama-bol-hadipa-hindi-music",
+  "name": "Hungama Bol Hadipa",
+  "folder": "Hindi Music",
+  "guide_id": "HungamaBolHadipa",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hungama.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "HUNGAMABOLHADIPA"
+  ],
+  "tags": [
+   "hungamabolhadipa",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "mastii-hindi-music",
+  "name": "Mastii",
+  "folder": "Hindi Music",
+  "guide_id": "Mastiii.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/MASTII-.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MASTII"
+  ],
+  "tags": [
+   "mastiii.in",
+   "mastiii.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "mtv-hindi-music",
+  "name": "MTV",
+  "folder": "Hindi Music",
+  "guide_id": "ts103",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/mtv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MTV"
+  ],
+  "tags": [
+   "ts103",
+   "mtvindia.mu"
+  ],
+  "must": false
+ },
+ {
+  "id": "romedy-now-hd-english-movies",
+  "name": "Romedy Now HD",
+  "folder": "English Movies",
+  "guide_id": "ts174",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/Romedy_Now_HD.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ROMEDYNOW"
+  ],
+  "tags": [
+   "ts174",
+   "romedynow.in"
+  ],
+  "must": true
+ },
+ {
+  "id": "hbo-english-movies",
+  "name": "HBO",
+  "folder": "English Movies",
+  "guide_id": "HBO.us",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/hbohd.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HBO"
+  ],
+  "tags": [
+   "hbo.us",
+   "hbo.us"
+  ],
+  "must": false
+ },
+ {
+  "id": "hbo-2-english-movies",
+  "name": "HBO 2",
+  "folder": "English Movies",
+  "guide_id": "HBO2.us",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/4009.jpg?12996",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "HBO2"
+  ],
+  "tags": [
+   "hbo2.us",
+   "hbo2.us"
+  ],
+  "must": true
+ },
+ {
+  "id": "tlc-world-hd-english-entertainment",
+  "name": "TLC World HD",
+  "folder": "English Entertainment",
+  "guide_id": "TLCWorldHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/TLC-WORLD-HD.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TLCWORLD"
+  ],
+  "tags": [
+   "tlcworldhd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "tv9-bharatvarsh-hindi-news",
+  "name": "TV9 Bharatvarsh",
+  "folder": "Hindi News",
+  "guide_id": "ts706",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/TV9-BHARATVARSH.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TV9BHARATVARSH"
+  ],
+  "tags": [
+   "ts706",
+   "tv9.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "sansad-tv-hindi-news",
+  "name": "Sansad TV",
+  "folder": "Hindi News",
+  "guide_id": "SansadTV",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/LOK-SABHA.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "LOKSABHA",
+   "SANSAD"
+  ],
+  "tags": [
+   "sansadtv",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "news-1-india-hindi-news",
+  "name": "News 1 India",
+  "folder": "Hindi News",
+  "guide_id": "ts414",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/NEWS-1-INDIA.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS1INDIA"
+  ],
+  "tags": [
+   "ts414",
+   "news1india.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "k-news-india-hindi-news",
+  "name": "K News India",
+  "folder": "Hindi News",
+  "guide_id": "KNewsIndia",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/KNEWS-INDIA.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "KNEWSINDIA"
+  ],
+  "tags": [
+   "knewsindia",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "mh1-news-hindi-news",
+  "name": "MH1 News",
+  "folder": "Hindi News",
+  "guide_id": "MH1News",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/MH1-NEWS.jpeg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "MH1NEWS"
+  ],
+  "tags": [
+   "mh1news",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "cnbc-awaaz-business-news",
+  "name": "CNBC Awaaz",
+  "folder": "Business News",
+  "guide_id": "ts204",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/CNBC-AAWAZ.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CNBCAWAAZ"
+  ],
+  "tags": [
+   "ts204",
+   "cnbcawaaz.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "ndtv-24x7-english-news",
+  "name": "NDTV 24x7",
+  "folder": "English News",
+  "guide_id": "ts208",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/ndtv24x7.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NDTV24X7"
+  ],
+  "tags": [
+   "ts208",
+   "ndtv24x7.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "times-now-english-news",
+  "name": "Times Now",
+  "folder": "English News",
+  "guide_id": "ts90",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/timesnow.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "TIMESNOW"
+  ],
+  "tags": [
+   "ts90",
+   "timesnow.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "news18-english-uk-english-news",
+  "name": "News18 English (UK)",
+  "folder": "English News",
+  "guide_id": "news18india.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/4770.jpg?90753",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk"
+  ],
+  "keys": [
+   "NEWS18EN",
+   "NEWS18ENGLISH"
+  ],
+  "tags": [
+   "news18india.in",
+   "news18india.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "euronews-english-news",
+  "name": "Euronews",
+  "folder": "English News",
+  "guide_id": "EuroNews.uk",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/euronews.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "EURONEWS"
+  ],
+  "tags": [
+   "euronews.uk",
+   "euronews.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "living-foodz-hd-lifestyle",
+  "name": "Living Foodz HD",
+  "folder": "Lifestyle",
+  "guide_id": "LivingFoodz.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/livingfoodzhd.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "LIVINGFOODZ"
+  ],
+  "tags": [
+   "livingfoodz.in",
+   "livingfoodz.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "comedy-active-lifestyle",
+  "name": "Comedy Active",
+  "folder": "Lifestyle",
+  "guide_id": "ComedyActive",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/comedyactive.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COMEDYACTIVE"
+  ],
+  "tags": [
+   "comedyactive",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "discovery-channel-infotainment",
+  "name": "Discovery Channel",
+  "folder": "Infotainment",
+  "guide_id": "ts219",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/discovery.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DISCOVERY"
+  ],
+  "tags": [
+   "ts219",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "news9-live-english-news",
+  "name": "News9 Live",
+  "folder": "English News",
+  "guide_id": "News9Live",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/News_9.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS9"
+  ],
+  "tags": [
+   "news9live",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "btv-kannada-kannada",
+  "name": "BTV Kannada",
+  "folder": "Kannada",
+  "guide_id": "BTVKannada",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/btv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BTV",
+   "BTVKANNADA"
+  ],
+  "tags": [
+   "btvkannada",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "prajaa-tv-kannada",
+  "name": "Prajaa TV",
+  "folder": "Kannada",
+  "guide_id": "PrajaaTV",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/PRAJAAKAN-TV.jpeg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "PRAJAA",
+   "PRAJAAKAN"
+  ],
+  "tags": [
+   "prajaatv",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "baby-tv-hd-kids",
+  "name": "Baby TV HD",
+  "folder": "Kids",
+  "guide_id": "BabyTVHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/BABY-TV.jpeg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BABY"
+  ],
+  "tags": [
+   "babytvhd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "wow-kidz-hindi-kids",
+  "name": "Wow Kidz Hindi",
+  "folder": "Kids",
+  "guide_id": "WowKidzHindi",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/13932.png?ver=82901",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "WOWKIDZHINDI"
+  ],
+  "tags": [
+   "wowkidzhindi",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "star-sports-kannada-sports",
+  "name": "Star Sports Kannada",
+  "folder": "Sports",
+  "guide_id": "SonySIX.in",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/SONY-SIX.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "STARSPORTSKANNADA"
+  ],
+  "tags": [
+   "sonysix.in",
+   "sonysix.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "willow-cricket-extra-sports",
+  "name": "Willow Cricket Extra",
+  "folder": "Sports",
+  "guide_id": "WillowCricketExtra",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/12754.jpg?48385",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "WILLOWCRICKETEXTRA"
+  ],
+  "tags": [
+   "willowcricketextra",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "sky-sports-cricket-hd-sports",
+  "name": "Sky Sports Cricket HD",
+  "folder": "Sports",
+  "guide_id": "SkySportsCricket.uk",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/11981.jpg?95698",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SKYSPORTSCRICKET"
+  ],
+  "tags": [
+   "skysportscricket.uk",
+   "skysportscricket.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "supersport-cricket-hd-sports",
+  "name": "SuperSport Cricket HD",
+  "folder": "Sports",
+  "guide_id": "SkySportsCricket.uk",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/11981.jpg?95698",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "SUPERSPORTCRICKET",
+   "SUPERSPORTSCRICKET"
+  ],
+  "tags": [
+   "skysportscricket.uk",
+   "skysportscricket.uk"
+  ],
+  "must": false
+ },
+ {
+  "id": "fox-cricket-hd-sports",
+  "name": "Fox Cricket HD",
+  "folder": "Sports",
+  "guide_id": "FoxCricketHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/3277.jpg?40780",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "FOXCRICKET"
+  ],
+  "tags": [
+   "foxcrickethd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "astro-cricket-hd-sports",
+  "name": "Astro Cricket HD",
+  "folder": "Sports",
+  "guide_id": "AstroCricketHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/astrotv.png",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ASTROCRICKET"
+  ],
+  "tags": [
+   "astrocrickethd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "criclife-1-hd-sports",
+  "name": "CricLife 1 HD",
+  "folder": "Sports",
+  "guide_id": "CricLife1HD",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/13633.png?ver=38268",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CRICLIFE1",
+   "STARZPLAYCRLIFE1"
+  ],
+  "tags": [
+   "criclife1hd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "criclife-2-hd-sports",
+  "name": "CricLife 2 HD",
+  "folder": "Sports",
+  "guide_id": "CricLife2HD",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/13633.png?ver=38268",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CRICLIFE2",
+   "STARZPLAYCRLIFE2"
+  ],
+  "tags": [
+   "criclife2hd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "atn-sports-sports",
+  "name": "ATN Sports",
+  "folder": "Sports",
+  "guide_id": "ATNSports",
+  "logo": "http://photo-tmdb.com/stalker_portal/misc/logos/320/7750.jpg?27298",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ATNSPORTS"
+  ],
+  "tags": [
+   "atnsports",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "dd-bihar-regional-dd",
+  "name": "DD Bihar",
+  "folder": "Regional & DD",
+  "guide_id": "ts317",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/DD-BIHAR.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DDBIHAR"
+  ],
+  "tags": [
+   "ts317",
+   "ddbihar.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "bhojpuri-cinema-regional-dd",
+  "name": "Bhojpuri Cinema",
+  "folder": "Regional & DD",
+  "guide_id": "ts181",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/BHOJPURI-CINEMA .png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "BHOJPURICINEMA"
+  ],
+  "tags": [
+   "ts181",
+   "bhojpuricinema.in"
+  ],
+  "must": false
+ },
+ {
+  "id": "dhamaal-hd-regional-dd",
+  "name": "Dhamaal HD",
+  "folder": "Regional & DD",
+  "guide_id": "DhamaalHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/dhamaal.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "DHAMAAL"
+  ],
+  "tags": [
+   "dhamaalhd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "sangeet-bhojpuri-regional-dd",
+  "name": "Sangeet Bhojpuri",
+  "folder": "Regional & DD",
+  "guide_id": "SangeetBhojpuri",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/SANGEET-BHOJPURI.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "SANGEETBHOJPURI"
+  ],
+  "tags": [
+   "sangeetbhojpuri",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "nandighosha-tv-regional-dd",
+  "name": "Nandighosha TV",
+  "folder": "Regional & DD",
+  "guide_id": "ts805",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/NANDIGHOSHA-TV.jpg",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NANDIGHOSHA"
+  ],
+  "tags": [
+   "ts805",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "krishna-vani-hd-devotional",
+  "name": "Krishna Vani HD",
+  "folder": "Devotional",
+  "guide_id": "KrishnaVaniHD",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/KRISHNA-VANI.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "KRISHNAVANI"
+  ],
+  "tags": [
+   "krishnavanihd",
+   ""
+  ],
+  "must": false
+ },
+ {
+  "id": "good-news-tv-devotional",
+  "name": "Good News TV",
+  "folder": "Devotional",
+  "guide_id": "GoodNewsTV",
+  "logo": "http://photo-tmdb.com/stalker_portal/logos/goodnewstelevision.png",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "GOODNEWS"
+  ],
+  "tags": [
+   "goodnewstv",
+   ""
+  ],
+  "must": false
+ }
+]
