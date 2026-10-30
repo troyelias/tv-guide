@@ -20,18 +20,28 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, os, subprocess, sys, urllib.parse, urllib.request, base64
-          key, secret, code = (os.environ[k].strip() for k in ("DBX_KEY", "DBX_SECRET", "DBX_CODE"))
-          if not (key and secret and code):
-              sys.exit("Missing DBX_KEY / DBX_SECRET / DBX_CODE secret.")
+          def fail(msg):
+              print(f"::error::{msg}")
+              sys.exit(1)
+          key, secret, code = (os.environ.get(k, "").strip() for k in ("DBX_KEY", "DBX_SECRET", "DBX_CODE"))
+          missing = [n for n, v in (("DBX_KEY", key), ("DBX_SECRET", secret), ("DBX_CODE", code)) if not v]
+          if missing:
+              fail("Missing secret(s): " + ", ".join(missing))
+          print(f"::notice::Lengths - key {len(key)}, secret {len(secret)}, code {len(code)}")
           data = urllib.parse.urlencode({"code": code, "grant_type": "authorization_code"}).encode()
           req = urllib.request.Request("https://api.dropboxapi.com/oauth2/token", data=data)
           req.add_header("Authorization", "Basic " + base64.b64encode(f"{key}:{secret}".encode()).decode())
           try:
               tok = json.load(urllib.request.urlopen(req, timeout=60))
           except urllib.error.HTTPError as e:
-              sys.exit(f"Dropbox refused the code (HTTP {e.code}). Codes expire quickly - get a new one and run again.")
+              try:
+                  err = json.loads(e.read())
+                  detail = f"{err.get('error')}: {err.get('error_description', '')}"
+              except Exception:
+                  detail = f"HTTP {e.code}"
+              fail(f"Dropbox refused: {detail}")
           if "refresh_token" not in tok:
-              sys.exit("No long-lived key returned - check the authorize link included token_access_type=offline.")
+              fail("No long-lived key returned - the authorize link must include token_access_type=offline.")
           os.makedirs("secure", exist_ok=True)
           enc = subprocess.run(["openssl", "enc", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-salt",
                                 "-pass", "env:DBX_SECRET"], input=tok["refresh_token"].encode(),
