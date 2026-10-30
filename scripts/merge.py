@@ -1,7 +1,7 @@
 """Merge several XMLTV guides into one, keeping only the channels in channel-ids.txt.
 
 Usage:
-  merge.py channel-ids.txt OUTPUT.xml.gz REPORT.md STATS.json [--previous=FILE] [--map=FILE] name=file[#mapkey] ...
+  merge.py channel-ids.txt OUTPUT.xml.gz REPORT.md STATS.json [--previous=FILE] [--map=FILE] [--notes=channels.json] name=file[#mapkey] ...
   A source written as name=file#key has its channel IDs renamed using section "key" of the --map file
   (a service's own guide tags -> our guide IDs).
 
@@ -20,7 +20,8 @@ from datetime import datetime, timedelta, timezone
 args = sys.argv[1:]
 previous = next((a.split("=", 1)[1] for a in args if a.startswith("--previous=")), None)
 mapfile = next((a.split("=", 1)[1] for a in args if a.startswith("--map=")), None)
-args = [a for a in args if not a.startswith(("--previous=", "--map="))]
+notesfile = next((a.split("=", 1)[1] for a in args if a.startswith("--notes=")), None)
+args = [a for a in args if not a.startswith(("--previous=", "--map=", "--notes="))]
 try:
     MAPS = json.load(open(mapfile)) if mapfile else {}
 except Exception:
@@ -195,6 +196,37 @@ for cid in wanted:
     filled_total += filled
     extended_total += extended
     past_total += past
+
+# Channels that played on neither service at the last check-up: show a note instead of listings
+# from now until the next check-up has finished (7:00 AM India time = 01:30 UTC).
+try:
+    DOWN_GIDS = set(json.load(open(notesfile)).get("down_guide_ids", [])) if notesfile else set()
+except Exception:
+    DOWN_GIDS = set()
+noted = 0
+for gid in DOWN_GIDS & wanted_set:
+    start = NOW.replace(minute=0, second=0, microsecond=0)
+    until = NOW.replace(hour=1, minute=30, second=0, microsecond=0)
+    while until <= NOW + timedelta(hours=1):
+        until += timedelta(days=1)
+    if gid in chosen:  # start the note when the show that's on now started, so there's no gap
+        start = min([start] + [a for a, b, _ in chosen[gid][2] if a < start < b])
+    note = ET.Element("programme", start=start.strftime("%Y%m%d%H%M%S +0000"), stop=until.strftime("%Y%m%d%H%M%S +0000"), channel=gid)
+    ET.SubElement(note, "title", lang="en").text = "\u26a0 Not available right now"
+    ET.SubElement(note, "desc", lang="en").text = ("This channel didn't play on either service at the morning check-up. "
+                                                   "Try the Backup folder, or check again after the next check-up (4-7 AM India time).")
+    if gid in chosen:
+        base_name, ch_el, items, *rest = chosen[gid]
+        items = [t for t in items if t[1] <= start or t[0] >= until] + [(start, until, note)]
+        items.sort(key=lambda t: t[0])
+        chosen[gid] = (base_name, ch_el, items, *rest)
+    else:
+        ch_el = ET.Element("channel", id=gid)
+        ET.SubElement(ch_el, "display-name").text = gid
+        chosen[gid] = ("Note", ch_el, [(start, until, note)], 0, 0, 0)
+    noted += 1
+if noted:
+    print(f"Added 'not available' notes for {noted} channels")
 
 total = sum(len(v[2]) for v in chosen.values())
 if total == 0:

@@ -144,7 +144,7 @@ if MODE in ("nightly", "dry-run"):
 
 # ---------- decide ----------
 chs = state["channels"]
-on_backup, down, gone = [], [], []
+on_backup, down, gone, down_ids = [], [], [], []
 for ch in catalog:
     cid = ch["id"]
     st = chs.setdefault(cid, {"use": "main", "main_streak": 0})
@@ -170,10 +170,19 @@ for ch in catalog:
         if (has["main"] and m_ok is False or not has["main"]) and (has["backup"] and b_ok is False or not has["backup"]) \
                 and (has["main"] or has["backup"]):
             down.append(ch["name"])
+            down_ids.append(cid)
     if not has["main"] and not has["backup"]:
         gone.append(ch["name"])
     if st.get("use") == "backup" and has["backup"] and has["main"]:
         on_backup.append(ch["name"])  # switched away from the main service
+
+if MODE in ("nightly", "dry-run"):
+    state["down_ids"] = down_ids  # remembered so outage/restore uploads keep the same marks
+else:
+    down_ids = [i for i in state.get("down_ids", []) if any(c["id"] == i for c in catalog)]
+    down = [c["name"] for c in catalog if c["id"] in down_ids]
+DOWN = set(down_ids)
+MARK = " \u26a0"  # warning sign shown after the name of a channel that plays on neither service
 
 outage = MODE == "outage" or (state.get("outage") and MODE not in ("nightly", "dry-run", "restore"))
 if MODE in ("nightly", "dry-run", "restore"):
@@ -213,7 +222,8 @@ def entry(ch, folder, p, sid):
     attrs = (f'tvg-id="{ch["guide_id"]}" tvg-name="{ch["name"]}" tvg-logo="{logo(ch)}" group-title="{folder}"')
     if str(s.get("tv_archive")) == "1":
         attrs += f' catchup="xc" catchup-days="{s.get("tv_archive_duration") or 1}"'
-    return f'#EXTINF:-1 {attrs},{ch["name"]}\n{provs[p].stream_url(sid)}'
+    title = ch["name"] + (MARK if ch["id"] in DOWN else "")  # tvg-name stays unchanged so the guide still matches
+    return f'#EXTINF:-1 {attrs},{title}\n{provs[p].stream_url(sid)}'
 
 
 lines, counts = [f'#EXTM3U url-tvg="{guide}" x-tvg-url="{guide}"'], {"main": 0, "backup": 0}
@@ -235,6 +245,11 @@ digest = hashlib.sha256(text.encode()).hexdigest()
 summary.update(channels=counts["main"] + counts["backup"], from_main=counts["main"], from_backup=counts["backup"],
                spare_folder=spare, on_backup=sorted(on_backup), down_on_both=sorted(down), not_on_either=sorted(gone),
                outage=bool(state.get("outage")))
+# guide IDs whose every channel is down on both services -> the guide shows a note for them
+gid_all = {}
+for c in catalog:
+    gid_all.setdefault(c["guide_id"], []).append(c["id"])
+summary["down_guide_ids"] = sorted(g for g, ids in gid_all.items() if g and all(i in DOWN for i in ids))
 
 # provider guide id -> catalog guide id (lets the guide use either service's own listings)
 json.dump({p: {tag: next(c["guide_id"] for c in catalog if c["id"] == cid) for cid, tag in m.items()} for p, m in epg.items()},

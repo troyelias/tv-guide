@@ -102,7 +102,7 @@ jobs:
         run: |
           R="$RUNNER_TEMP"
           python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
-            --previous="$R/previous.xml.gz" --map="$R/ch/provmap.json" \
+            --previous="$R/previous.xml.gz" --map="$R/ch/provmap.json" --notes="$R/ch/channels.json" \
             "Main=$R/main.xml" "Backup=$R/backup.xml" \
             "mitthu786 Tata Play=$R/tataplay.xml.gz" "mitthu786 Combined=$R/combined.xml.gz" \
             "Service 1=$R/svc1.xml#main" "Service 2=$R/svc2.xml#backup"
