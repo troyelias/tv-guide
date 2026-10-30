@@ -1,28 +1,28 @@
-# my-epg
+# tv-guide
 
-One TV guide (EPG) for my whole playlist, rebuilt automatically twice a day.
+A personal TV guide (EPG), rebuilt automatically about twice a day.
 
-**Guide link for the TV app (the only one needed):**
-`https://raw.githubusercontent.com/<this repo>/guide/guide.xml.gz`
+**Guide link for the TV app:** `https://raw.githubusercontent.com/<this repo>/guide/guide.xml.gz`
 
-## What goes into it
-Everything is downloaded fresh by this repo with the open-source [iptv-org/epg](https://github.com/iptv-org/epg) grabber.
-For each channel, the build uses whichever source below has the most real show titles
-(Tata Play often only says "Movie" for tomorrow; Airtel/Dish usually have the real names). On a tie, the higher one wins:
-1. **Main** - `main.channels.xml`: one source per channel, mostly Tata Play (IDs like `ts8`), plus Airtel Xstream, Zee5 and Dish TV.
-2. **Backup** - `backup.channels.xml`: the same channels from Airtel Xstream / Dish TV / Zee5, used only if the main source fails.
-3. **mitthu786/tvepg** - extra fallback only (and the only source for Om Shanti `964`). The guide keeps working if that repo stops.
-4. **Provider** - the IPTV provider's own guide, only if the private secret `PRO` is set.
+## What each run does
+1. **Grabs listings** with the open-source [iptv-org/epg](https://github.com/iptv-org/epg) grabber:
+   `main.channels.xml` (mostly Tata Play) and `backup.channels.xml` (Airtel Xstream, Dish TV, Zee5, Sky UK).
+   If a new grabber version breaks, it retries with the last version that worked (`grabber.lock`).
+2. **Downloads fallback guides** (mitthu786/tvepg, and the provider's guide if the private secret is set).
+3. **Merges** them into one guide for the channels in `channel-ids.txt`:
+   - each channel uses the source with the most real show titles,
+   - "Movie"-type placeholder titles are replaced by the real title from another source when one overlaps,
+   - listings are extended with later shows from other sources,
+   - the last ~26 hours are kept so catch-up shows real titles.
+4. **Checks the subscription and lineup** - stored only in encrypted form.
+5. **Updates the playlist** from an encrypted template and replaces it in Dropbox when something changed.
+6. **Raises alerts** as GitHub issues (renewal due, login failing, coverage dropped, playlist problems)
+   and closes them when resolved.
+7. **Publishes** the guide and a small status page.
 
-Only the channels listed in `channel-ids.txt` are kept, so the file stays small.
-The finished guide is published to the `guide` branch; `REPORT.md` lists every channel and where its listings came from.
+## Privacy
+No logins, playlist links, account details or channel lineups are stored in readable form.
+Everything sensitive lives in private repository secrets or in files encrypted with them (`*.enc`).
 
 ## Run it by hand
-Actions tab -> **Build guide** -> **Run workflow**.
-
-## Add a channel
-Find it in `sites/<site>/<site>.channels.xml` in iptv-org/epg, copy its `site` and `site_id`
-into `main.channels.xml` (and optionally `backup.channels.xml`) with a new `xmltv_id`, and add that ID to `channel-ids.txt`.
-
-No logins or playlist links are stored here - this repo is public. The provider's channel lineup is kept only
-as an encrypted file (`lineup.enc`), and REPORT.md shows only how many channels changed.
+Actions tab → **Build guide** → **Run workflow**. **Account status** does a quick subscription check only.

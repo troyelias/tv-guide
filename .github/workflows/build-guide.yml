@@ -2,12 +2,15 @@ name: Build guide
 
 on:
   schedule:
-    - cron: "17 3 * * *"    # about 11 PM New York time
-    - cron: "17 15 * * *"   # about 11 AM New York time
-  workflow_dispatch:         # lets you run it by hand from the Actions tab
+    - cron: "17 3 * * *"    # about 11 PM New York time (10 PM in winter)
+    - cron: "17 15 * * *"   # about 11 AM New York time (10 AM in winter)
+  workflow_dispatch:         # run by hand from the Actions tab
 
 permissions:
   contents: write
+  issues: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: build-guide
@@ -16,9 +19,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 100
+    environment:
+      name: github-pages
+    env:
+      PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
     steps:
-      - name: Check out my-epg
+      - name: Check out this repo
         uses: actions/checkout@v5
 
       - name: Check out the iptv-org grabber
@@ -35,59 +42,62 @@ jobs:
         working-directory: grabber
         run: npm install --no-audit --no-fund
 
-      - name: 1a. Grab main sources (Tata Play, Airtel, Zee5, Dish TV) - slow on purpose, Tata Play allows ~30 requests a minute
-        working-directory: grabber
-        continue-on-error: true
-        run: >
-          npm run grab ---
-          --channels="$GITHUB_WORKSPACE/main.channels.xml"
-          --output="$RUNNER_TEMP/main.xml"
-          --days=2 --maxConnections=1 --delay=2200 --timeout=30000
-          2>&1 | tee "$RUNNER_TEMP/grab-main.log"
+      - name: 1. Grab listings (Tata Play paced to ~30 requests a minute; falls back to last working grabber)
+        run: scripts/grab.sh
 
-      - name: 1b. Grab backup sources
-        working-directory: grabber
-        continue-on-error: true
-        run: >
-          npm run grab ---
-          --channels="$GITHUB_WORKSPACE/backup.channels.xml"
-          --output="$RUNNER_TEMP/backup.xml"
-          --days=2 --maxConnections=2 --delay=400 --timeout=30000
-          2>&1 | tee "$RUNNER_TEMP/grab-backup.log"
-
-      - name: 2. Download extra fallback guides (mitthu786, provider)
-        env:
-          PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
+      - name: 2. Download fallback guides and the previous guide
         run: |
           cd "$RUNNER_TEMP"
-          curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "Tata Play guide failed"
-          curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "Combined guide failed"
+          curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "fallback 1 failed"
+          curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "fallback 2 failed"
+          curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || echo "no previous guide"
           if [ -n "$PROVIDER_XMLTV_URL" ]; then
-            curl -fsSL --retry 3 --max-time 600 -A "Mozilla/5.0" -o provider.xml "$PROVIDER_XMLTV_URL" || echo "Provider guide failed"
+            curl -fsSL --retry 3 --max-time 600 -A "Mozilla/5.0" -o provider.xml "$PROVIDER_XMLTV_URL" || echo "provider guide failed"
           fi
-          ls -la
 
-      - name: 2b. Check provider lineup (saved encrypted)
-        env:
-          PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
-        run: python3 scripts/provider_lineup.py "$RUNNER_TEMP/lineup.enc" "$RUNNER_TEMP/lineup-note.md"
+      - name: 3. Check subscription and lineup (saved encrypted)
+        run: python3 scripts/account.py "$RUNNER_TEMP/acct"
 
-      - name: 3. Merge into one guide
+      - name: 4. Merge into one guide
         run: |
-          T="$RUNNER_TEMP"
-          python3 scripts/merge.py channel-ids.txt "$T/guide.xml.gz" REPORT.md \
-            "Main=$T/main.xml" \
-            "Backup=$T/backup.xml" \
-            "mitthu786 Tata Play=$T/tataplay.xml.gz" \
-            "mitthu786 Combined=$T/combined.xml.gz" \
-            "Provider=$T/provider.xml"
-          cat "$T/lineup-note.md" >> REPORT.md 2>/dev/null || true
+          R="$RUNNER_TEMP"
+          python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
+            --previous="$R/previous.xml.gz" \
+            "Main=$R/main.xml" \
+            "Backup=$R/backup.xml" \
+            "mitthu786 Tata Play=$R/tataplay.xml.gz" \
+            "mitthu786 Combined=$R/combined.xml.gz" \
+            "Provider=$R/provider.xml"
 
-      - name: 4. Publish guide to the 'guide' branch
+      - name: 5. Update playlist and upload to Dropbox (if connected)
+        env:
+          DBX_KEY: ${{ secrets.DBX_KEY }}
+          DBX_SECRET: ${{ secrets.DBX_SECRET }}
+          DBX_PATH: ${{ secrets.DBX_PATH }}
+        run: python3 scripts/playlist.py secure/playlist.enc "$RUNNER_TEMP/acct/lineup.json" "$RUNNER_TEMP/guide.xml.gz" "$RUNNER_TEMP/playlist.json"
+
+      - name: 6. Alerts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          R="$RUNNER_TEMP"
+          python3 scripts/alerts.py "$R/stats.json" "$R/acct/status.json" "$R/acct/changes.json" "$R/playlist.json"
+
+      - name: 7. Status page
+        run: |
+          R="$RUNNER_TEMP"
+          mkdir -p "$R/site"
+          python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/acct/status.json" "$R/acct/changes.json" "$R/playlist.json"
+
+      - name: 8. Publish guide to the 'guide' branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir out && cp "$RUNNER_TEMP/guide.xml.gz" REPORT.md out/ && mkdir out/logs && cp "$RUNNER_TEMP"/grab-*.log out/logs/ 2>/dev/null; cp "$RUNNER_TEMP/lineup.enc" out/ 2>/dev/null || true
+          R="$RUNNER_TEMP"
+          mkdir out out/logs
+          cp "$R/guide.xml.gz" REPORT.md "$R/site/index.html" out/
+          cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
+          cp "$R/acct/lineup.enc" "$R/acct/status.enc" out/ 2>/dev/null || true
           cd out
           git init -q -b guide
           git config user.name "github-actions[bot]"
@@ -95,10 +105,21 @@ jobs:
           git add . && git commit -qm "Guide $(date -u +'%Y-%m-%d %H:%M') UTC"
           git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" guide
 
-      - name: 5. Save report on main
+      - name: 9. Save report, playlist template and grabber version on main
         run: |
+          cp "$RUNNER_TEMP/grabber.lock" grabber.lock 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add REPORT.md
+          for f in REPORT.md secure/playlist.enc grabber.lock; do if [ -e "$f" ]; then git add "$f"; fi; done
           git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
-          git push
+          git pull -q --rebase origin main && git push
+
+      - name: 10. Upload status page
+        uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/site
+
+      - name: 11. Deploy status page (needs Pages turned on once in Settings)
+        uses: actions/deploy-pages@v4
+        continue-on-error: true

@@ -317,4 +317,39 @@
   <channel site="tataplay.com" lang="en" xmltv_id="Alankar" site_id="28">Alankar</channel>
   <channel site="tataplay.com" lang="en" xmltv_id="TarangMusic" site_id="50">Tarang Music</channel>
   <channel site="tataplay.com" lang="en" xmltv_id="ManoranjanGrand" site_id="965">Manoranjan Grand</channel>
+  <!-- UK feeds: Sky UK guide (works even without the provider guide) -->
+  <channel site="sky.com" lang="en" xmltv_id="starplus.uk" site_id="GB#5300">Utsav Plus HD</channel>
+  <channel site="sky.com" lang="en" xmltv_id="stargold.uk" site_id="GB#4047">Utsav Gold HD</channel>
+  <channel site="sky.com" lang="en" xmltv_id="zeetv.uk" site_id="GB#1016">Zee TV HD</channel>
+  <channel site="sky.com" lang="en" xmltv_id="zeecinema.uk" site_id="GB#2608">Zee Cinema</channel>
+  <channel site="sky.com" lang="en" xmltv_id="colors.uk" site_id="GB#3714">COLORS</channel>
+  <channel site="sky.com" lang="en" xmltv_id="colorshd.uk" site_id="GB#3714">COLORS</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sonyentertainmenttvasia.uk" site_id="GB#4045">SONY TV HD</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sonymax.uk" site_id="GB#4046">SONY MAX HD</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sonymax2.uk" site_id="GB#5431">SONY MAX 2</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sonysab.uk" site_id="GB#3631">SONY SAB</channel>
+  <channel site="sky.com" lang="en" xmltv_id="starbharat.uk" site_id="GB#3608">Utsav Bharat</channel>
+  <channel site="sky.com" lang="en" xmltv_id="colorsrishtey.uk" site_id="GB#3916">ColorsRishtey</channel>
+  <channel site="sky.com" lang="en" xmltv_id="colorscineplex.uk" site_id="GB#1105">ColorsCineplex</channel>
+  <channel site="sky.com" lang="en" xmltv_id="b4umovies.uk" site_id="GB#5703">B4U Movies</channel>
+  <channel site="sky.com" lang="en" xmltv_id="b4umusic.uk" site_id="GB#5708">B4U Music</channel>
+  <channel site="sky.com" lang="en" xmltv_id="aajtak.uk" site_id="GB#3255">AAJ TAK</channel>
+  <channel site="sky.com" lang="en" xmltv_id="ndtv247.uk" site_id="GB#1821">NDTV World</channel>
+  <channel site="sky.com" lang="en" xmltv_id="aastha.uk" site_id="GB#3594">Aastha</channel>
+  <channel site="sky.com" lang="en" xmltv_id="ptcpunjabi.uk" site_id="GB#5715">PTC PUNJABI</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sikhchannel.uk" site_id="GB#3650">Sikh Channel</channel>
+  <channel site="sky.com" lang="en" xmltv_id="akaalchannel.uk" site_id="GB#5087">Akaal Channel</channel>
+  <channel site="sky.com" lang="en" xmltv_id="sangat.uk" site_id="GB#3355">Sangat</channel>
+  <channel site="sky.com" lang="en" xmltv_id="kanshitv.uk" site_id="GB#3753">Kanshi TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="geotv.uk" site_id="GB#4110">GEO TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="geonews.uk" site_id="GB#4407">GEO News</channel>
+  <channel site="sky.com" lang="en" xmltv_id="humeurope.uk" site_id="GB#5205">HUM EUROPE</channel>
+  <channel site="sky.com" lang="en" xmltv_id="humnews.uk" site_id="GB#1069">HUM News</channel>
+  <channel site="sky.com" lang="en" xmltv_id="takbeertv.uk" site_id="GB#4408">Takbeer TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="noortv.uk" site_id="GB#3715">Noor TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="iqratv.uk" site_id="GB#6754">IQRA TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="islamchannel.uk" site_id="GB#3214">Islam Channel</channel>
+  <channel site="sky.com" lang="en" xmltv_id="madanichannel.uk" site_id="GB#4460">Madani Chnl</channel>
+  <channel site="sky.com" lang="en" xmltv_id="islamchurdu.uk" site_id="GB#5211">Islam Ch Urdu</channel>
+  <channel site="sky.com" lang="en" xmltv_id="emanchannel.uk" site_id="GB#3111">Eman Channel</channel>
 </channels>

@@ -10,36 +10,18 @@ jobs:
   status:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out guide branch
-        uses: actions/checkout@v5
-        with:
-          ref: guide
+      - uses: actions/checkout@v5
 
-      - name: Check provider account (saved encrypted)
+      - name: Check subscription (saved encrypted)
         env:
           PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
-        run: |
-          python3 - <<'PY'
-          import json, os, subprocess, urllib.request
-          from datetime import datetime, timezone
-          url = os.environ["PROVIDER_XMLTV_URL"].strip().replace("xmltv.php", "player_api.php")
-          try:
-              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-              info = json.load(urllib.request.urlopen(req, timeout=60))
-              u = info.get("user_info", {})
-              keep = {k: u.get(k) for k in ("auth", "status", "exp_date", "is_trial", "active_cons", "max_connections", "created_at")}
-          except Exception as e:
-              keep = {"error": type(e).__name__}
-          keep["checked_utc"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
-          enc = subprocess.run(["openssl", "enc", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-salt",
-                                "-pass", "env:PROVIDER_XMLTV_URL"], input=json.dumps(keep).encode(),
-                               capture_output=True, check=True).stdout
-          open("status.enc", "wb").write(enc)
-          print("Saved encrypted status")
-          PY
+        run: python3 scripts/account.py "$RUNNER_TEMP/acct"
 
-      - name: Save
+      - name: Save to the 'guide' branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add status.enc && git commit -qm "Status check" && git push
+          git fetch -q --depth 1 origin guide
+          git worktree add -q g FETCH_HEAD
+          cp "$RUNNER_TEMP/acct/status.enc" g/
+          cd g && git add status.enc && git commit -qm "Status check" && git push -q origin HEAD:guide
