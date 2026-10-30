@@ -46,6 +46,19 @@ jobs:
             gh issue create --title "Main service down - using backup" --assignee "$GITHUB_REPOSITORY_OWNER" \
               --body "The main service stopped logging in twice in a row, so every channel was switched to the backup service. It switches back automatically during the 4-7 AM (India) check-up once the main service works again."
 
+      - name: Check that the nightly check-up and guide are still running
+        run: |
+          git fetch -q origin guide 2>/dev/null || exit 0
+          age=$(( ( $(date +%s) - $(git log -1 --format=%ct FETCH_HEAD) ) / 3600 ))
+          title="Guide or check-up has stopped running"
+          open=$(gh issue list --state open --search "\"$title\" in:title" --json number -q '.[0].number')
+          if [ "$age" -gt 30 ]; then
+            [ -n "$open" ] || gh issue create --title "$title" --assignee "$GITHUB_REPOSITORY_OWNER" \
+              --body "The guide was last updated $age hours ago (normally at least once a day). Your TV keeps playing the last channel list. Open Actions -> 'Nightly check-up' -> Run workflow, or ask Claude to look into it."
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "Running again - closing."
+          fi
+
       - name: Remember the result
         run: |
           mkdir w && cp "$RUNNER_TEMP/watch.json" w/ && cd w
