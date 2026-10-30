@@ -53,7 +53,8 @@ def api(method, path, body=None):
 open_issues = {i["title"]: i for i in api("GET", "/issues?state=open&per_page=100") if "pull_request" not in i}
 for title in KNOWN:
     if title in alerts and title not in open_issues:
-        api("POST", "/issues", {"title": title, "body": alerts[title]})
+        owner = os.environ.get("GITHUB_REPOSITORY_OWNER")  # assigning = a push notification in the GitHub app
+        api("POST", "/issues", {"title": title, "body": alerts[title], **({"assignees": [owner]} if owner else {})})
         print("Opened alert:", title)
     elif title in alerts:
         api("PATCH", f"/issues/{open_issues[title]['number']}", {"body": alerts[title]})
