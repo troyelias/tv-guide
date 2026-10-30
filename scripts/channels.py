@@ -103,7 +103,21 @@ if MODE in ("nightly", "dry-run"):
             skipped.append(p)  # someone is watching on this service - leave it alone tonight
             return
         todo = list(cands.get(p, {}).items())
-        for cid, sids in todo:
+
+        def someone_watching():
+            for _ in range(2):  # our own test connection can linger for a moment, so look twice
+                time.sleep(30)
+                try:
+                    if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) in ("0", ""):
+                        return False
+                except Exception:
+                    return False
+            return True
+
+        for i, (cid, sids) in enumerate(todo):
+            if i and i % 50 == 0 and someone_watching():
+                skipped.append(p + " (stopped part-way: someone started watching)")
+                return
             results[p][cid] = None
             for sid in sids[:2]:
                 if plays(prov, sid):
