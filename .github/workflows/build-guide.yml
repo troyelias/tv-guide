@@ -1,0 +1,104 @@
+name: Build guide
+
+on:
+  schedule:
+    - cron: "17 3 * * *"    # about 11 PM New York time
+    - cron: "17 15 * * *"   # about 11 AM New York time
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-guide
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out my-epg
+        uses: actions/checkout@v5
+
+      - name: Check out the iptv-org grabber
+        uses: actions/checkout@v5
+        with:
+          repository: iptv-org/epg
+          path: grabber
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install grabber
+        working-directory: grabber
+        run: npm install --no-audit --no-fund
+
+      - name: 1a. Grab main sources (Tata Play, Airtel, Zee5, Dish TV) - slow on purpose, Tata Play allows ~30 requests a minute
+        working-directory: grabber
+        continue-on-error: true
+        run: >
+          npm run grab ---
+          --channels="$GITHUB_WORKSPACE/main.channels.xml"
+          --output="$RUNNER_TEMP/main.xml"
+          --days=2 --maxConnections=1 --delay=2200 --timeout=30000
+          2>&1 | tee "$RUNNER_TEMP/grab-main.log"
+
+      - name: 1b. Grab backup sources
+        working-directory: grabber
+        continue-on-error: true
+        run: >
+          npm run grab ---
+          --channels="$GITHUB_WORKSPACE/backup.channels.xml"
+          --output="$RUNNER_TEMP/backup.xml"
+          --days=2 --maxConnections=2 --delay=400 --timeout=30000
+          2>&1 | tee "$RUNNER_TEMP/grab-backup.log"
+
+      - name: 2. Download extra fallback guides (mitthu786, provider)
+        env:
+          PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
+        run: |
+          cd "$RUNNER_TEMP"
+          curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "Tata Play guide failed"
+          curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "Combined guide failed"
+          if [ -n "$PROVIDER_XMLTV_URL" ]; then
+            curl -fsSL --retry 3 --max-time 600 -A "Mozilla/5.0" -o provider.xml "$PROVIDER_XMLTV_URL" || echo "Provider guide failed"
+          fi
+          ls -la
+
+      - name: 2b. Check provider lineup (saved encrypted)
+        env:
+          PROVIDER_XMLTV_URL: ${{ secrets.PRO }}
+        run: python3 scripts/provider_lineup.py "$RUNNER_TEMP/lineup.enc" "$RUNNER_TEMP/lineup-note.md"
+
+      - name: 3. Merge into one guide
+        run: |
+          T="$RUNNER_TEMP"
+          python3 scripts/merge.py channel-ids.txt "$T/guide.xml.gz" REPORT.md \
+            "Main=$T/main.xml" \
+            "Backup=$T/backup.xml" \
+            "mitthu786 Tata Play=$T/tataplay.xml.gz" \
+            "mitthu786 Combined=$T/combined.xml.gz" \
+            "Provider=$T/provider.xml"
+          cat "$T/lineup-note.md" >> REPORT.md 2>/dev/null || true
+
+      - name: 4. Publish guide to the 'guide' branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir out && cp "$RUNNER_TEMP/guide.xml.gz" REPORT.md out/ && mkdir out/logs && cp "$RUNNER_TEMP"/grab-*.log out/logs/ 2>/dev/null; cp "$RUNNER_TEMP/lineup.enc" out/ 2>/dev/null || true
+          cd out
+          git init -q -b guide
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Guide $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" guide
+
+      - name: 5. Save report on main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add REPORT.md
+          git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push

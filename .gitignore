@@ -1,0 +1,6 @@
+new-guide.xml
+grabber/
+out/
+*.m3u
+guide.xml
+guide.xml.gz
