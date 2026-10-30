@@ -1,0 +1,30 @@
+name: Fetch backup lineup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Read the backup provider's channel list (saved encrypted)
+        env:
+          SRC_URL: ${{ secrets.PRO_2 }}
+          KEY: ${{ secrets.PRO }}
+        run: python3 scripts/fetch_lineup.py "$RUNNER_TEMP/backup-lineup.enc"
+
+      - name: Save to the 'checks' branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir out && cp "$RUNNER_TEMP/backup-lineup.enc" out/ && cd out
+          git init -q -b checks
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Lineup $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" checks
