@@ -1,0 +1,32 @@
+name: Channel health check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Test-play each channel (one at a time)
+        env:
+          CHECK_URL: ${{ secrets.PRO_2 }}
+        run: python3 scripts/health_check.py checks/candidates.txt "$RUNNER_TEMP/health.json"
+
+      - name: Save results to the 'checks' branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [ -f "$RUNNER_TEMP/health.json" ] || exit 0
+          mkdir out && cp "$RUNNER_TEMP/health.json" out/ && cd out
+          git init -q -b checks
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Health check $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" checks
