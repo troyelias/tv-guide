@@ -91,7 +91,7 @@ for i, sid in enumerate(cands, 1):
     if i == 25 and not any(r["ok"] for r in results.values()):
         summary["stopped_early"] = "first 25 all failed - server may be blocking this checker"
         break
-    time.sleep(3)
+    time.sleep(float(os.environ.get("PAUSE", "3")))
 
 summary.update(checked=len(results), working=sum(r["ok"] for r in results.values()))
 json.dump({"summary": summary, "results": results}, open(out, "w"), indent=0)

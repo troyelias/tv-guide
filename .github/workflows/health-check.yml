@@ -16,6 +16,7 @@ jobs:
       - name: Test-play each channel (one at a time)
         env:
           CHECK_URL: ${{ secrets.PRO_2 }}
+          PAUSE: "2"
         run: python3 scripts/health_check.py checks/candidates.txt "$RUNNER_TEMP/health.json"
 
       - name: Save results to the 'checks' branch
