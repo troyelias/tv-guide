@@ -13,7 +13,9 @@ A personal TV setup that looks after itself: one programme guide, one channel li
   1. test-plays each channel for a few seconds on both services (skips a service if someone is watching),
   2. switches a channel to the backup service if it fails twice on the main one, and back after it works two nights running,
   3. rebuilds the playlist (plus a "Backup" folder of must-have channels from the backup service) and replaces it in Dropbox if anything changed,
-  4. rebuilds the guide, status page and alerts. Nothing is tested or changed after 6:30 AM India time.
+  4. marks any channel that plays on neither service with "⚠" in the channel list, and shows
+     "⚠ Not available right now" in its guide until the next check-up,
+  5. rebuilds the guide, status page and alerts. Nothing is tested or changed after 6:30 AM India time.
 - **Midday guide refresh** (`midday-guide.yml`, about 1 PM India time): listings only; no contact with either service.
 - **Outage watch** (`outage-watch.yml`, hourly): checks the main service still logs in (no channel is played).
   Two failures in a row switch every channel to the backup service at once.
