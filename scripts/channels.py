@@ -60,6 +60,13 @@ if os.path.exists(STATE_FILE) and os.environ.get("DBX_SECRET"):
     except Exception:
         summary["state_note"] = "previous state unreadable - starting fresh"
 
+if MODE == "nightly" and os.environ.get("BACKUP_SLOT") == "1" and state.get("last_checkup_utc"):
+    since = (NOW - datetime.strptime(state["last_checkup_utc"], "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)).total_seconds()
+    if since < 5 * 3600:
+        summary["note"] = "backup start time: tonight's check-up already ran - nothing to do"
+        open(os.path.join(OUT, "skip"), "w").write("1")
+        finish()
+
 provs = {"main": Provider("main", os.environ.get("PRO")), "backup": Provider("backup", os.environ.get("PRO_2"))}
 info, lineup, cands, epg = {}, {}, {}, {}
 for p, prov in provs.items():

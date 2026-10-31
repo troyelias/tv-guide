@@ -4,7 +4,8 @@ name: Nightly check-up
 # updates the playlist in Dropbox, rebuilds the guide, status page and alerts.
 on:
   schedule:
-    - cron: "35 22 * * *"
+    - cron: "35 22 * * *"   # 4:05 AM India time
+    - cron: "20 23 * * *"   # 4:50 AM India time - backup start, only acts if the first was skipped
   workflow_dispatch:
     inputs:
       mode:
@@ -34,11 +35,17 @@ jobs:
       DBX_SECRET: ${{ secrets.DBX_SECRET }}
       DBX_PATH: ${{ secrets.DBX_PATH }}
       MODE: ${{ inputs.mode || 'nightly' }}
+      BACKUP_SLOT: ${{ github.event.schedule == '20 23 * * *' && '1' || '0' }}
+    outputs:
+      skip: ${{ steps.run.outputs.skip }}
     steps:
       - uses: actions/checkout@v5
 
       - name: Test channels, switch broken ones, update playlist
-        run: python3 scripts/channels.py "$MODE" "$RUNNER_TEMP/ch"
+        id: run
+        run: |
+          python3 scripts/channels.py "$MODE" "$RUNNER_TEMP/ch"
+          [ -f "$RUNNER_TEMP/ch/skip" ] && echo "skip=1" >> "$GITHUB_OUTPUT" || true
 
       - name: Save switch-over memory (encrypted)
         if: env.MODE == 'nightly'
@@ -55,7 +62,7 @@ jobs:
 
   guide:
     needs: channels
-    if: always()
+    if: always() && needs.channels.outputs.skip != '1'
     runs-on: ubuntu-latest
     timeout-minutes: 100
     environment:
