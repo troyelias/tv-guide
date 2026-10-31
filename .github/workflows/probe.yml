@@ -1,0 +1,43 @@
+name: Close look at channels
+
+# Opens a few channels on both services for ~15 seconds each and reports whether real picture comes through.
+# Changes nothing on the TV. Skips a service if someone is watching on it (unless "force" is ticked).
+on:
+  workflow_dispatch:
+    inputs:
+      names:
+        description: "Channel names, comma-separated (as in the channel list)"
+        required: true
+      force:
+        description: "Look even if someone is watching (may interrupt them)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - name: Look at each channel
+        env:
+          PRO: ${{ secrets.PRO }}
+          PRO_2: ${{ secrets.PRO_2 }}
+          NAMES: ${{ inputs.names }}
+          FORCE: ${{ inputs.force && '1' || '0' }}
+        run: python3 scripts/probe.py "$RUNNER_TEMP/probe.txt"
+      - name: Save results to the 'probe' branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [ -f "$RUNNER_TEMP/probe.txt" ] || exit 0
+          mkdir out && cp "$RUNNER_TEMP/probe.txt" out/ && cd out
+          git init -q -b probe
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Probe $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" probe
