@@ -56,8 +56,13 @@ def read(path, rename=None):
     """Return {channel_id: channel element}, {channel_id: [(start, stop, programme)]} for wanted IDs."""
     chans, progs = {}, defaultdict(list)
     rename = rename or {}
+    origin = {}  # two of a source's channels can map to one guide ID - keep only the first one's shows
     try:
         for _, el in ET.iterparse(open_any(path), events=("end",)):
+            if el.tag == "programme" and rename and el.get("channel") in rename:
+                if origin.setdefault(rename[el.get("channel")], el.get("channel")) != el.get("channel"):
+                    el.clear()
+                    continue
             if rename:
                 for attr in ("id", "channel"):
                     if el.get(attr) in rename:
@@ -101,6 +106,35 @@ def reorder(p):
         p.remove(k)
     for k in sorted(kids, key=lambda k: ORDER.index(k.tag) if k.tag in ORDER else len(ORDER)):
         p.append(k)
+
+
+FILLER_MAX = timedelta(minutes=10)
+
+
+def is_short_filler(a, b, p):
+    t = (p.findtext("title") or "").strip().lower()
+    return (b - a) <= FILLER_MAX and (t.startswith("filler") or t in ("promo", "promos", "break"))
+
+
+def absorb_fillers(items):
+    """Fold short "Filler / Promo" gaps (a minute or two between shows) into the show before them,
+    so the guide shows the real programme instead. Long filler blocks are left alone."""
+    out = []
+    for a, b, p in items:
+        if is_short_filler(a, b, p):
+            if out and out[-1][1] >= a and not is_short_filler(*out[-1]):
+                pa, _, pp = out[-1]
+                pp.set("stop", b.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000"))
+                out[-1] = (pa, b, pp)
+                continue
+        out.append((a, b, p))
+    # a filler at the very start (nothing before it) goes to the show after it
+    while len(out) > 1 and is_short_filler(*out[0]) and out[1][0] <= out[0][1]:
+        a, _, _ = out.pop(0)
+        na, nb, np_ = out[0]
+        np_.set("start", a.astimezone(timezone.utc).strftime("%Y%m%d%H%M%S +0000"))
+        out[0] = (a, nb, np_)
+    return out
 
 
 def overlap(a1, b1, a2, b2):
@@ -180,6 +214,7 @@ for cid in wanted:
 
     items = [t for t in items if t[1] >= NOW - KEEP_PAST]
     items.sort(key=lambda t: t[0])
+    items = absorb_fillers(items)
     if not items:
         continue
 

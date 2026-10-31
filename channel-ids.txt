@@ -280,7 +280,6 @@ ts103
 ts174
 HBO.us
 HBO2.us
-TLCWorldHD
 ts706
 SansadTV
 ts414
