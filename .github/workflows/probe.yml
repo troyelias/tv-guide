@@ -22,6 +22,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      - name: Install picture tools
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
       - name: Look at each channel
         env:
           PRO: ${{ secrets.PRO }}
@@ -48,7 +50,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           [ -f "$RUNNER_TEMP/probe.txt" ] || exit 0
-          mkdir out && cp "$RUNNER_TEMP/probe.txt" out/ && cp "$RUNNER_TEMP"/shots.enc "$RUNNER_TEMP"/key.enc out/ 2>/dev/null; cd out
+          mkdir out && cp "$RUNNER_TEMP/probe.txt" out/ && { cp "$RUNNER_TEMP"/shots.enc "$RUNNER_TEMP"/key.enc out/ 2>/dev/null || true; } && cd out
           git init -q -b probe
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
