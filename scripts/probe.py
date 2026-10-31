@@ -5,7 +5,7 @@ For each channel it opens the stream for ~15 seconds (one at a time) and reports
 arrived, which kinds of video/audio are inside, how much of it is picture, and whether a full picture frame
 (a "key frame") arrived. Prints no logins, servers or stream numbers.
 """
-import json, os, sys, time, urllib.error, urllib.parse, urllib.request
+import hashlib, json, os, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
 sys.path.insert(0, os.path.dirname(__file__))
 from streamtest import Provider, UA
 from catalog_lib import match_lineup
@@ -14,7 +14,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 catalog = json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8"))
 wanted = [n.strip().lower() for n in os.environ.get("NAMES", "").split(",") if n.strip()]
 FORCE = os.environ.get("FORCE") == "1"
-SECS, LIMIT = 15, 6_000_000
+SECS, LIMIT = 15, 12_000_000
+SHOTS = os.environ.get("SHOTS_DIR")  # if set, save a few small pictures per channel here
+seen = {}  # picture fingerprint -> first channel that showed it
 KIND = {0x1b: "H.264 video", 0x24: "HEVC video", 0x02: "MPEG-2 video", 0x01: "MPEG-1 video", 0x10: "MPEG-4 video",
         0x0f: "AAC audio", 0x11: "AAC audio", 0x03: "MP2 audio", 0x04: "MP2 audio", 0x81: "AC-3 audio",
         0x87: "E-AC-3 audio", 0x06: "private data"}
@@ -102,12 +104,47 @@ def analyse(b, secs):
     return f"{verdict} | " + "; ".join(parts)
 
 
+def look(data, name):
+    """Decode a few frames with ffmpeg: brightness, how much changes between frames, sound level,
+    and a fingerprint so identical pictures on different channels can be spotted."""
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", "fps=2,scale=32:18", "-frames:v", "6",
+                              "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True, timeout=60).stdout
+        frames = [raw[i:i + 576] for i in range(0, len(raw) - 575, 576)]
+        aud = subprocess.run(["ffmpeg", "-v", "info", "-i", path, "-vn", "-af", "volumedetect", "-f", "null", "-"],
+                             capture_output=True, timeout=60, text=True).stderr
+        vol = next((l.split("mean_volume:")[1].strip() for l in aud.splitlines() if "mean_volume:" in l), "?")
+        if SHOTS:
+            safe = "".join(ch for ch in name if ch.isalnum())[:40]
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-vf", "fps=1,scale=480:-2", "-frames:v", "3",
+                            os.path.join(SHOTS, safe + "_%d.jpg")], timeout=60)
+        if not frames:
+            return f"no picture could be decoded; sound {vol}"
+        f0 = frames[0]
+        mean = sum(f0) / 576
+        spread = (sum((v - mean) ** 2 for v in f0) / 576) ** 0.5
+        motion = max((sum(abs(a - b) for a, b in zip(x, y)) / 576 for x, y in zip(frames, frames[1:])), default=0)
+        fp = hashlib.md5(bytes(v // 32 for v in f0)).hexdigest()[:8]
+        same = seen.setdefault(fp, name)
+        desc = "blank" if spread < 4 else ("still picture" if motion < 1 else "moving picture")
+        return (f"{len(frames)} frames: {desc} (brightness {mean:.0f}/255, detail {spread:.0f}, change {motion:.1f}); "
+                f"sound {vol}" + (f"; SAME PICTURE AS {same}" if same != name else ""))
+    except Exception as e:
+        return f"couldn't decode ({type(e).__name__})"
+    finally:
+        os.unlink(path)
+
+
 def probe(prov, sid, name):
     st, ctype, data, secs, moved, final = grab(prov.stream_url(sid))
     head = f"  {name}: .ts -> HTTP {st}, {len(data) // 1024} KB in {secs:.0f}s ({len(data) * 8 / max(secs, 1) / 1000:.0f} kbit/s), type {ctype or '-'}{', redirected' if moved else ''}"
     say(head)
     if data:
         say("     " + analyse(data, secs))
+        say("     " + look(data, name))
     if not data or st != 200:
         st, ctype, pl, secs, moved, final = grab(prov.stream_url(sid, ".m3u8"))
         text = pl.decode("utf-8", "ignore")
@@ -120,6 +157,8 @@ def probe(prov, sid, name):
             if seg:
                 st, ctype, d2, s2, _, _ = grab(urllib.parse.urljoin(final, seg))
                 say(f"     first piece -> HTTP {st}, {len(d2) // 1024} KB | " + (analyse(d2, max(s2, 6)) if d2 else "empty"))
+                if d2:
+                    say("     " + look(d2, name))
 
 
 for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
@@ -147,7 +186,7 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
         if not sids:
             say(f"  {c['name']}: not on this service")
             continue
-        probe(prov, sids[0], c["name"])
+        probe(prov, sids[0], f"{c['name']} ({label.split()[0].lower()})")
         time.sleep(3)
     say()
 

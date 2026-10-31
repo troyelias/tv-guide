@@ -28,14 +28,27 @@ jobs:
           PRO_2: ${{ secrets.PRO_2 }}
           NAMES: ${{ inputs.names }}
           FORCE: ${{ inputs.force && '1' || '0' }}
-        run: python3 scripts/probe.py "$RUNNER_TEMP/probe.txt"
+          SHOTS_DIR: ${{ runner.temp }}/shots
+        run: |
+          mkdir -p "$SHOTS_DIR"
+          python3 scripts/probe.py "$RUNNER_TEMP/probe.txt"
+      - name: Lock the sample pictures (only the owner's key can open them)
+        if: always()
+        run: |
+          cd "$RUNNER_TEMP"
+          [ -d shots ] && [ -n "$(ls shots)" ] || exit 0
+          tar czf shots.tgz shots
+          openssl rand -hex 32 > k
+          openssl enc -aes-256-cbc -pbkdf2 -salt -pass file:k -in shots.tgz -out shots.enc
+          openssl pkeyutl -encrypt -pubin -inkey "$GITHUB_WORKSPACE/checks/probe.pub" -in k -out key.enc
+          rm k shots.tgz
       - name: Save results to the 'probe' branch
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           [ -f "$RUNNER_TEMP/probe.txt" ] || exit 0
-          mkdir out && cp "$RUNNER_TEMP/probe.txt" out/ && cd out
+          mkdir out && cp "$RUNNER_TEMP/probe.txt" out/ && cp "$RUNNER_TEMP"/shots.enc "$RUNNER_TEMP"/key.enc out/ 2>/dev/null; cd out
           git init -q -b probe
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
