@@ -280,7 +280,8 @@ for ch in sorted(catalog, key=lambda c: order.get(c["folder"], 99)):
         counts[p] += 1
 spare = 0
 for ch in catalog:
-    if ch.get("must") and cands.get("backup", {}).get(ch["id"]):
+    if ch.get("must") and cands.get("backup", {}).get(ch["id"]) \
+            and results.get("backup", {}).get(ch["id"], "untested") is not None:  # leave out spares that don't play
         sid = chs.get(ch["id"], {}).get("backup_sid")
         sid = sid if sid in lineup["backup"] else cands["backup"][ch["id"]][0]
         lines.append(entry(ch, BACKUP_FOLDER, "backup", sid))

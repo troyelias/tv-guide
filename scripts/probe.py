@@ -7,7 +7,7 @@ arrived, which kinds of video/audio are inside, how much of it is picture, and w
 """
 import hashlib, json, os, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
 sys.path.insert(0, os.path.dirname(__file__))
-from streamtest import Provider, UA
+from streamtest import Provider, UA, is_filler, _is_video
 from catalog_lib import match_lineup
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -145,6 +145,7 @@ def probe(prov, sid, name):
     if data:
         say("     " + analyse(data, secs))
         say("     " + look(data, name))
+        say("     nightly test says: " + ("PLAYS" if _is_video(data) and not is_filler(data[:188 * 4000]) else "DOES NOT PLAY"))
     if not data or st != 200:
         st, ctype, pl, secs, moved, final = grab(prov.stream_url(sid, ".m3u8"))
         text = pl.decode("utf-8", "ignore")

@@ -49,6 +49,10 @@ jobs:
         with:
           ref: main   # latest saved memory, even if this run waited in the queue
 
+      - name: Install picture checker (spots "dead channel" black filler)
+        continue-on-error: true
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+
       - name: Test channels, switch broken ones, update playlist
         id: run
         run: |
