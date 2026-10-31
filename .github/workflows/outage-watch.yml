@@ -1,7 +1,8 @@
 name: Outage watch
 
 # Every hour: checks that the main service still logs in (no channel is played).
-# If it fails twice in a row, every channel is switched to the backup service right away.
+# If it fails on two checks at least 40 minutes apart, every channel is switched to the backup service.
+# An outside task may also start this check each hour (at :17), so it keeps working when GitHub's timer is late.
 on:
   schedule:
     - cron: "47 * * * *"

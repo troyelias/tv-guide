@@ -1,6 +1,6 @@
 """Hourly login check of the main service (uses no viewing connection).
 Usage: outage_watch.py WATCH.json  -> prints 'switch' when everything should move to the backup service now."""
-import json, os, sys
+import json, os, sys, time
 sys.path.insert(0, os.path.dirname(__file__))
 from streamtest import Provider  # noqa: E402
 
@@ -15,7 +15,15 @@ try:
     ok = u.get("auth") == 1 and str(u.get("status", "")).lower() == "active"
 except Exception:
     pass
-w["fails"] = 0 if ok else w.get("fails", 0) + 1
+# Two starters can run this check (GitHub's hourly timer and an outside task), sometimes minutes apart.
+# A failure only counts if the last counted failure was at least 40 minutes ago, so a short blip
+# can never switch everything - the main service has to be down for 40+ minutes.
+now = time.time()
+if ok:
+    w["fails"] = 0
+elif now - w.get("last_fail", 0) >= 40 * 60:
+    w["fails"] = w.get("fails", 0) + 1
+    w["last_fail"] = now
 if ok:
     w["switched"] = False  # the 4-7 AM check-up switches channels back
 action = "switch" if (w["fails"] >= 2 and not w.get("switched")) else "none"
