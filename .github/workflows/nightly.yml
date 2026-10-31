@@ -6,6 +6,8 @@ on:
   schedule:
     - cron: "35 22 * * *"   # 4:05 AM India time
     - cron: "20 23 * * *"   # 4:50 AM India time - backup start, only acts if the first was skipped
+  # An outside daily task also presses "Run workflow" at 4:06 AM. Whichever start comes first does the
+  # check-up; every later start sees it already ran and stops.
   workflow_dispatch:
     inputs:
       mode:
@@ -13,6 +15,10 @@ on:
         type: choice
         default: preview
         options: [preview, nightly]
+      force:
+        description: "Run the full check-up even if tonight's already ran (normally leave unticked)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,11 +41,13 @@ jobs:
       DBX_SECRET: ${{ secrets.DBX_SECRET }}
       DBX_PATH: ${{ secrets.DBX_PATH }}
       MODE: ${{ inputs.mode || 'nightly' }}
-      BACKUP_SLOT: ${{ github.event_name == 'schedule' && '1' || '0' }}
+      BACKUP_SLOT: ${{ inputs.force != true && '1' || '0' }}   # any start skips if tonight's check-up already ran, unless forced
     outputs:
       skip: ${{ steps.run.outputs.skip }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main   # latest saved memory, even if this run waited in the queue
 
       - name: Test channels, switch broken ones, update playlist
         id: run
@@ -69,6 +77,8 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: actions/checkout@v5
         with:

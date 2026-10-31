@@ -64,7 +64,7 @@ if os.path.exists(STATE_FILE) and os.environ.get("DBX_SECRET"):
 if MODE == "nightly" and os.environ.get("BACKUP_SLOT") == "1" and state.get("last_checkup_utc"):
     since = (NOW - datetime.strptime(state["last_checkup_utc"], "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)).total_seconds()
     if since < 5 * 3600:
-        summary["note"] = "scheduled start: tonight's check-up already ran - nothing to do"
+        summary["note"] = "tonight's check-up already ran - nothing to do (tick 'force' to run again)"
         open(os.path.join(OUT, "skip"), "w").write("1")
         finish()
 
