@@ -122,7 +122,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           R="$RUNNER_TEMP"; mkdir -p "$R/site"
-          [ -f "$R/ch/channels.json" ] || curl -fsSL -o "$R/ch/channels.json" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > "$R/ch/channels.json"
+          # keep the last real check-up's results if this run has none
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); sys.exit(0 if 'channels' in d else 1)" "$R/ch/channels.json" 2>/dev/null \
+            || curl -fsSL -o "$R/ch/channels.json" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > "$R/ch/channels.json"
           python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json"
           python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json"
 

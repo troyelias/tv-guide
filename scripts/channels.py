@@ -50,6 +50,7 @@ def finish(code=0):
 in_window = (IST.hour >= 4 and (IST.hour, IST.minute) < (6, 30))
 if MODE == "nightly" and not in_window:
     summary["note"] = "outside the 4:00-6:30 AM India time window - nothing tested or changed"
+    open(os.path.join(OUT, "skip"), "w").write("1")  # a late start: leave everything as it is
     finish()
 
 catalog = json.load(open("catalog.json", encoding="utf-8"))
