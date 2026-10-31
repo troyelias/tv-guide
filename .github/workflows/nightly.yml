@@ -105,8 +105,7 @@ jobs:
           curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "fallback 1 failed"
           curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "fallback 2 failed"
           curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || echo "no previous guide"
-          [ -n "$PRO" ] && { curl -fsSL --retry 2 --max-time 900 -A "Mozilla/5.0" -o svc1.xml "$PRO" || echo "service 1 guide failed"; }
-          [ -n "$PRO_2" ] && { curl -fsSL --retry 2 --max-time 900 -A "Mozilla/5.0" -o svc2.xml "$PRO_2" || echo "service 2 guide failed"; }
+          python3 "$GITHUB_WORKSPACE/scripts/provider_guides.py" . | tee provider-guides.txt
           ls -la
 
       - uses: actions/download-artifact@v4
@@ -148,6 +147,7 @@ jobs:
           cp "$R/ch/review.enc" out/ 2>/dev/null || true
           cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
           (cd "$R" && ls -la *.xml *.gz 2>/dev/null | awk '{print $5, $9}') > out/logs/downloads.txt
+          cp "$R/provider-guides.txt" out/logs/ 2>/dev/null || true
           cd out
           git init -q -b guide
           git config user.name "github-actions[bot]"

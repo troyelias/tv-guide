@@ -43,6 +43,7 @@ skystar.in
 ZeeAnmolCinema
 EvergreenClassic
 ts139
+ts733
 ts517
 ts9
 ts96
