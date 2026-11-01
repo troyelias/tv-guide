@@ -289,7 +289,7 @@ for ch in catalog:
 text = "\n".join(lines) + "\n"
 digest = hashlib.sha256(text.encode()).hexdigest()
 summary.update(channels=counts["main"] + counts["backup"], from_main=counts["main"], from_backup=counts["backup"],
-               spare_folder=spare, on_backup=sorted(on_backup), down_on_both=sorted(down), not_on_either=sorted(gone),
+               spare_folder=spare, on_backup=sorted(set(on_backup) - set(down)), down_on_both=sorted(down), not_on_either=sorted(gone),
                outage=bool(state.get("outage")))
 # guide IDs whose every channel is down on both services -> the guide shows a note for them
 gid_all = {}
