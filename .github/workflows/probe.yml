@@ -6,8 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       names:
-        description: "Channel names, comma-separated (as in the channel list)"
-        required: true
+        description: "Channel names, comma-separated (leave empty to only check both accounts, e.g. after a renewal)"
+        required: false
+        default: ""
       force:
         description: "Look even if someone is watching (may interrupt them)"
         type: boolean

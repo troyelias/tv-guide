@@ -174,6 +174,15 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
         say(f"  login check failed ({type(e).__name__})")
         continue
     say(f"  account: {u.get('status')}, watching now: {u.get('active_cons')} of {u.get('max_connections')} allowed")
+    try:
+        exp = int(u.get("exp_date"))
+        say(f"  subscription ends: {time.strftime('%d %b %Y %H:%M UTC', time.gmtime(exp))} "
+            f"(about {(exp - time.time()) / 86400:.1f} days from now)")
+    except (TypeError, ValueError):
+        say(f"  subscription ends: {u.get('exp_date') or 'no end date given'}")
+    if not wanted:
+        say("  (account check only - no channels opened)")
+        continue
     if str(u.get("active_cons", "0")) not in ("0", "", "None") and not FORCE:
         say("  someone is watching on this service - skipped so they aren't interrupted")
         continue
