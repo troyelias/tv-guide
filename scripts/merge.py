@@ -19,13 +19,16 @@ from datetime import datetime, timedelta, timezone
 
 args = sys.argv[1:]
 previous = next((a.split("=", 1)[1] for a in args if a.startswith("--previous=")), None)
-mapfile = next((a.split("=", 1)[1] for a in args if a.startswith("--map=")), None)
+mapfiles = [a.split("=", 1)[1] for a in args if a.startswith("--map=")]
 notesfile = next((a.split("=", 1)[1] for a in args if a.startswith("--notes=")), None)
 args = [a for a in args if not a.startswith(("--previous=", "--map=", "--notes="))]
-try:
-    MAPS = json.load(open(mapfile)) if mapfile else {}
-except Exception:
-    MAPS = {}
+MAPS = {}
+for mf in mapfiles:  # several map files can be given; their sections are combined
+    try:
+        for sec, m in json.load(open(mf)).items():
+            MAPS.setdefault(sec, {}).update(m)
+    except Exception:
+        pass
 ids_file, out_file, report_file, stats_file, *sources = args
 
 wanted = [l.strip() for l in open(ids_file, encoding="utf-8") if l.strip() and not l.startswith("#")]

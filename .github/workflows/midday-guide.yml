@@ -47,16 +47,19 @@ jobs:
           curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || true
           curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || true
           curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || true
+          for r in IN4 UK1 PK1 AU1; do curl -fsSL --retry 2 --max-time 300 -o "es_$r.xml.gz" "https://epgshare01.online/epgshare01/epg_ripper_$r.xml.gz" || echo "shared guide $r failed"; done
           mkdir -p ch && curl -fsSL -o ch/channels.json "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > ch/channels.json
 
       - name: Merge (the current guide fills anything the free sources lack)
         run: |
           R="$RUNNER_TEMP"
           python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
-            --previous="$R/previous.xml.gz" --notes="$R/ch/channels.json" \
+            --previous="$R/previous.xml.gz" --map=extra-guides.json --notes="$R/ch/channels.json" \
             "Main=$R/main.xml" "Backup=$R/backup.xml" \
             "mitthu786 Tata Play=$R/tataplay.xml.gz" "mitthu786 Combined=$R/combined.xml.gz" \
-            "Current guide=$R/previous.xml.gz"
+            "Current guide=$R/previous.xml.gz" \
+            "Shared India=$R/es_IN4.xml.gz#epgshare" "Shared UK=$R/es_UK1.xml.gz#epgshare" \
+            "Shared Pakistan=$R/es_PK1.xml.gz#epgshare" "Shared Australia=$R/es_AU1.xml.gz#epgshare"
           mkdir -p "$R/site"
           python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json"
 

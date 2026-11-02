@@ -112,6 +112,7 @@ jobs:
           curl -fsSL --retry 3 -o tataplay.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz || echo "fallback 1 failed"
           curl -fsSL --retry 3 -o combined.xml.gz https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz || echo "fallback 2 failed"
           curl -fsSL --retry 3 -o previous.xml.gz "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/guide.xml.gz" || echo "no previous guide"
+          for r in IN4 UK1 PK1 AU1; do curl -fsSL --retry 2 --max-time 300 -o "es_$r.xml.gz" "https://epgshare01.online/epgshare01/epg_ripper_$r.xml.gz" || echo "shared guide $r failed"; done
           python3 "$GITHUB_WORKSPACE/scripts/provider_guides.py" . | tee provider-guides.txt
           ls -la
 
@@ -125,10 +126,12 @@ jobs:
         run: |
           R="$RUNNER_TEMP"
           python3 scripts/merge.py channel-ids.txt "$R/guide.xml.gz" REPORT.md "$R/stats.json" \
-            --previous="$R/previous.xml.gz" --map="$R/ch/provmap.json" --notes="$R/ch/channels.json" \
+            --previous="$R/previous.xml.gz" --map="$R/ch/provmap.json" --map=extra-guides.json --notes="$R/ch/channels.json" \
             "Main=$R/main.xml" "Backup=$R/backup.xml" \
             "mitthu786 Tata Play=$R/tataplay.xml.gz" "mitthu786 Combined=$R/combined.xml.gz" \
-            "Service 1=$R/svc1.xml#main" "Service 2=$R/svc2.xml#backup"
+            "Service 1=$R/svc1.xml#main" "Service 2=$R/svc2.xml#backup" \
+            "Shared India=$R/es_IN4.xml.gz#epgshare" "Shared UK=$R/es_UK1.xml.gz#epgshare" \
+            "Shared Pakistan=$R/es_PK1.xml.gz#epgshare" "Shared Australia=$R/es_AU1.xml.gz#epgshare"
 
       - name: Copy any new logos into the repo
         run: python3 scripts/logos.py

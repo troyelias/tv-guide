@@ -171,8 +171,14 @@ def merge_test():
         open(os.path.join(work, "b.xml"), "w").write(b)
         open(os.path.join(work, "ids.txt"), "w").write("X1\nX2\n")
         json.dump({"down_guide_ids": ["X2"]}, open(os.path.join(work, "notes.json"), "w"))
+        open(os.path.join(work, "c.xml"), "w").write('<tv><channel id="OTHER.ID"><display-name>X3</display-name></channel>'
+                                                     + p("OTHER.ID", t(0), t(2), "Mapped Show") + "</tv>")
+        open(os.path.join(work, "ids.txt"), "a").write("X3\n")
+        json.dump({"m1": {"NOTHING": "X1"}}, open(os.path.join(work, "map1.json"), "w"))
+        json.dump({"m2": {"OTHER.ID": "X3"}}, open(os.path.join(work, "map2.json"), "w"))
         r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "merge.py"), "ids.txt", "out.xml.gz", "R.md", "s.json",
-                            "--notes=notes.json", "A=a.xml", "B=b.xml"], cwd=work, capture_output=True, text=True, timeout=120)
+                            "--notes=notes.json", "--map=map1.json", "--map=map2.json", "A=a.xml", "B=b.xml", "C=c.xml#m2"],
+                           cwd=work, capture_output=True, text=True, timeout=120)
         check(r.returncode == 0, "merge runs without errors" + ("" if r.returncode == 0 else ":\n" + r.stderr[-1500:]))
         if r.returncode:
             return
@@ -181,6 +187,7 @@ def merge_test():
         check(f'stop="{t(1, 2)}" channel="X1"><title>Show One' in x, "the show before the filler is extended over it")
         check("The Real Film" in x and ">Movie<" not in x, "a 'Movie' placeholder gets the real title from another source")
         check("⚠ Not available right now" in x, "a channel down on both services gets the guide note")
+        check('channel="X3"><title>Mapped Show' in x, "a shared guide's own channel names are mapped to ours (several map files)")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 

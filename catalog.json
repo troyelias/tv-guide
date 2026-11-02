@@ -327,7 +327,7 @@
   "id": "ishaara-tv-hindi-entertainment",
   "name": "Ishaara TV",
   "folder": "Hindi Entertainment",
-  "guide_id": "",
+  "guide_id": "IsharaTV.in",
   "logo": "",
   "catchup_days": 0,
   "regions": [
@@ -2237,7 +2237,7 @@
   "id": "flix-hd-english-movies",
   "name": "&Flix HD",
   "folder": "English Movies",
-  "guide_id": "",
+  "guide_id": "AndFlix.in",
   "logo": "https://img.logo-cdn.cc/andflix.png",
   "catchup_days": 0,
   "regions": [
@@ -2928,7 +2928,7 @@
   "id": "sports18-1-sports",
   "name": "Sports18 1",
   "folder": "Sports",
-  "guide_id": "",
+  "guide_id": "Sports181.in",
   "logo": "https://img.logo-cdn.cc/sport18.png",
   "catchup_days": 0,
   "regions": [
@@ -3108,7 +3108,7 @@
   "id": "willow-cricket-hd-sports",
   "name": "Willow Cricket HD",
   "folder": "Sports",
-  "guide_id": "",
+  "guide_id": "WillowCricket.us",
   "logo": "https://img.logo-cdn.cc/willowcricket.png",
   "catchup_days": 0,
   "regions": [
@@ -3398,7 +3398,7 @@
   "id": "hare-krishna-hd-devotional",
   "name": "Hare Krishna HD",
   "folder": "Devotional",
-  "guide_id": "",
+  "guide_id": "HareKrsna.in",
   "logo": "",
   "catchup_days": 0,
   "regions": [
@@ -3414,7 +3414,7 @@
   "id": "nazara-tv-devotional",
   "name": "Nazara TV",
   "folder": "Devotional",
-  "guide_id": "",
+  "guide_id": "Nazara.in",
   "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0032BW6T.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
@@ -3855,7 +3855,7 @@
   "id": "zee-picchar-hd-kannada",
   "name": "Zee Picchar HD",
   "folder": "Kannada",
-  "guide_id": "",
+  "guide_id": "ZeePicchar.in",
   "logo": "",
   "catchup_days": 0,
   "regions": [
@@ -4959,7 +4959,7 @@
   "id": "arise-news-sd-uk-india-uk-feeds",
   "name": "Arise News SD (UK)",
   "folder": "India UK Feeds",
-  "guide_id": "",
+  "guide_id": "AriseNews.uk",
   "logo": "https://img.logo-cdn.cc/arisenews.png",
   "catchup_days": 0,
   "regions": [
@@ -4976,7 +4976,7 @@
   "id": "sankar-tv-sd-uk-india-uk-feeds",
   "name": "Sankar TV SD (UK)",
   "folder": "India UK Feeds",
-  "guide_id": "",
+  "guide_id": "Sanskar.uk",
   "logo": "https://img.logo-cdn.cc/sankartv.png",
   "catchup_days": 0,
   "regions": [
@@ -4993,7 +4993,7 @@
   "id": "channels-24-sd-uk-india-uk-feeds",
   "name": "Channels 24 SD (UK)",
   "folder": "India UK Feeds",
-  "guide_id": "",
+  "guide_id": "Channels24.uk",
   "logo": "https://img.logo-cdn.cc/channels24.png",
   "catchup_days": 0,
   "regions": [
@@ -5010,7 +5010,7 @@
   "id": "uk-politics-punjab-sd-uk-india-uk-feeds",
   "name": "Uk| Politics Punjab SD (UK)",
   "folder": "India UK Feeds",
-  "guide_id": "",
+  "guide_id": "PoliticsPunjab.uk",
   "logo": "https://img.logo-cdn.cc/politicspunjab.png",
   "catchup_days": 0,
   "regions": [
@@ -5027,7 +5027,7 @@
   "id": "ary-digital-uk-pakistan-uk-feeds",
   "name": "ARY Digital (UK)",
   "folder": "Pakistan UK Feeds",
-  "guide_id": "",
+  "guide_id": "ARYDigital.uk",
   "logo": "https://img.logo-cdn.cc/arydigital.png",
   "catchup_days": 0,
   "regions": [
@@ -5197,7 +5197,7 @@
   "id": "new-vision-tv-uk-pakistan-uk-feeds",
   "name": "New Vision TV (UK)",
   "folder": "Pakistan UK Feeds",
-  "guide_id": "",
+  "guide_id": "NewVision.uk",
   "logo": "https://img.logo-cdn.cc/newvisiontv.png",
   "catchup_days": 0,
   "regions": [
@@ -5291,7 +5291,7 @@
   "id": "mta-muslim-uk-pakistan-uk-feeds",
   "name": "Mta Muslim (UK)",
   "folder": "Pakistan UK Feeds",
-  "guide_id": "",
+  "guide_id": "MTAMuslim.uk",
   "logo": "https://img.logo-cdn.cc/mtaworld.png",
   "catchup_days": 0,
   "regions": [
@@ -5384,7 +5384,7 @@
   "id": "ahlebait-tv-uk-pakistan-uk-feeds",
   "name": "Ahlebait TV (UK)",
   "folder": "Pakistan UK Feeds",
-  "guide_id": "",
+  "guide_id": "AhlebaitTV.uk",
   "logo": "https://img.logo-cdn.cc/ahlulbayt.png",
   "catchup_days": 0,
   "regions": [
@@ -5475,7 +5475,7 @@
   "id": "hum-news-hd-pakistan",
   "name": "HUM News HD",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "HumNews.uk",
   "logo": "https://img.logo-cdn.cc/humnews.png",
   "catchup_days": 0,
   "regions": [
@@ -5548,7 +5548,7 @@
   "id": "92-news-hd-pakistan",
   "name": "92 News HD",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "92News.uk",
   "logo": "https://img.logo-cdn.cc/92newsuk.png",
   "catchup_days": 0,
   "regions": [
@@ -5566,7 +5566,7 @@
   "id": "dunya-news-pakistan",
   "name": "Dunya News",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "dunyanews.uk",
   "logo": "https://img.logo-cdn.cc/dunyanews.png",
   "catchup_days": 0,
   "regions": [
@@ -5728,7 +5728,7 @@
   "id": "geo-news-pakistan",
   "name": "GEO News",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "GeoNews.uk",
   "logo": "https://img.logo-cdn.cc/geonews.png",
   "catchup_days": 0,
   "regions": [
@@ -5963,7 +5963,7 @@
   "id": "ptv-news-pakistan",
   "name": "PTV News",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "PTVNews.pk",
   "logo": "https://img.logo-cdn.cc/ptvnews.png",
   "catchup_days": 0,
   "regions": [
@@ -6126,7 +6126,7 @@
   "id": "neo-news-hd-pakistan",
   "name": "Neo News HD",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "NeoNews.uk",
   "logo": "https://img.logo-cdn.cc/neonews.png",
   "catchup_days": 0,
   "regions": [
@@ -6490,7 +6490,7 @@
   "id": "ptv-home-pakistan",
   "name": "PTV Home",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "PTVHome.pk",
   "logo": "https://img.logo-cdn.cc/ptvhome.png",
   "catchup_days": 0,
   "regions": [
@@ -6508,7 +6508,7 @@
   "id": "ptv-world-pakistan",
   "name": "PTV World",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "PTVWorld.pk",
   "logo": "https://img.logo-cdn.cc/ptvworld.png",
   "catchup_days": 0,
   "regions": [
@@ -6526,7 +6526,7 @@
   "id": "ptv-sports-hd-pakistan",
   "name": "PTV Sports HD",
   "folder": "Pakistan",
-  "guide_id": "",
+  "guide_id": "PTVSports.pk",
   "logo": "https://img.logo-cdn.cc/ptvsports.png",
   "catchup_days": 0,
   "regions": [

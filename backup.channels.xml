@@ -389,4 +389,22 @@
   <channel site="dishtv.in" lang="en" xmltv_id="ts181" site_id="142713">Bhojpuri Cinema</channel>
   <channel site="dishtv.in" lang="en" xmltv_id="SangeetBhojpuri" site_id="143757">Sangeet Bhojpuri</channel>
   <channel site="airtelxstream.in" lang="en" xmltv_id="GoodNewsTV" site_id="LIVETV_LIVETVCHANNEL_GOODNEWS_TV">Goodnews TV</channel>
+  <!-- Added Nov 2026 for channels that had no listings -->
+  <channel site="dishtv.in" lang="en" xmltv_id="newsstateupuk.in" site_id="143601">News State</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="HareKrsna.in" site_id="837">Hare Krishna HD</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="Nazara.in" site_id="1184">Nazara TV</channel>
+  <channel site="airtelxstream.in" lang="en" xmltv_id="SansadTV" site_id="LIVETV_LIVETVCHANNEL_SANSAD_TV">Sansad TV</channel>
+  <channel site="sky.com" lang="en" xmltv_id="AriseNews.uk" site_id="GB#5040">Arise News SD (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="Channels24.uk" site_id="GB#5520">Channels 24 SD (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="PoliticsPunjab.uk" site_id="GB#3421">Uk| Politics Punjab SD (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="ARYDigital.uk" site_id="GB#4265">ARY Digital (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="NewVision.uk" site_id="GB#1026">New Vision TV (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="AhlebaitTV.uk" site_id="GB#6765">Ahlebait TV (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="Sanskar.uk" site_id="GB#1100">Sankar TV SD (UK)</channel>
+  <channel site="sky.com" lang="en" xmltv_id="GeoNews.uk" site_id="GB#4407">GEO News</channel>
+  <channel site="sky.com" lang="en" xmltv_id="HumNews.uk" site_id="GB#1069">HUM News HD</channel>
+  <channel site="tvpassport.com" lang="en" xmltv_id="WillowCricket.us" site_id="willow-cricket-hd/6444">Willow Cricket HD</channel>
+  <channel site="tvpassport.com" lang="en" xmltv_id="HBO2.us" site_id="hbo-2--eastern-feed-hd/6313">HBO 2</channel>
+  <channel site="content.astro.com.my" lang="en" xmltv_id="AstroCricketHD" site_id="197">Astro Cricket HD</channel>
+  <channel site="tvpassport.com" lang="en" xmltv_id="ATNSports" site_id="atn--sports/14213">ATN Sports</channel>
 </channels>
