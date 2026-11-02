@@ -228,6 +228,12 @@ if MODE in ("nightly", "dry-run"):
     summary["working"] = {p: sum(1 for v in r.values() if v) for p, r in results.items()}
 
 # ---------- decide ----------
+def need_streak(st):
+    """Good mornings in a row on the main service before switching back. A channel that failed there more than
+    once in the last 7 mornings is flaky, so it has to prove itself for longer."""
+    return 2 if st.get("main_hist", []).count(0) <= 1 else 4
+
+
 chs = state["channels"]
 on_backup, down, gone, down_ids = [], [], [], []
 for ch in catalog:
@@ -239,6 +245,7 @@ for ch in catalog:
             if p in skipped or cid not in results[p]:
                 continue
             st[p + "_ok"] = results[p][cid] is not None
+            st[p + "_hist"] = (st.get(p + "_hist", []) + [1 if results[p][cid] else 0])[-7:]  # last 7 mornings
             if results[p][cid]:
                 st[p + "_sid"] = results[p][cid]
         if "main" not in skipped and cid in results["main"]:
@@ -250,7 +257,7 @@ for ch in catalog:
             st["use"] = "main"
         elif st["use"] == "main" and m_ok is False and b_ok:
             st["use"] = "backup"
-        elif st["use"] == "backup" and ((m_ok and st["main_streak"] >= 2) or (b_ok is False and m_ok)):
+        elif st["use"] == "backup" and ((m_ok and st["main_streak"] >= need_streak(st)) or (b_ok is False and m_ok)):
             st["use"] = "main"
         if (has["main"] and m_ok is False or not has["main"]) and (has["backup"] and b_ok is False or not has["backup"]) \
                 and (has["main"] or has["backup"]):
@@ -266,6 +273,62 @@ for ch in catalog:
 
 if MODE in ("nightly", "dry-run"):
     state["down_ids"] = down_ids  # remembered so outage/restore uploads keep the same marks
+
+if MODE == "nightly":
+    hist = state.setdefault("history", [])
+    prev = hist[-7:]
+    today = {"date": IST.strftime("%Y-%m-%d"), "start_ist": IST.strftime("%H:%M"),
+             "tested": summary.get("tested", {}), "working": summary.get("working", {}),
+             "down": sorted(down), "switched": sorted(set(on_backup) - set(down)),
+             "skipped": [x.split()[0] for x in skipped]}
+    # a sudden drop in working channels on one service (not a full outage - that's handled hourly)
+    drops = {}
+    for p in ("main", "backup"):
+        now_w = today["working"].get(p)
+        past = [h["working"][p] for h in prev if p in h.get("working", {}) and p not in h.get("skipped", [])]
+        if p in today["skipped"] or now_w is None or not past:
+            continue
+        avg, last = sum(past) / len(past), past[-1]
+        limit = max(15, 0.05 * avg)
+        if last - now_w >= limit or avg - now_w >= limit:
+            drops[p] = {"now": now_w, "before": last, "week_avg": round(avg)}
+    summary["drops"] = drops
+    if (IST.hour, IST.minute) > (4, 30):
+        summary["late_start_ist"] = IST.strftime("%H:%M")
+    hist.append(today)
+    state["history"] = hist[-35:]
+
+    # ---- weekly report card (sent on Monday mornings, shown on the status page every day) ----
+    week = state["history"][-7:]
+    def pct(p, h):
+        t = h.get("tested", {}).get(p)
+        return 100 * h["working"][p] / t if t and p in h.get("working", {}) and p not in h.get("skipped", []) else None
+    rel = {}
+    for p in ("main", "backup"):
+        vals = [v for v in (pct(p, h) for h in week) if v is not None]
+        if vals:
+            rel[p] = {"avg_pct": round(sum(vals) / len(vals), 1), "worst_pct": round(min(vals), 1),
+                      "mornings": len(vals)}
+    flaky = []
+    for c in catalog:
+        stc = chs.get(c["id"], {})
+        h = stc.get("main_hist" if stc.get("use", "main") == "main" or not stc.get("backup_hist") else "backup_hist", [])
+        fails = h.count(0)
+        if 2 <= fails < len(h):  # sometimes works, sometimes doesn't
+            flaky.append((-fails, c["name"], f"{fails} of {len(h)}"))
+    first_down = set(week[0]["down"]) if week else set()
+    always_down = set.intersection(*[set(h["down"]) for h in week]) if week else set()
+    summary["week"] = {
+        "from": week[0]["date"] if week else None, "to": today["date"], "mornings": len(week),
+        "late_starts": [h["date"] + " " + h["start_ist"] for h in week if h.get("start_ist", "00:00") > "04:30"],
+        "reliability": rel,
+        "flaky": [f"{n} (failed {x} mornings)" for _, n, x in sorted(flaky)[:8]],
+        "newly_down": sorted(set(down) - first_down),
+        "back_again": sorted(first_down - set(down)),
+        "down_all_week": sorted(always_down) if len(week) >= 7 else [],
+        "switched_now": today["switched"],
+    }
+    summary["weekly_due"] = IST.weekday() == 0  # Monday, India time
 else:
     down_ids = [i for i in state.get("down_ids", []) if any(c["id"] == i for c in catalog)]
     down = [c["name"] for c in catalog if c["id"] in down_ids]
@@ -326,13 +389,18 @@ for ch in sorted(catalog, key=lambda c: order.get(c["folder"], 99)):
         lines.append(entry(ch, ch["folder"], p, sid))
         counts[p] += 1
 spare = 0
-for ch in catalog:
-    if ch.get("must") and cands.get("backup", {}).get(ch["id"]) \
-            and results.get("backup", {}).get(ch["id"], "untested") is not None:  # leave out spares that don't play
-        sid = chs.get(ch["id"], {}).get("backup_sid")
-        sid = sid if sid in lineup["backup"] else cands["backup"][ch["id"]][0]
-        lines.append(entry(ch, BACKUP_FOLDER, "backup", sid))
-        spare += 1
+for ch in catalog:  # Backup folder: each favourite again, from whichever service its main copy ISN'T using
+    if not ch.get("must"):
+        continue
+    st = chs.get(ch["id"], {})
+    used, _ = pick(ch["id"], st.get("use", "main"))
+    other = "main" if used == "backup" else "backup"
+    if not cands.get(other, {}).get(ch["id"]) or st.get(other + "_ok") is False or (outage and other == "main"):
+        continue  # the other service doesn't have it, or it didn't play there at the last check-up
+    sid = st.get(other + "_sid")
+    sid = sid if sid in lineup.get(other, {}) else cands[other][ch["id"]][0]
+    lines.append(entry(ch, BACKUP_FOLDER, other, sid))
+    spare += 1
 not_working = []
 for ch in sorted(long_dead, key=lambda c: order.get(c["folder"], 99)):
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))

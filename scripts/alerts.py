@@ -55,9 +55,20 @@ if ch.get("missed_hours"):
 if ch.get("hold"):
     alerts["Playlist updates paused (undo used)"] = ("The previous playlist was restored and automatic updates are paused. "
                                                     "Run 'Playlist undo' with 'resume' when you want them back on.")
+if ch.get("late_start_ist"):
+    alerts["Check-up started late"] = (f"This morning's check-up started at {ch['late_start_ist']} India time instead of about 4:06. "
+                                       "It still ran, but a scheduled start may have moved (for example after a clock change). "
+                                       "Ask Claude to check the starter task.")
+svc = {"main": "main", "backup": "backup"}
+dr = ch.get("drops") or {}
+if dr:
+    alerts["A service lost channels overnight"] = ("Fewer channels played than usual this morning: " + "; ".join(
+        f"{svc[p]} service {d['now']} working (yesterday {d['before']}, this week's average {d['week_avg']})"
+        for p, d in dr.items()) + ". It may be a temporary problem at the service; the next check-ups will show whether it lasts.")
 KNOWN = ["Channels no longer found on a service", "A check-up was missed", "Playlist updates paused (undo used)",
          "Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
-         "Guide coverage dropped", "Playlist upload failing", "Must-have channel down"]
+         "Guide coverage dropped", "Playlist upload failing", "Must-have channel down",
+         "Check-up started late", "A service lost channels overnight"]
 
 repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")
 if not (repo and token):
@@ -87,3 +98,35 @@ for title in KNOWN:
         api("PATCH", f"/issues/{open_issues[title]['number']}", {"state": "closed"})
         print("Closed alert:", title)
 print("Active alerts:", list(alerts) or "none")
+
+
+# ---- weekly report card: a new issue every Monday morning (India time); last week's is closed ----
+def weekly_text(w, ch):
+    days = lambda d: f"{max(d, 0):.0f} days" if isinstance(d, (int, float)) else "unknown"  # noqa: E731
+    out = [f"**Week {w.get('from')} to {w.get('to')}** ({w.get('mornings')} check-ups)", ""]
+    for p, label in (("main", "Main service"), ("backup", "Backup service")):
+        r = (w.get("reliability") or {}).get(p)
+        if r:
+            out.append(f"- **{label}:** played {r['avg_pct']}% of its channels on average (worst morning {r['worst_pct']}%)")
+    out += [f"- **Main subscription:** {days(ch.get('main_days_left'))} left",
+            f"- **Backup subscription:** {days(ch.get('backup_days_left'))} left", ""]
+    for key_, label in (("flaky", "Flakiest channels (sometimes work, sometimes don't)"),
+                        ("newly_down", "Stopped working this week"), ("back_again", "Working again this week"),
+                        ("down_all_week", "Down on both services all week"), ("switched_now", "Currently playing from the backup service"),
+                        ("late_starts", "Check-ups that started late")):
+        v = w.get(key_) or []
+        if v:
+            out.append(f"**{label}:** " + ", ".join(v))
+    return "\n".join(out)
+
+
+w = ch.get("week")
+if ch.get("weekly_due") and w:
+    title = f"Weekly report card ({w.get('to')})"
+    recent = api("GET", "/issues?state=all&per_page=50&sort=created&direction=desc")
+    if not any(i["title"] == title for i in recent):
+        for i in recent:
+            if i["title"].startswith("Weekly report card") and i["state"] == "open":
+                api("PATCH", f"/issues/{i['number']}", {"state": "closed"})
+        api("POST", "/issues", {"title": title, "body": weekly_text(w, ch), **({"assignees": [owner]} if owner else {})})
+        print("Opened", title)

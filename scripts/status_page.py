@@ -47,6 +47,17 @@ if ch:
     st2 = ch.get("second_try")
     if st2:
         rows.append(("Second try", f"{st2.get('recovered', 0)} of {st2.get('tried', 0)} came back at {st2.get('at_ist', '?')} India time"))
+    w = ch.get("week") or {}
+    for p_, label in (("main", "Main service this week"), ("backup", "Backup service this week")):
+        r = (w.get("reliability") or {}).get(p_)
+        if r:
+            rows.append((label, f"played {r['avg_pct']}% of its channels on average (worst morning {r['worst_pct']}%)"))
+    if w.get("flaky"):
+        rows.append(("Flakiest channels this week", ", ".join(w["flaky"])))
+    if ch.get("late_start_ist"):
+        warn.append(f"Check-up started late ({ch['late_start_ist']})")
+    for p_, d in (ch.get("drops") or {}).items():
+        warn.append(f"{'Main' if p_ == 'main' else 'Backup'} service lost channels ({d['before']} → {d['now']})")
     reps = ch.get("replacements") or {}
     if reps:
         rows.append(("Replacement ideas", "; ".join(f"{n} → {', '.join(v)}" for n, v in reps.items())))

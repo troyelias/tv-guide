@@ -5,6 +5,9 @@ import json, os, runpy, sys, time, types
 scripts, plan_file, out = sys.argv[1], sys.argv[2], sys.argv[3]
 sys.path.insert(0, scripts)
 plan = json.load(open(plan_file))
+flat = lambda v: [y for x in v for y in (x if isinstance(x, list) else [x])]  # noqa: E731
+plan["dead"] = {k: flat(v) for k, v in plan["dead"].items()}
+plan["flaky"] = {k: flat(v) for k, v in plan["flaky"].items()}
 import streamtest  # noqa: E402
 
 lineups = plan["lineups"]  # {"main": {"categories": [...], "streams": [...]}, "backup": {...}}

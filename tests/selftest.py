@@ -55,9 +55,10 @@ def rehearsal():
     check(len(both) > 100 and len(musts) >= 3, f"enough channels matched for the rehearsal ({len(both)})")
     if failures:
         return
-    A, B, D = plain[0], plain[1], plain[2]
-    C = musts[0]
-    sid = lambda p, c: m[p][c["id"]][0]  # noqa: E731
+    A, B, D, E = plain[0], plain[1], plain[2], plain[3]
+    C, M2 = musts[0], musts[1]
+    crowd = plain[10:40]  # 30 channels that all fail on the main service one morning
+    sid = lambda p, c: m[p][c["id"]]  # noqa: E731  (every copy of the channel on that service)
     work = tempfile.mkdtemp()
     try:
         shutil.copy(os.path.join(ROOT, "catalog.json"), work)
@@ -66,21 +67,26 @@ def rehearsal():
                    PRO_2="http://backup.test/get.php?username=u&password=p", PAUSE="0", GITHUB_REPOSITORY="owner/repo")
         env.pop("BACKUP_SLOT", None)
         start = datetime(2026, 1, 1, 22, 40)  # 4:10 AM India time the next day
-        nights = [
-            # (dead, flaky)
-            ({"main": [sid("main", A), sid("main", B), sid("main", C)], "backup": [sid("backup", B), sid("backup", C), sid("backup", D)]},
-             {"main": [sid("main", D)]}),
-            ({"main": [sid("main", B), sid("main", C)], "backup": [sid("backup", B), sid("backup", C)]}, {}),
-            ({"main": [sid("main", B), sid("main", C)], "backup": [sid("backup", B), sid("backup", C)]}, {}),
-        ] + [({"main": [sid("main", B), sid("main", C)], "backup": [sid("backup", B), sid("backup", C)]}, {})] * 4 + [
-            ({"main": [sid("main", C)], "backup": [sid("backup", C)]}, {}),
+        base = lambda extra=(): {"main": [sid("main", B), sid("main", C)] + list(extra),  # noqa: E731
+                                 "backup": [sid("backup", B), sid("backup", C)]}
+        n1 = base([sid("main", A), sid("main", E), sid("main", M2)])
+        n1["backup"].append(sid("backup", D))
+        nights = [  # (dead, flaky, minutes late)
+            (n1, {"main": [sid("main", D)]}, 0),                        # morning 1 (Fri)
+            (base(), {}, 0),                                            # 2
+            (base([sid("main", E)]), {}, 0),                            # 3: E fails again -> flaky
+            (base(), {}, 0),                                            # 4 (Mon: weekly report)
+            (base(), {}, 0),                                            # 5
+            (base([sid("main", c) for c in crowd]), {}, 0),             # 6: main loses 30 channels
+            (base(), {}, 0),                                            # 7
+            ({"main": [sid("main", C)], "backup": [sid("backup", C)]}, {}, 40),  # 8: starts 40 minutes late
         ]
         results = []
-        for n, (dead, flaky) in enumerate(nights, 1):
+        for n, (dead, flaky, late) in enumerate(nights, 1):
             plan = os.path.join(work, "plan.json")
             json.dump({"lineups": lu, "dead": dead, "flaky": flaky}, open(plan, "w"))
             out = os.path.join(work, f"out{n}")
-            e = dict(env, TEST_NOW=(start + timedelta(days=n - 1)).isoformat())
+            e = dict(env, TEST_NOW=(start + timedelta(days=n - 1, minutes=late)).isoformat())
             r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), SCRIPTS, plan, out],
                                cwd=work, env=e, capture_output=True, text=True, timeout=600)
             if r.returncode != 0:
@@ -122,6 +128,28 @@ def rehearsal():
         check(b8 and not b8[0]["title"].endswith("⚠") and not find(p8, B, "Not working"),
               "morning 8: back in its own folder with no mark once it plays again")
         check(s8.get("channels", 0) >= len(both), "every matched channel stays in the playlist")
+        # smarter switching: E failed on the main service on mornings 1 and 3 -> needs 4 good mornings in a row
+        check("backup.test" in find(results[4][1], E, E["folder"])[0]["url"], "morning 5: a flaky channel isn't switched back after 2 good mornings")
+        check("main.test" in find(results[6][1], E, E["folder"])[0]["url"], "morning 7: ...but is after 4 good mornings in a row")
+        check(any(E["name"] in f for f in (results[6][0].get("week") or {}).get("flaky", [])), "weekly report lists the flaky channel")
+        # Backup folder uses the service the main copy isn't using
+        s2m = find(results[1][1], M2, M2["folder"])
+        s2b = find(results[1][1], M2, "Backup")
+        check(s2m and "backup.test" in s2m[0]["url"] and s2b and "main.test" in s2b[0]["url"],
+              "a favourite playing from the backup service gets its Backup-folder copy from the main service")
+        s3b = find(results[2][1], M2, "Backup")
+        check(s3b and "backup.test" in s3b[0]["url"], "once back on the main service, its Backup-folder copy comes from the backup service")
+        # health drop, late start, weekly report
+        check("main" in (results[5][0].get("drops") or {}), "morning 6: a sudden loss of 30 channels on one service is flagged")
+        check(not results[4][0].get("drops") and not results[6][0].get("drops"), "normal mornings don't raise the drop warning")
+        check(results[7][0].get("late_start_ist") == "04:50", "morning 8: a check-up that started late is flagged")
+        check(not results[6][0].get("late_start_ist"), "an on-time check-up isn't flagged as late")
+        check([bool(r[0].get("weekly_due")) for r in results] == [False, False, False, True, False, False, False, False],
+              "the weekly report card is due on Monday mornings only")
+        wk = results[6][0].get("week") or {}
+        check(wk.get("mornings") == 7 and set(wk.get("reliability", {})) == {"main", "backup"},
+              "weekly report covers 7 mornings and both services")
+        check(B["name"] in wk.get("down_all_week", []), "weekly report lists channels down all week")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -206,6 +234,13 @@ def outage_and_alerts_test():
                            env={k: v for k, v in os.environ.items() if k not in ("GITHUB_TOKEN", "GITHUB_REPOSITORY")},
                            capture_output=True, text=True, timeout=60)
         check(r.returncode == 0 and "Must-have channel down" in r.stdout, "a dead favourite raises the must-have alert")
+        json.dump({"late_start_ist": "05:07", "drops": {"main": {"now": 300, "before": 360, "week_avg": 358}}},
+                  open(os.path.join(work, "c.json"), "w"))
+        r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "alerts.py"), "s.json", "c.json"], cwd=work,
+                           env={k: v for k, v in os.environ.items() if k not in ("GITHUB_TOKEN", "GITHUB_REPOSITORY")},
+                           capture_output=True, text=True, timeout=60)
+        check("Check-up started late" in r.stdout and "A service lost channels overnight" in r.stdout,
+              "late start and lost channels raise their alerts")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
