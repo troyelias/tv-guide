@@ -33,7 +33,7 @@ concurrency:
 jobs:
   channels:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 175   # includes the wait for the 5:45 AM second try
     env:
       PRO: ${{ secrets.PRO }}
       PRO_2: ${{ secrets.PRO_2 }}
@@ -52,6 +52,9 @@ jobs:
       - name: Install picture checker (spots "dead channel" black filler)
         continue-on-error: true
         run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+
+      - name: Self-test (rehearses the check-up on made-up services; if it fails, nothing is changed tonight)
+        run: python3 tests/selftest.py
 
       - name: Test channels, switch broken ones, update playlist
         id: run

@@ -1,0 +1,25 @@
+name: Self-test
+
+# Runs whenever the repo's scripts, channel list or workflows change: rehearses the morning check-up
+# (several pretend mornings), the guide merge, the dead-channel filler check, the outage rule and alerts,
+# all on made-up data. A failure here means a change broke something - the real check-up also runs this first
+# and changes nothing if it fails.
+on:
+  push:
+    branches: [main]
+    paths: ["scripts/**", "tests/**", "catalog.json", "channel-ids.txt", ".github/workflows/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install picture checker
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+      - name: Run the self-test
+        run: python3 tests/selftest.py

@@ -23,13 +23,18 @@ from catalog_lib import key as name_key, region as name_region, clean_name  # no
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 os.makedirs(OUT, exist_ok=True)
-NOW = datetime.now(timezone.utc)
+NOW = (datetime.fromisoformat(os.environ["TEST_NOW"]).replace(tzinfo=timezone.utc) if os.environ.get("TEST_NOW")
+       else datetime.now(timezone.utc))  # TEST_NOW is only used by the self-test
 IST = NOW + timedelta(hours=5, minutes=30)
 STATE_FILE = "secure/state.enc"
 FOLDERS = ["Hindi Entertainment", "Hindi Movies", "Hindi Music", "Hindi News", "Business News", "English News",
            "English Movies", "English Entertainment", "Infotainment", "Lifestyle", "Kids", "Sports", "Devotional",
            "Kannada", "Regional & DD", "India UK Feeds", "Pakistan UK Feeds", "Pakistan"]
 BACKUP_FOLDER = "Backup"
+DEAD_FOLDER = "Not working"   # channels that have played on neither service for DEAD_AFTER check-ups in a row
+DEAD_AFTER = 7
+SUGGEST_AFTER = 3             # a must-have down this many check-ups in a row gets replacement suggestions
+RETRY_IST = (5, 45)           # second try for failed channels, later in the quiet window
 PAUSE = float(os.environ.get("PAUSE", "2"))
 summary = {"mode": MODE, "ran_utc": NOW.strftime("%Y-%m-%d %H:%M")}
 
@@ -183,6 +188,41 @@ if MODE in ("nightly", "dry-run"):
         t.start()
     for t in threads:
         t.join()
+
+    # ---- second try later in the morning: channels often drop out for a few minutes ----
+    failed = {p: [cid for cid, v in results[p].items() if v is None] for p in results}
+    if MODE == "nightly" and any(failed.values()):
+        real_now = datetime.now(timezone.utc) if not os.environ.get("TEST_NOW") else NOW
+        now_ist = real_now + timedelta(hours=5, minutes=30)
+        target = now_ist.replace(hour=RETRY_IST[0], minute=RETRY_IST[1], second=0, microsecond=0)
+        target = max(target, now_ist + timedelta(minutes=10))
+        if target > now_ist.replace(hour=6, minute=15, second=0, microsecond=0):
+            target = now_ist + timedelta(minutes=5)  # a late start: keep it short so it finishes in the window
+        time.sleep(max(0, (target - now_ist).total_seconds()))
+        recovered = []
+
+        def retry(p):
+            prov = provs[p]
+            try:
+                if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) not in ("0", "", "None"):
+                    skipped.append(p + " (second try skipped: someone was watching)")
+                    return
+            except Exception:
+                return
+            for cid in failed[p]:
+                for sid in cands[p][cid][:3]:
+                    if plays(prov, sid):
+                        results[p][cid] = sid
+                        recovered.append(cid)
+                        break
+                    time.sleep(PAUSE)
+        threads = [threading.Thread(target=retry, args=(p,)) for p in failed if failed[p] and p not in skipped]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+        summary["second_try"] = {"at_ist": target.strftime("%H:%M"), "tried": sum(len(v) for v in failed.values()),
+                                 "recovered": len(recovered)}
     summary["skipped_someone_watching"] = skipped
     summary["tested"] = {p: len(r) for p, r in results.items()}
     summary["working"] = {p: sum(1 for v in r.values() if v) for p, r in results.items()}
@@ -216,6 +256,9 @@ for ch in catalog:
                 and (has["main"] or has["backup"]):
             down.append(ch["name"])
             down_ids.append(cid)
+            st["down_days"] = st.get("down_days", 0) + 1
+        else:
+            st["down_days"] = 0
     if not has["main"] and not has["backup"]:
         gone.append(ch["name"])
     if st.get("use") == "backup" and has["backup"] and has["main"]:
@@ -273,7 +316,11 @@ def entry(ch, folder, p, sid):
 
 lines, counts = [f'#EXTM3U url-tvg="{guide}" x-tvg-url="{guide}"'], {"main": 0, "backup": 0}
 order = {f: i for i, f in enumerate(FOLDERS)}
+long_dead = [c for c in catalog if c["id"] in DOWN and chs.get(c["id"], {}).get("down_days", 0) >= DEAD_AFTER]
+LONG_DEAD = {c["id"] for c in long_dead}
 for ch in sorted(catalog, key=lambda c: order.get(c["folder"], 99)):
+    if ch["id"] in LONG_DEAD:
+        continue  # moved to the "Not working" folder at the very bottom
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
     if p:
         lines.append(entry(ch, ch["folder"], p, sid))
@@ -286,11 +333,34 @@ for ch in catalog:
         sid = sid if sid in lineup["backup"] else cands["backup"][ch["id"]][0]
         lines.append(entry(ch, BACKUP_FOLDER, "backup", sid))
         spare += 1
+not_working = []
+for ch in sorted(long_dead, key=lambda c: order.get(c["folder"], 99)):
+    p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
+    if p:
+        lines.append(entry(ch, DEAD_FOLDER, p, sid))
+        counts[p] += 1
+        not_working.append(ch["name"])
+
+# replacement ideas for must-haves that have been down for a while: same folder, playing now, sturdiest first
+replacements = {}
+for ch in catalog:
+    if ch.get("must") and ch["id"] in DOWN and chs.get(ch["id"], {}).get("down_days", 0) >= SUGGEST_AFTER:
+        alts = []
+        for i, c in enumerate(catalog):
+            if c["folder"] != ch["folder"] or c.get("must") or c["id"] in DOWN:
+                continue
+            s_ = chs.get(c["id"], {})
+            both = bool(s_.get("main_ok")) + bool(s_.get("backup_ok"))
+            if both:
+                alts.append((-both, i, c["name"]))
+        if alts:
+            replacements[ch["name"]] = [n for _, _, n in sorted(alts)[:3]]
 text = "\n".join(lines) + "\n"
 digest = hashlib.sha256(text.encode()).hexdigest()
 summary.update(channels=counts["main"] + counts["backup"], from_main=counts["main"], from_backup=counts["backup"],
                spare_folder=spare, on_backup=sorted(set(on_backup) - set(down)), down_on_both=sorted(down), not_on_either=sorted(gone),
-               outage=bool(state.get("outage")))
+               outage=bool(state.get("outage")), not_working_folder=not_working, replacements=replacements,
+               down_days={c["name"]: chs[c["id"]].get("down_days", 0) for c in catalog if c["id"] in DOWN})
 # guide IDs whose every channel is down on both services -> the guide shows a note for them
 gid_all = {}
 for c in catalog:

@@ -34,8 +34,15 @@ if ch.get("upload_error"):
     alerts["Playlist upload failing"] = "The updated playlist couldn't be uploaded to Dropbox. The Dropbox connection may need setting up again."
 bad = sorted(set(ch.get("down_on_both", [])) & must)
 if bad:
-    alerts["Must-have channel down"] = ("These must-have channels didn't play on either service at the last check-up: "
-                                        + ", ".join(bad) + ".")
+    days = ch.get("down_days", {})
+    msg = ("These must-have channels didn't play on either service at the last check-up: "
+           + ", ".join(f"{n} ({days.get(n, 1)} check-up{'s' if days.get(n, 1) != 1 else ''} in a row)" for n in bad) + ".")
+    reps = {n: v for n, v in (ch.get("replacements") or {}).items() if n in bad}
+    if reps:
+        msg += ("\n\n**Possible replacements** (same folder, playing on both services where possible):\n"
+                + "\n".join(f"- {n} → {', '.join(v)}" for n, v in reps.items())
+                + "\n\nTo swap a favourite, tell Claude which one to use instead.")
+    alerts["Must-have channel down"] = msg
 nm = ch.get("newly_missing", {})
 lost = {p: v for p, v in nm.items() if v}
 if lost:

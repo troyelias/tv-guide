@@ -41,6 +41,15 @@ if ch:
     rows.append(("Switched to backup", ", ".join(ob) if ob else "none"))
     dn = ch.get("down_on_both", [])
     rows.append(("Not playing anywhere", ", ".join(dn) if dn else "none"))
+    nw = ch.get("not_working_folder", [])
+    if nw:
+        rows.append(("Moved to the 'Not working' folder (down 7+ check-ups)", ", ".join(nw)))
+    st2 = ch.get("second_try")
+    if st2:
+        rows.append(("Second try", f"{st2.get('recovered', 0)} of {st2.get('tried', 0)} came back at {st2.get('at_ist', '?')} India time"))
+    reps = ch.get("replacements") or {}
+    if reps:
+        rows.append(("Replacement ideas", "; ".join(f"{n} → {', '.join(v)}" for n, v in reps.items())))
     for k, label in (("main_days_left", "Main subscription"), ("backup_days_left", "Backup subscription")):
         d = ch.get(k)
         if isinstance(d, (int, float)):
