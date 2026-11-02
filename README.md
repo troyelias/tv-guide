@@ -25,7 +25,7 @@ A personal TV setup that looks after itself: one programme guide, one channel li
 - **Outage watch** (`outage-watch.yml`, hourly): checks the main service still logs in (no channel is played).
   Two failures in a row switch every channel to the backup service at once.
 - **Self-test** (`tests.yml`): runs on every change to the scripts or channel list.
-- **On demand:** `Close look at channels`, `Try a new service`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
+- **On demand:** `Close look at channels`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
 
 ## Privacy
 Logins, Dropbox keys and the file location are private repository secrets. The switch-over memory and the
