@@ -1,0 +1,74 @@
+name: Report a problem
+
+# When the family says a channel isn't working: type the channel name(s) here and run.
+# It checks those channels on both services straight away (only if nobody is watching, unless "force"),
+# opens a "Family report" alert with what it found, and every morning's check-up adds the latest result
+# to that alert - closing it once the channel plays again. Changes nothing on the TV by itself.
+on:
+  workflow_dispatch:
+    inputs:
+      channels:
+        description: "Channel name(s) as shown on the TV, comma-separated (the ⚠ can be left off)"
+        required: true
+      note:
+        description: "What the family noticed (optional), e.g. 'black screen since 8 pm'"
+        required: false
+        default: ""
+      force:
+        description: "Check even if someone is watching (may interrupt them)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: tv-probe
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PRO: ${{ secrets.PRO }}
+      PRO_2: ${{ secrets.PRO_2 }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Install picture checker
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+      - name: Check the channels now
+        env:
+          NAMES: ${{ inputs.channels }}
+          FORCE: ${{ inputs.force && '1' || '0' }}
+        run: |
+          export NAMES="$(echo "$NAMES" | sed 's/⚠//g')"
+          python3 scripts/probe.py "$RUNNER_TEMP/probe.txt" || true
+      - name: Open the family report alert
+        env:
+          NAMES: ${{ inputs.channels }}
+          NOTE: ${{ inputs.note }}
+        run: |
+          python3 - "$RUNNER_TEMP/probe.txt" > "$RUNNER_TEMP/body.md" <<'PY'
+          import os, re, sys
+          lines = open(sys.argv[1]).read().splitlines() if os.path.exists(sys.argv[1]) else []
+          out, svc, cur = [], None, None
+          for l in lines:
+              if l.startswith("== Main"): svc = "main service"
+              elif l.startswith("== Backup"): svc = "backup service"
+              elif "someone is watching" in l: out.append(f"- {svc}: not checked (someone was watching)")
+              elif re.match(r"  \S.*: not on this service", l): out.append(f"- {l.strip()} ({svc})")
+              m = re.match(r"  (.+?) \((main|backup)\): ", l)
+              if m: cur = m.group(1)
+              if "nightly test says:" in l and cur:
+                  out.append(f"- {cur} on the {svc}: " + ("plays" if "PLAYS" in l and "NOT" not in l else "**does not play**"))
+          note = os.environ.get("NOTE", "").strip()
+          print("Reported by the family" + (f": _{note}_" if note else "") + "\n")
+          print("**Checked just now:**\n" + ("\n".join(out) or "- couldn't check (see the run log)"))
+          print("\nEach morning's check-up will add the latest result here and close this once it plays again.")
+          PY
+          python3 scripts/leakcheck.py "$RUNNER_TEMP/body.md"
+          names="$(echo "$NAMES" | sed 's/⚠//g' | sed 's/  */ /g')"
+          gh issue create --title "Family report: $names" --assignee "$GITHUB_REPOSITORY_OWNER" --body-file "$RUNNER_TEMP/body.md"

@@ -149,8 +149,9 @@ jobs:
           # keep the last real check-up's results if this run has none
           python3 -c "import json,sys; d=json.load(open(sys.argv[1])); sys.exit(0 if 'channels' in d else 1)" "$R/ch/channels.json" 2>/dev/null \
             || curl -fsSL -o "$R/ch/channels.json" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > "$R/ch/channels.json"
-          python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json"
-          python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json"
+          git fetch -q origin spot 2>/dev/null && git show FETCH_HEAD:spot.json > "$R/spot.json" 2>/dev/null || echo '{}' > "$R/spot.json"
+          python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json" "$R/spot.json" history/guide-coverage.json
+          python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json" "$R/spot.json"
 
       - name: Publish guide to the 'guide' branch
         env:
@@ -169,7 +170,7 @@ jobs:
           (cd "$R" && ls -la *.xml *.gz 2>/dev/null | awk '{print $5, $9}') > out/logs/downloads.txt
           cp "$R/provider-guides.txt" out/logs/ 2>/dev/null || true
           # leak check: nothing public may contain a login, server address or private location
-          python3 scripts/leakcheck.py --fix out "$R/site" REPORT.md logos
+          python3 scripts/leakcheck.py --fix out "$R/site" REPORT.md logos history
           cd out
           git init -q -b guide
           git config user.name "github-actions[bot]"
@@ -182,7 +183,7 @@ jobs:
           cp "$RUNNER_TEMP/grabber.lock" grabber.lock 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for f in REPORT.md grabber.lock logos; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in REPORT.md grabber.lock logos history; do if [ -e "$f" ]; then git add "$f"; fi; done
           git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin main && git push -q
 

@@ -175,6 +175,44 @@ def rehearsal():
         shutil.rmtree(work, ignore_errors=True)
 
 
+def shadow_test():
+    print("1b. Shadow mode for a proposed rule change")
+    catalog = json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8"))
+    lu = {"main": fake_lineup(catalog, 10000), "backup": fake_lineup(catalog, 20000)}
+    m = {p: match_lineup(catalog, lu[p]["streams"], lu[p]["categories"]) for p in lu}
+    A = next(c for c in catalog if m["main"].get(c["id"]) and m["backup"].get(c["id"]) and not c.get("must"))
+    work = tempfile.mkdtemp()
+    try:
+        shutil.copytree(SCRIPTS, os.path.join(work, "scripts"))
+        open(os.path.join(work, "scripts", "rules_candidate.py"), "w").write(
+            '"""Proposal: switch back after one good morning."""\n'
+            "from rules import decide as _d\n"
+            "def decide(st, m_ok, b_ok, has):\n"
+            "    if st.get('use') == 'backup' and m_ok and has['main']:\n"
+            "        return 'main'\n"
+            "    return _d(st, m_ok, b_ok, has)\n")
+        shutil.copy(os.path.join(ROOT, "catalog.json"), work)
+        os.makedirs(os.path.join(work, "secure"))
+        env = dict(os.environ, DBX_SECRET="selftest-secret", PRO="http://main.test/get.php?username=u&password=p",
+                   PRO_2="http://backup.test/get.php?username=u&password=p", PAUSE="0")
+        outs = []
+        for n, dead in enumerate(({"main": m["main"][A["id"]], "backup": []}, {"main": [], "backup": []}), 1):
+            json.dump({"lineups": lu, "dead": dead, "flaky": {}}, open(os.path.join(work, "plan.json"), "w"))
+            out = os.path.join(work, f"o{n}")
+            r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), os.path.join(work, "scripts"),
+                                os.path.join(work, "plan.json"), out], cwd=work, capture_output=True, text=True, timeout=600,
+                               env=dict(env, TEST_NOW=(datetime(2026, 1, 1, 22, 40) + timedelta(days=n - 1)).isoformat()))
+            if r.returncode:
+                check(False, "shadow rehearsal ran:\n" + r.stderr[-1500:])
+                return
+            outs.append(json.load(open(os.path.join(out, "channels.json"))))
+        diff = (outs[1].get("shadow") or {}).get("differs", [])
+        check(any(A["name"] in d for d in diff), "shadow mode reports where a proposed rule would choose differently")
+        check(A["name"] in outs[1].get("on_backup", []), "...while the current rules stay in charge")
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
 # ------------------------------------------------------------------ 2. guide merge
 def merge_test():
     print("2. Guide merge rehearsal")
@@ -347,7 +385,7 @@ def files_test():
     check(len({c["id"] for c in cat}) == len(cat), "channel list has no duplicate entries")
 
 
-for t in (files_test, rehearsal, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
+for t in (files_test, rehearsal, shadow_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
     try:
         t()
     except Exception as e:  # a crash inside a test is a failure, not a crash of the whole self-test

@@ -254,12 +254,12 @@ if MODE in ("nightly", "dry-run"):
     summary["working"] = {p: sum(1 for v in r.values() if v) for p, r in results.items()}
 
 # ---------- decide ----------
-def need_streak(st):
-    """Good mornings in a row on the main service before switching back. A channel that failed there more than
-    once in the last 7 mornings is flaky, so it has to prove itself for longer."""
-    return 2 if st.get("main_hist", []).count(0) <= 1 else 4
-
-
+import rules  # noqa: E402  (the switching rules)
+try:
+    import rules_candidate  # noqa: E402  (a proposed change, run in shadow mode only)
+except ImportError:
+    rules_candidate = None
+shadow_diff = []
 chs = state["channels"]
 on_backup, down, gone, down_ids = [], [], [], []
 for ch in catalog:
@@ -277,14 +277,14 @@ for ch in catalog:
         if "main" not in skipped and cid in results["main"]:
             st["main_streak"] = st.get("main_streak", 0) + 1 if st.get("main_ok") else 0
         m_ok, b_ok = st.get("main_ok"), st.get("backup_ok")
-        if not has["main"] and has["backup"]:
-            st["use"] = "backup"
-        elif has["main"] and not has["backup"]:
-            st["use"] = "main"
-        elif st["use"] == "main" and m_ok is False and b_ok:
-            st["use"] = "backup"
-        elif st["use"] == "backup" and ((m_ok and st["main_streak"] >= need_streak(st)) or (b_ok is False and m_ok)):
-            st["use"] = "main"
+        if rules_candidate:
+            # shadow mode: the candidate keeps its own memory of where each channel would be
+            st["shadow_use"] = rules_candidate.decide({**st, "use": st.get("shadow_use", st["use"])}, m_ok, b_ok, has)
+        st["use"] = rules.decide(st, m_ok, b_ok, has)
+        if rules_candidate and st["shadow_use"] != st["use"]:
+            shadow_diff.append(f'{ch["name"]}: now {st["use"]}, proposed {st["shadow_use"]}')
+        elif not rules_candidate:
+            st.pop("shadow_use", None)
         if (has["main"] and m_ok is False or not has["main"]) and (has["backup"] and b_ok is False or not has["backup"]) \
                 and (has["main"] or has["backup"]):
             down.append(ch["name"])
@@ -355,6 +355,10 @@ if MODE == "nightly":
         "switched_now": today["switched"],
     }
     summary["weekly_due"] = IST.weekday() == 0  # Monday, India time
+    summary["trend"] = [{"date": h["date"], "main_pct": pct("main", h), "backup_pct": pct("backup", h),
+                         "down": len(h.get("down", []))} for h in state["history"][-30:]]
+    if rules_candidate:
+        summary["shadow"] = {"about": (rules_candidate.__doc__ or "").strip().split("\n")[0], "differs": shadow_diff}
 else:
     down_ids = [i for i in state.get("down_ids", []) if any(c["id"] == i for c in catalog)]
     down = [c["name"] for c in catalog if c["id"] in down_ids]

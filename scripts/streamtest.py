@@ -251,3 +251,41 @@ def grab_sample(provider, sid, limit=3_000_000, secs=10):
         return data if _is_video(data) and not is_filler(data[:SAMPLE]) else None
     except Exception:
         return None
+
+
+def content_frames(data, fps=2, frames=20, W=24, H=14):
+    """Tiny greyscale thumbnails of the picture, a few per second, each with its average brightness removed.
+    Two copies of the same live channel show the same pictures, perhaps a few seconds apart."""
+    if not shutil.which("ffmpeg"):
+        return None
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps={fps},scale={W}:{H}", "-frames:v", str(frames),
+                              "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True, timeout=60).stdout
+        out = []
+        for i in range(0, len(raw) - W * H + 1, W * H):
+            fr = raw[i:i + W * H]
+            m = sum(fr) / len(fr)
+            out.append([v - m for v in fr])
+        return out or None
+    except Exception:
+        return None
+    finally:
+        os.unlink(path)
+
+
+def content_distance(a, b, min_overlap=3):
+    """Smallest average picture difference between two thumbnail sequences over all time offsets
+    (0 = identical). Same channel: low; different channels: high. None if there's too little to compare."""
+    if not a or not b:
+        return None
+    best = None
+    for k in range(-(len(b) - min_overlap), len(a) - min_overlap + 1):
+        pairs = [(a[i], b[i - k]) for i in range(max(k, 0), min(len(a), len(b) + k))]
+        if len(pairs) < min_overlap:
+            continue
+        d = sum(sum(abs(x - y) for x, y in zip(fa, fb)) / len(fa) for fa, fb in pairs) / len(pairs)
+        best = d if best is None else min(best, d)
+    return best

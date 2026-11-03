@@ -14,6 +14,7 @@ def load(p):
 
 
 stats, ch = load(sys.argv[1]), load(sys.argv[2])
+spot = (load(sys.argv[3]).get("summary") or {}) if len(sys.argv) > 3 else {}
 cat = load("catalog.json") or []
 must = {c["name"] for c in cat if c.get("must")}
 alerts = {}
@@ -112,6 +113,27 @@ for title in KNOWN:
         print("Closed alert:", title)
 print("Active alerts:", list(alerts) or "none")
 
+# ---- family reports: follow up each open "Family report: ..." issue with this morning's result ----
+if ch.get("channels") and ch.get("checkup_utc"):
+    down = set(ch.get("down_on_both", []))
+    names = {c["name"].lower(): c["name"] for c in cat}
+    for title, issue in open_issues.items():
+        if not title.startswith("Family report:"):
+            continue
+        asked = [n.strip() for n in title.split(":", 1)[1].split(",") if n.strip()]
+        known = [names[n.lower()] for n in asked if n.lower() in names]
+        if not known:
+            continue
+        still = [n for n in known if n in down]
+        fine = [n for n in known if n not in down]
+        msg = f"Morning check-up ({ch['checkup_utc']} UTC): "
+        msg += ("playing again: " + ", ".join(fine) + ". " if fine else "")
+        msg += ("still not playing on either service (marked ⚠): " + ", ".join(still) + "." if still else "")
+        api("POST", f"/issues/{issue['number']}/comments", {"body": msg.strip()})
+        if not still:
+            api("PATCH", f"/issues/{issue['number']}", {"state": "closed"})
+            print("Closed family report:", title)
+
 
 # ---- weekly report card: a new issue every Monday morning (India time); last week's is closed ----
 def weekly_text(w, ch):
@@ -123,6 +145,22 @@ def weekly_text(w, ch):
             out.append(f"- **{label}:** played {r['avg_pct']}% of its channels on average (worst morning {r['worst_pct']}%)")
     out += [f"- **Main subscription:** {days(ch.get('main_days_left'))} left",
             f"- **Backup subscription:** {days(ch.get('backup_days_left'))} left", ""]
+    if spot.get("favourite_plays_pct_7d") is not None:
+        out.append(f"- **Daytime spot checks:** favourites played {spot['favourite_plays_pct_7d']}% of the time "
+                   f"({spot.get('checks_7d', 0)} checks while nobody was watching)")
+    moved = (ch.get("best_copy") or {}).get("switched_to_better_copy") or {}
+    if moved:
+        out.append("- **Moved to a sharper/faster copy:** " + "; ".join(", ".join(v) for v in moved.values()))
+    if spot.get("possible_mixups"):
+        out.append("- **Possible mislabelled copies** (logos differ between the two services): " + ", ".join(spot["possible_mixups"]))
+    tr = ch.get("trend") or []
+    if len(tr) >= 8:
+        prev = [t["main_pct"] for t in tr[-14:-7] if t.get("main_pct")]
+        cur = [t["main_pct"] for t in tr[-7:] if t.get("main_pct")]
+        if prev and cur:
+            d = sum(cur) / len(cur) - sum(prev) / len(prev)
+            out.append(f"- **Main service trend:** {'up' if d >= 0 else 'down'} {abs(d):.1f} points on the week before")
+    out.append("")
     for key_, label in (("flaky", "Flakiest channels (sometimes work, sometimes don't)"),
                         ("newly_down", "Stopped working this week"), ("back_again", "Working again this week"),
                         ("down_all_week", "Down on both services all week"), ("switched_now", "Currently playing from the backup service"),

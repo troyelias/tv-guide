@@ -147,6 +147,7 @@ def probe(prov, sid, name):
         say("     " + look(data, name))
         say("     nightly test says: " + ("PLAYS" if _is_video(data) and not is_filler(data[:188 * 4000]) else "DOES NOT PLAY"))
     if not data or st != 200:
+        verdict = "DOES NOT PLAY"
         st, ctype, pl, secs, moved, final = grab(prov.stream_url(sid, ".m3u8"))
         text = pl.decode("utf-8", "ignore")
         say(f"     .m3u8 -> HTTP {st}, {'playlist' if text.startswith('#EXTM3U') else 'no playlist'}")
@@ -160,6 +161,9 @@ def probe(prov, sid, name):
                 say(f"     first piece -> HTTP {st}, {len(d2) // 1024} KB | " + (analyse(d2, max(s2, 6)) if d2 else "empty"))
                 if d2:
                     say("     " + look(d2, name))
+                    if _is_video(d2) and not is_filler(d2[:188 * 4000]):
+                        verdict = "PLAYS"
+        say("     nightly test says: " + verdict)
 
 
 for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
@@ -200,38 +204,38 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
         time.sleep(3)
     say()
 
-# ---- logo comparison (LOGOS=1): how alike are the on-screen logos of the same / different channels? ----
+# ---- picture comparison (LOGOS=1): do two copies show the same programme? (calibration for mix-up detection) ----
 if os.environ.get("LOGOS") == "1" and wanted:
-    from streamtest import grab_sample, logo_mask
-    masks = {}
+    from streamtest import grab_sample, content_frames, content_distance
+    seqs = {}
     for label, env in (("main", "PRO"), ("backup", "PRO_2")):
         prov = Provider(label, os.environ.get(env))
         if not prov.ok:
             continue
         try:
             if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) not in ("0", "", "None") and not FORCE:
-                say(f"logos: {label} in use - skipped")
+                say(f"pictures: {label} in use - skipped")
                 continue
             m = match_lineup(catalog, prov.api("get_live_streams"), prov.api("get_live_categories"))
         except Exception:
             continue
         for c in catalog:
             if c["name"].lower() in wanted and m.get(c["id"]):
-                d = grab_sample(prov, m[c["id"]][0])
-                masks[(c["name"], label)] = logo_mask(d) if d else None
+                d = grab_sample(prov, m[c["id"]][0], limit=8_000_000, secs=14)
+                seqs[(c["name"], label)] = content_frames(d) if d else None
                 time.sleep(2)
-    say("== Logo comparison (share of logo spots in common; same channel should be high, different channels low)")
-    keys = sorted(masks)
+    say("== Picture comparison (0 = identical pictures; same channel should be low, different channels high)")
+    keys = sorted(k for k in seqs if seqs[k])
     for i, a in enumerate(keys):
         for b in keys[i + 1:]:
-            ma, mb = masks[a], masks[b]
-            if ma is None or mb is None:
-                continue
-            iou = len(ma & mb) / max(1, len(ma | mb))
-            same = "SAME channel" if a[0] == b[0] else "different"
-            say(f"  {a[0]} ({a[1]}) vs {b[0]} ({b[1]}): {iou:.2f}  [{same}; spots {len(ma)}/{len(mb)}]")
-    for k in keys:
-        if masks[k] is None:
-            say(f"  {k[0]} ({k[1]}): no logo could be worked out")
+            if a[1] == b[1]:
+                continue  # only compare across services
+            d = content_distance(seqs[a], seqs[b])
+            if d is not None:
+                say(f"  {a[0]} ({a[1]}, {len(seqs[a])} frames) vs {b[0]} ({b[1]}, {len(seqs[b])} frames): {d:.1f}  "
+                    f"[{'SAME channel' if a[0] == b[0] else 'different'}]")
+    for k in sorted(seqs):
+        if not seqs[k]:
+            say(f"  {k[0]} ({k[1]}): no picture")
 
 open(sys.argv[1], "w").write("\n".join(lines) + "\n")
