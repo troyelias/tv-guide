@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths: ["scripts/**", "tests/**", "catalog.json", "channel-ids.txt", ".github/workflows/**"]
+  pull_request:
   workflow_dispatch:
 
 permissions:

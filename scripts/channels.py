@@ -31,6 +31,7 @@ FOLDERS = ["Hindi Entertainment", "Hindi Movies", "Hindi Music", "Hindi News", "
            "English Movies", "English Entertainment", "Infotainment", "Lifestyle", "Kids", "Sports", "Devotional",
            "Kannada", "Regional & DD", "India UK Feeds", "Pakistan UK Feeds", "Pakistan"]
 BACKUP_FOLDER = "Backup"
+FAV_FOLDER = "Favourites"
 DEAD_FOLDER = "Not working"   # channels that have played on neither service for DEAD_AFTER check-ups in a row
 DEAD_AFTER = 7
 SUGGEST_AFTER = 3             # a must-have down this many check-ups in a row gets replacement suggestions
@@ -178,9 +179,10 @@ if MODE in ("nightly", "dry-run"):
             if len(sids) >= 2 and cid in survey_today:
                 # compare up to 3 copies and keep the best (sharpest picture, then quickest start)
                 best, best_m = None, None
+                arch = lambda x: str(lineup[p].get(x, {}).get("tv_archive")) == "1"  # noqa: E731
                 for sid in sids[:3]:
                     mres = measure(prov, sid)
-                    if mres and (best_m is None or score(mres) > score(best_m)):
+                    if mres and (best_m is None or score(mres, arch(sid)) > score(best_m, arch(best))):
                         best, best_m = sid, mres
                     time.sleep(PAUSE)
                 results[p][cid] = best
@@ -257,6 +259,10 @@ try:
 except ImportError:
     rules_candidate = None
 shadow_diff = []
+try:  # daytime spot-check results (which service runs ahead on sports channels), if available
+    SPOT_LEADS = json.load(open(os.environ["SPOT_FILE"])).get("lead", {}) if os.environ.get("SPOT_FILE") else {}
+except Exception:
+    SPOT_LEADS = {}
 chs = state["channels"]
 on_backup, down, gone, down_ids = [], [], [], []
 for ch in catalog:
@@ -275,6 +281,10 @@ for ch in catalog:
             st["main_streak"] = st.get("main_streak", 0) + 1 if st.get("main_ok") else 0
         m_ok, b_ok = st.get("main_ok"), st.get("backup_ok")
         if rules_candidate:
+            lead = SPOT_LEADS.get(ch["name"])
+            if lead and lead.get("utc", "") >= (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
+                st["lead"] = lead
+            st["folder"] = ch["folder"]
             # shadow mode: the candidate keeps its own memory of where each channel would be
             st["shadow_use"] = rules_candidate.decide({**st, "use": st.get("shadow_use", st["use"])}, m_ok, b_ok, has)
         st["use"] = rules.decide(st, m_ok, b_ok, has)
@@ -395,9 +405,12 @@ def logo(ch):
     return logo_base + hit if hit else ch.get("logo", "")
 
 
-def entry(ch, folder, p, sid):
+def entry(ch, folder, p, sid, number=None):
     s = lineup[p][sid]
     attrs = (f'tvg-id="{ch["guide_id"]}" tvg-name="{ch["name"]}" tvg-logo="{logo(ch)}" group-title="{folder}"')
+    number = number if number is not None else ch.get("number")
+    if number:
+        attrs += f' tvg-chno="{number}"'  # Tata Play's set-top box number where it has one
     if str(s.get("tv_archive")) == "1":
         attrs += f' catchup="xc" catchup-days="{s.get("tv_archive_duration") or 1}"'
     title = ch["name"] + (MARK if ch["id"] in DOWN else "")  # tvg-name stays unchanged so the guide still matches
@@ -405,6 +418,15 @@ def entry(ch, folder, p, sid):
 
 
 lines, counts = [f'#EXTM3U url-tvg="{guide}" x-tvg-url="{guide}"'], {"main": 0, "backup": 0}
+# Favourites folder first: each favourite from whichever service it's using this morning, numbered 1, 2, 3...
+fav_n = 0
+for ch in [c for c in catalog if c.get("must")]:
+    if ch["id"] in DOWN:
+        continue  # not playing anywhere - the Backup folder and its own folder still show it with the mark
+    p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
+    if p:
+        fav_n += 1
+        lines.append(entry(ch, FAV_FOLDER, p, sid, number=fav_n))
 order = {f: i for i, f in enumerate(FOLDERS)}
 long_dead = [c for c in catalog if c["id"] in DOWN and chs.get(c["id"], {}).get("down_days", 0) >= DEAD_AFTER]
 LONG_DEAD = {c["id"] for c in long_dead}
@@ -426,8 +448,8 @@ for ch in catalog:  # Backup folder: each favourite again, from whichever servic
         continue  # the other service doesn't have it, or it didn't play there at the last check-up
     sid = st.get(other + "_sid")
     sid = sid if sid in lineup.get(other, {}) else cands[other][ch["id"]][0]
-    lines.append(entry(ch, BACKUP_FOLDER, other, sid))
     spare += 1
+    lines.append(entry(ch, BACKUP_FOLDER, other, sid, number=5000 + spare))
 not_working = []
 for ch in sorted(long_dead, key=lambda c: order.get(c["folder"], 99)):
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
@@ -453,7 +475,7 @@ for ch in catalog:
 text = "\n".join(lines) + "\n"
 digest = hashlib.sha256(text.encode()).hexdigest()
 summary.update(channels=counts["main"] + counts["backup"], from_main=counts["main"], from_backup=counts["backup"],
-               spare_folder=spare, on_backup=sorted(set(on_backup) - set(down)), down_on_both=sorted(down), not_on_either=sorted(gone),
+               spare_folder=spare, favourites_folder=fav_n, on_backup=sorted(set(on_backup) - set(down)), down_on_both=sorted(down), not_on_either=sorted(gone),
                outage=bool(state.get("outage")), not_working_folder=not_working, replacements=replacements,
                down_days={c["name"]: chs[c["id"]].get("down_days", 0) for c in catalog if c["id"] in DOWN})
 # guide IDs whose every channel is down on both services -> the guide shows a note for them

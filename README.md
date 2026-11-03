@@ -21,6 +21,12 @@ A personal TV setup that looks after itself: one programme guide, one channel li
      been down 3 check-ups in a row,
   7. rebuilds the guide, status page and alerts. Nothing is tested or changed after 6:30 AM India time.
   A self-test (`tests/selftest.py`) rehearses all of this on made-up services first; if it fails, nothing is changed.
+- **Channel numbers:** each channel keeps a fixed number (`"number"` in `catalog.json`) - Tata Play's own number where
+  Tata Play carries it (from Tata Play's published channel list, 21 Jul 2026), otherwise a number in a block per folder
+  (2001+ Hindi entertainment, 3001+ UK feeds, 3101+ Pakistan UK feeds, 3201+ Pakistan, and so on).
+  The "Favourites" folder at the top is numbered 1, 2, 3...; the "Backup" folder 5001+.
+- **Best copy:** where a service has several copies of a channel, the one that keeps up with live, then the sharpest
+  picture, then one with catch-up, then the quickest to start, is used.
 - **Midday guide refresh** (`midday-guide.yml`, about 1 PM India time): listings only; no contact with either service.
 - **Outage watch** (`outage-watch.yml`, hourly): checks the main service still logs in (no channel is played).
   Two failures in a row switch every channel to the backup service at once.
@@ -38,8 +44,9 @@ A personal TV setup that looks after itself: one programme guide, one channel li
 - **Shadow mode:** a proposed change to the switching rules (`scripts/rules_candidate.py`) runs beside the real rules
   (`scripts/rules.py`) and its differences are shown on the status page before it is promoted.
 - **Separate job lanes:** light jobs (outage watch, spot checks, guide refresh) can never cancel a waiting check-up.
-- **On demand:** `Report a problem` (family reports, tracked until fixed), `Close look at channels`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
+- **Dependabot** proposes updates to the pinned actions monthly; each proposal runs the self-test first.
+- **On demand:** `Replace playlist link` (switches off the old Dropbox link if it may have been passed around), `Report a problem` (family reports, tracked until fixed), `Close look at channels`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
 
 ## Privacy
-Logins, Dropbox keys and the file location are private repository secrets. The switch-over memory and the
-Dropbox key are stored encrypted (`secure/*.enc`). The playlist itself (which contains logins) only ever goes to Dropbox.
+Logins, Dropbox keys and the file location are private repository secrets. The switch-over memory is stored encrypted
+with its own key (`STATE_KEY`) and the Dropbox key with the Dropbox secret (`secure/*.enc`). The playlist itself (which contains logins) only ever goes to Dropbox.

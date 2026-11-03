@@ -1,0 +1,30 @@
+name: Replace playlist link
+
+# If the playlist's Dropbox link may have been shared too widely: switches off the old link and makes a new one.
+# The TV stops loading the playlist until the new link (copy it from the Dropbox app) is put into the TV app.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type REPLACE to confirm (the TV app must then be given the new link)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Replace the link
+        if: inputs.confirm == 'REPLACE'
+        env:
+          DBX_KEY: ${{ secrets.DBX_KEY }}
+          DBX_SECRET: ${{ secrets.DBX_SECRET }}
+          DBX_PATH: ${{ secrets.DBX_PATH }}
+        run: python3 scripts/rotate_link.py
+      - name: Not confirmed
+        if: inputs.confirm != 'REPLACE'
+        run: echo "Nothing changed - type REPLACE to confirm."

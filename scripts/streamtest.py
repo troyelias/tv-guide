@@ -180,33 +180,56 @@ def _ffprobe_height(data):
         os.unlink(path)
 
 
-def measure(provider, sid):
-    """How good is this copy of a channel? Returns None if it doesn't really play, else
-    {"start": seconds to first picture data, "height": picture height (e.g. 1080), "kbps": rough data rate}."""
+def _ffprobe_duration(data):
+    if not shutil.which("ffprobe"):
+        return None
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
+                             capture_output=True, text=True, timeout=20).stdout.strip()
+        return float(out) if out and out != "N/A" else None
+    except Exception:
+        return None
+    finally:
+        os.unlink(path)
+
+
+def measure(provider, sid, secs=6):
+    """How good is this copy of a channel? None if it doesn't really play, else
+    {"start": seconds to first data, "height": picture height, "kbps": data rate,
+     "keeps_up": True if it delivered at least as much programme as time passed (no buffering)}."""
     url = provider.stream_url(sid)
     t0 = time.time()
     try:
         req = urllib.request.Request(url, headers=UA)
         with urllib.request.urlopen(req, timeout=12) as r:
-            first = r.read(16384)
+            data = r.read(16384)
             start = time.time() - t0
-            data = first
-            while len(data) < SAMPLE and time.time() - t0 < 12:
+            t1 = time.time()
+            while time.time() - t1 < secs and len(data) < 30_000_000:
                 chunk = r.read(65536)
                 if not chunk:
                     break
                 data += chunk
-        took = max(time.time() - t0, 0.5)
+            took = max(time.time() - t1, 0.5)
     except Exception:
-        return {"start": 99.0, "height": 0, "kbps": 0} if plays(provider, sid) else None  # e.g. only HLS works
-    if not _is_video(data) or is_filler(data):
+        return {"start": 99.0, "height": 0, "kbps": 0, "keeps_up": False} if plays(provider, sid) else None  # e.g. only HLS
+    if not _is_video(data) or is_filler(data[:SAMPLE]):
         return None
-    return {"start": round(start, 2), "height": _ffprobe_height(data) or 0, "kbps": int(len(data) * 8 / took / 1000)}
+    dur = _ffprobe_duration(data)
+    keeps = True if dur is None else dur >= 0.9 * min(took + start, took + 2)
+    return {"start": round(start, 2), "height": _ffprobe_height(data[:SAMPLE]) or 0,
+            "kbps": int(len(data) * 8 / took / 1000), "keeps_up": keeps}
 
 
-def score(m):
-    """Higher is better: sharper picture first (up to full HD), then quicker start."""
-    return (min(m["height"], 1080), -m["start"]) if m else (-1, 0)
+def score(m, catchup=False):
+    """Higher is better: no buffering first, then sharper picture (up to full HD), then catch-up available,
+    then quicker start."""
+    if not m:
+        return (-1, 0, 0, 0)
+    return (1 if m.get("keeps_up", True) else 0, min(m["height"], 1080), 1 if catchup else 0, -m["start"])
 
 
 def logo_mask(data, frames=8):

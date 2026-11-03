@@ -1,0 +1,10 @@
+# Proposes updates to the pinned GitHub building blocks once a month (each proposal runs the self-test first).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "Update pinned action"

@@ -60,7 +60,8 @@ jobs:
       - name: Test channels, switch broken ones, update playlist
         id: run
         run: |
-          python3 scripts/channels.py "$MODE" "$RUNNER_TEMP/ch"
+          git fetch -q origin spot 2>/dev/null && git show FETCH_HEAD:spot.json > "$RUNNER_TEMP/spot.json" 2>/dev/null || echo '{}' > "$RUNNER_TEMP/spot.json"
+          SPOT_FILE="$RUNNER_TEMP/spot.json" python3 scripts/channels.py "$MODE" "$RUNNER_TEMP/ch"
           [ -f "$RUNNER_TEMP/ch/skip" ] && echo "skip=1" >> "$GITHUB_OUTPUT" || true
 
       - name: Save switch-over memory (encrypted)

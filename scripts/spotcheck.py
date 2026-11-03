@@ -69,6 +69,38 @@ for label, env in (("main", "PRO"), ("backup", "PRO_2")):
         run["ok"].setdefault(c["name"], {})[label] = ok
         time.sleep(2)
 
+# once a day (the early-morning run, India time) measure which service runs ahead for a few sports channels,
+# rotating through them; used by the proposed "sports from the faster service" rule (shadow mode)
+if os.environ.get("MEASURE_LEAD") == "1" or NOW.hour == 2:
+    from streamtest import record, scene_cuts, align_cuts
+    import threading
+    provs = {l: Provider(l, os.environ.get(e)) for l, e in (("main", "PRO"), ("backup", "PRO_2"))}
+    try:
+        idle_all = all(str(pv.api(timeout=60).get("user_info", {}).get("active_cons", "0")) in ("0", "", "None") for pv in provs.values())
+        lm = {l: match_lineup(catalog, pv.api("get_live_streams"), pv.api("get_live_categories")) for l, pv in provs.items()}
+    except Exception:
+        idle_all, lm = False, {}
+    leads = spot.setdefault("lead", {})
+    sports = [c for c in catalog if c["folder"] == "Sports" and all(lm.get(l, {}).get(c["id"]) for l in provs)]
+    sports.sort(key=lambda c: leads.get(c["name"], {}).get("utc", ""))  # least recently measured first
+    for c in sports[:int(os.environ.get("LEAD_PER_RUN", "4"))] if idle_all else []:
+        time.sleep(20)
+        if not all(str(pv.api(timeout=60).get("user_info", {}).get("active_cons", "0")) in ("0", "", "None") for pv in provs.values()):
+            run["skipped"].append("lead (someone started watching)")
+            break
+        rec = {}
+        ths = [threading.Thread(target=lambda l=l: rec.__setitem__(l, record(provs[l], lm[l][c["id"]][0], secs=50))) for l in provs]
+        [t.start() for t in ths]
+        [t.join() for t in ths]
+        (da, ta), (db, tb) = rec["main"], rec["backup"]
+        ca, _ = scene_cuts(da)
+        cb, _ = scene_cuts(db)
+        res = align_cuts(ca, cb)
+        if res and res[0] is not None and res[1] >= 3:
+            shift = res[0] + (ta - tb)
+            leads[c["name"]] = {"ahead": "main" if shift < 0 else "backup", "secs": round(abs(shift), 1),
+                                "utc": NOW.strftime("%Y-%m-%d %H:%M")}
+
 # a favourite that played on neither service (where it was checked)
 for name, res in run["ok"].items():
     if res and not any(res.values()):
@@ -83,6 +115,7 @@ tot = sum(1 for r in week for res in r["ok"].values() for v in res.values())
 good = sum(1 for r in week for res in r["ok"].values() for v in res.values() if v)
 spot["summary"] = {"checks_7d": len(week), "favourite_plays_pct_7d": round(100 * good / tot, 1) if tot else None,
                    "down_now": sorted(n for n, k in spot["down_streak"].items() if k >= 2),
-                   "last_run_utc": run["utc"], "last_skipped": run["skipped"]}
+                   "last_run_utc": run["utc"], "last_skipped": run["skipped"],
+                   "lead": spot.get("lead", {})}
 json.dump(spot, open(path, "w"), indent=1)
 print(json.dumps(spot["summary"]))

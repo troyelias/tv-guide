@@ -40,7 +40,8 @@ def parse_playlist(text):
         if l.startswith("#EXTINF"):
             name = l.rsplit(",", 1)[1]
             group = re.search(r'group-title="([^"]*)"', l).group(1)
-            out.append({"title": name, "group": group, "url": lines[i + 1]})
+            chno = re.search(r'tvg-chno="(\d+)"', l)
+            out.append({"title": name, "group": group, "url": lines[i + 1], "chno": int(chno.group(1)) if chno else None})
     return out
 
 
@@ -71,6 +72,10 @@ def rehearsal():
         env = dict(os.environ, DBX_SECRET="selftest-secret", PRO="http://main.test/get.php?username=u&password=p",
                    PRO_2="http://backup.test/get.php?username=u&password=p", PAUSE="0", GITHUB_REPOSITORY="owner/repo")
         env.pop("BACKUP_SLOT", None)
+        SP = next(c for c in both if c["folder"] == "Sports")
+        json.dump({"lead": {SP["name"]: {"ahead": "backup", "secs": 5.0, "utc": "2026-01-01 02:30"}}},
+                  open(os.path.join(work, "spot.json"), "w"))
+        env["SPOT_FILE"] = os.path.join(work, "spot.json")
         start = datetime(2026, 1, 1, 22, 40)  # 4:10 AM India time the next day
         base = lambda extra=(): {"main": [sid("main", B), sid("main", C)] + list(extra),  # noqa: E731
                                  "backup": [sid("backup", B), sid("backup", C)]}
@@ -121,6 +126,19 @@ def rehearsal():
         check((s1.get("second_try") or {}).get("recovered", 0) >= 1, "morning 1: second try reports what came back")
         check(not find(p1, C, "Backup"), "morning 1: a favourite that doesn't play is left out of the Backup folder")
         check(len([x for x in p1 if x["group"] == "Backup"]) >= 1, "morning 1: the Backup folder still has working favourites")
+        sh = (s1.get("shadow") or {}).get("differs", [])
+        check(any(SP["name"] in d and "proposed backup" in d for d in sh) and "main.test" in find(p1, SP, SP["folder"])[0]["url"],
+              "shadow mode: the 'sports from the faster service' proposal is shown but not used")
+        check(p1[0]["group"] == "Favourites" and p1[0]["chno"] == 1, "Favourites folder comes first, numbered from 1")
+        favs = [x for x in p1 if x["group"] == "Favourites"]
+        check([x["chno"] for x in favs] == list(range(1, len(favs) + 1)) and not any(x["title"] == C["name"] + " \u26a0" for x in favs),
+              "favourites are numbered 1, 2, 3... and a favourite playing nowhere is left out of that folder")
+        nums = {c["name"]: c.get("number") for c in catalog}
+        own = [x for x in p1 if x["group"] not in ("Favourites", "Backup", "Not working")]
+        check(own and all(x["chno"] == nums[x["title"].replace(" \u26a0", "")] for x in own),
+              "every channel carries its fixed channel number (Tata Play's where it has one)")
+        check(len({x["chno"] for x in own}) == len(own), "no two channels share a number")
+        check(all(x["chno"] > 5000 for x in p1 if x["group"] == "Backup"), "Backup-folder copies have their own numbers (5001+)")
         s2, p2 = results[1]
         check("backup.test" in find(p2, A, A["folder"])[0]["url"], "morning 2: one good morning isn't enough to switch back")
         s3, p3 = results[2]
