@@ -1,0 +1,53 @@
+name: Grabber update test
+
+# Once a week: try the newest version of the free listings grabber on a sample of channels.
+# Only if it produces listings is it adopted (grabber.lock); otherwise the known-good version stays.
+on:
+  schedule:
+    - cron: "41 9 * * 3"   # Wednesdays, 3:11 PM India time (nobody depends on it at that hour)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tv-guide
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: iptv-org/epg
+          path: grabber
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+      - name: Try the newest grabber on a sample of channels
+        id: t
+        run: |
+          NEW=$(git -C grabber rev-parse HEAD); OLD=$(tr -d '[:space:]' < grabber.lock)
+          echo "pinned $OLD, newest $NEW"
+          if [ "$NEW" = "$OLD" ]; then echo "Already on the newest version."; exit 0; fi
+          (cd grabber && (npm ci --no-audit --no-fund || npm install --no-audit --no-fund) > /dev/null 2>&1)
+          python3 - <<'PY'
+          import re
+          for src, dst, n in (("main.channels.xml", "sample-main.xml", 12), ("backup.channels.xml", "sample-backup.xml", 25)):
+              lines = [l for l in open(src) if "<channel " in l][:n]
+              open(dst, "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<channels>\n' + "".join(lines) + "</channels>\n")
+          PY
+          (cd grabber && npm run grab --- --channels="$GITHUB_WORKSPACE/sample-main.xml" --output="$RUNNER_TEMP/m.xml" --days=1 --maxConnections=1 --delay=2200 --timeout=30000 > /dev/null 2>&1) || true
+          (cd grabber && npm run grab --- --channels="$GITHUB_WORKSPACE/sample-backup.xml" --output="$RUNNER_TEMP/b.xml" --days=1 --maxConnections=2 --delay=400 --timeout=30000 > /dev/null 2>&1) || true
+          N=$(( $(grep -c "<programme" "$RUNNER_TEMP/m.xml" 2>/dev/null || echo 0) + $(grep -c "<programme" "$RUNNER_TEMP/b.xml" 2>/dev/null || echo 0) ))
+          echo "Newest version produced $N shows for the sample."
+          if [ "$N" -ge 300 ]; then echo "$NEW" > grabber.lock; echo "adopt=1" >> "$GITHUB_OUTPUT"; else echo "::warning::Newest grabber produced too little - keeping the known-good version."; fi
+      - name: Adopt the newer version
+        if: steps.t.outputs.adopt == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add grabber.lock && git commit -qm "Grabber: adopt newer version after a passing test" && git pull -q --rebase origin main && git push -q

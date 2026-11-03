@@ -80,11 +80,16 @@ def rehearsal():
             (base([sid("main", c) for c in crowd]), {}, 0),             # 6: main loses 30 channels
             (base(), {}, 0),                                            # 7
             ({"main": [sid("main", C)], "backup": [sid("backup", C)]}, {}, 40),  # 8: starts 40 minutes late
+            (base(), {}, 0),                                            # 9: both services send half their list
+            (base(), {}, 0),                                            # 10: back to normal
         ]
         results = []
         for n, (dead, flaky, late) in enumerate(nights, 1):
             plan = os.path.join(work, "plan.json")
-            json.dump({"lineups": lu, "dead": dead, "flaky": flaky}, open(plan, "w"))
+            lus = lu
+            if n == 9:
+                lus = {p: {"categories": v["categories"], "streams": v["streams"][: len(v["streams"]) // 2]} for p, v in lu.items()}
+            json.dump({"lineups": lus, "dead": dead, "flaky": flaky}, open(plan, "w"))
             out = os.path.join(work, f"out{n}")
             e = dict(env, TEST_NOW=(start + timedelta(days=n - 1, minutes=late)).isoformat())
             r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), SCRIPTS, plan, out],
@@ -144,12 +149,18 @@ def rehearsal():
         check(not results[4][0].get("drops") and not results[6][0].get("drops"), "normal mornings don't raise the drop warning")
         check(results[7][0].get("late_start_ist") == "04:50", "morning 8: a check-up that started late is flagged")
         check(not results[6][0].get("late_start_ist"), "an on-time check-up isn't flagged as late")
-        check([bool(r[0].get("weekly_due")) for r in results] == [False, False, False, True, False, False, False, False],
+        check([bool(r[0].get("weekly_due")) for r in results] == [False, False, False, True, False, False, False, False, False, False],
               "the weekly report card is due on Monday mornings only")
         wk = results[6][0].get("week") or {}
         check(wk.get("mornings") == 7 and set(wk.get("reliability", {})) == {"main", "backup"},
               "weekly report covers 7 mornings and both services")
         check(B["name"] in wk.get("down_all_week", []), "weekly report lists channels down all week")
+        # safety gate: a half-empty channel list from the services must not replace the TV's playlist
+        s9, p9 = results[8]
+        check(bool(s9.get("upload_blocked")) and not s9.get("uploaded"), "morning 9: a much smaller playlist is held back")
+        check(len(p9) == len(results[7][1]), "morning 9: the TV keeps the previous full playlist")
+        s10, p10 = results[9]
+        check(not s10.get("upload_blocked") and len(p10) >= len(results[7][1]) - 2, "morning 10: back to normal, full playlist")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -188,6 +199,58 @@ def merge_test():
         check("The Real Film" in x and ">Movie<" not in x, "a 'Movie' placeholder gets the real title from another source")
         check("⚠ Not available right now" in x, "a channel down on both services gets the guide note")
         check('channel="X3"><title>Mapped Show' in x, "a shared guide's own channel names are mapped to ours (several map files)")
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
+def guide_gate_test():
+    print("2b. Guide safety gate")
+    work = tempfile.mkdtemp()
+    try:
+        now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+        t = lambda h: (now + timedelta(hours=h)).strftime("%Y%m%d%H%M%S +0000")  # noqa: E731
+        ids = [f"C{i}" for i in range(60)]
+        open(os.path.join(work, "ids.txt"), "w").write("\n".join(ids) + "\n")
+        prev = "<tv>" + "".join(f'<programme start="{t(0)}" stop="{t(30)}" channel="{c}"><title>Old {c}</title></programme>' for c in ids) + "</tv>"
+        open(os.path.join(work, "prev.xml"), "w").write(prev)
+        thin = "<tv>" + "".join(f'<programme start="{t(0)}" stop="{t(30)}" channel="{c}"><title>New {c}</title></programme>' for c in ids[:10]) + "</tv>"
+        open(os.path.join(work, "thin.xml"), "w").write(thin)
+        r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "merge.py"), "ids.txt", "out.xml.gz", "R.md", "s.json",
+                            "--previous=prev.xml", "A=thin.xml"], cwd=work, capture_output=True, text=True, timeout=120)
+        st = json.load(open(os.path.join(work, "s.json"))) if r.returncode == 0 else {}
+        out = open(os.path.join(work, "out.xml.gz"), "rb").read() if os.path.exists(os.path.join(work, "out.xml.gz")) else b""
+        check(st.get("guide_held") and out == prev.encode(), "a guide with far fewer channels is held back (current guide kept)")
+        full = "<tv>" + "".join(f'<programme start="{t(0)}" stop="{t(30)}" channel="{c}"><title>New {c}</title></programme>' for c in ids) + "</tv>"
+        open(os.path.join(work, "full.xml"), "w").write(full)
+        r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "merge.py"), "ids.txt", "out.xml.gz", "R.md", "s.json",
+                            "--previous=prev.xml", "A=full.xml"], cwd=work, capture_output=True, text=True, timeout=120)
+        st = json.load(open(os.path.join(work, "s.json")))
+        check(not st.get("guide_held") and b"New C59" in gzip.open(os.path.join(work, "out.xml.gz")).read(), "a normal guide is published")
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
+def leak_test():
+    print("2c. Leak check")
+    work = tempfile.mkdtemp()
+    try:
+        env = dict(os.environ, PRO="http://tv.secret-host.test:8080/get.php?username=fam1ly&password=pw98765")
+        for k in ("PRO_2", "DBX_KEY", "DBX_SECRET", "DBX_PATH", "TRIAL"):
+            env.pop(k, None)
+        d = os.path.join(work, "out")
+        os.makedirs(d)
+        open(os.path.join(d, "ok.txt"), "w").write("Colors HD family fun pw98765x")
+        run = lambda *a: subprocess.run([sys.executable, os.path.join(SCRIPTS, "leakcheck.py"), *a], env=env,  # noqa: E731
+                                        capture_output=True, text=True, timeout=60)
+        check(run(d).returncode == 0, "clean files pass the leak check")
+        open(os.path.join(d, "bad.txt"), "w").write("see http://tv.secret-host.test:8080/live/fam1ly/pw98765/1.ts")
+        r = run(d)
+        check(r.returncode == 1 and "secret-host" not in r.stdout + r.stderr, "a login in a file stops publishing (and isn't printed)")
+        os.remove(os.path.join(d, "bad.txt"))
+        g = os.path.join(d, "guide.xml.gz")
+        open(g, "wb").write(gzip.compress(b'<tv><channel id="a"><icon src="http://tv.secret-host.test:8080/i.png"/></channel></tv>'))
+        check(run("--fix", d).returncode == 0 and b"secret-host" not in gzip.open(g).read(),
+              "service picture links are stripped from the guide automatically")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -274,7 +337,7 @@ def files_test():
     check(len({c["id"] for c in cat}) == len(cat), "channel list has no duplicate entries")
 
 
-for t in (files_test, rehearsal, merge_test, filler_test, outage_and_alerts_test):
+for t in (files_test, rehearsal, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
     try:
         t()
     except Exception as e:  # a crash inside a test is a failure, not a crash of the whole self-test

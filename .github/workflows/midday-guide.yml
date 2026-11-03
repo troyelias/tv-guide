@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: tv
+  group: tv-guide
   cancel-in-progress: false
 
 jobs:
@@ -23,20 +23,24 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Read the pinned (known-good) grabber version
+        id: lock
+        run: echo "sha=$(tr -d '[:space:]' < grabber.lock)" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           repository: iptv-org/epg
           path: grabber
+          ref: ${{ steps.lock.outputs.sha }}   # newer versions are adopted only after the weekly grabber test passes
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 22
 
       - name: Install grabber
         working-directory: grabber
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
       - name: Grab listings
         run: scripts/grab.sh
@@ -66,11 +70,18 @@ jobs:
       - name: Publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRO: ${{ secrets.PRO }}
+          PRO_2: ${{ secrets.PRO_2 }}
+          DBX_KEY: ${{ secrets.DBX_KEY }}
+          DBX_SECRET: ${{ secrets.DBX_SECRET }}
+          DBX_PATH: ${{ secrets.DBX_PATH }}
         run: |
           R="$RUNNER_TEMP"
           mkdir out out/logs
           cp "$R/guide.xml.gz" REPORT.md "$R/site/index.html" "$R/ch/channels.json" out/
           cp "$R"/grab-*.log out/logs/ 2>/dev/null || true
+          # leak check: nothing public may contain a login, server address or private location
+          python3 scripts/leakcheck.py --fix out "$R/site" REPORT.md logos
           cd out
           git init -q -b guide
           git config user.name "github-actions[bot]"
@@ -84,10 +95,10 @@ jobs:
           git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin main && git push -q
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/site
 
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
         continue-on-error: true

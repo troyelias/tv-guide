@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Download listings with the iptv-org grabber. If a fresh grabber version produces almost nothing,
-# retry once with the last version that worked (saved in grabber.lock).
+# Download listings with the iptv-org grabber, pinned to a known-good version (grabber.lock).
+# If the pinned version produces almost nothing, try the newest version once; whichever works is remembered.
 set -u
 W="$GITHUB_WORKSPACE"; T="$RUNNER_TEMP"; MIN=3000
 
@@ -15,12 +15,12 @@ count() { grep -c "<programme" "$1" 2>/dev/null || echo 0; }
 run_grab
 CUR=$(git -C "$W/grabber" rev-parse HEAD)
 N=$(count "$T/main.xml"); echo "Grabber $CUR: $N main shows, $(count "$T/backup.xml") backup shows"
-LOCK=$(cat "$W/grabber.lock" 2>/dev/null || true)
-if [ "$N" -lt "$MIN" ] && [ -n "$LOCK" ] && [ "$LOCK" != "$CUR" ]; then
-  echo "Too few shows - retrying with the last working grabber version"
-  git -C "$W/grabber" fetch -q --depth 1 origin "$LOCK" && git -C "$W/grabber" checkout -q "$LOCK" \
+if [ "$N" -lt "$MIN" ]; then
+  # the pinned version stopped working (a listings site changed) - try the newest grabber once
+  echo "Too few shows with the pinned grabber - trying the newest version"
+  git -C "$W/grabber" fetch -q --depth 1 origin HEAD && git -C "$W/grabber" checkout -q FETCH_HEAD \
     && ( cd "$W/grabber" && npm install --no-audit --no-fund > /dev/null 2>&1 ) && run_grab
-  CUR=$(git -C "$W/grabber" rev-parse HEAD); N=$(count "$T/main.xml"); echo "Retry: $N main shows"
+  CUR=$(git -C "$W/grabber" rev-parse HEAD); N=$(count "$T/main.xml"); echo "Retry with $CUR: $N main shows"
 fi
 if [ "$N" -ge "$MIN" ]; then echo "$CUR" > "$T/grabber.lock"; fi
 exit 0

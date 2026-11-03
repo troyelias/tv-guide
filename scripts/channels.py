@@ -446,10 +446,29 @@ may_upload = MODE in ("outage", "restore") or (MODE == "nightly" and in_window)
 summary["hold"] = bool(state.get("hold"))
 if state.get("hold") and MODE != "outage":
     may_upload = False  # updates paused after an undo, until resumed
+# ---- safety gate: never replace a good playlist with a much smaller one (e.g. a service sent a partial list) ----
+count_now = counts["main"] + counts["backup"]
+folders_now = sorted({f for f in FOLDERS for ln in lines if f'group-title="{f}"' in ln})
+last = state.get("uploaded_shape") or {}
+blocked = None
+if MODE == "nightly" and last.get("channels"):
+    if count_now < 0.9 * last["channels"]:
+        blocked = f"only {count_now} channels instead of {last['channels']} last time"
+    elif set(last.get("folders", [])) - set(folders_now):
+        blocked = "whole folder(s) missing: " + ", ".join(sorted(set(last["folders"]) - set(folders_now)))
+if MODE == "nightly":
+    state["held_mornings"] = state.get("held_mornings", 0) + 1 if blocked else 0
+if blocked and state.get("held_mornings", 0) >= 3:
+    summary["shrink_accepted"] = blocked  # the same smaller list three mornings running: it's real, so use it
+    blocked = None
+if blocked and not os.environ.get("ALLOW_SHRINK"):
+    summary["upload_blocked"] = blocked
+    may_upload = False
 if changed and may_upload and lineup:
     try:
         upload(text)
         state["uploaded_hash"] = digest
+        state["uploaded_shape"] = {"channels": count_now, "folders": folders_now}
         summary["uploaded"] = True
         # keep this and the previous playlist (encrypted) so an undo is one tap away
         if os.path.exists("secure/playlist_cur.enc"):

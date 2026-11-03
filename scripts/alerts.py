@@ -65,10 +65,23 @@ if dr:
     alerts["A service lost channels overnight"] = ("Fewer channels played than usual this morning: " + "; ".join(
         f"{svc[p]} service {d['now']} working (yesterday {d['before']}, this week's average {d['week_avg']})"
         for p, d in dr.items()) + ". It may be a temporary problem at the service; the next check-ups will show whether it lasts.")
+if ch.get("upload_blocked"):
+    alerts["Playlist update held back"] = ("This morning's new channel list looked wrong (" + ch["upload_blocked"] + "), so the TV "
+                                           "kept yesterday's list. This usually means a service sent an incomplete channel list. "
+                                           "The next check-up tries again; if it keeps happening, ask Claude to look.")
+if ch.get("shrink_accepted"):
+    alerts["Playlist update held back"] = ("For three mornings in a row the channel list came out smaller ("
+                                           + ch["shrink_accepted"] + "), so it has now been accepted as a real change at "
+                                           "the service. Ask Claude to check which channels went missing.")
+if stats.get("guide_held"):
+    alerts["Guide update held back"] = ("The new programme guide had far fewer channels than the current one ("
+                                        + str(stats["guide_held"]) + "), so the current guide was kept. Sources may have failed; "
+                                        "the next build tries again.")
 KNOWN = ["Channels no longer found on a service", "A check-up was missed", "Playlist updates paused (undo used)",
          "Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
          "Guide coverage dropped", "Playlist upload failing", "Must-have channel down",
-         "Check-up started late", "A service lost channels overnight"]
+         "Check-up started late", "A service lost channels overnight",
+         "Playlist update held back", "Guide update held back"]
 
 repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")
 if not (repo and token):

@@ -13,7 +13,7 @@ For each channel:
   3. Listings are extended past the base source's last show with later shows from other sources.
   4. The last ~26 hours are kept from the previous guide, so catch-up shows real titles.
 """
-import copy, gzip, json, re, sys, xml.etree.ElementTree as ET
+import copy, gzip, json, os, re, sys, xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
@@ -270,6 +270,18 @@ total = sum(len(v[2]) for v in chosen.values())
 if total == 0:
     sys.exit("No listings from any source - not publishing.")
 
+# ---- safety gate: never replace a good guide with a much thinner one (e.g. several sources failed tonight) ----
+soon = NOW + timedelta(hours=6)
+prev_live = sum(1 for cid in wanted if any(b > soon for a, b, p in prev_progs.get(cid, [])))
+new_live = sum(1 for v in chosen.values() if any(b > soon for a, b, p in v[2]))
+guide_held = None
+if previous and prev_live >= 50 and new_live < 0.85 * prev_live and not os.environ.get("ALLOW_SHRINK"):
+    guide_held = f"{new_live} channels instead of {prev_live}"
+    print(f"Guide held back: {guide_held} - keeping the current guide")
+    import shutil
+    shutil.copyfile(previous, out_file)
+    out_file = os.devnull  # the merged result is still written below for the report, but goes nowhere
+
 with gzip.open(out_file, "wb") as out:
     out.write(b'<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="tv-guide">\n')
     for cid in wanted:
@@ -314,7 +326,7 @@ open(report_file, "w", encoding="utf-8").write("\n".join(r) + "\n")
 json.dump({"built_utc": NOW.strftime("%Y-%m-%d %H:%M"), "channels_total": len(wanted),
            "channels_with_listings": len(chosen), "shows": total, "placeholders_filled": filled_total,
            "placeholders_left": placeholders_left, "lookahead_hours_median": round(median_ahead),
-           "sources": {n: by_src.get(n, 0) for n in stats}, "missing": len(missing)},
+           "sources": {n: by_src.get(n, 0) for n in stats}, "missing": len(missing), "guide_held": guide_held},
           open(stats_file, "w"), indent=1)
 print(f"Wrote {len(chosen)}/{len(wanted)} channels, {total} shows; filled {filled_total}, "
       f"extended {extended_total}, past {past_total}")
