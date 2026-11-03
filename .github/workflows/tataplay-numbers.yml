@@ -17,31 +17,56 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Download the channel list
+        id: dl
         run: |
           python3 - <<'PY'
-          import json, urllib.request
-          H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
-               "Accept": "application/json", "Origin": "https://watch.tataplay.com", "Referer": "https://watch.tataplay.com/"}
+          import json, traceback, urllib.request
+          H = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+               "content-type": "application/json", "accept-language": "en-IN,en;q=0.8", "cache-control": "no-cache",
+               "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"}
           base = "https://tm.tapi.videoready.tv/portal-search/pub/api/v1/channels"
+          dbg = []
           def get(off):
-              with urllib.request.urlopen(urllib.request.Request(f"{base}?limit=1000&offset={off}", headers=H), timeout=60) as r:
-                  return json.load(r)["data"]
-          first = get(0); items = list(first.get("list") or []); total = first.get("total") or len(items)
-          for off in range(1000, total, 1000):
-              items += get(off).get("list") or []
-          json.dump(items[:3], open("/tmp/sample.json", "w"), indent=1)
-          keep = []
-          for c in items:
-              num = next((c.get(k) for k in ("channelNumber", "channelNo", "lcn", "epgChannelNumber", "number") if c.get(k) not in (None, "")), None)
-              keep.append({"id": str(c.get("id")), "title": c.get("title"), "number": num})
-          json.dump({"source": "Tata Play public channel list", "channels": keep}, open("tataplay-numbers.json", "w"), indent=0, ensure_ascii=False)
-          print(len(keep), "channels;", sum(1 for k in keep if k["number"] not in (None, "")), "with a number")
-          print("fields seen:", sorted(items[0].keys()) if items else [])
+              req = urllib.request.Request(f"{base}?limit=1000&offset={off}", headers=H)
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      raw = r.read()
+              except urllib.error.HTTPError as e:
+                  dbg.append(f"HTTP {e.code}: {e.read()[:300]!r}"); raise
+              d = json.loads(raw)
+              dbg.append("top keys: " + str(list(d.keys()) if isinstance(d, dict) else type(d)))
+              return d.get("data") or {}
+          try:
+              first = get(0); items = list(first.get("list") or []); total = first.get("total") or len(items)
+              for off in range(1000, total, 1000):
+                  items += get(off).get("list") or []
+              dbg.append(f"{len(items)} items; first item fields: {sorted(items[0].keys()) if items else []}")
+              dbg.append("first items: " + json.dumps(items[:2], ensure_ascii=False)[:3000])
+              keep = []
+              for c in items:
+                  num = next((c.get(k) for k in ("channelNumber", "channelNo", "lcn", "epgChannelNumber", "number", "channelPosition")
+                              if c.get(k) not in (None, "")), None)
+                  keep.append({"id": str(c.get("id")), "title": c.get("title"), "number": num})
+              json.dump({"source": "Tata Play public channel list", "channels": keep}, open("tataplay-numbers.json", "w"), indent=0, ensure_ascii=False)
+              dbg.append(f"{sum(1 for k in keep if k['number'] not in (None, ''))} with a number")
+          except Exception:
+              dbg.append(traceback.format_exc()[-1500:])
+          open("/tmp/tp-debug.txt", "w").write("\n".join(dbg))
           PY
-          cat /tmp/sample.json | head -80
+          cat /tmp/tp-debug.txt
+      - name: Keep the details for checking
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir d && cp /tmp/tp-debug.txt d/ 2>/dev/null; cd d && git init -q -b tp-debug
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm debug && git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" tp-debug
       - name: Save
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -f tataplay-numbers.json ] || exit 0
           git add tataplay-numbers.json && (git diff --cached --quiet || git commit -qm "Tata Play channel numbers $(date -u +%Y-%m-%d)")
           git pull -q --rebase origin main && git push -q
