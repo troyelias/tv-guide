@@ -162,3 +162,91 @@ def plays(provider, sid):
     except Exception:
         pass
     return False
+
+
+def _ffprobe_height(data):
+    if not shutil.which("ffprobe"):
+        return None
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=height",
+                              "-of", "csv=p=0", path], capture_output=True, text=True, timeout=20).stdout
+        return int(out.strip().splitlines()[0]) if out.strip() else None
+    except Exception:
+        return None
+    finally:
+        os.unlink(path)
+
+
+def measure(provider, sid):
+    """How good is this copy of a channel? Returns None if it doesn't really play, else
+    {"start": seconds to first picture data, "height": picture height (e.g. 1080), "kbps": rough data rate}."""
+    url = provider.stream_url(sid)
+    t0 = time.time()
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=12) as r:
+            first = r.read(16384)
+            start = time.time() - t0
+            data = first
+            while len(data) < SAMPLE and time.time() - t0 < 12:
+                chunk = r.read(65536)
+                if not chunk:
+                    break
+                data += chunk
+        took = max(time.time() - t0, 0.5)
+    except Exception:
+        return {"start": 99.0, "height": 0, "kbps": 0} if plays(provider, sid) else None  # e.g. only HLS works
+    if not _is_video(data) or is_filler(data):
+        return None
+    return {"start": round(start, 2), "height": _ffprobe_height(data) or 0, "kbps": int(len(data) * 8 / took / 1000)}
+
+
+def score(m):
+    """Higher is better: sharper picture first (up to full HD), then quicker start."""
+    return (min(m["height"], 1080), -m["start"]) if m else (-1, 0)
+
+
+def logo_mask(data, frames=6):
+    """Where the channel's on-screen logo sits: pixels in the top corners that stay the same across frames
+    while the programme moves. Two copies of the same channel have their logo in the same place.
+    Returns a set of (x, y) cells, or None if it can't be worked out."""
+    if not shutil.which("ffmpeg"):
+        return None
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        W, H = 96, 54
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps=3,scale={W}:{H}", "-frames:v", str(frames),
+                              "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True, timeout=40).stdout
+        fr = [raw[i:i + W * H] for i in range(0, len(raw) - W * H + 1, W * H)]
+        if len(fr) < 3:
+            return None
+        motion = sum(abs(a - b) for x, y in zip(fr, fr[1:]) for a, b in zip(x, y)) / (len(fr) - 1) / (W * H)
+        if motion < 1.0:
+            return None  # the whole picture is still: can't separate a logo from the programme
+        cells = set()
+        for y in range(0, H // 3):
+            for x in list(range(0, W // 3)) + list(range(2 * W // 3, W)):
+                vals = [f[y * W + x] for f in fr]
+                mean = sum(vals) / len(vals)
+                if max(vals) - min(vals) <= 6:  # unchanged across frames
+                    nb = [fr[0][yy * W + xx] for yy, xx in ((y, max(x - 2, 0)), (y, min(x + 2, W - 1)), (max(y - 2, 0), x), (min(y + 2, H - 1), x))]
+                    if max(abs(mean - v) for v in nb) > 25:  # an edge, i.e. part of a logo rather than flat background
+                        cells.add((x // 3, y // 3))
+        return cells
+    except Exception:
+        return None
+    finally:
+        os.unlink(path)
+
+
+def grab_sample(provider, sid, limit=3_000_000, secs=10):
+    try:
+        data, _ = _fetch(provider.stream_url(sid), limit, timeout=secs)
+        return data if _is_video(data) and not is_filler(data[:SAMPLE]) else None
+    except Exception:
+        return None

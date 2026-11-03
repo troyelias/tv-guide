@@ -200,4 +200,38 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
         time.sleep(3)
     say()
 
+# ---- logo comparison (LOGOS=1): how alike are the on-screen logos of the same / different channels? ----
+if os.environ.get("LOGOS") == "1" and wanted:
+    from streamtest import grab_sample, logo_mask
+    masks = {}
+    for label, env in (("main", "PRO"), ("backup", "PRO_2")):
+        prov = Provider(label, os.environ.get(env))
+        if not prov.ok:
+            continue
+        try:
+            if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) not in ("0", "", "None") and not FORCE:
+                say(f"logos: {label} in use - skipped")
+                continue
+            m = match_lineup(catalog, prov.api("get_live_streams"), prov.api("get_live_categories"))
+        except Exception:
+            continue
+        for c in catalog:
+            if c["name"].lower() in wanted and m.get(c["id"]):
+                d = grab_sample(prov, m[c["id"]][0])
+                masks[(c["name"], label)] = logo_mask(d) if d else None
+                time.sleep(2)
+    say("== Logo comparison (share of logo spots in common; same channel should be high, different channels low)")
+    keys = sorted(masks)
+    for i, a in enumerate(keys):
+        for b in keys[i + 1:]:
+            ma, mb = masks[a], masks[b]
+            if ma is None or mb is None:
+                continue
+            iou = len(ma & mb) / max(1, len(ma | mb))
+            same = "SAME channel" if a[0] == b[0] else "different"
+            say(f"  {a[0]} ({a[1]}) vs {b[0]} ({b[1]}): {iou:.2f}  [{same}; spots {len(ma)}/{len(mb)}]")
+    for k in keys:
+        if masks[k] is None:
+            say(f"  {k[0]} ({k[1]}): no logo could be worked out")
+
 open(sys.argv[1], "w").write("\n".join(lines) + "\n")
