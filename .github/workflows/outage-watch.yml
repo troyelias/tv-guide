@@ -46,7 +46,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add secure && git commit -qm "Outage switch $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
-          gh issue list --state open --search "Main service down - using backup in:title" --json number -q '.[].number' | grep -q . || \
+          gh issue list --state open --author "app/github-actions" --search "Main service down - using backup in:title" --json number -q '.[].number' | grep -q . || \
             gh issue create --title "Main service down - using backup" --assignee "$GITHUB_REPOSITORY_OWNER" \
               --body "The main service stopped logging in twice in a row, so every channel was switched to the backup service. It switches back automatically during the 4-7 AM (India) check-up once the main service works again."
 
@@ -55,7 +55,7 @@ jobs:
           git fetch -q origin guide 2>/dev/null || exit 0
           age=$(( ( $(date +%s) - $(git log -1 --format=%ct FETCH_HEAD) ) / 3600 ))
           title="Guide or check-up has stopped running"
-          open=$(gh issue list --state open --search "\"$title\" in:title" --json number -q '.[0].number')
+          open=$(gh issue list --state open --author "app/github-actions" --search "\"$title\" in:title" --json number -q '.[0].number')
           if [ "$age" -gt 30 ]; then
             [ -n "$open" ] || gh issue create --title "$title" --assignee "$GITHUB_REPOSITORY_OWNER" \
               --body "The guide was last updated $age hours ago (normally at least once a day). Your TV keeps playing the last channel list. Open Actions -> 'Nightly check-up' -> Run workflow, or ask Claude to look into it."

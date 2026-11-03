@@ -99,7 +99,9 @@ def api(method, path, body=None):
         return json.load(r)
 
 
-open_issues = {i["title"]: i for i in api("GET", "/issues?state=open&per_page=100") if "pull_request" not in i}
+# only issues the robot itself opened count as alerts (anyone can open an issue on a public repo)
+open_issues = {i["title"]: i for i in api("GET", "/issues?state=open&per_page=100")
+               if "pull_request" not in i and (i.get("user") or {}).get("login") == "github-actions[bot]"}
 owner = os.environ.get("GITHUB_REPOSITORY_OWNER")
 for title in KNOWN:
     if title in alerts and title not in open_issues:
@@ -172,7 +174,8 @@ def weekly_text(w, ch):
 w = ch.get("week")
 if ch.get("weekly_due") and w:
     title = f"Weekly report card ({w.get('to')})"
-    recent = api("GET", "/issues?state=all&per_page=50&sort=created&direction=desc")
+    recent = [i for i in api("GET", "/issues?state=all&per_page=50&sort=created&direction=desc")
+              if (i.get("user") or {}).get("login") == "github-actions[bot]"]
     if not any(i["title"] == title for i in recent):
         for i in recent:
             if i["title"].startswith("Weekly report card") and i["state"] == "open":

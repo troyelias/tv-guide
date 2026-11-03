@@ -44,7 +44,7 @@ jobs:
         run: |
           down=$(python3 -c "import json;print(', '.join(json.load(open('$RUNNER_TEMP/spot.json'))['summary']['down_now']))")
           title="Favourite channel down during the day"
-          open=$(gh issue list --state open --search "\"$title\" in:title" --json number -q '.[0].number')
+          open=$(gh issue list --state open --author "app/github-actions" --search "\"$title\" in:title" --json number -q '.[0].number')
           if [ -n "$down" ]; then
             body="These favourites didn't play on either service at the last two daytime spot checks: $down. The next morning check-up will mark them and try them again; the Backup folder may help meanwhile."
             if [ -n "$open" ]; then gh issue edit "$open" --body "$body"; else gh issue create --title "$title" --assignee "$GITHUB_REPOSITORY_OWNER" --body "$body"; fi
