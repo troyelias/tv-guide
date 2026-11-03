@@ -101,8 +101,6 @@ if ch:
     if spot.get("down_now"):
         warn.append("Favourite down during the day")
         rows.append(("Favourites down at the last spot checks", ", ".join(spot["down_now"])))
-    if spot.get("possible_mixups"):
-        rows.append(("Possible mislabelled copies (logos differ between services)", ", ".join(spot["possible_mixups"])))
     bc = (ch.get("best_copy") or {}).get("switched_to_better_copy") or {}
     if bc:
         rows.append(("Moved to a sharper/faster copy", "; ".join(f"{'main' if p_ == 'main' else 'backup'}: {', '.join(v)}" for p_, v in bc.items())))

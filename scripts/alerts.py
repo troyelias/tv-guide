@@ -151,8 +151,6 @@ def weekly_text(w, ch):
     moved = (ch.get("best_copy") or {}).get("switched_to_better_copy") or {}
     if moved:
         out.append("- **Moved to a sharper/faster copy:** " + "; ".join(", ".join(v) for v in moved.values()))
-    if spot.get("possible_mixups"):
-        out.append("- **Possible mislabelled copies** (logos differ between the two services): " + ", ".join(spot["possible_mixups"]))
     tr = ch.get("trend") or []
     if len(tr) >= 8:
         prev = [t["main_pct"] for t in tr[-14:-7] if t.get("main_pct")]

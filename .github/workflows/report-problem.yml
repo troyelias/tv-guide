@@ -20,7 +20,7 @@ on:
         default: false
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 concurrency:
@@ -39,13 +39,28 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Install picture checker
         run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
-      - name: Check the channels now
+      - name: Check the channels now (and keep a few locked sample pictures for checking by eye)
         env:
           NAMES: ${{ inputs.channels }}
           FORCE: ${{ inputs.force && '1' || '0' }}
+          SHOTS_DIR: ${{ runner.temp }}/shots
         run: |
           export NAMES="$(echo "$NAMES" | sed 's/⚠//g')"
+          mkdir -p "$SHOTS_DIR"
           python3 scripts/probe.py "$RUNNER_TEMP/probe.txt" || true
+          cd "$RUNNER_TEMP"
+          if [ -n "$(ls shots)" ]; then
+            tar czf shots.tgz shots && openssl rand -hex 32 > k
+            openssl enc -aes-256-cbc -pbkdf2 -salt -pass file:k -in shots.tgz -out shots.enc
+            openssl pkeyutl -encrypt -pubin -inkey "$GITHUB_WORKSPACE/checks/probe.pub" -in k -out key.enc
+            rm k shots.tgz
+            mkdir out && cp shots.enc key.enc out/ && cd out
+            git init -q -b probe
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add . && git commit -qm "Report pictures $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" probe
+          fi
       - name: Open the family report alert
         env:
           NAMES: ${{ inputs.channels }}
@@ -67,7 +82,8 @@ jobs:
           note = os.environ.get("NOTE", "").strip()
           print("Reported by the family" + (f": _{note}_" if note else "") + "\n")
           print("**Checked just now:**\n" + ("\n".join(out) or "- couldn't check (see the run log)"))
-          print("\nEach morning's check-up will add the latest result here and close this once it plays again.")
+          print("\nEach morning's check-up will add the latest result here and close this once it plays again. "
+                "Sample pictures were saved (locked) so Claude can check by eye, e.g. for a wrong-channel report.")
           PY
           python3 scripts/leakcheck.py "$RUNNER_TEMP/body.md"
           names="$(echo "$NAMES" | sed 's/⚠//g' | sed 's/  */ /g')"

@@ -213,6 +213,33 @@ def shadow_test():
         shutil.rmtree(work, ignore_errors=True)
 
 
+def spot_test():
+    print("1c. Daytime spot check")
+    catalog = json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8"))
+    lu = {"main": fake_lineup(catalog, 10000), "backup": fake_lineup(catalog, 20000)}
+    m = {p: match_lineup(catalog, lu[p]["streams"], lu[p]["categories"]) for p in lu}
+    musts = [c for c in catalog if c.get("must") and m["main"].get(c["id"]) and m["backup"].get(c["id"])]
+    X, Y = musts[0], musts[1]
+    work = tempfile.mkdtemp()
+    try:
+        spot = os.path.join(work, "spot.json")
+        plan = os.path.join(work, "plan.json")
+        json.dump({"lineups": lu, "dead": {"main": m["main"][X["id"]], "backup": m["backup"][X["id"]]},
+                   "other": [f"backup:{m['backup'][Y['id']][0]}"]}, open(plan, "w"))
+        for _ in range(2):
+            r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_spot.py"), SCRIPTS, plan, spot],
+                               capture_output=True, text=True, timeout=120, env=dict(os.environ, PRO="http://main.test/get.php?username=u&password=p",
+                                                                                     PRO_2="http://backup.test/get.php?username=u&password=p"))
+            if r.returncode:
+                check(False, "spot check ran:\n" + r.stderr[-1500:])
+                return
+        summ = json.load(open(spot))["summary"]
+        check(X["name"] in summ["down_now"], "a favourite dead at two spot checks in a row is flagged")
+        check(not any(n in summ["down_now"] for n in (Y["name"],)), "a working favourite isn't flagged as down")
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
 # ------------------------------------------------------------------ 2. guide merge
 def merge_test():
     print("2. Guide merge rehearsal")
@@ -385,7 +412,7 @@ def files_test():
     check(len({c["id"] for c in cat}) == len(cat), "channel list has no duplicate entries")
 
 
-for t in (files_test, rehearsal, shadow_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
+for t in (files_test, rehearsal, shadow_test, spot_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
     try:
         t()
     except Exception as e:  # a crash inside a test is a failure, not a crash of the whole self-test
