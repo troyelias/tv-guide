@@ -24,6 +24,7 @@ jobs:
     env:
       DBX_KEY: ${{ secrets.DBX_KEY }}
       DBX_SECRET: ${{ secrets.DBX_SECRET }}
+      STATE_KEY: ${{ secrets.STATE_KEY }}
       DBX_PATH: ${{ secrets.DBX_PATH }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5

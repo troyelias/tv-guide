@@ -9,7 +9,7 @@ Usage: channels.py MODE OUTDIR
 
 Secrets (env): PRO (main service login link), PRO_2 (backup service login link),
                DBX_KEY, DBX_SECRET, DBX_PATH (Dropbox), GITHUB_REPOSITORY.
-State is kept ENCRYPTED in secure/state.enc (key: DBX_SECRET). Nothing written to OUTDIR contains logins.
+State is kept ENCRYPTED in secure/state.enc (key: STATE_KEY, or DBX_SECRET until STATE_KEY is added). Nothing written to OUTDIR contains logins.
 """
 import base64, hashlib, json, os, subprocess, sys, threading, time, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
@@ -17,7 +17,7 @@ from datetime import datetime, timedelta, timezone
 sys.path.insert(0, os.path.dirname(__file__))
 from catalog_lib import match_lineup  # noqa: E402
 from streamtest import Provider, plays, measure, score  # noqa: E402
-from dropbox_upload import upload  # noqa: E402
+from dropbox_upload import upload, state_crypt  # noqa: E402
 import difflib  # noqa: E402
 from catalog_lib import key as name_key, region as name_region, clean_name  # noqa: E402
 
@@ -40,10 +40,7 @@ summary = {"mode": MODE, "ran_utc": NOW.strftime("%Y-%m-%d %H:%M")}
 
 
 def crypt(data, decrypt=False):
-    args = ["openssl", "enc", "-aes-256-cbc", "-pbkdf2", "-iter", "200000", "-salt", "-pass", "env:DBX_SECRET"]
-    if decrypt:
-        args.append("-d")
-    return subprocess.run(args, input=data, capture_output=True, check=True).stdout
+    return state_crypt(data, decrypt)  # STATE_KEY if set, else the older DBX_SECRET lock
 
 
 def finish(code=0):
@@ -60,7 +57,7 @@ if MODE == "nightly" and not in_window:
 
 catalog = json.load(open("catalog.json", encoding="utf-8"))
 state = {"channels": {}, "uploaded_hash": None, "outage": False}
-if os.path.exists(STATE_FILE) and os.environ.get("DBX_SECRET"):
+if os.path.exists(STATE_FILE) and (os.environ.get("STATE_KEY") or os.environ.get("DBX_SECRET")):
     try:
         state.update(json.loads(crypt(open(STATE_FILE, "rb").read(), decrypt=True)))
     except Exception:
@@ -518,7 +515,7 @@ if os.environ.get("PRO"):
 if MODE in ("dry-run", "preview") and os.environ.get("DRYRUN_OUT"):
     open(os.environ["DRYRUN_OUT"], "w", encoding="utf-8").write(text)  # local testing only
 
-if MODE not in ("dry-run", "preview") and os.environ.get("DBX_SECRET"):
+if MODE not in ("dry-run", "preview") and (os.environ.get("STATE_KEY") or os.environ.get("DBX_SECRET")):
     state["saved_utc"] = NOW.strftime("%Y-%m-%d %H:%M")
     open(STATE_FILE, "wb").write(crypt(json.dumps(state).encode()))
 finish()

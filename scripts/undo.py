@@ -5,7 +5,7 @@ Usage: undo.py restore   put back the previous playlist in Dropbox and pause aut
 """
 import hashlib, json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from dropbox_upload import upload, crypt  # noqa: E402
+from dropbox_upload import upload, state_crypt as crypt  # noqa: E402
 
 action = sys.argv[1]
 state = json.loads(crypt(open("secure/state.enc", "rb").read(), decrypt=True)) if os.path.exists("secure/state.enc") else {}

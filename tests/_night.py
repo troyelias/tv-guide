@@ -41,9 +41,8 @@ def measure(prov, sid):
 streamtest.Provider.api = api
 streamtest.plays = plays
 streamtest.measure = measure
-fake = types.ModuleType("dropbox_upload")
+import dropbox_upload as fake  # noqa: E402  (the real module, with only the upload faked)
 fake.upload = lambda text: open("uploaded.m3u", "w", encoding="utf-8").write(text)
-sys.modules["dropbox_upload"] = fake
 time.sleep = lambda s: None
 sys.argv = ["channels.py", "nightly", out]
 try:

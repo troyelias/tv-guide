@@ -23,3 +23,19 @@ def crypt(data, decrypt=False, passenv="DBX_SECRET"):
     if decrypt:
         args.append("-d")
     return subprocess.run(args, input=data, capture_output=True, check=True).stdout
+
+
+def state_crypt(data, decrypt=False):
+    """Lock/unlock the setup's own memory (switch-over state, past playlists).
+    Uses the dedicated STATE_KEY secret when it exists; reading falls back to the older DBX_SECRET lock,
+    so adding STATE_KEY later migrates everything automatically at the next save."""
+    keys = [k for k in ("STATE_KEY", "DBX_SECRET") if os.environ.get(k)]
+    if not decrypt:
+        return crypt(data, False, keys[0])
+    err = None
+    for k in keys:
+        try:
+            return crypt(data, True, k)
+        except subprocess.CalledProcessError as e:
+            err = e
+    raise err or RuntimeError("no key")

@@ -169,6 +169,16 @@ def rehearsal():
         s9, p9 = results[8]
         check(bool(s9.get("upload_blocked")) and not s9.get("uploaded"), "morning 9: a much smaller playlist is held back")
         check(len(p9) == len(results[7][1]), "morning 9: the TV keeps the previous full playlist")
+        # dedicated memory key: adding STATE_KEY migrates the memory; after that the Dropbox secret can change freely
+        for n, extra in ((11, {"STATE_KEY": "selftest-state-key"}), (12, {"STATE_KEY": "selftest-state-key", "DBX_SECRET": "changed"})):
+            json.dump({"lineups": lu, "dead": base(), "flaky": {}}, open(os.path.join(work, "plan.json"), "w"))
+            out = os.path.join(work, f"out{n}")
+            r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), SCRIPTS, os.path.join(work, "plan.json"), out],
+                               cwd=work, env=dict(env, TEST_NOW=(start + timedelta(days=n - 1)).isoformat(), **extra),
+                               capture_output=True, text=True, timeout=600)
+            sm = json.load(open(os.path.join(out, "channels.json"))) if r.returncode == 0 else {}
+            check(r.returncode == 0 and not sm.get("state_note") and len(sm.get("trend", [])) == n,
+                  f"morning {n}: memory still readable " + ("after adding the dedicated key" if n == 11 else "after the Dropbox secret changed"))
         s10, p10 = results[9]
         check(not s10.get("upload_blocked") and len(p10) >= len(results[7][1]) - 2, "morning 10: back to normal, full playlist")
     finally:

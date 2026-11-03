@@ -10,7 +10,7 @@ import gzip, os, re, sys, urllib.parse
 
 needles = set()      # matched anywhere (whole links, server addresses)
 in_links = set()     # usernames/passwords: matched only inside a link (after / or =), so a common word can't trip it
-for var in ("PRO", "PRO_2", "DBX_KEY", "DBX_SECRET", "DBX_PATH", "TRIAL"):
+for var in ("PRO", "PRO_2", "DBX_KEY", "DBX_SECRET", "DBX_PATH", "STATE_KEY", "TRIAL"):
     v = (os.environ.get(var) or "").strip()
     if not v:
         continue

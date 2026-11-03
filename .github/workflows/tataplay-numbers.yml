@@ -1,0 +1,47 @@
+name: Tata Play channel numbers
+
+# Monthly: download Tata Play's public channel list (names and channel numbers - no logins involved) so the
+# playlist can number channels exactly like a Tata Play set-top box. Saved as tataplay-numbers.json on main.
+on:
+  schedule:
+    - cron: "17 10 3 * *"   # 3rd of each month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Download the channel list
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request
+          H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+               "Accept": "application/json", "Origin": "https://watch.tataplay.com", "Referer": "https://watch.tataplay.com/"}
+          base = "https://tm.tapi.videoready.tv/portal-search/pub/api/v1/channels"
+          def get(off):
+              with urllib.request.urlopen(urllib.request.Request(f"{base}?limit=1000&offset={off}", headers=H), timeout=60) as r:
+                  return json.load(r)["data"]
+          first = get(0); items = list(first.get("list") or []); total = first.get("total") or len(items)
+          for off in range(1000, total, 1000):
+              items += get(off).get("list") or []
+          json.dump(items[:3], open("/tmp/sample.json", "w"), indent=1)
+          keep = []
+          for c in items:
+              num = next((c.get(k) for k in ("channelNumber", "channelNo", "lcn", "epgChannelNumber", "number") if c.get(k) not in (None, "")), None)
+              keep.append({"id": str(c.get("id")), "title": c.get("title"), "number": num})
+          json.dump({"source": "Tata Play public channel list", "channels": keep}, open("tataplay-numbers.json", "w"), indent=0, ensure_ascii=False)
+          print(len(keep), "channels;", sum(1 for k in keep if k["number"] not in (None, "")), "with a number")
+          print("fields seen:", sorted(items[0].keys()) if items else [])
+          PY
+          cat /tmp/sample.json | head -80
+      - name: Save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tataplay-numbers.json && (git diff --cached --quiet || git commit -qm "Tata Play channel numbers $(date -u +%Y-%m-%d)")
+          git pull -q --rebase origin main && git push -q
