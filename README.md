@@ -24,8 +24,21 @@ A personal TV setup that looks after itself: one programme guide, one channel li
 - **Midday guide refresh** (`midday-guide.yml`, about 1 PM India time): listings only; no contact with either service.
 - **Outage watch** (`outage-watch.yml`, hourly): checks the main service still logs in (no channel is played).
   Two failures in a row switch every channel to the backup service at once.
-- **Self-test** (`tests.yml`): runs on every change to the scripts or channel list.
-- **On demand:** `Close look at channels`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
+- **Daytime spot check** (`spot-check.yml`, every 3 hours): tests the favourites only while nobody is watching; records results
+  (status page, weekly report) and warns if a favourite stops playing during the day. Changes nothing on the TV.
+- **Grabber update test** (`grabber-update.yml`, weekly): the listings grabber is pinned to a known-good version
+  (`grabber.lock`); a newer one is adopted only after it produces listings for a sample of channels.
+- **Self-test** (`tests.yml`): runs on every change to the scripts or channel list, and before every morning check-up.
+
+## Safety rails
+- **Hold-back gates:** a playlist more than 10% smaller than the last one (or missing a whole folder) is not uploaded;
+  a guide with far fewer channels than the current one is not published. Three mornings running = accepted as real.
+- **Leak check** (`scripts/leakcheck.py`): everything published is scanned for login details and server addresses first.
+- **Pinned outside code:** GitHub actions are pinned to exact versions; the grabber as above.
+- **Shadow mode:** a proposed change to the switching rules (`scripts/rules_candidate.py`) runs beside the real rules
+  (`scripts/rules.py`) and its differences are shown on the status page before it is promoted.
+- **Separate job lanes:** light jobs (outage watch, spot checks, guide refresh) can never cancel a waiting check-up.
+- **On demand:** `Report a problem` (family reports, tracked until fixed), `Close look at channels`, `Account status`, `Channel health check`, `Fetch backup lineup`, `Dropbox setup (one time)`.
 
 ## Privacy
 Logins, Dropbox keys and the file location are private repository secrets. The switch-over memory and the
