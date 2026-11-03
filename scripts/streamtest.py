@@ -289,3 +289,58 @@ def content_distance(a, b, min_overlap=3):
         d = sum(sum(abs(x - y) for x, y in zip(fa, fb)) / len(fa) for fa, fb in pairs) / len(pairs)
         best = d if best is None else min(best, d)
     return best
+
+
+def record(provider, sid, secs=50, limit=60_000_000):
+    """Record about `secs` seconds of a channel (as it arrives). Returns (bytes, wall-clock start)."""
+    t0 = time.time()
+    try:
+        req = urllib.request.Request(provider.stream_url(sid), headers=UA)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = bytearray()
+            while time.time() - t0 < secs + 5 and len(data) < limit:
+                chunk = r.read(65536)
+                if not chunk:
+                    break
+                data += chunk
+        return bytes(data), t0
+    except Exception:
+        return None, t0
+
+
+def scene_cuts(data, fps=5, W=32, H=18):
+    """Times (seconds from the start of the recording) where the picture changes abruptly - a cut between shots."""
+    if not data or not shutil.which("ffmpeg"):
+        return None, 0
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps={fps},scale={W}:{H}",
+                              "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True, timeout=120).stdout
+        fr = [raw[i:i + W * H] for i in range(0, len(raw) - W * H + 1, W * H)]
+        diffs = [sum(abs(a - b) for a, b in zip(x, y)) / (W * H) for x, y in zip(fr, fr[1:])]
+        if not diffs:
+            return None, 0
+        med = sorted(diffs)[len(diffs) // 2]
+        cuts = [(i + 1) / fps for i, d in enumerate(diffs) if d > max(18, 4 * med)
+                and (i == 0 or diffs[i - 1] <= d) and (i + 1 >= len(diffs) or diffs[i + 1] <= d)]
+        return cuts, len(fr) / fps
+    except Exception:
+        return None, 0
+    finally:
+        os.unlink(path)
+
+
+def align_cuts(a, b, max_shift=45.0, step=0.2, tol=0.41):
+    """Best time shift s so that cuts in a at time t match cuts in b at t - s. Returns (shift, matched, of)."""
+    if not a or not b:
+        return None
+    best = (0, None)
+    s = -max_shift
+    while s <= max_shift:
+        m = sum(1 for t in a if any(abs(t - s - u) <= tol for u in b))
+        if m > best[0]:
+            best = (m, round(s, 1))
+        s += step
+    return best[1], best[0], min(len(a), len(b))

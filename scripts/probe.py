@@ -238,4 +238,46 @@ if os.environ.get("LOGOS") == "1" and wanted:
         if not seqs[k]:
             say(f"  {k[0]} ({k[1]}): no picture")
 
+# ---- delay comparison (DELAY=1): which service shows the same moment first? ----
+if os.environ.get("DELAY") == "1" and wanted:
+    import threading
+    from streamtest import record, scene_cuts, align_cuts
+    provs = {lab: Provider(lab, os.environ.get(env)) for lab, env in (("main", "PRO"), ("backup", "PRO_2"))}
+    lineup_m = {}
+    for lab, prov in provs.items():
+        try:
+            if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) not in ("0", "", "None") and not FORCE:
+                say(f"delay: {lab} in use - skipped")
+                continue
+            lineup_m[lab] = match_lineup(catalog, prov.api("get_live_streams"), prov.api("get_live_categories"))
+        except Exception:
+            pass
+    say("== Delay comparison (recording both services at the same moment and lining up the scene cuts)")
+    if len(lineup_m) == 2:
+        for c in catalog:
+            if c["name"].lower() not in wanted or not all(lineup_m[l].get(c["id"]) for l in lineup_m):
+                continue
+            busy = [l for l, pv in provs.items()
+                    if str(pv.api(timeout=60).get("user_info", {}).get("active_cons", "0")) not in ("0", "", "None")]
+            if busy and not FORCE:
+                say(f"  stopped: someone started watching on the {' and '.join(busy)} service")
+                break
+            rec = {}
+            ths = [threading.Thread(target=lambda l=l: rec.__setitem__(l, record(provs[l], lineup_m[l][c["id"]][0])))
+                   for l in ("main", "backup")]
+            [t.start() for t in ths]
+            [t.join() for t in ths]
+            (da, ta), (db, tb) = rec["main"], rec["backup"]
+            ca, la = scene_cuts(da)
+            cb, lb = scene_cuts(db)
+            res = align_cuts(ca, cb)
+            if not res or res[0] is None or res[1] < 3:
+                say(f"  {c['name']}: couldn't line up ({len(ca or [])}/{len(cb or [])} cuts in {la:.0f}/{lb:.0f}s)")
+            else:
+                shift = res[0] + (ta - tb)  # correct for the two recordings starting a moment apart
+                who = "main" if shift < 0 else "backup"
+                say(f"  {c['name']}: {who} service is {abs(shift):.1f} s AHEAD ({res[1]} of {res[2]} cuts matched; "
+                    f"recorded {la:.0f}s / {lb:.0f}s)")
+            time.sleep(5)
+
 open(sys.argv[1], "w").write("\n".join(lines) + "\n")
