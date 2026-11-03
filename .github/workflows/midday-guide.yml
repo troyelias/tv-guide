@@ -96,7 +96,7 @@ jobs:
           git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin main && git push -q
 
-      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/site
