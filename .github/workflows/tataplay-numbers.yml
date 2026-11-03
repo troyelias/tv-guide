@@ -3,9 +3,12 @@ name: Tata Play channel numbers
 # Monthly: download Tata Play's public channel list (names and channel numbers - no logins involved) so the
 # playlist can number channels exactly like a Tata Play set-top box. Saved as tataplay-numbers.json on main.
 on:
-  schedule:
-    - cron: "17 10 3 * *"   # 3rd of each month
   workflow_dispatch:
+    inputs:
+      pdf_url:
+        description: "Link to Tata Play's latest 'Channel List' PDF (leave empty for the one last used)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -16,50 +19,20 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
-      - name: Download the channel list
-        id: dl
+      - name: Download Tata Play's official channel list (PDF with set-top box numbers)
         run: |
-          python3 - <<'PY'
-          import json, traceback, urllib.request
-          H = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-               "content-type": "application/json", "accept-language": "en-IN,en;q=0.8", "cache-control": "no-cache",
-               "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"}
-          base = "https://tm.tapi.videoready.tv/portal-search/pub/api/v1/channels"
-          dbg = []
-          def get(off):
-              req = urllib.request.Request(f"{base}?limit=1000&offset={off}", headers=H)
-              try:
-                  with urllib.request.urlopen(req, timeout=60) as r:
-                      raw = r.read()
-              except urllib.error.HTTPError as e:
-                  dbg.append(f"HTTP {e.code}: {e.read()[:300]!r}"); raise
-              d = json.loads(raw)
-              dbg.append("top keys: " + str(list(d.keys()) if isinstance(d, dict) else type(d)))
-              return d.get("data") or {}
-          try:
-              first = get(0); items = list(first.get("list") or []); total = first.get("total") or len(items)
-              for off in range(1000, total, 1000):
-                  items += get(off).get("list") or []
-              dbg.append(f"{len(items)} items; first item fields: {sorted(items[0].keys()) if items else []}")
-              dbg.append("first items: " + json.dumps(items[:2], ensure_ascii=False)[:3000])
-              keep = []
-              for c in items:
-                  num = next((c.get(k) for k in ("channelNumber", "channelNo", "lcn", "epgChannelNumber", "number", "channelPosition")
-                              if c.get(k) not in (None, "")), None)
-                  keep.append({"id": str(c.get("id")), "title": c.get("title"), "number": num})
-              json.dump({"source": "Tata Play public channel list", "channels": keep}, open("tataplay-numbers.json", "w"), indent=0, ensure_ascii=False)
-              dbg.append(f"{sum(1 for k in keep if k['number'] not in (None, ''))} with a number")
-          except Exception:
-              dbg.append(traceback.format_exc()[-1500:])
-          open("/tmp/tp-debug.txt", "w").write("\n".join(dbg))
-          PY
-          cat /tmp/tp-debug.txt
+          set +e
+          URL="${{ inputs.pdf_url }}"
+          [ -n "$URL" ] || URL="https://www.tataplay.com/cms-assets/compliances/files/2026-07/Channel%20List-21072026.pdf"
+          curl -fsSL --retry 2 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/146 Safari/537.36" -o /tmp/list.pdf "$URL"
+          echo "download exit $? size $(stat -c %s /tmp/list.pdf 2>/dev/null)" > /tmp/tp-debug.txt
+          mkdir -p tp && cp /tmp/list.pdf tp/channel-list.pdf 2>/dev/null
       - name: Keep the details for checking
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir d && cp /tmp/tp-debug.txt d/ 2>/dev/null; cd d && git init -q -b tp-debug
+          mkdir d && cp /tmp/tp-debug.txt d/ 2>/dev/null; cp tp/channel-list.pdf d/ 2>/dev/null; cd d && git init -q -b tp-debug
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add . && git commit -qm debug && git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" tp-debug
