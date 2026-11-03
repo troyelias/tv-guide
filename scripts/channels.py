@@ -16,7 +16,7 @@ from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(__file__))
 from catalog_lib import match_lineup  # noqa: E402
-from streamtest import Provider, plays  # noqa: E402
+from streamtest import Provider, plays, measure, score  # noqa: E402
 from dropbox_upload import upload  # noqa: E402
 import difflib  # noqa: E402
 from catalog_lib import key as name_key, region as name_region, clean_name  # noqa: E402
@@ -146,6 +146,12 @@ elif state.get("last_checkup_utc"):
 # ---------- test-play (nightly / dry-run) ----------
 results = {"main": {}, "backup": {}}  # cid -> working stream id, or None if all tried candidates failed
 skipped = []
+# best-copy survey: favourites every morning, plus a different seventh of the other channels each day
+_day = IST.weekday()
+survey_today = {c["id"] for c in catalog if c.get("must")} | \
+    {c["id"] for c in catalog if int(hashlib.md5(c["id"].encode()).hexdigest(), 16) % 7 == _day}
+quality = {"main": {}, "backup": {}}
+better_copy = {"main": [], "backup": []}
 if MODE in ("nightly", "dry-run"):
     def run(p):
         prov = provs[p]
@@ -169,6 +175,23 @@ if MODE in ("nightly", "dry-run"):
                 skipped.append(p + " (stopped part-way: someone started watching)")
                 return
             results[p][cid] = None
+            stc = state["channels"].get(cid, {})
+            pref = stc.get(p + "_sid")
+            sids = ([pref] if pref in sids else []) + [x for x in sids if x != pref]  # last good copy first
+            if len(sids) >= 2 and cid in survey_today:
+                # compare up to 3 copies and keep the best (sharpest picture, then quickest start)
+                best, best_m = None, None
+                for sid in sids[:3]:
+                    mres = measure(prov, sid)
+                    if mres and (best_m is None or score(mres) > score(best_m)):
+                        best, best_m = sid, mres
+                    time.sleep(PAUSE)
+                results[p][cid] = best
+                if best is not None:
+                    quality[p][cid] = best_m
+                    if best != sids[0]:
+                        better_copy[p].append(cid)
+                continue
             for sid in sids[:2]:
                 if plays(prov, sid):
                     results[p][cid] = sid
@@ -224,6 +247,9 @@ if MODE in ("nightly", "dry-run"):
         summary["second_try"] = {"at_ist": target.strftime("%H:%M"), "tried": sum(len(v) for v in failed.values()),
                                  "recovered": len(recovered)}
     summary["skipped_someone_watching"] = skipped
+    summary["best_copy"] = {"compared": sum(len(v) for v in quality.values()),
+                            "switched_to_better_copy": {p: [next(c["name"] for c in catalog if c["id"] == i) for i in v]
+                                                        for p, v in better_copy.items() if v}}
     summary["tested"] = {p: len(r) for p, r in results.items()}
     summary["working"] = {p: sum(1 for v in r.values() if v) for p, r in results.items()}
 

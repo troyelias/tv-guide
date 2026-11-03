@@ -56,7 +56,12 @@ def rehearsal():
     if failures:
         return
     A, B, D, E = plain[0], plain[1], plain[2], plain[3]
-    C, M2 = musts[0], musts[1]
+    C, M2, M3 = musts[0], musts[1], musts[2]
+    # M3 gets a second, sharper copy on the main service
+    i3 = catalog.index(M3)
+    extra = dict(lu["main"]["streams"][i3], stream_id=90000 + i3)
+    lu["main"]["streams"].append(extra)
+    m = {p: match_lineup(catalog, lu[p]["streams"], lu[p]["categories"]) for p in lu}
     crowd = plain[10:40]  # 30 channels that all fail on the main service one morning
     sid = lambda p, c: m[p][c["id"]]  # noqa: E731  (every copy of the channel on that service)
     work = tempfile.mkdtemp()
@@ -89,7 +94,8 @@ def rehearsal():
             lus = lu
             if n == 9:
                 lus = {p: {"categories": v["categories"], "streams": v["streams"][: len(v["streams"]) // 2]} for p, v in lu.items()}
-            json.dump({"lineups": lus, "dead": dead, "flaky": flaky}, open(plan, "w"))
+            json.dump({"lineups": lus, "dead": dead, "flaky": flaky,
+                       "height": {f"main:{m['main'][M3['id']][0]}": 576, f"main:{90000 + i3}": 1080}}, open(plan, "w"))
             out = os.path.join(work, f"out{n}")
             e = dict(env, TEST_NOW=(start + timedelta(days=n - 1, minutes=late)).isoformat())
             r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), SCRIPTS, plan, out],
@@ -133,6 +139,10 @@ def rehearsal():
         check(b8 and not b8[0]["title"].endswith("⚠") and not find(p8, B, "Not working"),
               "morning 8: back in its own folder with no mark once it plays again")
         check(s8.get("channels", 0) >= len(both), "every matched channel stays in the playlist")
+        m3 = find(p1, M3, M3["folder"])
+        check(m3 and m3[0]["url"].endswith(f"/{90000 + i3}.ts"), "the sharper of two copies is chosen for a favourite")
+        check(M3["name"] in (s1.get("best_copy") or {}).get("switched_to_better_copy", {}).get("main", []),
+              "the report says which favourites moved to a better copy")
         # smarter switching: E failed on the main service on mornings 1 and 3 -> needs 4 good mornings in a row
         check("backup.test" in find(results[4][1], E, E["folder"])[0]["url"], "morning 5: a flaky channel isn't switched back after 2 good mornings")
         check("main.test" in find(results[6][1], E, E["folder"])[0]["url"], "morning 7: ...but is after 4 good mornings in a row")

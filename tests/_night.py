@@ -32,8 +32,15 @@ def plays(prov, sid):
     return True
 
 
+def measure(prov, sid):
+    if not plays(prov, sid):
+        return None
+    return {"start": 1.0, "height": plan.get("height", {}).get(f"{prov.label}:{sid}", 720), "kbps": 3000}
+
+
 streamtest.Provider.api = api
 streamtest.plays = plays
+streamtest.measure = measure
 fake = types.ModuleType("dropbox_upload")
 fake.upload = lambda text: open("uploaded.m3u", "w", encoding="utf-8").write(text)
 sys.modules["dropbox_upload"] = fake

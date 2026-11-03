@@ -1,0 +1,63 @@
+name: Daytime spot check
+
+# Every 3 hours: quietly test the favourite channels on both services - only while nobody is watching
+# (re-checked every few channels). Changes nothing on the TV; it records results for the status page and
+# weekly report, warns if a favourite stops playing during the day, and compares logos between services.
+on:
+  schedule:
+    - cron: "23 1-21/3 * * *"   # skips the morning check-up hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: tv-probe
+  cancel-in-progress: false
+
+jobs:
+  spot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PRO: ${{ secrets.PRO }}
+      PRO_2: ${{ secrets.PRO_2 }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Skip during the morning check-up
+        id: win
+        run: |
+          hm=$(date -u +%H%M)
+          if [ "$hm" -ge 2200 ] || [ "$hm" -lt 145 ]; then echo "skip=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Install picture checker
+        if: steps.win.outputs.skip != '1'
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+      - name: Test the favourites (only while idle)
+        if: steps.win.outputs.skip != '1'
+        run: |
+          git fetch -q origin spot 2>/dev/null && git show FETCH_HEAD:spot.json > "$RUNNER_TEMP/spot.json" 2>/dev/null || echo '{}' > "$RUNNER_TEMP/spot.json"
+          python3 scripts/spotcheck.py "$RUNNER_TEMP/spot.json"
+      - name: Alert if a favourite stopped playing during the day
+        if: steps.win.outputs.skip != '1'
+        run: |
+          down=$(python3 -c "import json;print(', '.join(json.load(open('$RUNNER_TEMP/spot.json'))['summary']['down_now']))")
+          title="Favourite channel down during the day"
+          open=$(gh issue list --state open --search "\"$title\" in:title" --json number -q '.[0].number')
+          if [ -n "$down" ]; then
+            body="These favourites didn't play on either service at the last two daytime spot checks: $down. The next morning check-up will mark them and try them again; the Backup folder may help meanwhile."
+            if [ -n "$open" ]; then gh issue edit "$open" --body "$body"; else gh issue create --title "$title" --assignee "$GITHUB_REPOSITORY_OWNER" --body "$body"; fi
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "Playing again - closing."
+          fi
+      - name: Save results to the 'spot' branch
+        if: steps.win.outputs.skip != '1'
+        run: |
+          python3 scripts/leakcheck.py "$RUNNER_TEMP/spot.json"
+          mkdir s && cp "$RUNNER_TEMP/spot.json" s/ && cd s
+          git init -q -b spot
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add . && git commit -qm "Spot check $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" spot

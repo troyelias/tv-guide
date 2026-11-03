@@ -209,34 +209,35 @@ def score(m):
     return (min(m["height"], 1080), -m["start"]) if m else (-1, 0)
 
 
-def logo_mask(data, frames=6):
-    """Where the channel's on-screen logo sits: pixels in the top corners that stay the same across frames
-    while the programme moves. Two copies of the same channel have their logo in the same place.
-    Returns a set of (x, y) cells, or None if it can't be worked out."""
+def logo_mask(data, frames=8):
+    """Where the channel's on-screen logo sits: small spots in the top corners that stay the same across frames
+    spread over a few seconds, while the programme moves. Two copies of the same channel have their logo in the
+    same place. Returns a set of spots, or None if it can't be worked out (e.g. the whole picture is still)."""
     if not shutil.which("ffmpeg"):
         return None
     with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
         f.write(data)
         path = f.name
     try:
-        W, H = 96, 54
-        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps=3,scale={W}:{H}", "-frames:v", str(frames),
+        W, H = 128, 72
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps=2,scale={W}:{H}", "-frames:v", str(frames),
                               "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True, timeout=40).stdout
         fr = [raw[i:i + W * H] for i in range(0, len(raw) - W * H + 1, W * H)]
         if len(fr) < 3:
             return None
         motion = sum(abs(a - b) for x, y in zip(fr, fr[1:]) for a, b in zip(x, y)) / (len(fr) - 1) / (W * H)
         if motion < 1.0:
-            return None  # the whole picture is still: can't separate a logo from the programme
+            return None
         cells = set()
-        for y in range(0, H // 3):
-            for x in list(range(0, W // 3)) + list(range(2 * W // 3, W)):
+        for y in range(1, H // 3):
+            for x in list(range(1, W // 3)) + list(range(2 * W // 3, W - 1)):
                 vals = [f[y * W + x] for f in fr]
-                mean = sum(vals) / len(vals)
-                if max(vals) - min(vals) <= 6:  # unchanged across frames
-                    nb = [fr[0][yy * W + xx] for yy, xx in ((y, max(x - 2, 0)), (y, min(x + 2, W - 1)), (max(y - 2, 0), x), (min(y + 2, H - 1), x))]
-                    if max(abs(mean - v) for v in nb) > 25:  # an edge, i.e. part of a logo rather than flat background
-                        cells.add((x // 3, y // 3))
+                if max(vals) - min(vals) > 10:
+                    continue  # changes over time: programme, not logo
+                f0 = fr[0]
+                grad = max(abs(f0[y * W + x + 1] - f0[y * W + x - 1]), abs(f0[(y + 1) * W + x] - f0[(y - 1) * W + x]))
+                if grad > 14:  # an edge: part of a logo or caption, not flat background
+                    cells.add((x // 2, y // 2))
         return cells
     except Exception:
         return None
