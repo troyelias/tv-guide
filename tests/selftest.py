@@ -7,6 +7,9 @@ import gzip, json, os, re, shutil, subprocess, sys, tempfile
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# the rehearsal must never see (or be thrown by) the real logins and keys the morning job carries
+for _k in ("PRO", "PRO_2", "DBX_KEY", "DBX_SECRET", "DBX_PATH", "STATE_KEY", "TRIAL", "SPOT_FILE", "MEASURE_LEAD"):
+    os.environ.pop(_k, None)
 SCRIPTS = os.path.join(ROOT, "scripts")
 sys.path.insert(0, SCRIPTS)
 from catalog_lib import match_lineup  # noqa: E402
