@@ -9,7 +9,7 @@ A personal TV setup that looks after itself: one programme guide, one channel li
 - **`catalog.json`** - the channel list: every channel's name, folder, guide ID and logo, in order.
   It belongs to no service. Each night the robot finds each service's copy of every channel
   (by the service's own guide tag or a cleaned-up name), so changing service means changing a login only.
-- **Nightly check-up** (`nightly.yml`, about 4:05 AM India time):
+- **Nightly check-up** (`nightly.yml`, about 4:02 AM India time; an early GitHub start waits for the window, so it needs no outside starter):
   1. test-plays each channel for a few seconds on both services (skips a service if someone is watching),
   2. switches a channel to the backup service if it fails twice on the main one, and back after it works two nights running,
   3. rebuilds the playlist (plus a "Backup" folder of must-have channels from the backup service) and replaces it in Dropbox if anything changed,
@@ -40,7 +40,10 @@ A personal TV setup that looks after itself: one programme guide, one channel li
 - **Hold-back gates:** a playlist more than 10% smaller than the last one (or missing a whole folder) is not uploaded;
   a guide with far fewer channels than the current one is not published. Three mornings running = accepted as real.
 - **Leak check** (`scripts/leakcheck.py`): everything published is scanned for login details and server addresses first.
-- **Pinned outside code:** GitHub actions are pinned to exact versions; the grabber as above.
+- **Pinned, walled-off outside code:** GitHub actions are pinned to exact versions. The listings grabber runs in its own
+  job (`grab-listings.yml`) with no secrets and read-only access; a newer version is adopted only by the weekly test.
+- **Late or failed runs:** nothing reaches the TV after 6:55 AM India time; a night where most channels "fail", an outage
+  switch with an empty backup list, or unreadable memory all keep the TV's current playlist and raise an alert.
 - **Shadow mode:** a proposed change to the switching rules (`scripts/rules_candidate.py`) runs beside the real rules
   (`scripts/rules.py`) and its differences are shown on the status page before it is promoted.
 - **Separate job lanes:** light jobs (outage watch, spot checks, guide refresh) can never cancel a waiting check-up.
