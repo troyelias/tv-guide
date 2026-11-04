@@ -4,6 +4,8 @@ name: Nightly check-up
 # updates the playlist in Dropbox, rebuilds the guide, status page and alerts.
 on:
   schedule:
+    - cron: "7 19 * * *"    # early start (12:37 AM India time): waits for the 4 AM window, so a late GitHub timer
+                            # or an outside starter that doesn't fire can't make the morning check-up miss
     - cron: "35 22 * * *"   # 4:05 AM India time
     - cron: "20 23 * * *"   # 4:50 AM India time - backup start, only acts if the first was skipped
   # An outside daily task also presses "Run workflow" at 4:06 AM. Whichever start comes first does the
@@ -31,7 +33,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  wait:
+    # Only the early start waits; every other start goes straight on.
+    if: github.event_name == 'schedule' && github.event.schedule == '7 19 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Wait for the 4 AM (India time) window
+        run: |
+          now=$(date -u +%s); target=$(date -u -d "today 22:32" +%s); h=$(date -u +%H)
+          if [ "$h" -ge 12 ] && [ "$now" -lt "$target" ]; then
+            echo "Waiting $(( (target - now) / 60 )) minutes until 4:02 AM India time"; sleep $(( target - now ))
+          fi
+
   channels:
+    needs: wait
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 175   # includes the wait for the 5:45 AM second try
     env:
