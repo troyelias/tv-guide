@@ -230,4 +230,20 @@
   <channel site="tataplay.com" lang="en" xmltv_id="ts219" site_id="219">Discovery Channel</channel>
   <channel site="tataplay.com" lang="en" xmltv_id="ts181" site_id="181">Bhojpuri Cinema</channel>
   <channel site="tataplay.com" lang="en" xmltv_id="ts805" site_id="805">Nandighosha TV</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts1000" site_id="1000">Colors Cineplex Bollywood</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts1025" site_id="1025">Colors Cineplex Superhits</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts278" site_id="278">Good News Today</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts232" site_id="232">News18 Punjab Haryana</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts262" site_id="262">Zee Delhi NCR Haryana</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts580" site_id="580">Zee Punjab Haryana Himachal Pradesh</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts354" site_id="354">News18 Delhi NCR Jammu Kashmir</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts950" site_id="950">ET Now Swadesh</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts243" site_id="243">CNN International</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts1030" site_id="1030">Food XP</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts796" site_id="796">Zee Punjabi</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts814" site_id="814">Zee Biskope</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts261" site_id="261">Zee 24 Taas</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts507" site_id="507">Zee 24 Kalak</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts258" site_id="258">Zee 24 Ghanta</channel>
+  <channel site="tataplay.com" lang="en" xmltv_id="ts68" site_id="68">News18 Assam North East</channel>
 </channels>

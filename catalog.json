@@ -8358,5 +8358,318 @@
   ],
   "must": false,
   "number": 2609
+ },
+ {
+  "id": "colors-cineplex-bollywood-hindi-movies",
+  "name": "Colors Cineplex Bollywood",
+  "folder": "Hindi Movies",
+  "guide_id": "ts1000",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSCINEPLEXBOLLYWOOD"
+  ],
+  "tags": [
+   "ts1000"
+  ],
+  "must": false,
+  "number": 373
+ },
+ {
+  "id": "colors-cineplex-superhits-hindi-movies",
+  "name": "Colors Cineplex Superhits",
+  "folder": "Hindi Movies",
+  "guide_id": "ts1025",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "COLORSCINEPLEXSUPERHITS"
+  ],
+  "tags": [
+   "ts1025"
+  ],
+  "must": false,
+  "number": 372
+ },
+ {
+  "id": "good-news-today-hindi-news",
+  "name": "Good News Today",
+  "folder": "Hindi News",
+  "guide_id": "ts278",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "GOODNEWSTODAY"
+  ],
+  "tags": [
+   "ts278"
+  ],
+  "must": false,
+  "number": 525
+ },
+ {
+  "id": "news18-punjab-haryana-hindi-news",
+  "name": "News18 Punjab Haryana",
+  "folder": "Hindi News",
+  "guide_id": "ts232",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18PUNJABHARYANA",
+   "NEWS18PUNJABHARYANAHIMACHAL"
+  ],
+  "tags": [
+   "ts232"
+  ],
+  "must": false,
+  "number": 1922
+ },
+ {
+  "id": "zee-delhi-ncr-haryana-hindi-news",
+  "name": "Zee Delhi NCR Haryana",
+  "folder": "Hindi News",
+  "guide_id": "ts262",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEDELHINCRHARYANA",
+   "ZEEDELHINCR"
+  ],
+  "tags": [
+   "ts262"
+  ],
+  "must": false,
+  "number": 1931
+ },
+ {
+  "id": "zee-punjab-haryana-himachal-pradesh-hindi-news",
+  "name": "Zee Punjab Haryana Himachal Pradesh",
+  "folder": "Hindi News",
+  "guide_id": "ts580",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEPUNJABHARYANAHIMACHALPRADESH",
+   "ZEEPUNJABHARYANAHIMACHAL",
+   "ZEEPHH"
+  ],
+  "tags": [
+   "ts580"
+  ],
+  "must": false,
+  "number": 1920
+ },
+ {
+  "id": "news18-delhi-ncr-jammu-kashmir-hindi-news",
+  "name": "News18 Delhi NCR Jammu Kashmir",
+  "folder": "Hindi News",
+  "guide_id": "ts354",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18DELHINCRJAMMUKASHMIR",
+   "NEWS18JAMMUKASHMIRLADAKHHIMACHAL",
+   "NEWS18JKLH"
+  ],
+  "tags": [
+   "ts354"
+  ],
+  "must": false,
+  "number": 1936
+ },
+ {
+  "id": "et-now-swadesh-business-news",
+  "name": "ET Now Swadesh",
+  "folder": "Business News",
+  "guide_id": "ts950",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ETNOWSWADESH"
+  ],
+  "tags": [
+   "ts950"
+  ],
+  "must": false,
+  "number": 594
+ },
+ {
+  "id": "cnn-international-english-news",
+  "name": "CNN International",
+  "folder": "English News",
+  "guide_id": "ts243",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "CNNINTERNATIONAL",
+   "CNNINTL",
+   "CNN"
+  ],
+  "tags": [
+   "ts243"
+  ],
+  "must": false,
+  "number": 631
+ },
+ {
+  "id": "food-xp-lifestyle",
+  "name": "Food XP",
+  "folder": "Lifestyle",
+  "guide_id": "ts1030",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "FOODXP"
+  ],
+  "tags": [
+   "ts1030"
+  ],
+  "must": false,
+  "number": 771
+ },
+ {
+  "id": "zee-punjabi-regional-dd",
+  "name": "Zee Punjabi",
+  "folder": "Regional & DD",
+  "guide_id": "ts796",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEPUNJABI"
+  ],
+  "tags": [
+   "ts796"
+  ],
+  "must": false,
+  "number": 1903
+ },
+ {
+  "id": "zee-biskope-regional-dd",
+  "name": "Zee Biskope",
+  "folder": "Regional & DD",
+  "guide_id": "ts814",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEEBISKOPE"
+  ],
+  "tags": [
+   "ts814"
+  ],
+  "must": false,
+  "number": 1113
+ },
+ {
+  "id": "zee-24-taas-regional-dd",
+  "name": "Zee 24 Taas",
+  "folder": "Regional & DD",
+  "guide_id": "ts261",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEE24TAAS"
+  ],
+  "tags": [
+   "ts261"
+  ],
+  "must": false,
+  "number": 1259
+ },
+ {
+  "id": "zee-24-kalak-regional-dd",
+  "name": "Zee 24 Kalak",
+  "folder": "Regional & DD",
+  "guide_id": "ts507",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEE24KALAK"
+  ],
+  "tags": [
+   "ts507"
+  ],
+  "must": false,
+  "number": 1731
+ },
+ {
+  "id": "zee-24-ghanta-regional-dd",
+  "name": "Zee 24 Ghanta",
+  "folder": "Regional & DD",
+  "guide_id": "ts258",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "ZEE24GHANTA"
+  ],
+  "tags": [
+   "ts258"
+  ],
+  "must": false,
+  "number": 1362
+ },
+ {
+  "id": "news18-assam-north-east-regional-dd",
+  "name": "News18 Assam North East",
+  "folder": "Regional & DD",
+  "guide_id": "ts68",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in"
+  ],
+  "keys": [
+   "NEWS18ASSAMNORTHEAST",
+   "NEWS18ASSAM"
+  ],
+  "tags": [
+   "ts68"
+  ],
+  "must": false,
+  "number": 1971
  }
 ]
