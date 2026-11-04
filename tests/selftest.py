@@ -3,7 +3,7 @@ Nothing real is contacted and nothing real is changed. Exit code 0 = all good.
 
 Usage: python3 tests/selftest.py
 """
-import gzip, json, os, re, shutil, subprocess, sys, tempfile
+import gzip, json, os, re, shutil, subprocess, sys, tempfile, time
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -202,6 +202,67 @@ def rehearsal():
                   f"morning {n}: memory still readable " + ("after adding the dedicated key" if n == 11 else "after the Dropbox secret changed"))
         s10, p10 = results[9]
         check(not s10.get("upload_blocked") and len(p10) >= len(results[7][1]) - 2, "morning 10: back to normal, full playlist")
+        # ---- the rare paths: running late, a night where everything "fails", lost memory, outage, undo ----
+        keys = {"STATE_KEY": "selftest-state-key", "DBX_SECRET": "changed"}
+        upl = os.path.join(work, "uploaded.m3u")
+
+        def night(n, plan_extra, late=0, extra_env=None, lineups=None):
+            json.dump({"lineups": lineups or lu, "dead": base(), "flaky": {}, **plan_extra}, open(os.path.join(work, "plan.json"), "w"))
+            out = os.path.join(work, f"out{n}")
+            before = open(upl, encoding="utf-8").read()
+            r = subprocess.run([sys.executable, os.path.join(ROOT, "tests", "_night.py"), SCRIPTS, os.path.join(work, "plan.json"), out],
+                               cwd=work, env=dict(env, TEST_NOW=(start + timedelta(days=n - 1, minutes=late)).isoformat(),
+                                                  **{**keys, **(extra_env or {})}), capture_output=True, text=True, timeout=600)
+            sm = json.load(open(os.path.join(out, "channels.json"))) if r.returncode == 0 else {"error": r.stderr[-1500:]}
+            return sm, before, open(upl, encoding="utf-8").read()
+
+        # 13: one channel's main copy disappears (so the list would change), but it's 6:59 AM by the time of the upload
+        A2 = next(c for c in both if not c.get("must") and c["id"] not in (A["id"], B["id"], C["id"], D["id"], E["id"]))
+        lu13 = {"main": {"categories": lu["main"]["categories"],
+                         "streams": [x for x in lu["main"]["streams"] if x["stream_id"] not in m["main"][A2["id"]]]},
+                "backup": lu["backup"]}
+        sm, before, after = night(13, {}, late=139, extra_env={"TEST_ELAPSED_MIN": "30"}, lineups=lu13)
+        check("too late" in str(sm.get("upload_blocked")) and before == after,
+              "running late: nothing reaches the TV after 6:55 AM " + str(sm.get("error", ""))[:600])
+        # 14: every copy of every channel "fails" (a testing problem, not 400 channels dying at once)
+        alldead = {p: [x["stream_id"] for x in lu[p]["streams"]] for p in lu}
+        sm, before, after = night(14, {"dead": alldead})
+        check("not playing anywhere" in str(sm.get("upload_blocked")) and before == after,
+              "a night where nearly everything fails to play keeps yesterday's playlist " + str(sm.get("error", sm.get("upload_blocked")))[:600])
+        # 15: the memory can't be opened (a key changed): nothing uploaded, memory left as it was
+        st_before = open(os.path.join(work, "secure", "state.enc"), "rb").read()
+        sm, before, after = night(15, {}, extra_env={"STATE_KEY": "wrong-key", "DBX_SECRET": "wrong-too"})
+        check("unreadable" in str(sm.get("state_note")) and before == after and
+              open(os.path.join(work, "secure", "state.enc"), "rb").read() == st_before,
+              "unreadable memory: nothing uploaded and the memory is not overwritten " + str(sm.get("error", ""))[:600])
+        sm, before, after = night(16, {})
+        check(not sm.get("state_note") and not os.path.exists(os.path.join(work, "secure", "unreadable_mornings")),
+              "...and with the right key back, the memory opens again as before")
+        # 17: outage switch while the backup service sends an empty list: the TV keeps what it has
+        lu_empty = {"main": lu["main"], "backup": {"categories": lu["backup"]["categories"], "streams": []}}
+        sm, before, after = night(17, {"mode": "outage"}, late=600, lineups=lu_empty)
+        check(sm.get("upload_blocked") and before == after, "an outage switch never uploads an empty list " + str(sm.get("error", ""))[:600])
+        sm, before, after = night(18, {"mode": "outage"}, late=600)
+        pl = parse_playlist(after)
+        check(sm.get("uploaded") and pl and all("backup.test" in x["url"] for x in pl),
+              "an outage switch with a working backup moves every channel to it")
+        night(19, {"mode": "restore"}, late=600)
+        # undo pressed twice: the second press must not bring the newer list back
+        runner = os.path.join(work, "undo_run.py")
+        open(runner, "w").write(
+            "import runpy, sys\n"
+            "scripts = sys.argv[1]\n"
+            "sys.path.insert(0, scripts)\n"
+            "import dropbox_upload\n"
+            "dropbox_upload.upload = lambda t: open('uploaded.m3u', 'w', encoding='utf-8').write(t)\n"
+            "sys.argv = ['undo.py', 'restore']\n"
+            "runpy.run_path(scripts + '/undo.py', run_name='__main__')\n")
+        got = []
+        for _ in range(2):
+            r = subprocess.run([sys.executable, runner, SCRIPTS], cwd=work, env=dict(env, **keys), capture_output=True, text=True, timeout=60)
+            got.append((r.returncode, open(upl, encoding="utf-8").read(), r.stderr[-400:]))
+        check(got[0][0] == 0 and got[1][0] == 0 and got[0][1] == got[1][1],
+              "pressing undo twice keeps the earlier playlist " + got[0][2] + got[1][2])
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -399,6 +460,8 @@ def outage_and_alerts_test():
         d["last_fail"] -= 45 * 60
         json.dump(d, open(w, "w"))
         check(run() == "switch", "failed checks 40+ minutes apart do switch everything")
+        json.dump({"fails": 1, "last_fail": time.time() - 4 * 3600, "switched": False}, open(w, "w"))
+        check(run() == "none", "two failures hours apart (with no checks in between) don't switch everything")
         json.dump({}, open(os.path.join(work, "s.json"), "w"))
         json.dump({"down_on_both": ["Romedy Now HD"], "down_days": {"Romedy Now HD": 4},
                    "replacements": {"Romedy Now HD": ["Movies Now HD"]}}, open(os.path.join(work, "c.json"), "w"))

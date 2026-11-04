@@ -19,6 +19,8 @@ except Exception:
 # A failure only counts if the last counted failure was at least 40 minutes ago, so a short blip
 # can never switch everything - the main service has to be down for 40+ minutes.
 now = time.time()
+if not ok and now - w.get("last_fail", 0) > 90 * 60:
+    w["fails"] = 0  # the last failure was long ago (e.g. before the morning quiet hours): this one starts a new count
 if ok:
     w["fails"] = 0
 elif now - w.get("last_fail", 0) >= 40 * 60:

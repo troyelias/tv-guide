@@ -44,7 +44,7 @@ streamtest.measure = measure
 import dropbox_upload as fake  # noqa: E402  (the real module, with only the upload faked)
 fake.upload = lambda text: open("uploaded.m3u", "w", encoding="utf-8").write(text)
 time.sleep = lambda s: None
-sys.argv = ["channels.py", "nightly", out]
+sys.argv = ["channels.py", plan.get("mode", "nightly"), out]
 try:
     runpy.run_path(os.path.join(scripts, "channels.py"), run_name="__main__")
 except SystemExit as e:

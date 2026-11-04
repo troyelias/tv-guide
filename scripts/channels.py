@@ -17,7 +17,7 @@ from datetime import datetime, timedelta, timezone
 sys.path.insert(0, os.path.dirname(__file__))
 from catalog_lib import match_lineup  # noqa: E402
 from streamtest import Provider, plays, measure, score  # noqa: E402
-from dropbox_upload import upload, state_crypt  # noqa: E402
+from dropbox_upload import upload, state_crypt, is_json  # noqa: E402
 import difflib  # noqa: E402
 from catalog_lib import key as name_key, region as name_region, clean_name  # noqa: E402
 
@@ -41,7 +41,24 @@ summary = {"mode": MODE, "ran_utc": NOW.strftime("%Y-%m-%d %H:%M")}
 
 
 def crypt(data, decrypt=False):
-    return state_crypt(data, decrypt)  # STATE_KEY if set, else the older DBX_SECRET lock
+    return state_crypt(data, decrypt, check=is_json if decrypt else None)  # STATE_KEY, else the older DBX_SECRET lock
+
+
+def real_ist():
+    """India time right now (the run can take a while; NOW is when it started). The self-test moves the clock
+    with TEST_ELAPSED_MIN."""
+    t = NOW + timedelta(minutes=float(os.environ.get("TEST_ELAPSED_MIN", "0"))) if os.environ.get("TEST_NOW") \
+        else datetime.now(timezone.utc)
+    return t + timedelta(hours=5, minutes=30)
+
+
+def past_ist(h, m):
+    t = real_ist()
+    return (t.hour, t.minute) >= (h, m) and t.hour < 12  # morning only (a run never spans midday)
+
+
+UPLOAD_BY = (6, 55)    # nothing reaches the TV after this (people start watching around 7 AM)
+TEST_UNTIL = (6, 40)   # stop testing at this point, so whatever was learned can still be used
 
 
 def finish(code=0):
@@ -58,11 +75,30 @@ if MODE == "nightly" and not in_window:
 
 catalog = json.load(open("catalog.json", encoding="utf-8"))
 state = {"channels": {}, "uploaded_hash": None, "outage": False}
+UNREADABLE = "secure/unreadable_mornings"  # plain counter (no private data): mornings the memory couldn't be opened
+state_lost = False
 if os.path.exists(STATE_FILE) and (os.environ.get("STATE_KEY") or os.environ.get("DBX_SECRET")):
     try:
         state.update(json.loads(crypt(open(STATE_FILE, "rb").read(), decrypt=True)))
+        if os.path.exists(UNREADABLE):
+            os.remove(UNREADABLE)
     except Exception:
-        summary["state_note"] = "previous state unreadable - starting fresh"
+        # Usually a key was changed. Without the memory the safety gates and an undo pause can't be honoured,
+        # so nothing is uploaded and the memory file is left alone - unless it stays unreadable 3 mornings running,
+        # in which case it's taken as lost for good and rebuilt from scratch.
+        n = 0
+        try:
+            n = int(open(UNREADABLE).read().strip() or 0)
+        except Exception:
+            pass
+        if MODE == "nightly":
+            n += 1
+            open(UNREADABLE, "w").write(str(n))
+        if n >= 3:
+            summary["state_note"] = "memory unreadable 3 mornings running - rebuilt from scratch"
+        else:
+            state_lost = True
+            summary["state_note"] = "memory unreadable (a key may have changed) - nothing uploaded"
 
 if MODE == "nightly" and os.environ.get("BACKUP_SLOT") == "1" and state.get("last_checkup_utc"):
     since = (NOW - datetime.strptime(state["last_checkup_utc"], "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)).total_seconds()
@@ -169,6 +205,9 @@ if MODE in ("nightly", "dry-run"):
             return True
 
         for i, (cid, sids) in enumerate(todo):
+            if MODE == "nightly" and past_ist(*TEST_UNTIL):
+                skipped.append(p + " (stopped part-way: running late)")
+                return
             if i and i % 50 == 0 and someone_watching():
                 skipped.append(p + " (stopped part-way: someone started watching)")
                 return
@@ -199,6 +238,8 @@ if MODE in ("nightly", "dry-run"):
             time.sleep(PAUSE)
         time.sleep(30)
         for cid, sids in todo:  # second chance for anything that failed
+            if MODE == "nightly" and past_ist(*TEST_UNTIL):
+                break
             if results[p][cid] is None:
                 for sid in sids[:3]:
                     if plays(prov, sid):
@@ -220,7 +261,11 @@ if MODE in ("nightly", "dry-run"):
         target = max(target, now_ist + timedelta(minutes=10))
         if target > now_ist.replace(hour=6, minute=15, second=0, microsecond=0):
             target = now_ist + timedelta(minutes=5)  # a late start: keep it short so it finishes in the window
-        time.sleep(max(0, (target - now_ist).total_seconds()))
+        late = (target.hour, target.minute) >= (6, 25)
+        if late:
+            failed = {p: [] for p in failed}  # too late for a second try to finish before 7 AM
+        else:
+            time.sleep(max(0, (target - now_ist).total_seconds()))
         recovered = []
 
         def retry(p):
@@ -232,6 +277,8 @@ if MODE in ("nightly", "dry-run"):
             except Exception:
                 return
             for cid in failed[p]:
+                if past_ist(*TEST_UNTIL):
+                    break
                 for sid in cands[p][cid][:3]:
                     if plays(prov, sid):
                         results[p][cid] = sid
@@ -243,8 +290,9 @@ if MODE in ("nightly", "dry-run"):
             t.start()
         for t in threads:
             t.join()
-        summary["second_try"] = {"at_ist": target.strftime("%H:%M"), "tried": sum(len(v) for v in failed.values()),
-                                 "recovered": len(recovered)}
+        summary["second_try"] = ({"skipped": "running late"} if late else
+                                 {"at_ist": target.strftime("%H:%M"), "tried": sum(len(v) for v in failed.values()),
+                                  "recovered": len(recovered)})
     summary["skipped_someone_watching"] = skipped
     summary["best_copy"] = {"compared": sum(len(v) for v in quality.values()),
                             "switched_to_better_copy": {p: [next(c["name"] for c in catalog if c["id"] == i) for i in v]
@@ -497,23 +545,38 @@ if state.get("hold") and MODE != "outage":
     may_upload = False  # updates paused after an undo, until resumed
 # ---- safety gate: never replace a good playlist with a much smaller one (e.g. a service sent a partial list) ----
 count_now = counts["main"] + counts["backup"]
-folders_now = sorted({f for f in FOLDERS for ln in lines if f'group-title="{f}"' in ln})
+folders_now = sorted({f for f in FOLDERS + [FAV_FOLDER, BACKUP_FOLDER] for ln in lines if f'group-title="{f}"' in ln})
 last = state.get("uploaded_shape") or {}
 blocked = None
-if MODE == "nightly" and last.get("channels"):
+if count_now == 0:
+    blocked = "the list came out empty"
+elif MODE == "nightly" and last.get("channels"):
+    prev_down = [len(h.get("down", [])) for h in state.get("history", [])[-8:-1]]
+    usual = sum(prev_down) / len(prev_down) if prev_down else 0
     if count_now < 0.9 * last["channels"]:
         blocked = f"only {count_now} channels instead of {last['channels']} last time"
+    elif len(down) > max(0.2 * len(catalog), 2 * usual + 20):
+        # most channels "failing" at once is far more likely a testing problem than real, so keep yesterday's list
+        blocked = f"{len(down)} channels tested as not playing anywhere (usually about {round(usual)})"
     elif set(last.get("folders", [])) - set(folders_now):
         blocked = "whole folder(s) missing: " + ", ".join(sorted(set(last["folders"]) - set(folders_now)))
+elif MODE in ("outage", "restore") and last.get("channels") and count_now < 0.5 * last["channels"]:
+    # during an outage a partial backup list is still better than a dead main service - but not a near-empty one
+    blocked = f"only {count_now} channels available instead of {last['channels']}"
+if state_lost:
+    blocked = "memory unreadable"
 if MODE == "nightly":
     state["held_mornings"] = state.get("held_mornings", 0) + 1 if blocked else 0
-if blocked and state.get("held_mornings", 0) >= 3:
+if blocked and MODE == "nightly" and not state_lost and count_now and state.get("held_mornings", 0) >= 3:
     summary["shrink_accepted"] = blocked  # the same smaller list three mornings running: it's real, so use it
     blocked = None
 if blocked and not os.environ.get("ALLOW_SHRINK"):
     summary["upload_blocked"] = blocked
     may_upload = False
-if changed and may_upload and lineup:
+if changed and may_upload and MODE == "nightly" and past_ist(*UPLOAD_BY):
+    summary["upload_blocked"] = "too late in the morning - kept yesterday's list"  # people may be watching by now
+    may_upload = False
+if changed and may_upload and count_now:
     try:
         upload(text)
         state["uploaded_hash"] = digest
@@ -537,7 +600,7 @@ if os.environ.get("PRO"):
 if MODE in ("dry-run", "preview") and os.environ.get("DRYRUN_OUT"):
     open(os.environ["DRYRUN_OUT"], "w", encoding="utf-8").write(text)  # local testing only
 
-if MODE not in ("dry-run", "preview") and (os.environ.get("STATE_KEY") or os.environ.get("DBX_SECRET")):
+if MODE not in ("dry-run", "preview") and not state_lost and (os.environ.get("STATE_KEY") or os.environ.get("DBX_SECRET")):
     state["saved_utc"] = NOW.strftime("%Y-%m-%d %H:%M")
     open(STATE_FILE, "wb").write(crypt(json.dumps(state).encode()))
 finish()

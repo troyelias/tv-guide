@@ -38,17 +38,31 @@ def crypt(data, decrypt=False, passenv="DBX_SECRET"):
     return subprocess.run(args, input=data, capture_output=True, check=True).stdout
 
 
-def state_crypt(data, decrypt=False):
+def state_crypt(data, decrypt=False, check=None):
     """Lock/unlock the setup's own memory (switch-over state, past playlists).
     Uses the dedicated STATE_KEY secret when it exists; reading falls back to the older DBX_SECRET lock,
-    so adding STATE_KEY later migrates everything automatically at the next save."""
+    so adding STATE_KEY later migrates everything automatically at the next save.
+    `check` (reading only) must accept the unlocked bytes: the wrong key occasionally "unlocks" without an
+    error and returns garbage, so a result only counts if it looks right; otherwise the next key is tried."""
     keys = [k for k in ("STATE_KEY", "DBX_SECRET") if os.environ.get(k)]
     if not decrypt:
         return crypt(data, False, keys[0])
     err = None
     for k in keys:
         try:
-            return crypt(data, True, k)
-        except subprocess.CalledProcessError as e:
+            out = crypt(data, True, k)
+            if check:
+                check(out)
+            return out
+        except Exception as e:  # wrong key: openssl error, or garbage that fails the check
             err = e
     raise err or RuntimeError("no key")
+
+
+def is_json(b):
+    json.loads(b.decode("utf-8"))
+
+
+def is_playlist(b):
+    if not b.decode("utf-8").startswith("#EXTM3U"):
+        raise ValueError("not a playlist")
