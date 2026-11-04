@@ -1,0 +1,54 @@
+name: Grab listings (walled off)
+
+# Used by the nightly check-up and the midday refresh. The listings grabber is outside code (iptv-org/epg and
+# its npm packages), so it runs here on its own: no secrets, read-only access, no saved GitHub credentials.
+# Only the listings it produces (plain XML) are handed on.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  grab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Read the pinned (known-good) grabber version
+        id: lock
+        run: echo "sha=$(tr -d '[:space:]' < grabber.lock)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: iptv-org/epg
+          path: grabber
+          ref: ${{ steps.lock.outputs.sha }}   # newer versions are adopted only after the weekly grabber test passes
+          persist-credentials: false
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+
+      - name: Install grabber
+        working-directory: grabber
+        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+
+      - name: Grab listings (paced)
+        run: scripts/grab.sh
+
+      - name: Hand on the listings only
+        run: mkdir -p "$RUNNER_TEMP/listings" && cp "$RUNNER_TEMP"/main.xml "$RUNNER_TEMP"/backup.xml "$RUNNER_TEMP"/grab-*.log "$RUNNER_TEMP/listings/" 2>/dev/null || true
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: listings
+          path: ${{ runner.temp }}/listings/
+          if-no-files-found: ignore
+          retention-days: 2

@@ -78,7 +78,16 @@ if stats.get("guide_held"):
     alerts["Guide update held back"] = ("The new programme guide had far fewer channels than the current one ("
                                         + str(stats["guide_held"]) + "), so the current guide was kept. Sources may have failed; "
                                         "the next build tries again.")
-KNOWN = ["Channels no longer found on a service", "A check-up was missed", "Playlist updates paused (undo used)",
+# The check-up itself failed (crash, failed rehearsal, timeout): the results below are yesterday's, so only this
+# alert is raised and nothing else is opened, closed or followed up on stale results.
+result = os.environ.get("CHECKUP_RESULT", "success")
+FAILED = "Morning check-up failed"
+checkup_failed = result not in ("success", "")
+if checkup_failed:
+    alerts = {FAILED: ("This morning's check-up didn't finish (" + result + "), so nothing on the TV changed and it keeps "
+                       "yesterday's channel list, which still plays. If it happens again tomorrow, ask Claude to look at the "
+                       "'Nightly check-up' run.")}
+KNOWN = [FAILED, "Channels no longer found on a service", "A check-up was missed", "Playlist updates paused (undo used)",
          "Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
          "Guide coverage dropped", "Playlist upload failing", "Must-have channel down",
          "Check-up started late", "A service lost channels overnight",
@@ -103,7 +112,7 @@ def api(method, path, body=None):
 open_issues = {i["title"]: i for i in api("GET", "/issues?state=open&per_page=100")
                if "pull_request" not in i and (i.get("user") or {}).get("login") == "github-actions[bot]"}
 owner = os.environ.get("GITHUB_REPOSITORY_OWNER")
-for title in KNOWN:
+for title in ([FAILED] if checkup_failed else KNOWN):
     if title in alerts and title not in open_issues:
         api("POST", "/issues", {"title": title, "body": alerts[title], **({"assignees": [owner]} if owner else {})})
         print("Opened alert:", title)
@@ -116,6 +125,8 @@ for title in KNOWN:
 print("Active alerts:", list(alerts) or "none")
 
 # ---- family reports: follow up each open "Family report: ..." issue with this morning's result ----
+if checkup_failed:
+    sys.exit(0)
 if ch.get("channels") and ch.get("checkup_utc"):
     down = set(ch.get("down_on_both", []))
     names = {c["name"].lower(): c["name"] for c in cat}

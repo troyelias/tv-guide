@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: tv-guide
@@ -16,14 +16,23 @@ concurrency:
 
 jobs:
   test:
+    # outside code runs here, so: read-only, no secrets, no saved credentials
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    permissions:
+      contents: read
+    outputs:
+      adopt: ${{ steps.t.outputs.adopt }}
+      sha: ${{ steps.t.outputs.sha }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           repository: iptv-org/epg
           path: grabber
+          persist-credentials: false
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 22
@@ -44,10 +53,24 @@ jobs:
           (cd grabber && npm run grab --- --channels="$GITHUB_WORKSPACE/sample-backup.xml" --output="$RUNNER_TEMP/b.xml" --days=1 --maxConnections=2 --delay=400 --timeout=30000 > /dev/null 2>&1) || true
           N=$(( $(grep -c "<programme" "$RUNNER_TEMP/m.xml" 2>/dev/null || echo 0) + $(grep -c "<programme" "$RUNNER_TEMP/b.xml" 2>/dev/null || echo 0) ))
           echo "Newest version produced $N shows for the sample."
-          if [ "$N" -ge 300 ]; then echo "$NEW" > grabber.lock; echo "adopt=1" >> "$GITHUB_OUTPUT"; else echo "::warning::Newest grabber produced too little - keeping the known-good version."; fi
+          if [ "$N" -ge 300 ]; then echo "adopt=1" >> "$GITHUB_OUTPUT"; echo "sha=$NEW" >> "$GITHUB_OUTPUT"; else echo "::warning::Newest grabber produced too little - keeping the known-good version."; fi
+
+  adopt:
+    # a fresh job that runs none of the outside code: it only records the tested version number
+    needs: test
+    if: needs.test.outputs.adopt == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Adopt the newer version
-        if: steps.t.outputs.adopt == '1'
+        env:
+          SHA: ${{ needs.test.outputs.sha }}
         run: |
+          echo "$SHA" | grep -Eq '^[0-9a-f]{40}$' || { echo "::error::unexpected version id"; exit 1; }
+          echo "$SHA" > grabber.lock
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add grabber.lock && git commit -qm "Grabber: adopt newer version after a passing test" && git pull -q --rebase origin main && git push -q

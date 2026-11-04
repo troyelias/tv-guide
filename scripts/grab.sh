@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Download listings with the iptv-org grabber, pinned to a known-good version (grabber.lock).
-# If the pinned version produces almost nothing, try the newest version once; whichever works is remembered.
+# Runs walled off (no secrets); a newer grabber is only adopted by the weekly grabber test.
 set -u
 W="$GITHUB_WORKSPACE"; T="$RUNNER_TEMP"; MIN=3000
 
@@ -16,11 +16,8 @@ run_grab
 CUR=$(git -C "$W/grabber" rev-parse HEAD)
 N=$(count "$T/main.xml"); echo "Grabber $CUR: $N main shows, $(count "$T/backup.xml") backup shows"
 if [ "$N" -lt "$MIN" ]; then
-  # the pinned version stopped working (a listings site changed) - try the newest grabber once
-  echo "Too few shows with the pinned grabber - trying the newest version"
-  git -C "$W/grabber" fetch -q --depth 1 origin HEAD && git -C "$W/grabber" checkout -q FETCH_HEAD \
-    && ( cd "$W/grabber" && npm install --no-audit --no-fund > /dev/null 2>&1 ) && run_grab
-  CUR=$(git -C "$W/grabber" rev-parse HEAD); N=$(count "$T/main.xml"); echo "Retry with $CUR: $N main shows"
+  # the pinned version may have stopped working (a listings site changed); the weekly grabber test adopts a newer
+  # one once it's shown to work - an untested version is never run here
+  echo "::warning::Only $N shows from the pinned grabber - the previous guide fills the gaps"
 fi
-if [ "$N" -ge "$MIN" ]; then echo "$CUR" > "$T/grabber.lock"; fi
 exit 0

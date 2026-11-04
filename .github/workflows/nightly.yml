@@ -94,9 +94,14 @@ jobs:
           name: channels
           path: ${{ runner.temp }}/ch/
 
-  guide:
+  grab:
     needs: channels
-    if: always() && needs.channels.outputs.skip != '1'
+    if: ${{ !cancelled() && needs.channels.outputs.skip != '1' }}
+    uses: ./.github/workflows/grab-listings.yml
+
+  guide:
+    needs: [channels, grab]
+    if: ${{ !cancelled() && needs.channels.outputs.skip != '1' }}
     runs-on: ubuntu-latest
     timeout-minutes: 100
     environment:
@@ -106,26 +111,11 @@ jobs:
         with:
           ref: main
 
-      - name: Read the pinned (known-good) grabber version
-        id: lock
-        run: echo "sha=$(tr -d '[:space:]' < grabber.lock)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        continue-on-error: true
         with:
-          repository: iptv-org/epg
-          path: grabber
-          ref: ${{ steps.lock.outputs.sha }}   # newer versions are adopted only after the weekly grabber test passes
-
-      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
-        with:
-          node-version: 22
-
-      - name: Install grabber
-        working-directory: grabber
-        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
-
-      - name: Grab listings (paced; falls back to the last working grabber)
-        run: scripts/grab.sh
+          name: listings
+          path: ${{ runner.temp }}
 
       - name: Download fallback guides, previous guide and both services' own guides
         env:
@@ -163,6 +153,8 @@ jobs:
       - name: Status page and alerts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECKUP_RESULT: ${{ needs.channels.result }}
+          MODE: ${{ inputs.mode || 'nightly' }}
         run: |
           R="$RUNNER_TEMP"; mkdir -p "$R/site"
           # keep the last real check-up's results if this run has none
@@ -170,7 +162,10 @@ jobs:
             || curl -fsSL -o "$R/ch/channels.json" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/guide/channels.json" || echo '{}' > "$R/ch/channels.json"
           git fetch -q origin spot 2>/dev/null && git show FETCH_HEAD:spot.json > "$R/spot.json" 2>/dev/null || echo '{}' > "$R/spot.json"
           python3 scripts/status_page.py "$R/site/index.html" "$R/stats.json" "$R/ch/channels.json" "$R/spot.json" history/guide-coverage.json
-          python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json" "$R/spot.json"
+          # alerts follow real check-ups only (a preview has no test results and would close alerts wrongly)
+          if [ "$MODE" = "nightly" ] || [ "$CHECKUP_RESULT" != "success" ]; then
+            python3 scripts/alerts.py "$R/stats.json" "$R/ch/channels.json" "$R/spot.json"
+          fi
 
       - name: Publish guide to the 'guide' branch
         env:

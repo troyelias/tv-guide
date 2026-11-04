@@ -293,7 +293,7 @@ if MODE in ("nightly", "dry-run"):
         summary["second_try"] = ({"skipped": "running late"} if late else
                                  {"at_ist": target.strftime("%H:%M"), "tried": sum(len(v) for v in failed.values()),
                                   "recovered": len(recovered)})
-    summary["skipped_someone_watching"] = skipped
+    summary["services_not_tested"] = len({x.split()[0] for x in skipped})  # a count only: when people watch isn't published
     summary["best_copy"] = {"compared": sum(len(v) for v in quality.values()),
                             "switched_to_better_copy": {p: [next(c["name"] for c in catalog if c["id"] == i) for i in v]
                                                         for p, v in better_copy.items() if v}}
@@ -332,6 +332,8 @@ for ch in catalog:
             lead = SPOT_LEADS.get(ch["name"])
             if lead and lead.get("utc", "") >= (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
                 st["lead"] = lead
+            elif (st.get("lead") or {}).get("utc", "") < (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
+                st.pop("lead", None)  # an old measurement no longer counts
             st["folder"] = ch["folder"]
             # shadow mode: the candidate keeps its own memory of where each channel would be
             st["shadow_use"] = rules_candidate.decide({**st, "use": st.get("shadow_use", st["use"])}, m_ok, b_ok, has)

@@ -177,7 +177,7 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
     except Exception as e:
         say(f"  login check failed ({type(e).__name__})")
         continue
-    say(f"  account: {u.get('status')}, watching now: {u.get('active_cons')} of {u.get('max_connections')} allowed")
+    say(f"  account: {u.get('status')}, {u.get('max_connections')} screen(s) allowed")  # when people watch is never published
     try:
         exp = int(u.get("exp_date"))
         say(f"  subscription ends: {time.strftime('%d %b %Y %H:%M UTC', time.gmtime(exp))} "

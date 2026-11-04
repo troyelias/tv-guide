@@ -71,7 +71,7 @@ for label, env in (("main", "PRO"), ("backup", "PRO_2")):
 
 # once a day (the early-morning run, India time) measure which service runs ahead for a few sports channels,
 # rotating through them; used by the proposed "sports from the faster service" rule (shadow mode)
-if os.environ.get("MEASURE_LEAD") == "1" or NOW.hour == 2:
+if os.environ.get("MEASURE_LEAD") == "1" or NOW.hour == 4:  # the 9:53 AM (India) run
     from streamtest import record, scene_cuts, align_cuts
     import threading
     provs = {l: Provider(l, os.environ.get(e)) for l, e in (("main", "PRO"), ("backup", "PRO_2"))}
@@ -108,14 +108,17 @@ for name, res in run["ok"].items():
     else:
         spot["down_streak"].pop(name, None)
 
-spot["runs"] = [r for r in spot["runs"] if r["utc"] >= (NOW - timedelta(days=8)).strftime("%Y-%m-%d %H:%M")] + [run]
+# the record is public, so it keeps what played - never when a check was skipped because someone was watching
+run.pop("skipped", None)
+spot["runs"] = [{k: v for k, v in r.items() if k != "skipped"} for r in spot["runs"]
+                if r["utc"] >= (NOW - timedelta(days=8)).strftime("%Y-%m-%d %H:%M")] + [run]
 # summary for the status page and weekly report: share of favourite checks that played, last 7 days
 week = [r for r in spot["runs"] if r["utc"] >= (NOW - timedelta(days=7)).strftime("%Y-%m-%d %H:%M")]
 tot = sum(1 for r in week for res in r["ok"].values() for v in res.values())
 good = sum(1 for r in week for res in r["ok"].values() for v in res.values() if v)
 spot["summary"] = {"checks_7d": len(week), "favourite_plays_pct_7d": round(100 * good / tot, 1) if tot else None,
                    "down_now": sorted(n for n, k in spot["down_streak"].items() if k >= 2),
-                   "last_run_utc": run["utc"], "last_skipped": run["skipped"],
+                   "last_run_utc": run["utc"],
                    "lead": spot.get("lead", {})}
 json.dump(spot, open(path, "w"), indent=1)
-print(json.dumps(spot["summary"]))
+print(json.dumps({k: spot["summary"][k] for k in ("checks_7d", "favourite_plays_pct_7d", "down_now")}))

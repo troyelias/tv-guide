@@ -480,6 +480,11 @@ def outage_and_alerts_test():
                            capture_output=True, text=True, timeout=60)
         check("Check-up started late" in r.stdout and "A service lost channels overnight" in r.stdout,
               "late start and lost channels raise their alerts")
+        r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "alerts.py"), "s.json", "c.json"], cwd=work,
+                           env=dict({k: v for k, v in os.environ.items() if k not in ("GITHUB_TOKEN", "GITHUB_REPOSITORY")},
+                                    CHECKUP_RESULT="failure"), capture_output=True, text=True, timeout=60)
+        check("Morning check-up failed" in r.stdout and "Check-up started late" not in r.stdout,
+              "a failed check-up raises its own alert and doesn't act on yesterday's results")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
