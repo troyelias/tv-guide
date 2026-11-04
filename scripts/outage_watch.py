@@ -9,12 +9,26 @@ try:
     w = json.load(open(path))
 except Exception:
     w = {"fails": 0, "switched": False}
-ok = False
-try:
-    u = Provider("main", os.environ.get("PRO")).api(timeout=60).get("user_info", {})
-    ok = u.get("auth") == 1 and str(u.get("status", "")).lower() == "active"
-except Exception:
-    pass
+
+
+def login_ok():
+    try:
+        u = Provider("main", os.environ.get("PRO")).api(timeout=60).get("user_info", {})
+        return u.get("auth") == 1 and str(u.get("status", "")).lower() == "active"
+    except Exception:
+        return False
+
+
+ok = login_ok()
+confirm = float(os.environ.get("CONFIRM_MIN", "0") or 0)
+if not ok and confirm:
+    # GitHub's hourly timer often fires only every few hours, so a single run confirms an outage by itself:
+    # it waits and checks again, and only a second failure 40+ minutes later counts as down
+    time.sleep(confirm * 60)
+    ok = login_ok()
+    if not ok:
+        w["fails"] = max(w.get("fails", 0), 1)
+        w["last_fail"] = time.time() - 41 * 60  # the first failure, a confirmed 40+ minutes ago
 # Two starters can run this check (GitHub's hourly timer and an outside task), sometimes minutes apart.
 # A failure only counts if the last counted failure was at least 40 minutes ago, so a short blip
 # can never switch everything - the main service has to be down for 40+ minutes.

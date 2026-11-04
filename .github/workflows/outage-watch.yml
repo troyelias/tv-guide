@@ -20,7 +20,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 75   # includes a 40-minute wait to confirm a failed login
     env:
       PRO: ${{ secrets.PRO }}
       PRO_2: ${{ secrets.PRO_2 }}
@@ -38,11 +38,13 @@ jobs:
           # 22:00-01:45 UTC (3:30-7:15 AM India) the morning check-up is running and handles an outage itself
           hm=$(date -u +%H%M)
           if [ "$hm" -ge 2200 ] || [ "$hm" -lt 145 ]; then echo "Check-up time - leaving it to the check-up"; echo "action=none" >> "$GITHUB_OUTPUT"; exit 0; fi
-          echo "action=$(python3 scripts/outage_watch.py "$RUNNER_TEMP/watch.json")" >> "$GITHUB_OUTPUT"
+          echo "action=$(CONFIRM_MIN=40 python3 scripts/outage_watch.py "$RUNNER_TEMP/watch.json")" >> "$GITHUB_OUTPUT"
 
       - name: Switch everything to the backup service
         if: steps.w.outputs.action == 'switch'
         run: |
+          hm=$(date -u +%H%M)   # the confirming wait may have run into the morning check-up's hours: leave it to that
+          if [ "$hm" -ge 2200 ] || [ "$hm" -lt 145 ]; then echo "Check-up time - leaving it to the check-up"; exit 0; fi
           # never at the same moment as the check-up or an undo (both change the same memory): try again next hour
           # (the early start of the check-up waits for hours first; only its testing part counts as busy)
           busy=0

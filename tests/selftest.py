@@ -462,6 +462,10 @@ def outage_and_alerts_test():
         check(run() == "switch", "failed checks 40+ minutes apart do switch everything")
         json.dump({"fails": 1, "last_fail": time.time() - 4 * 3600, "switched": False}, open(w, "w"))
         check(run() == "none", "two failures hours apart (with no checks in between) don't switch everything")
+        json.dump({}, open(w, "w"))
+        r1 = subprocess.run([sys.executable, os.path.join(SCRIPTS, "outage_watch.py"), w], env=dict(env, CONFIRM_MIN="0.01"),
+                            capture_output=True, text=True, timeout=120).stdout.strip()
+        check(r1 == "switch", "one run confirms an outage by itself (fails, waits, fails again)")
         json.dump({}, open(os.path.join(work, "s.json"), "w"))
         json.dump({"down_on_both": ["Romedy Now HD"], "down_days": {"Romedy Now HD": 4},
                    "replacements": {"Romedy Now HD": ["Movies Now HD"]}}, open(os.path.join(work, "c.json"), "w"))
