@@ -4,12 +4,14 @@ import re
 
 TAG_CHARS = r"[ʰ-˿ᴀ-᷿⁰-₟ⱼ-Ɀ]"  # tiny superscript tags like ᴴᴰ ᴿᴬᵂ ⁴ᵏ
 PREFIX = r"^\s*\(?[A-Z0-9][A-Z0-9 \-]{0,11}\)?\s*(\|\||\||:|▎)\s*"
+DASH_PREFIX = r"^\s*[A-Z]{2,7}(?:\|[A-Z]{2,7})?\s+-\s+"
 
 
 def clean_name(name):
     """Readable name without provider prefixes/tags: 'IN EU ▎ZEE TV SD ◉ rec' -> 'ZEE TV SD'."""
     s = name.replace("\\/", "/")
     s = s.split("▎")[-1] if "▎" in s else re.sub(PREFIX, "", s, flags=re.I)
+    s = re.sub(DASH_PREFIX, "", s)  # 'HINDI - DD NATIONAL', 'IN|UK - ZEE TV HD' (some services' style)
     s = re.sub(TAG_CHARS, "", s)
     s = re.sub(r"◉|\brec\b", "", s, flags=re.I)
     return re.sub(r"\s+", " ", s).strip(" -.")
