@@ -8370,7 +8370,9 @@
    "in"
   ],
   "keys": [
-   "COLORSCINEPLEXBOLLYWOOD"
+   "COLORSCINEPLEXBOLLYWOOD",
+   "CINEPLEXBOLLYWOOD",
+   "COLORSCINEPLEXBOLLY"
   ],
   "tags": [
    "ts1000"
@@ -8389,7 +8391,10 @@
    "in"
   ],
   "keys": [
-   "COLORSCINEPLEXSUPERHITS"
+   "COLORSCINEPLEXSUPERHITS",
+   "CINEPLEXSUPERHITS",
+   "COLORSCINEPLEXSUPERHIT",
+   "CINEPLEXSUPERHIT"
   ],
   "tags": [
    "ts1025"
@@ -8428,7 +8433,10 @@
   ],
   "keys": [
    "NEWS18PUNJABHARYANA",
-   "NEWS18PUNJABHARYANAHIMACHAL"
+   "NEWS18PUNJABHARYANAHIMACHAL",
+   "NEWS18PUNJAB",
+   "NEWS18PHH",
+   "NEWS18PUNJABHARYANAHP"
   ],
   "tags": [
    "ts232"
@@ -8490,7 +8498,10 @@
   "keys": [
    "NEWS18DELHINCRJAMMUKASHMIR",
    "NEWS18JAMMUKASHMIRLADAKHHIMACHAL",
-   "NEWS18JKLH"
+   "NEWS18JKLH",
+   "NEWS18JK",
+   "NEWS18JAMMUKASHMIR",
+   "NEWS18JKLADAKHHIMACHAL"
   ],
   "tags": [
    "ts354"
@@ -8549,7 +8560,8 @@
    "in"
   ],
   "keys": [
-   "FOODXP"
+   "FOODXP",
+   "FOODXPHINDI"
   ],
   "tags": [
    "ts1030"
@@ -8587,7 +8599,9 @@
    "in"
   ],
   "keys": [
-   "ZEEBISKOPE"
+   "ZEEBISKOPE",
+   "ZEEBISCOPE",
+   "ZEEBIOSCOPE"
   ],
   "tags": [
    "ts814"
@@ -8664,7 +8678,9 @@
   ],
   "keys": [
    "NEWS18ASSAMNORTHEAST",
-   "NEWS18ASSAM"
+   "NEWS18ASSAM",
+   "NEWS18NORTHEAST",
+   "NEWS18ASSAMNE"
   ],
   "tags": [
    "ts68"
