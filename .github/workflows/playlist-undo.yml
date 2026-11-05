@@ -13,24 +13,46 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
+# Its own queue: in the check-up's queue a waiting undo could be cancelled by a later check-up start (GitHub keeps only
+# one waiting run per queue). Instead it waits below until no check-up is testing channels, then acts.
 concurrency:
-  group: tv
+  group: tv-undo
   cancel-in-progress: false
 
 jobs:
   undo:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     env:
       DBX_KEY: ${{ secrets.DBX_KEY }}
       DBX_SECRET: ${{ secrets.DBX_SECRET }}
       STATE_KEY: ${{ secrets.STATE_KEY }}
       DBX_PATH: ${{ secrets.DBX_PATH }}
     steps:
+      - name: Wait while a check-up is testing channels (both change the same memory)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for i in $(seq 1 110); do
+            busy=0
+            for id in $(gh run list -R "$GITHUB_REPOSITORY" --workflow nightly.yml --status in_progress --json databaseId -q '.[].databaseId'); do
+              gh run view "$id" -R "$GITHUB_REPOSITORY" --json jobs -q '.jobs[] | select(.name == "channels") | .status' | grep -q in_progress && busy=1
+            done
+            [ "$busy" = 0 ] && exit 0
+            echo "A check-up is running - waiting"; sleep 60
+          done
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
-      - run: python3 scripts/undo.py "${{ inputs.action }}"
+        with:
+          ref: main   # the latest memory, after any check-up that just finished
+      - env:
+          ACTION: ${{ inputs.action }}
+        run: python3 scripts/undo.py "$ACTION"
       - name: Save
+        env:
+          ACTION: ${{ inputs.action }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add secure && git commit -qm "Playlist ${{ inputs.action }} $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
+          git add secure && git commit -qm "Playlist $ACTION $(date -u +'%Y-%m-%d %H:%M') UTC" && git pull -q --rebase origin main && git push -q
