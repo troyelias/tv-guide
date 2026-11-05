@@ -142,6 +142,10 @@ def rehearsal():
               "every channel carries its fixed channel number (Tata Play's where it has one)")
         check(len({x["chno"] for x in own}) == len(own), "no two channels share a number")
         check(all(x["chno"] > 5000 for x in p1 if x["group"] == "Backup"), "Backup-folder copies have their own numbers (5001+)")
+        groups = {}
+        for x in p1:
+            groups.setdefault(x["group"], []).append(x["chno"] or 99999)
+        check(all(v == sorted(v) for v in groups.values()), "inside every folder, channels are in channel-number order")
         s2, p2 = results[1]
         check("backup.test" in find(p2, A, A["folder"])[0]["url"], "morning 2: one good morning isn't enough to switch back")
         s3, p3 = results[2]

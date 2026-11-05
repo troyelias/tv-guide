@@ -480,7 +480,10 @@ for ch in [c for c in catalog if c.get("must")]:
 order = {f: i for i, f in enumerate(FOLDERS)}
 long_dead = [c for c in catalog if c["id"] in DOWN and chs.get(c["id"], {}).get("down_days", 0) >= DEAD_AFTER]
 LONG_DEAD = {c["id"] for c in long_dead}
-for ch in sorted(catalog, key=lambda c: order.get(c["folder"], 99)):
+# within each folder, channels go in channel-number order (Tata Play's numbers first, then our own 2001+ ones),
+# so apps that keep the playlist's order show them like a Tata Play box
+by_number = lambda c: (order.get(c["folder"], 99), c.get("number") or 99999)  # noqa: E731
+for ch in sorted(catalog, key=by_number):
     if ch["id"] in LONG_DEAD:
         continue  # moved to the "Not working" folder at the very bottom
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
@@ -501,7 +504,7 @@ for ch in catalog:  # Backup folder: each favourite again, from whichever servic
     spare += 1
     lines.append(entry(ch, BACKUP_FOLDER, other, sid, number=5000 + spare))
 not_working = []
-for ch in sorted(long_dead, key=lambda c: order.get(c["folder"], 99)):
+for ch in sorted(long_dead, key=by_number):
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
     if p:
         lines.append(entry(ch, DEAD_FOLDER, p, sid))
