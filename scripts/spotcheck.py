@@ -71,7 +71,11 @@ for label, env in (("main", "PRO"), ("backup", "PRO_2")):
 
 # once a day (the early-morning run, India time) measure which service runs ahead for a few sports channels,
 # rotating through them; used by the proposed "sports from the faster service" rule (shadow mode)
-if os.environ.get("MEASURE_LEAD") == "1" or NOW.hour == 4:  # the 9:53 AM (India) run
+_last_lead = max([v.get("utc", "") for v in spot.get("lead", {}).values()] or [""])
+_lead_due = 2 <= NOW.hour <= 14 and _last_lead < (NOW - timedelta(hours=20)).strftime("%Y-%m-%d %H:%M")
+# GitHub's timers here run hours late, so instead of a fixed hour: the first daytime run that finds no measurement
+# in the last 20 hours does it
+if os.environ.get("MEASURE_LEAD") == "1" or _lead_due:
     from streamtest import record, scene_cuts, align_cuts
     import threading
     provs = {l: Provider(l, os.environ.get(e)) for l, e in (("main", "PRO"), ("backup", "PRO_2"))}
