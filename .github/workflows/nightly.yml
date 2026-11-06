@@ -69,7 +69,8 @@ jobs:
 
       - name: Install picture checker (spots "dead channel" black filler)
         continue-on-error: true
-        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+        timeout-minutes: 12
+        run: scripts/install_ffmpeg.sh
 
       - name: Self-test (rehearses the check-up on made-up services; if it fails, nothing is changed tonight)
         run: python3 tests/selftest.py

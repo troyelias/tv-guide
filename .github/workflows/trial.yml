@@ -20,7 +20,8 @@ jobs:
         with:
           persist-credentials: false
       - name: Install picture checker
-        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+        timeout-minutes: 12
+        run: scripts/install_ffmpeg.sh
       - name: Read the lineup and test-play channels (one at a time)
         env:
           TRIAL: ${{ secrets.TRIAL }}

@@ -21,7 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Install picture checker
-        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+        timeout-minutes: 12
+        run: scripts/install_ffmpeg.sh
       - name: Run the self-test
         env:
           STATE_KEY: ci-placeholder-not-a-secret   # the morning job carries real keys; the rehearsal must ignore them
