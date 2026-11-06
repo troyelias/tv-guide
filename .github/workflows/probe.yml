@@ -17,6 +17,10 @@ on:
         description: "Also measure which service runs ahead (records both at once, ~1 min per channel)"
         type: boolean
         default: false
+      all_copies:
+        description: "Look at every copy (up to 4) of each channel, not just the first - e.g. to find which copy has no picture"
+        type: boolean
+        default: false
       force:
         description: "Look even if someone is watching (may interrupt them)"
         type: boolean
@@ -42,6 +46,7 @@ jobs:
           FORCE: ${{ inputs.force && '1' || '0' }}
           LOGOS: ${{ inputs.logos && '1' || '0' }}
           DELAY: ${{ inputs.delay && '1' || '0' }}
+          ALL_COPIES: ${{ inputs.all_copies && '1' || '0' }}
           SHOTS_DIR: ${{ runner.temp }}/shots
         run: |
           mkdir -p "$SHOTS_DIR"

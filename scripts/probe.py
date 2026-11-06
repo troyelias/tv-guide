@@ -200,8 +200,10 @@ for label, env in (("Main service", "PRO"), ("Backup service", "PRO_2")):
         if not sids:
             say(f"  {c['name']}: not on this service")
             continue
-        probe(prov, sids[0], f"{c['name']} ({label.split()[0].lower()})")
-        time.sleep(3)
+        names = {x["stream_id"]: x.get("name", "") for x in streams}
+        for n, sid in enumerate(sids[:4] if os.environ.get("ALL_COPIES") == "1" else sids[:1], 1):
+            probe(prov, sid, f"{c['name']} ({label.split()[0].lower()}, copy {n}: {names.get(sid, '?')})")
+            time.sleep(3)
     say()
 
 # ---- picture comparison (LOGOS=1): do two copies show the same programme? (calibration for mix-up detection) ----
