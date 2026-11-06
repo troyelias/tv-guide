@@ -91,9 +91,13 @@ def _ts_stats(b):
             continue
     video = sum(count.get(q, 0) for q, t in kinds.items() if t in (0x1b, 0x24, 0x02, 0x01, 0x10))
     audio = sum(count.get(q, 0) for q, t in kinds.items() if t in (0x0f, 0x11, 0x03, 0x04, 0x81, 0x87, 0x06))
+    # data on streams of a kind not recognised above (could be video in an unusual format) - not tables or padding
+    other = sum(n for q, n in count.items() if q not in kinds and q not in pmt and q not in (0, 0x1fff))
+    other += sum(count.get(q, 0) for q, t in kinds.items()
+                 if t not in (0x1b, 0x24, 0x02, 0x01, 0x10, 0x0f, 0x11, 0x03, 0x04, 0x81, 0x87, 0x06))
     if not kinds or not video:
-        return {"video": video, "audio_share": 1.0 if audio else 0.0, "keys": keys}
-    return {"video": video, "audio_share": audio / max(video + audio, 1), "keys": keys}
+        return {"video": video, "audio_share": 1.0 if audio else 0.0, "keys": keys, "audio": audio, "other": other}
+    return {"video": video, "audio_share": audio / max(video + audio, 1), "keys": keys, "audio": audio, "other": other}
 
 
 def _still_and_silent(data):
@@ -126,7 +130,11 @@ def is_filler(data):
     if st is None:
         return False
     if st["video"] == 0:
-        return st["audio_share"] == 0  # no picture and no sound
+        if st["audio_share"] == 0:
+            return True  # no picture and no sound
+        # sound but no picture: the TV would show a blank screen with sound - not playing. (Unless a lot of data
+        # comes on a stream of a kind not recognised, which may be video in an unusual format: benefit of the doubt.)
+        return st.get("other", 0) <= st.get("audio", 0)
     if st["keys"] < 15 and st["audio_share"] <= 0.25:
         return False  # looks like an ordinary broadcast
     confirm = _still_and_silent(data)  # look at the actual picture and sound

@@ -454,6 +454,11 @@ def filler_test():
         check(streamtest.is_filler(filler), "a silent black picture counts as not playing")
         check(not streamtest.is_filler(real), "a normal moving picture counts as playing")
         check(not streamtest.is_filler(still_music), "a still picture with sound (e.g. a music slide) still counts as playing")
+        sound_only = os.path.join(work, "a.ts")
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "sine", "-t", "8", "-c:a", "aac",
+                        "-f", "mpegts", sound_only], check=True, timeout=120)
+        check(streamtest.is_filler(open(sound_only, "rb").read()[:streamtest.SAMPLE]),
+              "sound with no picture at all counts as not playing (a blank screen on the TV)")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
