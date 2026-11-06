@@ -41,7 +41,12 @@ m = match_lineup(catalog, streams, cats)
 print(f"Login ok. {len(streams)} live channels; {len(m)} of our {len(catalog)} found.")
 
 
+LIST_ONLY = os.environ.get("LIST_ONLY") == "1"  # current services: read the channel list only, never open a stream
+
+
 def test(sid):
+    if LIST_ONLY:
+        return None
     out["tested"] += 1
     ok = plays(prov, sid)
     time.sleep(1)
@@ -64,6 +69,9 @@ for i, c in enumerate(catalog, 1):
          "main_week": st.get("main_hist"), "backup_week": st.get("backup_hist")}
     for sid in sids[:2]:
         r["name_there"] = by_sid[sid].get("name")
+        if LIST_ONLY:
+            r["plays"] = None
+            break
         if c.get("must"):
             q = measure(prov, sid)
             out["tested"] += 1

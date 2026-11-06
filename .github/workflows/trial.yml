@@ -7,6 +7,12 @@ name: Try a new service
 # Results are locked so only the owner's key can open them.
 on:
   workflow_dispatch:
+    inputs:
+      service:
+        description: "trial = test the TRIAL login fully; main / backup = only read that current service's channel list (no streams opened, so nobody watching is disturbed)"
+        type: choice
+        default: trial
+        options: [trial, main, backup]
 
 permissions:
   contents: write
@@ -24,7 +30,9 @@ jobs:
         run: scripts/install_ffmpeg.sh
       - name: Read the lineup and test-play channels (one at a time)
         env:
-          TRIAL: ${{ secrets.TRIAL }}
+          TRIAL: ${{ inputs.service == 'main' && secrets.PRO || inputs.service == 'backup' && secrets.PRO_2 || secrets.TRIAL }}
+          LIST_ONLY: ${{ inputs.service != 'trial' && '1' || '0' }}
+          EXTRA_MAX: ${{ inputs.service != 'trial' && '5000' || '600' }}
           STATE_KEY: ${{ secrets.STATE_KEY }}   # only to read the current services' recent results for comparison
           DBX_SECRET: ${{ secrets.DBX_SECRET }}
         run: python3 scripts/trial.py "$RUNNER_TEMP/trial.json"
