@@ -8687,5 +8687,312 @@
   ],
   "must": false,
   "number": 1971
+ },
+ {
+  "id": "comedy-central-hd-english-entertainment",
+  "name": "Comedy Central HD",
+  "folder": "English Entertainment",
+  "guide_id": "x2352.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "COMEDYCENTRAL"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2352,
+  "trial": true
+ },
+ {
+  "id": "zee-cafe-hd-english-entertainment",
+  "name": "Zee Cafe HD",
+  "folder": "English Entertainment",
+  "guide_id": "x2353.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ZEECAFE",
+   "ZEECAFÉ"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2353,
+  "trial": true
+ },
+ {
+  "id": "vh1-hd-english-entertainment",
+  "name": "VH1 HD",
+  "folder": "English Entertainment",
+  "guide_id": "x2354.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "VH1"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2354,
+  "trial": true
+ },
+ {
+  "id": "fox-life-hd-english-entertainment",
+  "name": "Fox Life HD",
+  "folder": "English Entertainment",
+  "guide_id": "x2355.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "FOXLIFE"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2355,
+  "trial": true
+ },
+ {
+  "id": "warner-tv-english-entertainment",
+  "name": "Warner TV",
+  "folder": "English Entertainment",
+  "guide_id": "x2356.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "WARNER",
+   "WARNERTV",
+   "WARNERBROS"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2356,
+  "trial": true
+ },
+ {
+  "id": "andprive-hd-english-movies",
+  "name": "&Prive HD",
+  "folder": "English Movies",
+  "guide_id": "x2305.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "ANDPRIVE"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2305,
+  "trial": true
+ },
+ {
+  "id": "tata-play-world-cinema-hd-english-movies",
+  "name": "Tata Play World Cinema HD",
+  "folder": "English Movies",
+  "guide_id": "x2306.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "TATAPLAYWORLDCINEMA",
+   "TATASKYWORLDCINEMA"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2306,
+  "trial": true
+ },
+ {
+  "id": "tata-play-hits-hd-english-movies",
+  "name": "Tata Play Hits HD",
+  "folder": "English Movies",
+  "guide_id": "x2307.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "TATAPLAYHITS",
+   "TATASKYHITS"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2307,
+  "trial": true
+ },
+ {
+  "id": "bindass-movies-hindi-movies",
+  "name": "Bindass Movies",
+  "folder": "Hindi Movies",
+  "guide_id": "x2070.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "BINDASSMOVIES",
+   "BINDASMOVIES"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2070,
+  "trial": true
+ },
+ {
+  "id": "bflix-hd-hindi-movies",
+  "name": "BFlix HD",
+  "folder": "Hindi Movies",
+  "guide_id": "x2071.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "BFLIX"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2071,
+  "trial": true
+ },
+ {
+  "id": "airtel-hollywood-masala-hindi-movies",
+  "name": "Airtel Hollywood Masala",
+  "folder": "Hindi Movies",
+  "guide_id": "x2072.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "AIRTELHOLLYWOODMASALA"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2072,
+  "trial": true
+ },
+ {
+  "id": "tata-play-south-talkies-hindi-movies",
+  "name": "Tata Play South Talkies",
+  "folder": "Hindi Movies",
+  "guide_id": "x2073.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "TATAPLAYSOUTHTALKIES",
+   "TATASKYSOUTHTALKIES"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2073,
+  "trial": true
+ },
+ {
+  "id": "utv-hd-hindi-movies",
+  "name": "UTV HD",
+  "folder": "Hindi Movies",
+  "guide_id": "x2074.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "UTV"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2074,
+  "trial": true
+ },
+ {
+  "id": "firangi-hindi-movies",
+  "name": "Firangi",
+  "folder": "Hindi Movies",
+  "guide_id": "x2075.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "FIRANGI"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2075,
+  "trial": true
+ },
+ {
+  "id": "cinema-tv-india-hindi-movies",
+  "name": "Cinema TV India",
+  "folder": "Hindi Movies",
+  "guide_id": "x2076.tvguide",
+  "logo": "",
+  "catchup_days": 0,
+  "regions": [
+   "in",
+   "uk",
+   "us"
+  ],
+  "keys": [
+   "CINEMAINDIA"
+  ],
+  "tags": [],
+  "must": false,
+  "number": 2076,
+  "trial": true
  }
 ]

@@ -478,7 +478,7 @@ for ch in [c for c in catalog if c.get("must")]:
         fav_n += 1
         lines.append(entry(ch, FAV_FOLDER, p, sid, number=fav_n))
 order = {f: i for i, f in enumerate(FOLDERS)}
-long_dead = [c for c in catalog if c["id"] in DOWN and chs.get(c["id"], {}).get("down_days", 0) >= DEAD_AFTER]
+long_dead = [c for c in catalog if c["id"] in DOWN and not c.get("trial") and chs.get(c["id"], {}).get("down_days", 0) >= DEAD_AFTER]
 LONG_DEAD = {c["id"] for c in long_dead}
 # within each folder, channels go in channel-number order (Tata Play's numbers first, then our own 2001+ ones),
 # so apps that keep the playlist's order show them like a Tata Play box
@@ -486,6 +486,8 @@ by_number = lambda c: (order.get(c["folder"], 99), c.get("number") or 99999)  # 
 for ch in sorted(catalog, key=by_number):
     if ch["id"] in LONG_DEAD:
         continue  # moved to the "Not working" folder at the very bottom
+    if ch.get("trial") and ch["id"] in DOWN:
+        continue  # a channel on trial only appears on mornings it actually plays - never with the warning mark
     p, sid = pick(ch["id"], chs.get(ch["id"], {}).get("use", "main"))
     if p:
         lines.append(entry(ch, ch["folder"], p, sid))

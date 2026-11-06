@@ -84,6 +84,10 @@ def rehearsal():
                                  "backup": [sid("backup", B), sid("backup", C)]}
         n1 = base([sid("main", A), sid("main", E), sid("main", M2)])
         n1["backup"].append(sid("backup", D))
+        T = next((c for c in both if c.get("trial")), None)  # a channel on trial, dead on both services this morning
+        if T:
+            n1["main"] += sid("main", T)
+            n1["backup"] += sid("backup", T)
         nights = [  # (dead, flaky, minutes late)
             (n1, {"main": [sid("main", D)]}, 0),                        # morning 1 (Fri)
             (base(), {}, 0),                                            # 2
@@ -133,6 +137,10 @@ def rehearsal():
         check(any(SP["name"] in d and "proposed backup" in d for d in sh) and "main.test" in find(p1, SP, SP["folder"])[0]["url"],
               "shadow mode: the 'sports from the faster service' proposal is shown but not used")
         check(p1[0]["group"] == "Favourites" and p1[0]["chno"] == 1, "Favourites folder comes first, numbered from 1")
+        if T:
+            T2 = next(c for c in both if c.get("trial") and c["id"] != T["id"])
+            check(not find(p1, T) and find(p1, T2),
+                  "a channel on trial appears only when it plays (no warning mark, no 'Not working' folder)")
         favs = [x for x in p1 if x["group"] == "Favourites"]
         check([x["chno"] for x in favs] == list(range(1, len(favs) + 1)) and not any(x["title"] == C["name"] + " \u26a0" for x in favs),
               "favourites are numbered 1, 2, 3... and a favourite playing nowhere is left out of that folder")
