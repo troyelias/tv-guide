@@ -195,8 +195,10 @@ if MODE in ("nightly", "dry-run"):
         todo = list(cands.get(p, {}).items())
 
         def someone_watching():
-            for _ in range(2):  # our own test connection can linger for a moment, so look twice
-                time.sleep(30)
+            # our own test connection can stay counted for a minute or two after it closes (Promax kept it ~1 min+),
+            # so only call it "someone watching" if it's still in use after several looks over ~4 minutes
+            for wait in (30, 45, 60, 90):
+                time.sleep(wait)
                 try:
                     if str(prov.api(timeout=60).get("user_info", {}).get("active_cons", "0")) in ("0", ""):
                         return False
