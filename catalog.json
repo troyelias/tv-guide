@@ -8771,27 +8771,6 @@
   "trial": true
  },
  {
-  "id": "tata-play-south-talkies-hindi-movies",
-  "name": "Tata Play South Talkies",
-  "folder": "Hindi Movies",
-  "guide_id": "x2073.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "TATAPLAYSOUTHTALKIES",
-   "TATASKYSOUTHTALKIES"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2073,
-  "trial": true
- },
- {
   "id": "utv-hd-hindi-movies",
   "name": "UTV HD",
   "folder": "Hindi Movies",
