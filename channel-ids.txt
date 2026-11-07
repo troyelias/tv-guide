@@ -353,11 +353,7 @@ ts261
 ts507
 ts258
 ts68
-x2352.tvguide
 x2353.tvguide
-x2354.tvguide
-x2355.tvguide
-x2356.tvguide
 x2305.tvguide
 x2306.tvguide
 x2307.tvguide

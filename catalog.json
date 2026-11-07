@@ -899,7 +899,7 @@
   "name": "Enterr10",
   "folder": "Hindi Movies",
   "guide_id": "",
-  "logo": "",
+  "logo": "https://i.imgur.com/tLOtVGo.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -2196,7 +2196,7 @@
   "name": "CVR English",
   "folder": "English News",
   "guide_id": "",
-  "logo": "",
+  "logo": "https://i.imgur.com/k0WTQKi.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8364,7 +8364,7 @@
   "name": "Colors Cineplex Bollywood",
   "folder": "Hindi Movies",
   "guide_id": "ts1000",
-  "logo": "",
+  "logo": "https://i.imgur.com/EbHSQAJ.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8385,7 +8385,7 @@
   "name": "Colors Cineplex Superhits",
   "folder": "Hindi Movies",
   "guide_id": "ts1025",
-  "logo": "",
+  "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/ColorsCineplexSuperhit.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8407,7 +8407,7 @@
   "name": "Good News Today",
   "folder": "Hindi News",
   "guide_id": "ts278",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/s143090_ld_h15_aa.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8426,7 +8426,7 @@
   "name": "News18 Punjab Haryana",
   "folder": "Hindi News",
   "guide_id": "ts232",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/s143617_ld_h15_aa.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8449,7 +8449,7 @@
   "name": "Zee Delhi NCR Haryana",
   "folder": "Hindi News",
   "guide_id": "ts262",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0023166M.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8490,7 +8490,7 @@
   "name": "News18 Delhi NCR Jammu Kashmir",
   "folder": "Hindi News",
   "guide_id": "ts354",
-  "logo": "",
+  "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/News18JKLH.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8514,7 +8514,7 @@
   "name": "ET Now Swadesh",
   "folder": "Business News",
   "guide_id": "ts950",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/s143022_ld_h15_aa.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8533,7 +8533,7 @@
   "name": "CNN International",
   "folder": "English News",
   "guide_id": "ts243",
-  "logo": "",
+  "logo": "https://i.imgur.com/dfxefQw.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8554,7 +8554,7 @@
   "name": "Food XP",
   "folder": "Lifestyle",
   "guide_id": "ts1030",
-  "logo": "",
+  "logo": "https://i.imgur.com/zOWog5j.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8574,7 +8574,7 @@
   "name": "Zee Punjabi",
   "folder": "Regional & DD",
   "guide_id": "ts796",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0022JG14.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8593,7 +8593,7 @@
   "name": "Zee Biskope",
   "folder": "Regional & DD",
   "guide_id": "ts814",
-  "logo": "",
+  "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZEE_BISKOPE/images/LOGO_HD/LOGO_HD_image.png",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8614,7 +8614,7 @@
   "name": "Zee 24 Taas",
   "folder": "Regional & DD",
   "guide_id": "ts261",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG00230LKE.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8633,7 +8633,7 @@
   "name": "Zee 24 Kalak",
   "folder": "Regional & DD",
   "guide_id": "ts507",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG00230P1R.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8652,7 +8652,7 @@
   "name": "Zee 24 Ghanta",
   "folder": "Regional & DD",
   "guide_id": "ts258",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0022KGXP.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8671,7 +8671,7 @@
   "name": "News18 Assam North East",
   "folder": "Regional & DD",
   "guide_id": "ts68",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/s143606_ld_h15_aa.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in"
@@ -8689,31 +8689,11 @@
   "number": 1971
  },
  {
-  "id": "comedy-central-hd-english-entertainment",
-  "name": "Comedy Central HD",
-  "folder": "English Entertainment",
-  "guide_id": "x2352.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "COMEDYCENTRAL"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2352,
-  "trial": true
- },
- {
   "id": "zee-cafe-hd-english-entertainment",
   "name": "Zee Cafe HD",
   "folder": "English Entertainment",
   "guide_id": "x2353.tvguide",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0022ZMMH.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in",
@@ -8730,73 +8710,11 @@
   "trial": true
  },
  {
-  "id": "vh1-hd-english-entertainment",
-  "name": "VH1 HD",
-  "folder": "English Entertainment",
-  "guide_id": "x2354.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "VH1"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2354,
-  "trial": true
- },
- {
-  "id": "fox-life-hd-english-entertainment",
-  "name": "Fox Life HD",
-  "folder": "English Entertainment",
-  "guide_id": "x2355.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "FOXLIFE"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2355,
-  "trial": true
- },
- {
-  "id": "warner-tv-english-entertainment",
-  "name": "Warner TV",
-  "folder": "English Entertainment",
-  "guide_id": "x2356.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "WARNER",
-   "WARNERTV",
-   "WARNERBROS"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2356,
-  "trial": true
- },
- {
   "id": "andprive-hd-english-movies",
   "name": "&Prive HD",
   "folder": "English Movies",
   "guide_id": "x2305.tvguide",
-  "logo": "",
+  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0022J69M.png?lock=720x540",
   "catchup_days": 0,
   "regions": [
    "in",
@@ -8940,7 +8858,7 @@
   "name": "UTV HD",
   "folder": "Hindi Movies",
   "guide_id": "x2074.tvguide",
-  "logo": "",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/9/98/UTV_HD_India.png",
   "catchup_days": 0,
   "regions": [
    "in",
@@ -8960,7 +8878,7 @@
   "name": "Firangi",
   "folder": "Hindi Movies",
   "guide_id": "x2075.tvguide",
-  "logo": "",
+  "logo": "https://i.imgur.com/Zncug3j.png",
   "catchup_days": 0,
   "regions": [
    "in",
