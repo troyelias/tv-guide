@@ -3052,7 +3052,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "EUROSPORT"
@@ -3283,7 +3284,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "WILLOWCRICKET"
@@ -7804,7 +7806,8 @@
   "logo": "http://photo-tmdb.com/stalker_portal/logos/euronews.png",
   "catchup_days": 0,
   "regions": [
-   "in"
+   "in",
+   "xx"
   ],
   "keys": [
    "EURONEWS"
@@ -8010,7 +8013,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "WILLOWCRICKETEXTRA"
@@ -8032,7 +8036,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "SKYSPORTSCRICKET"
@@ -8054,7 +8059,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "SUPERSPORTCRICKET",
@@ -8077,7 +8083,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "FOXCRICKET"
@@ -8099,7 +8106,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "ASTROCRICKET"
@@ -8121,7 +8129,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "CRICLIFE1",
@@ -8144,7 +8153,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "CRICLIFE2",
@@ -8167,7 +8177,8 @@
   "regions": [
    "in",
    "uk",
-   "us"
+   "us",
+   "xx"
   ],
   "keys": [
    "ATNSPORTS"
@@ -8496,7 +8507,8 @@
   "logo": "https://i.imgur.com/dfxefQw.png",
   "catchup_days": 0,
   "regions": [
-   "in"
+   "in",
+   "xx"
   ],
   "keys": [
    "CNNINTERNATIONAL",
