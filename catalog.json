@@ -7807,6 +7807,8 @@
   "catchup_days": 0,
   "regions": [
    "in",
+   "uk",
+   "us",
    "xx"
   ],
   "keys": [
@@ -8508,6 +8510,8 @@
   "catchup_days": 0,
   "regions": [
    "in",
+   "uk",
+   "us",
    "xx"
   ],
   "keys": [
