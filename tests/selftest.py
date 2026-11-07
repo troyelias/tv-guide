@@ -530,6 +530,10 @@ def files_test():
         pass
     cat = json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8"))
     check(len({c["id"] for c in cat}) == len(cat), "channel list has no duplicate entries")
+    ids = {l.strip() for l in open(os.path.join(ROOT, "channel-ids.txt")) if l.strip() and not l.startswith("#")}
+    missing = sorted({c["guide_id"] for c in cat if c.get("guide_id")} - ids)
+    check(len(ids) > 100 and not missing, "every channel's guide ID is in the guide's list (channel-ids.txt)"
+          + (f" - missing: {missing[:5]}" if missing else f" ({len(ids)})"))
 
 
 for t in (files_test, rehearsal, shadow_test, spot_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
