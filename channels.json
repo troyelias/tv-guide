@@ -1,0 +1,277 @@
+{
+ "mode": "nightly",
+ "ran_utc": "2026-11-06 22:39",
+ "missing_on": {
+  "main": 70,
+  "backup": 117
+ },
+ "newly_missing": {
+  "main": [
+   "ATV Entertainment",
+   "Channel 5",
+   "Filmazia Entertainment",
+   "Filmworld",
+   "Gtv HD",
+   "Kohinoor News",
+   "Ltn Family",
+   "News One",
+   "Rohi TV",
+   "Sindh Entertainment"
+  ],
+  "backup": []
+ },
+ "login": {
+  "main": "ok",
+  "backup": "ok"
+ },
+ "matched": {
+  "main": 390,
+  "backup": 343
+ },
+ "main_days_left": 39.7,
+ "backup_days_left": 185.0,
+ "checkup_utc": "2026-11-06 22:39",
+ "second_try": {
+  "at_ist": "05:45",
+  "tried": 38,
+  "recovered": 0
+ },
+ "services_not_tested": 1,
+ "best_copy": {
+  "compared": 39,
+  "switched_to_better_copy": {
+   "main": [
+    "Zee Cinema HD",
+    "Colors HD",
+    "Sony Max HD"
+   ],
+   "backup": [
+    "9XM",
+    "Star Bharat HD",
+    "NDTV 24x7",
+    "Pitaara",
+    "Sony HD",
+    "Sony Max HD",
+    "Zee Cinema HD",
+    "Star Movies HD",
+    "Movies Now HD",
+    "Astro Cricket HD",
+    "Cartoon Network",
+    "UTV HD",
+    "Discovery Channel",
+    "Star Gold Select HD",
+    "Dunya News"
+   ]
+  }
+ },
+ "tested": {
+  "main": 100,
+  "backup": 343
+ },
+ "working": {
+  "main": 96,
+  "backup": 309
+ },
+ "drops": {},
+ "week": {
+  "from": "2026-11-03",
+  "to": "2026-11-07",
+  "mornings": 4,
+  "late_starts": [
+   "2026-11-06 04:49"
+  ],
+  "reliability": {
+   "main": {
+    "avg_pct": 92.8,
+    "worst_pct": 91.5,
+    "mornings": 3
+   },
+   "backup": {
+    "avg_pct": 90.5,
+    "worst_pct": 90.1,
+    "mornings": 4
+   }
+  },
+  "flaky": [
+   "Maha Movies (failed 3 of 4 mornings)"
+  ],
+  "newly_down": [
+   "&TV HD",
+   "Bindass Movies"
+  ],
+  "back_again": [
+   "ATV Entertainment",
+   "CricLife 2 HD",
+   "Filmazia Entertainment",
+   "Gtv HD",
+   "Kohinoor News",
+   "Ltn Family",
+   "Maha Movies",
+   "News One",
+   "Rohi TV",
+   "Sindh Entertainment"
+  ],
+  "down_all_week": [],
+  "switched_now": [
+   "AAJ News",
+   "Abbtakk News",
+   "Capital TV",
+   "Channel 24 HD",
+   "City 42",
+   "Dawn News",
+   "Express News",
+   "Hungama Kadak Hits",
+   "Hungama Pop Pataka",
+   "Maha Movies",
+   "Star Plus HD"
+  ]
+ },
+ "weekly_due": false,
+ "trend": [
+  {
+   "date": "2026-11-03",
+   "main_pct": 93.54005167958657,
+   "backup_pct": 90.8256880733945,
+   "down": 29
+  },
+  {
+   "date": "2026-11-05",
+   "main_pct": 91.51670951156812,
+   "backup_pct": 90.44776119402985,
+   "down": 33
+  },
+  {
+   "date": "2026-11-06",
+   "main_pct": 93.31619537275064,
+   "backup_pct": 90.74626865671642,
+   "down": 28
+  },
+  {
+   "date": "2026-11-07",
+   "main_pct": null,
+   "backup_pct": 90.08746355685132,
+   "down": 21
+  }
+ ],
+ "shadow": {
+  "about": "Proposal: sports channels play from whichever service runs ahead (closer to live), when it plays properly.",
+  "differs": [
+   "Star Sports 1 Hindi HD: now main, proposed backup",
+   "Star Sports 3: now main, proposed backup",
+   "Star Sports Select 2 HD: now main, proposed backup"
+  ]
+ },
+ "channels": 443,
+ "from_main": 370,
+ "from_backup": 73,
+ "spare_folder": 22,
+ "favourites_folder": 26,
+ "on_backup": [
+  "AAJ News",
+  "Abbtakk News",
+  "Capital TV",
+  "Channel 24 HD",
+  "City 42",
+  "Dawn News",
+  "Express News",
+  "Hungama Kadak Hits",
+  "Hungama Pop Pataka",
+  "Maha Movies",
+  "Star Plus HD"
+ ],
+ "down_on_both": [
+  "&TV HD",
+  "A Plus",
+  "BTV Kannada",
+  "Bindass Movies",
+  "Dabangg",
+  "Dhamaal HD",
+  "Dish Cine Active",
+  "Filmworld",
+  "Housefull Movies",
+  "Hungama Dil Se HD",
+  "Hungama Nazrana HD",
+  "K News India",
+  "Krishna Vani HD",
+  "Mastii",
+  "Mta Muslim (UK)",
+  "News9 Live",
+  "Prajaa TV",
+  "Romedy Now HD",
+  "Saama News",
+  "SuperSport Cricket HD",
+  "Tata Play Kannada Cinema"
+ ],
+ "not_on_either": [
+  "ATV Entertainment",
+  "Colors Cineplex Bollywood",
+  "Colors Cineplex Superhits",
+  "ET Now Swadesh",
+  "Filmazia Entertainment",
+  "Food XP",
+  "Gtv HD",
+  "Kohinoor News",
+  "Ltn Family",
+  "News One",
+  "News18 Assam North East",
+  "News18 Delhi NCR Jammu Kashmir",
+  "News18 Punjab Haryana",
+  "Rohi TV",
+  "Sindh Entertainment",
+  "Zee Biskope"
+ ],
+ "outage": false,
+ "not_working_folder": [],
+ "replacements": {
+  "Romedy Now HD": [
+   "Movies Now HD",
+   "MNX HD",
+   "&Flix HD"
+  ]
+ },
+ "down_days": {
+  "&TV HD": 1,
+  "Tata Play Kannada Cinema": 4,
+  "Mta Muslim (UK)": 4,
+  "A Plus": 4,
+  "Saama News": 4,
+  "Filmworld": 4,
+  "Housefull Movies": 4,
+  "Dabangg": 4,
+  "Dish Cine Active": 4,
+  "Hungama Nazrana HD": 4,
+  "Hungama Dil Se HD": 4,
+  "Mastii": 4,
+  "Romedy Now HD": 4,
+  "K News India": 4,
+  "News9 Live": 4,
+  "BTV Kannada": 4,
+  "Prajaa TV": 4,
+  "SuperSport Cricket HD": 4,
+  "Dhamaal HD": 4,
+  "Krishna Vani HD": 4,
+  "Bindass Movies": 1
+ },
+ "down_guide_ids": [
+  "BTVKannada",
+  "Dabangg",
+  "DhamaalHD",
+  "DishCineActive",
+  "HousefullMovies",
+  "HungamaDilSeHD",
+  "HungamaNazranaHD",
+  "KNewsIndia",
+  "KrishnaVaniHD",
+  "MTAMuslim.uk",
+  "Mastiii.in",
+  "News9Live",
+  "PrajaaTV",
+  "ts174",
+  "ts40",
+  "ts785",
+  "x2070.tvguide"
+ ],
+ "playlist_changed": true,
+ "hold": false,
+ "uploaded": true
+}
