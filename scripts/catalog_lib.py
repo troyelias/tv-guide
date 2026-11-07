@@ -28,12 +28,23 @@ def key(name):
     return re.sub(r"[^A-Z0-9]", "", s)
 
 
+# country tags of feeds that are never Indian, Pakistani, British or North American
+FOREIGN = ("TR|DE|AR|FR|ES|IT|NL|BE|PL|PT|RU|AL|GR|RO|BG|SE|NO|DK|FI|CZ|SK|HU|HR|RS|BA|SI|MK|EXYU|IR|KU|"
+           "KZ|UZ|TJ|AZ|GE|UA|BY|LT|LV|EE|IL|LA|BR|MX|CO|CL|PE|VE|JP|KR|CN|HK|TW|TH|VN|ID|MY|PH|SG|AU|NZ|ZA|NG|KE|EG|MA|DZ|TN")
+
+
 def region(name, category=""):
     """Rough feed region: 'pk', 'uk' (UK/Europe feeds), 'us' (North America), or 'in'."""
     n = name.upper().replace("▎", "|")
     n = re.sub(r"UP ?/? ?UK\b|UTTARAKHAND", "UP UTTARAKHAND", n)  # 'UK' here means Uttarakhand, not Britain
     c = (category or "").upper()
     head = re.split(r"\||:", n, maxsplit=1)[0] if re.search(r"\||:", n[:14]) else ""
+    dash = re.match(r"^\s*([A-Z]{2,7}(?:\|[A-Z]{2,7})?)\s+-\s+", n)  # 'TR - STAR HD PLUS', 'IN|UK - ZEE TV HD'
+    if dash:
+        head = dash.group(1)
+    # a channel from another country with a look-alike name (e.g. Turkey's "Star HD Plus" vs Star Plus HD)
+    if re.fullmatch(r"\s*(" + FOREIGN + r")\s*", head) or re.match(r"^(" + FOREIGN + r")\s*[|:]", c):
+        return "xx"
     if re.search(r"\bPK\b|PAKISTAN", head) or re.search(r"PAKISTAN", c):
         if re.search(r"\bEU\b|\bUK\b", head) or re.search(r"\bEU\b|\(EU\)|\bUK\b|EUROPE", n):
             return "uk"
