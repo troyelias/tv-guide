@@ -1,0 +1,1433 @@
+{
+ "runs": [
+  {
+   "utc": "2026-11-03 02:40",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true
+    },
+    "Sony Max HD": {
+     "main": true
+    },
+    "&Pictures HD": {
+     "main": true
+    },
+    "Star Gold Select HD": {
+     "main": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true
+    },
+    "Zing": {
+     "main": true
+    },
+    "B4U Music": {
+     "main": true
+    },
+    "Zoom": {
+     "main": true
+    },
+    "9X Jalwa": {
+     "main": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true
+    },
+    "Star Movies HD": {
+     "main": true
+    },
+    "Star Movies Select HD": {
+     "main": true
+    },
+    "Sony Pix HD": {
+     "main": true
+    },
+    "MN+ HD": {
+     "main": true
+    },
+    "Colors Infinity HD": {
+     "main": true
+    },
+    "&Xplor HD": {
+     "main": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-03 12:05",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": false,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": false
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-03 13:24",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": false,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": false
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-03 20:11",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-04 07:36",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-04 08:25",
+   "ok": {
+    "Star Plus HD": {
+     "main": true
+    },
+    "Zee TV HD": {
+     "main": true
+    },
+    "Sony HD": {
+     "main": true
+    },
+    "Star Bharat HD": {
+     "main": true
+    },
+    "Colors HD": {
+     "main": true
+    },
+    "&TV HD": {
+     "main": true
+    },
+    "Sony SAB HD": {
+     "main": true
+    },
+    "Star Gold HD": {
+     "main": true
+    },
+    "Zee Cinema HD": {
+     "main": true
+    },
+    "Sony Max HD": {
+     "main": true
+    },
+    "&Pictures HD": {
+     "main": true
+    },
+    "Star Gold Select HD": {
+     "main": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true
+    },
+    "Zing": {
+     "main": true
+    },
+    "B4U Music": {
+     "main": true
+    },
+    "Zoom": {
+     "main": true
+    },
+    "9X Jalwa": {
+     "main": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true
+    },
+    "Star Movies HD": {
+     "main": true
+    },
+    "Star Movies Select HD": {
+     "main": true
+    },
+    "Sony Pix HD": {
+     "main": true
+    },
+    "MN+ HD": {
+     "main": true
+    },
+    "Colors Infinity HD": {
+     "main": true
+    },
+    "&Xplor HD": {
+     "main": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-04 18:05",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-05 07:58",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-05 18:08",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-06 08:00",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-06 17:34",
+   "ok": {
+    "Star Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  },
+  {
+   "utc": "2026-11-07 07:19",
+   "ok": {
+    "Star Plus HD": {
+     "main": false,
+     "backup": true
+    },
+    "Zee TV HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Bharat HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors HD": {
+     "main": true,
+     "backup": true
+    },
+    "&TV HD": {
+     "main": false,
+     "backup": true
+    },
+    "Sony SAB HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold HD": {
+     "main": true,
+     "backup": true
+    },
+    "Zee Cinema HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Max HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Pictures HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Gold Thrills": {
+     "main": true
+    },
+    "9XM": {
+     "main": true,
+     "backup": true
+    },
+    "Zing": {
+     "main": true,
+     "backup": true
+    },
+    "B4U Music": {
+     "main": true,
+     "backup": true
+    },
+    "Zoom": {
+     "main": true,
+     "backup": true
+    },
+    "9X Jalwa": {
+     "main": true,
+     "backup": true
+    },
+    "MTV Beats HD": {
+     "main": true
+    },
+    "MTV Plus HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies HD": {
+     "main": true,
+     "backup": true
+    },
+    "Star Movies Select HD": {
+     "main": true,
+     "backup": true
+    },
+    "Sony Pix HD": {
+     "main": true,
+     "backup": true
+    },
+    "MN+ HD": {
+     "main": true,
+     "backup": true
+    },
+    "Colors Infinity HD": {
+     "main": true,
+     "backup": true
+    },
+    "&Xplor HD": {
+     "main": true,
+     "backup": true
+    },
+    "Romedy Now HD": {
+     "backup": false
+    },
+    "HBO 2": {
+     "backup": true
+    }
+   }
+  }
+ ],
+ "down_streak": {
+  "Romedy Now HD": 10
+ },
+ "summary": {
+  "checks_7d": 12,
+  "favourite_plays_pct_7d": 97.2,
+  "down_now": [
+   "Romedy Now HD"
+  ],
+  "last_run_utc": "2026-11-07 07:19",
+  "lead": {
+   "Star Sports 1 HD": {
+    "ahead": "main",
+    "secs": 0.4,
+    "utc": "2026-11-05 07:58"
+   },
+   "Star Sports 1 Hindi HD": {
+    "ahead": "backup",
+    "secs": 20.6,
+    "utc": "2026-11-05 07:58"
+   },
+   "Star Sports 2 HD": {
+    "ahead": "main",
+    "secs": 6.6,
+    "utc": "2026-11-05 07:58"
+   },
+   "Star Sports 3": {
+    "ahead": "backup",
+    "secs": 31.2,
+    "utc": "2026-11-05 07:58"
+   },
+   "Star Sports Select 2 HD": {
+    "ahead": "backup",
+    "secs": 33.2,
+    "utc": "2026-11-06 08:00"
+   },
+   "Eurosport HD": {
+    "ahead": "main",
+    "secs": 43.6,
+    "utc": "2026-11-06 08:00"
+   },
+   "DD Sports": {
+    "ahead": "main",
+    "secs": 26.2,
+    "utc": "2026-11-06 08:00"
+   },
+   "Star Sports Select 1 HD": {
+    "ahead": "main",
+    "secs": 0.4,
+    "utc": "2026-11-07 07:19"
+   },
+   "Sports18 1": {
+    "ahead": "backup",
+    "secs": 9.2,
+    "utc": "2026-11-07 07:19"
+   },
+   "Sony Ten 5 HD": {
+    "ahead": "backup",
+    "secs": 9.2,
+    "utc": "2026-11-07 07:19"
+   },
+   "Star Sports 1 Tamil": {
+    "ahead": "backup",
+    "secs": 9.2,
+    "utc": "2026-11-07 07:19"
+   }
+  }
+ },
+ "lead": {
+  "Star Sports 1 HD": {
+   "ahead": "main",
+   "secs": 0.4,
+   "utc": "2026-11-05 07:58"
+  },
+  "Star Sports 1 Hindi HD": {
+   "ahead": "backup",
+   "secs": 20.6,
+   "utc": "2026-11-05 07:58"
+  },
+  "Star Sports 2 HD": {
+   "ahead": "main",
+   "secs": 6.6,
+   "utc": "2026-11-05 07:58"
+  },
+  "Star Sports 3": {
+   "ahead": "backup",
+   "secs": 31.2,
+   "utc": "2026-11-05 07:58"
+  },
+  "Star Sports Select 2 HD": {
+   "ahead": "backup",
+   "secs": 33.2,
+   "utc": "2026-11-06 08:00"
+  },
+  "Eurosport HD": {
+   "ahead": "main",
+   "secs": 43.6,
+   "utc": "2026-11-06 08:00"
+  },
+  "DD Sports": {
+   "ahead": "main",
+   "secs": 26.2,
+   "utc": "2026-11-06 08:00"
+  },
+  "Star Sports Select 1 HD": {
+   "ahead": "main",
+   "secs": 0.4,
+   "utc": "2026-11-07 07:19"
+  },
+  "Sports18 1": {
+   "ahead": "backup",
+   "secs": 9.2,
+   "utc": "2026-11-07 07:19"
+  },
+  "Sony Ten 5 HD": {
+   "ahead": "backup",
+   "secs": 9.2,
+   "utc": "2026-11-07 07:19"
+  },
+  "Star Sports 1 Tamil": {
+   "ahead": "backup",
+   "secs": 9.2,
+   "utc": "2026-11-07 07:19"
+  }
+ }
+}
