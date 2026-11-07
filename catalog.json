@@ -8710,68 +8710,6 @@
   "trial": true
  },
  {
-  "id": "andprive-hd-english-movies",
-  "name": "&Prive HD",
-  "folder": "English Movies",
-  "guide_id": "x2305.tvguide",
-  "logo": "https://dtil.tmsimg.com/assets/GNLZZGG0022J69M.png?lock=720x540",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "ANDPRIVE"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2305,
-  "trial": true
- },
- {
-  "id": "tata-play-world-cinema-hd-english-movies",
-  "name": "Tata Play World Cinema HD",
-  "folder": "English Movies",
-  "guide_id": "x2306.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "TATAPLAYWORLDCINEMA",
-   "TATASKYWORLDCINEMA"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2306,
-  "trial": true
- },
- {
-  "id": "tata-play-hits-hd-english-movies",
-  "name": "Tata Play Hits HD",
-  "folder": "English Movies",
-  "guide_id": "x2307.tvguide",
-  "logo": "",
-  "catchup_days": 0,
-  "regions": [
-   "in",
-   "uk",
-   "us"
-  ],
-  "keys": [
-   "TATAPLAYHITS",
-   "TATASKYHITS"
-  ],
-  "tags": [],
-  "must": false,
-  "number": 2307,
-  "trial": true
- },
- {
   "id": "bindass-movies-hindi-movies",
   "name": "Bindass Movies",
   "folder": "Hindi Movies",
