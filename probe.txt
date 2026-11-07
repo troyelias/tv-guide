@@ -1,0 +1,36 @@
+== Main service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 16 Dec 2026 16:31 UTC (about 39.6 days from now)
+  Star Plus HD (main, copy 1: HINDI ▎STAR PLUS HD ◉ rec): .ts -> HTTP 200, 576 KB in 21s (228 kbit/s), type video/mp2t, redirected
+     NO PICTURE (no video inside) | AAC audio 215 kbit/s
+     no picture could be decoded; sound -24.3 dB
+     nightly test says: DOES NOT PLAY
+  &TV HD (main, copy 1: HINDI ▎& TV HD ◉ rec): .ts -> HTTP 200, 768 KB in 24s (265 kbit/s), type video/mp2t, redirected
+     NO PICTURE (no video inside) | AAC audio 251 kbit/s
+     no picture could be decoded; sound -22.3 dB
+     nightly test says: DOES NOT PLAY
+
+== Backup service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 10 May 2027 22:00 UTC (about 184.8 days from now)
+  Star Plus HD (backup, copy 1: HINDI: STAR PLUS HD): .ts -> HTTP 200, 11776 KB in 2s (38748 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 36786 kbit/s, key frames: 25; AAC audio 1635 kbit/s
+     6 frames: moving picture (brightness 77/255, detail 32, change 48.6); sound -36.4 dB
+     nightly test says: PLAYS
+  Star Plus HD (backup, copy 2: HINDI: STAR PLUS): .ts -> HTTP 200, 10560 KB in 15s (5656 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 5350 kbit/s, key frames: 19; AAC audio 239 kbit/s
+     6 frames: moving picture (brightness 81/255, detail 32, change 17.8); sound -23.6 dB
+     nightly test says: PLAYS
+  Star Plus HD (backup, copy 3: YP: STAR PLUS UK ᴿᴬᵂ): .ts -> HTTP 200, 11776 KB in 12s (8362 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 7846 kbit/s, key frames: 36; AAC audio 424 kbit/s
+     6 frames: moving picture (brightness 108/255, detail 59, change 72.4); sound -25.6 dB
+     nightly test says: PLAYS
+  &TV HD (backup, copy 1: HINDI: AND TV HD): .ts -> HTTP 200, 640 KB in 15s (339 kbit/s), type video/mp2t, redirected
+     NO PICTURE (no video inside) | AAC audio 295 kbit/s
+     no picture could be decoded; sound -22.6 dB
+     nightly test says: DOES NOT PLAY
+  &TV HD (backup, copy 2: HINDI: AND TV): .ts -> HTTP 200, 11776 KB in 2s (53989 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 51302 kbit/s, key frames: 25; AAC audio 2232 kbit/s
+     6 frames: moving picture (brightness 77/255, detail 42, change 52.0); sound -26.5 dB
+     nightly test says: PLAYS
+
