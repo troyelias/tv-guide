@@ -163,7 +163,9 @@ def weekly_text(w, ch):
                    f"({spot.get('checks_7d', 0)} checks while nobody was watching)")
     moved = (ch.get("best_copy") or {}).get("switched_to_better_copy") or {}
     if moved:
-        out.append("- **Moved to a sharper/faster copy:** " + "; ".join(", ".join(v) for v in moved.values()))
+        det = (ch.get("best_copy") or {}).get("details") or {}
+        out.append("- **Moved to a sharper/faster copy:** " + "; ".join(
+            ", ".join(f"{n} ({det[n]})" if n in det else n for n in v) for v in moved.values()))
     tr = ch.get("trend") or []
     if len(tr) >= 8:
         prev = [t["main_pct"] for t in tr[-14:-7] if t.get("main_pct")]

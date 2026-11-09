@@ -176,6 +176,8 @@ def rehearsal():
         check(m3 and m3[0]["url"].endswith(f"/{90000 + i3}.ts"), "the sharper of two copies is chosen for a favourite")
         check(M3["name"] in (s1.get("best_copy") or {}).get("switched_to_better_copy", {}).get("main", []),
               "the report says which favourites moved to a better copy")
+        check("576p -> 1080p" in ((s1.get("best_copy") or {}).get("details") or {}).get(M3["name"], ""),
+              "the report says what the switch gained (e.g. 576p -> 1080p)")
         # smarter switching: E failed on the main service on mornings 1 and 3 -> needs 4 good mornings in a row
         check("backup.test" in find(results[4][1], E, E["folder"])[0]["url"], "morning 5: a flaky channel isn't switched back after 2 good mornings")
         check("main.test" in find(results[6][1], E, E["folder"])[0]["url"], "morning 7: ...but is after 4 good mornings in a row")

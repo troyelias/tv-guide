@@ -185,7 +185,24 @@ _day = IST.weekday()
 survey_today = {c["id"] for c in catalog if c.get("must")} | \
     {c["id"] for c in catalog if int(hashlib.md5(c["id"].encode()).hexdigest(), 16) % 7 == _day}
 quality = {"main": {}, "backup": {}}
+
+
+def describe_change(d):
+    """'720p -> 1080p, starts 3.1s -> 0.9s' (or why the old copy lost: no picture / buffering)."""
+    b, a = d.get("before"), d.get("after") or {}
+    res = lambda m: f"{m['height']}p" if m and m.get("height") else "?"  # noqa: E731
+    if not b:
+        return f"old copy didn't play -> {res(a)}"
+    parts = []
+    if b.get("height") != a.get("height"):
+        parts.append(f"{res(b)} -> {res(a)}")
+    if b.get("keeps_up") is False and a.get("keeps_up"):
+        parts.append("buffering -> smooth")
+    if abs((b.get("start") or 0) - (a.get("start") or 0)) >= 0.5:
+        parts.append(f"starts {b.get('start')}s -> {a.get('start')}s")
+    return ", ".join(parts) or f"{res(a)}, catch-up"
 better_copy = {"main": [], "backup": []}
+copy_change = {}  # what the old and new copy measured, for the report
 if MODE in ("nightly", "dry-run"):
     def run(p):
         prov = provs[p]
@@ -219,10 +236,12 @@ if MODE in ("nightly", "dry-run"):
             sids = ([pref] if pref in sids else []) + [x for x in sids if x != pref]  # last good copy first
             if len(sids) >= 2 and cid in survey_today:
                 # compare up to 3 copies and keep the best (sharpest picture, then quickest start)
-                best, best_m = None, None
+                best, best_m, first_m = None, None, None
                 arch = lambda x: str(lineup[p].get(x, {}).get("tv_archive")) == "1"  # noqa: E731
-                for sid in sids[:3]:
+                for n_, sid in enumerate(sids[:3]):
                     mres = measure(prov, sid)
+                    if n_ == 0:
+                        first_m = mres  # the copy in use until now
                     if mres and (best_m is None or score(mres, arch(sid)) > score(best_m, arch(best))):
                         best, best_m = sid, mres
                     time.sleep(PAUSE)
@@ -231,6 +250,7 @@ if MODE in ("nightly", "dry-run"):
                     quality[p][cid] = best_m
                     if best != sids[0]:
                         better_copy[p].append(cid)
+                        copy_change[cid] = {"service": p, "before": first_m, "after": best_m}
                 continue
             for sid in sids[:2]:
                 if plays(prov, sid):
@@ -298,7 +318,9 @@ if MODE in ("nightly", "dry-run"):
     summary["services_not_tested"] = len({x.split()[0] for x in skipped})  # a count only: when people watch isn't published
     summary["best_copy"] = {"compared": sum(len(v) for v in quality.values()),
                             "switched_to_better_copy": {p: [next(c["name"] for c in catalog if c["id"] == i) for i in v]
-                                                        for p, v in better_copy.items() if v}}
+                                                        for p, v in better_copy.items() if v},
+                            "details": {next(c["name"] for c in catalog if c["id"] == i): describe_change(d)
+                                        for i, d in copy_change.items()}}
     summary["tested"] = {p: len(r) for p, r in results.items()}
     summary["working"] = {p: sum(1 for v in r.values() if v) for p, r in results.items()}
 
