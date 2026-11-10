@@ -4,8 +4,8 @@ name: Nightly check-up
 # updates the playlist in Dropbox, rebuilds the guide, status page and alerts.
 on:
   schedule:
-    - cron: "37 17 * * *"   # early start (11:07 PM India time): waits for the 4 AM window. GitHub's timers for this
-                            # repo have been firing 4-5 hours late, so this start still lands in time even then
+    - cron: "37 15 * * *"   # early start (9:07 PM India time) and a second one at 11:07 PM: both wait for the 4 AM
+    - cron: "37 17 * * *"   # window. GitHub's timers for this repo have fired up to 7 hours late, so start early
     - cron: "35 22 * * *"   # 4:05 AM India time
     - cron: "20 23 * * *"   # 4:50 AM India time - backup start, only acts if the first was skipped
   # An outside daily task also presses "Run workflow" at 4:06 AM. Whichever start comes first does the
@@ -34,20 +34,34 @@ concurrency:
 
 jobs:
   wait:
-    # Only the early start waits; every other start goes straight on.
-    if: github.event_name == 'schedule' && github.event.schedule == '37 17 * * *'
+    # Only the early starts wait (in two parts: GitHub allows at most 6 hours per job); other starts go straight on.
+    if: github.event_name == 'schedule' && (github.event.schedule == '37 15 * * *' || github.event.schedule == '37 17 * * *')
     runs-on: ubuntu-latest
-    timeout-minutes: 330   # GitHub allows up to 6 hours per job
+    timeout-minutes: 340
     steps:
-      - name: Wait for the 4 AM (India time) window
+      - name: Wait (part 1) for the 4 AM (India time) window
         run: |
           now=$(date -u +%s); target=$(date -u -d "today 22:32" +%s); h=$(date -u +%H)
           if [ "$h" -ge 12 ] && [ "$now" -lt "$target" ]; then
-            echo "Waiting $(( (target - now) / 60 )) minutes until 4:02 AM India time"; sleep $(( target - now ))
+            secs=$(( target - now )); [ "$secs" -gt 19800 ] && secs=19800   # at most 5.5 hours in this part
+            echo "Waiting $(( secs / 60 )) minutes"; sleep "$secs"
+          fi
+
+  wait2:
+    needs: wait
+    if: github.event_name == 'schedule' && (github.event.schedule == '37 15 * * *' || github.event.schedule == '37 17 * * *')
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - name: Wait (part 2) for the 4 AM (India time) window
+        run: |
+          now=$(date -u +%s); target=$(date -u -d "today 22:32" +%s); h=$(date -u +%H)
+          if [ "$h" -ge 12 ] && [ "$now" -lt "$target" ]; then
+            echo "Waiting $(( (target - now) / 60 )) more minutes until 4:02 AM India time"; sleep $(( target - now ))
           fi
 
   channels:
-    needs: wait
+    needs: [wait, wait2]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 175   # includes the wait for the 5:45 AM second try
