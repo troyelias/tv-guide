@@ -2273,27 +2273,6 @@
   "number": 406
  },
  {
-  "id": "movies-now-hd-english-movies",
-  "name": "Movies Now HD",
-  "folder": "English Movies",
-  "guide_id": "ts173",
-  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-748-j5l5fnts-v1/imageContent-748-j5l5fnts-m1.png",
-  "catchup_days": 1,
-  "regions": [
-   "in",
-   "us",
-   "uk"
-  ],
-  "keys": [
-   "MOVIESNOW"
-  ],
-  "tags": [
-   "ts173"
-  ],
-  "must": false,
-  "number": 420
- },
- {
   "id": "mn-hd-english-movies",
   "name": "MN+ HD",
   "folder": "English Movies",
@@ -7530,6 +7509,27 @@
   "number": 807
  },
  {
+  "id": "movies-now-hd-english-movies",
+  "name": "Movies Now HD",
+  "folder": "English Movies",
+  "guide_id": "ts173",
+  "logo": "https://mediaready.videoready.tv/tatasky/image/fetch/f_auto,fl_lossy,q_auto,dpr_1.25,h_500,w_500/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-748-j5l5fnts-v1/imageContent-748-j5l5fnts-m1.png",
+  "catchup_days": 1,
+  "regions": [
+   "in",
+   "us",
+   "uk"
+  ],
+  "keys": [
+   "MOVIESNOW"
+  ],
+  "tags": [
+   "ts173"
+  ],
+  "must": true,
+  "number": 420
+ },
+ {
   "id": "romedy-now-hd-english-movies",
   "name": "Romedy Now HD",
   "folder": "English Movies",
@@ -7548,7 +7548,7 @@
    "ts174",
    "romedynow.in"
   ],
-  "must": true,
+  "must": false,
   "number": 429
  },
  {
