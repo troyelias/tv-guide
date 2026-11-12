@@ -486,8 +486,9 @@ def outage_and_alerts_test():
                             capture_output=True, text=True, timeout=120).stdout.strip()
         check(r1 == "switch", "one run confirms an outage by itself (fails, waits, fails again)")
         json.dump({}, open(os.path.join(work, "s.json"), "w"))
-        json.dump({"down_on_both": ["Romedy Now HD"], "down_days": {"Romedy Now HD": 4},
-                   "replacements": {"Romedy Now HD": ["Movies Now HD"]}}, open(os.path.join(work, "c.json"), "w"))
+        fav = next(c["name"] for c in json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8")) if c.get("must"))
+        json.dump({"down_on_both": [fav], "down_days": {fav: 4},
+                   "replacements": {fav: ["Some Other Channel"]}}, open(os.path.join(work, "c.json"), "w"))
         r = subprocess.run([sys.executable, os.path.join(SCRIPTS, "alerts.py"), "s.json", "c.json"], cwd=work,
                            env={k: v for k, v in os.environ.items() if k not in ("GITHUB_TOKEN", "GITHUB_REPOSITORY")},
                            capture_output=True, text=True, timeout=60)
