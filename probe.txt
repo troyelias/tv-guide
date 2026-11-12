@@ -1,0 +1,28 @@
+== Main service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 16 Dec 2026 16:31 UTC (about 34.6 days from now)
+  Movies Now HD (main, copy 1: HINDI ▎MOVIES NOW HD ◉ rec): .ts -> HTTP 200, 11776 KB in 2s (55284 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 50675 kbit/s, key frames: 5; AAC audio 1720 kbit/s
+     6 frames: moving picture (brightness 34/255, detail 29, change 31.5); sound -18.9 dB
+     nightly test says: PLAYS
+  MNX HD (main, copy 1: HINDI ▎MNX HD ◉ rec): .ts -> HTTP 200, 11776 KB in 2s (58213 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 53327 kbit/s, key frames: 5; AAC audio 1843 kbit/s
+     6 frames: moving picture (brightness 32/255, detail 45, change 26.5); sound -19.9 dB
+     nightly test says: PLAYS
+
+== Backup service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 10 May 2027 22:00 UTC (about 179.8 days from now)
+  Movies Now HD (backup, copy 1: HINDI: MOVIES NOW HD): .ts -> HTTP 200, 11776 KB in 2s (55792 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 53623 kbit/s, key frames: 5; AAC audio 1803 kbit/s
+     6 frames: moving picture (brightness 32/255, detail 28, change 35.3); sound -18.9 dB
+     nightly test says: PLAYS
+  Movies Now HD (backup, copy 2: ENGLISH: MOVIES NOW): .ts -> HTTP 200, 11776 KB in 2s (61052 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 59143 kbit/s, key frames: 75; AAC audio 1560 kbit/s
+     6 frames: moving picture (brightness 48/255, detail 46, change 32.6); sound -19.1 dB
+     nightly test says: PLAYS
+  MNX HD (backup, copy 1: HINDI: MNX HD): .ts -> HTTP 200, 11776 KB in 2s (58054 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 55713 kbit/s, key frames: 5; AAC audio 1948 kbit/s
+     6 frames: moving picture (brightness 22/255, detail 33, change 32.0); sound -19.8 dB
+     nightly test says: PLAYS
+
