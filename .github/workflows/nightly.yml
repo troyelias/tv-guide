@@ -104,7 +104,7 @@ jobs:
           git add secure 2>/dev/null || true
           git diff --cached --quiet || { git commit -qm "Check-up $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull -q --rebase origin main; git push -q; }
 
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: channels
           path: ${{ runner.temp }}/ch/
@@ -126,7 +126,7 @@ jobs:
         with:
           ref: main
 
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         continue-on-error: true
         with:
           name: listings
@@ -145,7 +145,7 @@ jobs:
           python3 "$GITHUB_WORKSPACE/scripts/provider_guides.py" . | tee provider-guides.txt
           ls -la
 
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         continue-on-error: true
         with:
           name: channels
@@ -217,7 +217,7 @@ jobs:
           git diff --cached --quiet || git commit -qm "Report $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin main && git push -q
 
-      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/site
