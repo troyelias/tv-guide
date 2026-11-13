@@ -111,6 +111,9 @@ for name, res in run["ok"].items():
         spot["down_streak"][name] = spot["down_streak"].get(name, 0) + 1
     else:
         spot["down_streak"].pop(name, None)
+# a channel that is no longer a favourite is no longer checked, so forget its streak
+for name in [n for n in spot["down_streak"] if n not in {c["name"] for c in musts}]:
+    spot["down_streak"].pop(name)
 
 # the record is public, so it keeps what played - never when a check was skipped because someone was watching
 run.pop("skipped", None)
