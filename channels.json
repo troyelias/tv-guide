@@ -1,0 +1,379 @@
+{
+ "mode": "nightly",
+ "ran_utc": "2026-11-20 22:33",
+ "missing_on": {
+  "main": 64,
+  "backup": 111
+ },
+ "newly_missing": {
+  "main": [],
+  "backup": []
+ },
+ "login": {
+  "main": "ok",
+  "backup": "ok"
+ },
+ "matched": {
+  "main": 380,
+  "backup": 333
+ },
+ "main_days_left": 25.7,
+ "backup_days_left": 171.0,
+ "checkup_utc": "2026-11-20 22:33",
+ "second_try": {
+  "at_ist": "05:45",
+  "tried": 45,
+  "recovered": 0
+ },
+ "services_not_tested": 0,
+ "best_copy": {
+  "compared": 41,
+  "switched_to_better_copy": {
+   "main": [
+    "GEO Kahani (UK)",
+    "BOL News FHD"
+   ],
+   "backup": [
+    "Colors HD",
+    "Star Bharat HD",
+    "Sony Max HD",
+    "B4U Music",
+    "Zee Cinema HD",
+    "Zing",
+    "Discovery World HD",
+    "Astro Cricket HD",
+    "Discovery Channel",
+    "&TV HD",
+    "Star Gold HD",
+    "HBO 2"
+   ]
+  },
+  "details": {
+   "Colors HD": "1080p, catch-up",
+   "Star Bharat HD": "starts 1.29s -> 0.78s",
+   "GEO Kahani (UK)": "576p -> 720p",
+   "Sony Max HD": "1080p, catch-up",
+   "B4U Music": "576p, catch-up",
+   "Zee Cinema HD": "1080p, catch-up",
+   "Zing": "576p, catch-up",
+   "Discovery World HD": "1080p, catch-up",
+   "Astro Cricket HD": "buffering -> smooth",
+   "BOL News FHD": "1080p, catch-up",
+   "Discovery Channel": "1080p, catch-up",
+   "&TV HD": "1080p, catch-up",
+   "Star Gold HD": "1080p, catch-up",
+   "HBO 2": "1080p, catch-up"
+  }
+ },
+ "tested": {
+  "main": 380,
+  "backup": 333
+ },
+ "working": {
+  "main": 365,
+  "backup": 303
+ },
+ "drops": {},
+ "week": {
+  "from": "2026-11-15",
+  "to": "2026-11-21",
+  "mornings": 7,
+  "late_starts": [],
+  "reliability": {
+   "main": {
+    "avg_pct": 96.2,
+    "worst_pct": 95.3,
+    "mornings": 7
+   },
+   "backup": {
+    "avg_pct": 90.6,
+    "worst_pct": 90.1,
+    "mornings": 7
+   }
+  },
+  "flaky": [
+   "Zee Picchar HD (failed 3 of 7 mornings)",
+   "KTN Entertainment (failed 2 of 7 mornings)",
+   "KTN News (failed 2 of 7 mornings)",
+   "Neo News HD (failed 2 of 7 mornings)",
+   "Paigam Pashtoo (failed 2 of 7 mornings)"
+  ],
+  "newly_down": [
+   "GEO Entertainment",
+   "Urdu 1 HD"
+  ],
+  "back_again": [
+   "KTN Entertainment",
+   "KTN News",
+   "Paigam Pashtoo",
+   "Tata Play Bollywood Premiere HD",
+   "Tata Play Classic TV",
+   "Zee Picchar HD"
+  ],
+  "down_all_week": [
+   "BTV Kannada",
+   "Dabangg",
+   "Dhamaal HD",
+   "Dish Cine Active",
+   "Filmworld",
+   "Housefull Movies",
+   "Hungama Dil Se HD",
+   "Hungama Nazrana HD",
+   "K News India",
+   "Krishna Vani HD",
+   "Mastii",
+   "Mta Muslim (UK)",
+   "News9 Live",
+   "Prajaa TV",
+   "Romedy Now HD",
+   "Saama News",
+   "SuperSport Cricket HD"
+  ],
+  "switched_now": [
+   "Capital TV",
+   "Dawn News",
+   "GEO Super",
+   "GEO Tezz",
+   "Hungama Kadak Hits",
+   "Hungama Pop Pataka"
+  ]
+ },
+ "weekly_due": false,
+ "trend": [
+  {
+   "date": "2026-11-03",
+   "main_pct": 93.54005167958657,
+   "backup_pct": 90.8256880733945,
+   "down": 29
+  },
+  {
+   "date": "2026-11-05",
+   "main_pct": 91.51670951156812,
+   "backup_pct": 90.44776119402985,
+   "down": 33
+  },
+  {
+   "date": "2026-11-06",
+   "main_pct": 93.31619537275064,
+   "backup_pct": 90.74626865671642,
+   "down": 28
+  },
+  {
+   "date": "2026-11-07",
+   "main_pct": null,
+   "backup_pct": 90.08746355685132,
+   "down": 21
+  },
+  {
+   "date": "2026-11-08",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  },
+  {
+   "date": "2026-11-09",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  },
+  {
+   "date": "2026-11-10",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.69069069069069,
+   "down": 19
+  },
+  {
+   "date": "2026-11-11",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.3903903903904,
+   "down": 19
+  },
+  {
+   "date": "2026-11-12",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 91.5915915915916,
+   "down": 20
+  },
+  {
+   "date": "2026-11-13",
+   "main_pct": 95.78947368421052,
+   "backup_pct": 90.990990990991,
+   "down": 20
+  },
+  {
+   "date": "2026-11-14",
+   "main_pct": 90.52631578947368,
+   "backup_pct": 90.69069069069069,
+   "down": 33
+  },
+  {
+   "date": "2026-11-15",
+   "main_pct": 95.26315789473684,
+   "backup_pct": 90.69069069069069,
+   "down": 23
+  },
+  {
+   "date": "2026-11-16",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.3903903903904,
+   "down": 21
+  },
+  {
+   "date": "2026-11-17",
+   "main_pct": 97.10526315789474,
+   "backup_pct": 91.29129129129129,
+   "down": 17
+  },
+  {
+   "date": "2026-11-18",
+   "main_pct": 96.57894736842105,
+   "backup_pct": 90.69069069069069,
+   "down": 19
+  },
+  {
+   "date": "2026-11-19",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.3903903903904,
+   "down": 20
+  },
+  {
+   "date": "2026-11-20",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 90.09009009009009,
+   "down": 19
+  },
+  {
+   "date": "2026-11-21",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  }
+ ],
+ "shadow": {
+  "about": "Proposal: sports channels play from whichever service runs ahead (closer to live), when it plays properly.",
+  "differs": [
+   "Star Sports 1 HD: now main, proposed backup",
+   "Star Sports 1 Hindi HD: now main, proposed backup",
+   "Star Sports 2 HD: now main, proposed backup",
+   "Star Sports Select 1 HD: now main, proposed backup",
+   "Star Sports Select 2 HD: now main, proposed backup",
+   "Sports18 1: now main, proposed backup",
+   "Sony Ten 5 HD: now main, proposed backup",
+   "Star Sports 1 Tamil: now main, proposed backup",
+   "Sony Ten 1 HD: now main, proposed backup"
+  ]
+ },
+ "channels": 428,
+ "from_main": 366,
+ "from_backup": 62,
+ "spare_folder": 25,
+ "favourites_folder": 28,
+ "on_backup": [
+  "Capital TV",
+  "Dawn News",
+  "GEO Super",
+  "GEO Tezz",
+  "Hungama Kadak Hits",
+  "Hungama Pop Pataka"
+ ],
+ "down_on_both": [
+  "BTV Kannada",
+  "Dabangg",
+  "Dhamaal HD",
+  "Dish Cine Active",
+  "Filmworld",
+  "GEO Entertainment",
+  "Housefull Movies",
+  "Hungama Dil Se HD",
+  "Hungama Nazrana HD",
+  "K News India",
+  "Krishna Vani HD",
+  "Mastii",
+  "Mta Muslim (UK)",
+  "News9 Live",
+  "Prajaa TV",
+  "Romedy Now HD",
+  "Saama News",
+  "SuperSport Cricket HD",
+  "Urdu 1 HD"
+ ],
+ "not_on_either": [
+  "ATV Entertainment",
+  "Colors Cineplex Bollywood",
+  "Colors Cineplex Superhits",
+  "ET Now Swadesh",
+  "Filmazia Entertainment",
+  "Food XP",
+  "Gtv HD",
+  "Kohinoor News",
+  "Ltn Family",
+  "News One",
+  "News18 Assam North East",
+  "News18 Delhi NCR Jammu Kashmir",
+  "News18 Punjab Haryana",
+  "Rohi TV",
+  "Sindh Entertainment",
+  "Zee Biskope"
+ ],
+ "outage": false,
+ "not_working_folder": [
+  "Dabangg",
+  "Housefull Movies",
+  "Dish Cine Active",
+  "Hungama Nazrana HD",
+  "Hungama Dil Se HD",
+  "Mastii",
+  "K News India",
+  "News9 Live",
+  "Romedy Now HD",
+  "SuperSport Cricket HD",
+  "Krishna Vani HD",
+  "BTV Kannada",
+  "Prajaa TV",
+  "Dhamaal HD",
+  "Mta Muslim (UK)",
+  "Saama News",
+  "Filmworld"
+ ],
+ "replacements": {},
+ "down_days": {
+  "Mta Muslim (UK)": 18,
+  "Urdu 1 HD": 1,
+  "GEO Entertainment": 1,
+  "Saama News": 18,
+  "Filmworld": 18,
+  "Housefull Movies": 18,
+  "Dabangg": 18,
+  "Dish Cine Active": 18,
+  "Hungama Nazrana HD": 18,
+  "Hungama Dil Se HD": 18,
+  "Mastii": 18,
+  "Romedy Now HD": 18,
+  "K News India": 18,
+  "News9 Live": 18,
+  "BTV Kannada": 18,
+  "Prajaa TV": 18,
+  "SuperSport Cricket HD": 18,
+  "Dhamaal HD": 18,
+  "Krishna Vani HD": 18
+ },
+ "down_guide_ids": [
+  "BTVKannada",
+  "Dabangg",
+  "DhamaalHD",
+  "DishCineActive",
+  "HousefullMovies",
+  "HungamaDilSeHD",
+  "HungamaNazranaHD",
+  "KNewsIndia",
+  "KrishnaVaniHD",
+  "MTAMuslim.uk",
+  "Mastiii.in",
+  "News9Live",
+  "PrajaaTV",
+  "ts174"
+ ],
+ "playlist_changed": true,
+ "hold": false,
+ "uploaded": true
+}
