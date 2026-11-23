@@ -138,6 +138,35 @@ def look(data, name):
         os.unlink(path)
 
 
+def quality(data, secs):
+    """Picture size, frame rate and whether the stream kept up with live (delivered as much programme as time passed)."""
+    with tempfile.NamedTemporaryFile(suffix=".ts", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                              "stream=width,height,avg_frame_rate,r_frame_rate:format=duration", "-of", "json", path],
+                             capture_output=True, text=True, timeout=60).stdout
+        j = json.loads(out or "{}")
+        v = (j.get("streams") or [{}])[0]
+        def rate(x):
+            try:
+                a, b = (x or "0/1").split("/")
+                return float(a) / float(b) if float(b) else 0
+            except ValueError:
+                return 0
+        fps = rate(v.get("avg_frame_rate")) or rate(v.get("r_frame_rate"))
+        dur = float((j.get("format") or {}).get("duration") or 0)
+        kbps = len(data) * 8 / max(secs, 1) / 1000
+        keeps = "yes" if dur >= 0.9 * secs else f"no ({dur:.0f}s of programme in {secs:.0f}s)"
+        return (f"QUALITY {v.get('width', '?')}x{v.get('height', '?')}, {fps:.0f} fps, {kbps:.0f} kbit/s, "
+                f"keeps up with live: {keeps}")
+    except Exception as e:
+        return f"QUALITY unknown ({type(e).__name__})"
+    finally:
+        os.unlink(path)
+
+
 def probe(prov, sid, name):
     st, ctype, data, secs, moved, final = grab(prov.stream_url(sid))
     head = f"  {name}: .ts -> HTTP {st}, {len(data) // 1024} KB in {secs:.0f}s ({len(data) * 8 / max(secs, 1) / 1000:.0f} kbit/s), type {ctype or '-'}{', redirected' if moved else ''}"
@@ -145,6 +174,7 @@ def probe(prov, sid, name):
     if data:
         say("     " + analyse(data, secs))
         say("     " + look(data, name))
+        say("     " + quality(data, secs))
         say("     nightly test says: " + ("PLAYS" if _is_video(data) and not is_filler(data[:188 * 4000]) else "DOES NOT PLAY"))
     if not data or st != 200:
         verdict = "DOES NOT PLAY"
