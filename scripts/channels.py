@@ -162,6 +162,10 @@ summary["newly_missing"] = newly
 summary["login"] = {p: ("ok" if v.get("auth") == 1 and str(v.get("status", "")).lower() == "active" else "problem")
                     for p, v in info.items()}
 summary["matched"] = {p: len(v) for p, v in cands.items()}
+# a service whose login or channel list couldn't be fetched at all (network, server down) - not the same as "carries nothing"
+unreachable = [p for p in provs if provs[p].ok and p not in cands and MODE in ("nightly", "dry-run")]
+if unreachable:
+    summary["unreachable"] = unreachable
 summary["main_days_left"] = (round((int(info["main"]["exp_date"]) - NOW.timestamp()) / 86400, 1)
                              if info.get("main", {}).get("exp_date") else None)
 summary["backup_days_left"] = (round((int(info["backup"]["exp_date"]) - NOW.timestamp()) / 86400, 1)
@@ -598,7 +602,8 @@ if state_lost:
     blocked = "memory unreadable"
 if MODE == "nightly":
     state["held_mornings"] = state.get("held_mornings", 0) + 1 if blocked else 0
-if blocked and MODE == "nightly" and not state_lost and count_now and state.get("held_mornings", 0) >= 3:
+if blocked and MODE == "nightly" and not state_lost and count_now and state.get("held_mornings", 0) >= 3 \
+        and not summary.get("unreachable"):  # a service that can't be reached is an outage, never a real shrink
     summary["shrink_accepted"] = blocked  # the same smaller list three mornings running: it's real, so use it
     blocked = None
 if blocked and not os.environ.get("ALLOW_SHRINK"):

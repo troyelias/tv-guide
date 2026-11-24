@@ -15,6 +15,9 @@ calls = {}
 
 
 def api(self, action=None, timeout=180):
+    if self.label in plan.get("unreachable", []):
+        import urllib.error
+        raise urllib.error.URLError("unreachable (test)")
     if action is None:
         return {"user_info": {"auth": 1, "status": "Active", "exp_date": str(int(time.time()) + 90 * 86400),
                               "active_cons": "0", "max_connections": "1"}}

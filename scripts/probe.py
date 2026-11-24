@@ -157,7 +157,7 @@ def quality(data, secs):
                 return 0
         fps = rate(v.get("avg_frame_rate")) or rate(v.get("r_frame_rate"))
         dur = float((j.get("format") or {}).get("duration") or 0)
-        kbps = len(data) * 8 / max(secs, 1) / 1000
+        kbps = len(data) * 8 / dur / 1000 if dur > 0 else 0  # bit rate of the programme itself, not download speed
         keeps = "yes" if dur >= 0.9 * secs else f"no ({dur:.0f}s of programme in {secs:.0f}s)"
         return (f"QUALITY {v.get('width', '?')}x{v.get('height', '?')}, {fps:.0f} fps, {kbps:.0f} kbit/s, "
                 f"keeps up with live: {keeps}")

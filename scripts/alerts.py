@@ -66,6 +66,12 @@ if dr:
     alerts["A service lost channels overnight"] = ("Fewer channels played than usual this morning: " + "; ".join(
         f"{svc[p]} service {d['now']} working (yesterday {d['before']}, this week's average {d['week_avg']})"
         for p, d in dr.items()) + ". It may be a temporary problem at the service; the next check-ups will show whether it lasts.")
+if ch.get("unreachable"):
+    alerts["A service couldn't be reached"] = (
+        "This morning's check-up couldn't reach the " + " and ".join(svc[p] for p in ch["unreachable"]) + " service at all "
+        "(no answer to the login check), so its channels couldn't be tested. If the channel list came out smaller because of "
+        "this, the TV keeps yesterday's list. It's often a short outage at the service; if it lasts more than a day, "
+        "check the service's website or messages for a new server address, and ask Claude to look.")
 if ch.get("upload_blocked"):
     alerts["Playlist update held back"] = ("This morning's new channel list looked wrong (" + ch["upload_blocked"] + "), so the TV "
                                            "kept yesterday's list. This usually means a service sent an incomplete channel list. "

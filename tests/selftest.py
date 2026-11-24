@@ -261,6 +261,17 @@ def rehearsal():
         check(sm.get("uploaded") and pl and all("backup.test" in x["url"] for x in pl),
               "an outage switch with a working backup moves every channel to it")
         night(19, {"mode": "restore"}, late=600)
+        _, _, full20 = night(20, {})  # a normal morning first
+        # 21-23: the backup service can't be reached three mornings running: held back every time, never "accepted"
+        held = [night(n, {"unreachable": ["backup"]}) for n in (21, 22, 23)]
+        check(all(sm.get("upload_blocked") and "backup" in sm.get("unreachable", []) and not sm.get("shrink_accepted")
+                  and b == a for sm, b, a in held),
+              "backup service unreachable 3 mornings: the TV keeps its list and it is never accepted as a real shrink "
+              + str([sm.get("error", sm.get("upload_blocked")) for sm, _, _ in held])[:600])
+        sm, before, after = night(24, {})
+        check(not sm.get("upload_blocked") and not sm.get("unreachable") and after == full20 and len(parse_playlist(after)) > 20,
+              "...and once it answers again, the full list is back with no hold "
+              + str(sm.get("error", sm.get("upload_blocked")))[:400])
         # undo pressed twice: the second press must not bring the newer list back
         runner = os.path.join(work, "undo_run.py")
         open(runner, "w").write(
