@@ -292,6 +292,15 @@ def rehearsal():
         shutil.rmtree(work, ignore_errors=True)
 
 
+def alert_titles_test():
+    print("1c. Every alert the robot can raise is one it also opens and closes")
+    src = open(os.path.join(SCRIPTS, "alerts.py"), encoding="utf-8").read()
+    raised = set(re.findall(r'alerts\["([^"]+)"\]', src))
+    known = set(re.findall(r'"([^"]+)"', src.split("KNOWN = [", 1)[1].split("]", 1)[0]))
+    missing = sorted(raised - known)
+    check(not missing, "alert titles missing from the open/close list: " + ", ".join(missing))
+
+
 def shadow_test():
     print("1b. Shadow mode for a proposed rule change")
     catalog = json.load(open(os.path.join(ROOT, "catalog.json"), encoding="utf-8"))
@@ -550,7 +559,7 @@ def files_test():
           + (f" - missing: {missing[:5]}" if missing else f" ({len(ids)})"))
 
 
-for t in (files_test, rehearsal, shadow_test, spot_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
+for t in (files_test, rehearsal, shadow_test, alert_titles_test, spot_test, merge_test, guide_gate_test, leak_test, filler_test, outage_and_alerts_test):
     try:
         t()
     except Exception as e:  # a crash inside a test is a failure, not a crash of the whole self-test

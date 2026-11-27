@@ -97,7 +97,7 @@ KNOWN = [FAILED, "Channels no longer found on a service", "A check-up was missed
          "Renewal due soon (main service)", "Renewal due soon (backup service)", "Main service down - using backup",
          "Guide coverage dropped", "Playlist upload failing", "Must-have channel down",
          "Check-up started late", "A service lost channels overnight",
-         "Playlist update held back", "Guide update held back"]
+         "Playlist update held back", "Guide update held back", "A service couldn't be reached"]
 
 repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")
 if not (repo and token):
