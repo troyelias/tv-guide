@@ -75,8 +75,9 @@ def rehearsal():
         env = dict(os.environ, DBX_SECRET="selftest-secret", PRO="http://main.test/get.php?username=u&password=p",
                    PRO_2="http://backup.test/get.php?username=u&password=p", PAUSE="0", GITHUB_REPOSITORY="owner/repo")
         env.pop("BACKUP_SLOT", None)
-        SP = next(c for c in both if c["folder"] == "Sports")
-        json.dump({"lead": {SP["name"]: {"ahead": "backup", "secs": 5.0, "utc": "2026-01-01 02:30"}}},
+        SP = next(c for c in both if c["folder"] == "Sports" and c.get("prefer") == "backup")  # backup picture measured as good
+        SN = next(c for c in both if c["folder"] == "Sports" and not c.get("prefer"))  # backup ahead but not chosen
+        json.dump({"lead": {x["name"]: {"ahead": "backup", "secs": 5.0, "utc": "2026-01-01 02:30"} for x in (SP, SN)}},
                   open(os.path.join(work, "spot.json"), "w"))
         env["SPOT_FILE"] = os.path.join(work, "spot.json")
         start = datetime(2026, 1, 1, 22, 40)  # 4:10 AM India time the next day
@@ -133,9 +134,8 @@ def rehearsal():
         check((s1.get("second_try") or {}).get("recovered", 0) >= 1, "morning 1: second try reports what came back")
         check(not find(p1, C, "Backup"), "morning 1: a favourite that doesn't play is left out of the Backup folder")
         check(len([x for x in p1 if x["group"] == "Backup"]) >= 1, "morning 1: the Backup folder still has working favourites")
-        sh = (s1.get("shadow") or {}).get("differs", [])
-        check(any(SP["name"] in d and "proposed backup" in d for d in sh) and "main.test" in find(p1, SP, SP["folder"])[0]["url"],
-              "shadow mode: the 'sports from the faster service' proposal is shown but not used")
+        check("backup.test" in find(p1, SP, SP["folder"])[0]["url"] and "main.test" in find(p1, SN, SN["folder"])[0]["url"],
+              "sports: a channel marked 'prefer backup' plays from the backup while it runs ahead; an unmarked one stays on main")
         check(p1[0]["group"] == "Favourites" and p1[0]["chno"] == 1, "Favourites folder comes first, numbered from 1")
         if T:
             T2 = next(c for c in both if c.get("trial") and c["id"] != T["id"])

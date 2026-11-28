@@ -356,13 +356,17 @@ for ch in catalog:
         if "main" not in skipped and cid in results["main"]:
             st["main_streak"] = st.get("main_streak", 0) + 1 if st.get("main_ok") else 0
         m_ok, b_ok = st.get("main_ok"), st.get("backup_ok")
+        lead = SPOT_LEADS.get(ch["name"])
+        if lead and lead.get("utc", "") >= (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
+            st["lead"] = lead
+        elif (st.get("lead") or {}).get("utc", "") < (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
+            st.pop("lead", None)  # an old measurement no longer counts
+        st["folder"] = ch["folder"]
+        if ch.get("prefer"):
+            st["prefer"] = ch["prefer"]
+        else:
+            st.pop("prefer", None)
         if rules_candidate:
-            lead = SPOT_LEADS.get(ch["name"])
-            if lead and lead.get("utc", "") >= (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
-                st["lead"] = lead
-            elif (st.get("lead") or {}).get("utc", "") < (NOW - timedelta(days=14)).strftime("%Y-%m-%d"):
-                st.pop("lead", None)  # an old measurement no longer counts
-            st["folder"] = ch["folder"]
             # shadow mode: the candidate keeps its own memory of where each channel would be
             st["shadow_use"] = rules_candidate.decide({**st, "use": st.get("shadow_use", st["use"])}, m_ok, b_ok, has)
         st["use"] = rules.decide(st, m_ok, b_ok, has)

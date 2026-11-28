@@ -27,6 +27,9 @@ A personal TV setup that looks after itself: one programme guide, one channel li
   The "Favourites" folder at the top is numbered 1, 2, 3...; the "Backup" folder 5001+.
 - **Best copy:** where a service has several copies of a channel, the one that keeps up with live, then the sharpest
   picture, then one with catch-up, then the quickest to start, is used.
+- **Sports closer to live:** a sports channel marked `"prefer": "backup"` in `catalog.json` plays from the backup service while
+  the daily timing check finds it running ahead (3 s or more) and it plays; otherwise the normal rules apply. Only channels whose
+  backup picture was measured as good as the main one (same size and frame rate, similar data rate) are marked.
 - **Midday guide refresh** (`midday-guide.yml`, about 1 PM India time): listings only; no contact with either service.
 - **Outage watch** (`outage-watch.yml`, hourly): checks the main service still logs in (no channel is played).
   Two failures in a row switch every channel to the backup service at once.

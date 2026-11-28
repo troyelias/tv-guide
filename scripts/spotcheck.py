@@ -70,7 +70,7 @@ for label, env in (("main", "PRO"), ("backup", "PRO_2")):
         time.sleep(2)
 
 # once a day (the early-morning run, India time) measure which service runs ahead for a few sports channels,
-# rotating through them; used by the proposed "sports from the faster service" rule (shadow mode)
+# rotating through them; used by the "prefer backup" sports rule in rules.py
 _last_lead = max([v.get("utc", "") for v in spot.get("lead", {}).values()] or [""])
 _lead_due = 2 <= NOW.hour <= 14 and _last_lead < (NOW - timedelta(hours=20)).strftime("%Y-%m-%d %H:%M")
 # GitHub's timers here run hours late, so instead of a fixed hour: the first daytime run that finds no measurement

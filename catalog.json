@@ -2914,7 +2914,8 @@
    "ts78"
   ],
   "must": false,
-  "number": 454
+  "number": 454,
+  "prefer": "backup"
  },
  {
   "id": "star-sports-1-hindi-hd-sports",
@@ -2998,7 +2999,8 @@
    "ts246"
   ],
   "must": false,
-  "number": 465
+  "number": 465,
+  "prefer": "backup"
  },
  {
   "id": "star-sports-select-2-hd-sports",
@@ -3082,7 +3084,8 @@
   ],
   "tags": [],
   "must": false,
-  "number": 2551
+  "number": 2551,
+  "prefer": "backup"
  },
  {
   "id": "sports18-english-sports",
@@ -3142,7 +3145,8 @@
    "ts35"
   ],
   "must": false,
-  "number": 483
+  "number": 483,
+  "prefer": "backup"
  },
  {
   "id": "star-sports-1-tamil-sports",
@@ -3164,7 +3168,8 @@
    "ts1067"
   ],
   "must": false,
-  "number": 1548
+  "number": 1548,
+  "prefer": "backup"
  },
  {
   "id": "star-sports-1-telugu-sports",
@@ -3251,7 +3256,8 @@
    "ts464"
   ],
   "must": false,
-  "number": 475
+  "number": 475,
+  "prefer": "backup"
  },
  {
   "id": "willow-cricket-hd-sports",
