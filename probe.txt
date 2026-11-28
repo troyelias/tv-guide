@@ -1,0 +1,119 @@
+== Main service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 16 Dec 2026 16:31 UTC (about 18.7 days from now)
+  Star Sports 1 HD (main, copy 1: SPORTS ▎STAR SPORTS 1 HD ENGLISH): .ts -> HTTP 200, 11776 KB in 2s (50850 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 46648 kbit/s, key frames: 5; AAC audio 1547 kbit/s
+     6 frames: moving picture (brightness 90/255, detail 16, change 29.0); sound -22.0 dB
+     QUALITY 1920x1080, 25 fps, 4486 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 1 Hindi HD (main, copy 1: SPORTS ▎STAR SPORTS 1 HD HINDI): .ts -> HTTP 200, 11776 KB in 2s (52474 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 48150 kbit/s, key frames: 5; AAC audio 1585 kbit/s
+     6 frames: moving picture (brightness 62/255, detail 37, change 41.4); sound -24.0 dB
+     QUALITY 1920x1080, 25 fps, 4543 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 2 HD (main, copy 1: SPORTS ▎STAR SPORTS 2 HD): .ts -> HTTP 200, 11776 KB in 2s (46671 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 42817 kbit/s, key frames: 5; AAC audio 1414 kbit/s
+     6 frames: moving picture (brightness 72/255, detail 31, change 41.0); sound -22.3 dB
+     QUALITY 1920x1080, 25 fps, 4528 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports Select 1 HD (main, copy 1: SPORTS ▎STAR SPORTS SELECT 1 HD): .ts -> HTTP 200, 11776 KB in 2s (52705 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 48306 kbit/s, key frames: 5; AAC audio 1647 kbit/s
+     6 frames: moving picture (brightness 92/255, detail 11, change 3.1); sound -22.9 dB
+     QUALITY 1920x1080, 25 fps, 4420 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports Select 2 HD (main, copy 1: SPORTS ▎STAR SPORTS SELECT 2 HD): .ts -> HTTP 200, 11776 KB in 2s (53044 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 48650 kbit/s, key frames: 5; AAC audio 1623 kbit/s
+     6 frames: moving picture (brightness 89/255, detail 20, change 7.9); sound -21.9 dB
+     QUALITY 1920x1080, 25 fps, 4470 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sports18 1 (main, copy 1: SPORTS ▎SPORTS 18): .ts -> HTTP 200, 11776 KB in 2s (46604 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 42678 kbit/s, key frames: 5; AAC audio 1491 kbit/s
+     6 frames: moving picture (brightness 98/255, detail 44, change 47.7); sound -24.8 dB
+     QUALITY 1920x1080, 25 fps, 4294 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 5 HD (main, copy 1: SPORTS ▎SONY TEN 5 HD): .ts -> HTTP 200, 11776 KB in 2s (45386 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 41598 kbit/s, key frames: 5; AAC audio 1417 kbit/s
+     6 frames: moving picture (brightness 76/255, detail 38, change 12.4); sound -22.2 dB
+     QUALITY 1920x1080, 25 fps, 4435 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 1 Tamil (main, copy 1: SPORTS ▎STAR SPORTS TAMIL): .ts -> HTTP 200, 11776 KB in 2s (52736 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 48402 kbit/s, key frames: 5; AAC audio 1579 kbit/s
+     6 frames: moving picture (brightness 78/255, detail 23, change 60.0); sound -22.3 dB
+     QUALITY 1920x1080, 25 fps, 4603 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 1 HD (main, copy 1: SPORTS ▎TEN 1 HD): .ts -> HTTP 200, 11776 KB in 2s (49320 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 45161 kbit/s, key frames: 5; AAC audio 1582 kbit/s
+     6 frames: moving picture (brightness 103/255, detail 32, change 11.2); sound -26.7 dB
+     QUALITY 1920x1080, 25 fps, 4286 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 3 Hindi HD (main, copy 1: SPORTS ▎TEN 3 HD): .ts -> HTTP 200, 11776 KB in 2s (47314 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 43305 kbit/s, key frames: 5; AAC audio 1536 kbit/s
+     6 frames: moving picture (brightness 90/255, detail 38, change 49.1); sound -26.7 dB
+     QUALITY 1920x1080, 25 fps, 4218 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+
+== Backup service
+  account: Active, 1 screen(s) allowed
+  subscription ends: 10 May 2027 22:00 UTC (about 163.9 days from now)
+  Star Sports 1 HD (backup, copy 1: SPORTS: STAR SPORTS 1 ENGLISH HD): .ts -> HTTP 200, 11776 KB in 4s (24860 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 23913 kbit/s, key frames: 5; AAC audio 787 kbit/s
+     6 frames: moving picture (brightness 82/255, detail 21, change 39.9); sound -22.6 dB
+     QUALITY 1920x1080, 25 fps, 4310 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 1 Hindi HD (backup, copy 1: SPORTS: STAR SPORTS 1 HINDI HD): .ts -> HTTP 200, 9280 KB in 15s (4913 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 4553 kbit/s, key frames: 24; AAC audio 298 kbit/s
+     6 frames: moving picture (brightness 92/255, detail 26, change 8.2); sound -23.4 dB
+     QUALITY 1280x720, 25 fps, 2224 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 2 HD (backup, copy 1: SPORTS: STAR SPORTS 2 HD): .ts -> HTTP 200, 11776 KB in 2s (43615 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 41896 kbit/s, key frames: 5; AAC audio 1429 kbit/s
+     6 frames: moving picture (brightness 85/255, detail 20, change 26.5); sound -21.1 dB
+     QUALITY 1920x1080, 25 fps, 4182 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports Select 1 HD (backup, copy 1: SPORTS: STAR SPORTS SELECT 1 HD): .ts -> HTTP 200, 11776 KB in 5s (19661 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 18888 kbit/s, key frames: 5; AAC audio 642 kbit/s
+     6 frames: moving picture (brightness 95/255, detail 13, change 5.7); sound -21.8 dB
+     QUALITY 1920x1080, 25 fps, 4211 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports Select 2 HD (backup, copy 1: SPORTS: STAR SPORTS SELECT 2 HD): .ts -> HTTP 200, 11776 KB in 2s (47856 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 27606 kbit/s, key frames: 500; AAC audio 12042 kbit/s
+     6 frames: blank (brightness 0/255, detail 0, change 0.0); sound -91.0 dB
+     QUALITY 1920x1080, 30 fps, 193 kbit/s, keeps up with live: yes
+     nightly test says: DOES NOT PLAY
+  Sports18 1 (backup, copy 1: SPORTS: SPORTS 18 4K): .ts -> HTTP 200, 11776 KB in 2s (47828 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 46005 kbit/s, key frames: 5; AAC audio 1516 kbit/s
+     6 frames: moving picture (brightness 72/255, detail 34, change 37.0); sound -23.6 dB
+     QUALITY 1920x1080, 25 fps, 4364 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 5 HD (backup, copy 1: SPORTS: SONY SIX HD): .ts -> HTTP 200, 11776 KB in 2s (44366 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 42551 kbit/s, key frames: 5; AAC audio 1509 kbit/s
+     6 frames: moving picture (brightness 90/255, detail 58, change 3.0); sound -21.3 dB
+     QUALITY 1920x1080, 25 fps, 4008 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Star Sports 1 Tamil (backup, copy 1: SPORTS: STAR SPORTS TAMIL): .ts -> HTTP 200, 11776 KB in 3s (31970 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 30749 kbit/s, key frames: 5; AAC audio 1014 kbit/s
+     6 frames: moving picture (brightness 85/255, detail 20, change 15.0); sound -22.7 dB
+     QUALITY 1920x1080, 25 fps, 4330 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 1 HD (backup, copy 1: SPORTS: TEN 1 HD): .ts -> HTTP 200, 11776 KB in 2s (44407 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 42689 kbit/s, key frames: 5; AAC audio 1427 kbit/s
+     6 frames: moving picture (brightness 60/255, detail 23, change 2.6); sound -27.0 dB
+     QUALITY 1920x1080, 25 fps, 4241 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+  Sony Ten 3 Hindi HD (backup, copy 1: SPORTS: TEN 3 HD): .ts -> HTTP 200, 11776 KB in 2s (44367 kbit/s), type video/mp2t, redirected
+     PICTURE LIKELY | H.264 video 42525 kbit/s, key frames: 6; AAC audio 1530 kbit/s
+     6 frames: moving picture (brightness 62/255, detail 35, change 1.3); sound -27.1 dB
+     QUALITY 1920x1080, 25 fps, 3996 kbit/s, keeps up with live: yes
+     nightly test says: PLAYS
+
+== Delay comparison (recording both services at the same moment and lining up the scene cuts)
+  Star Sports 1 HD: backup service is 33.2 s AHEAD (14 of 20 cuts matched; recorded 80s / 74s)
+  Star Sports 1 Hindi HD: main service is 33.6 s AHEAD (5 of 11 cuts matched; recorded 75s / 79s)
+  Star Sports 2 HD: main service is 8.2 s AHEAD (8 of 10 cuts matched; recorded 76s / 75s)
+  Star Sports Select 1 HD: backup service is 23.6 s AHEAD (17 of 22 cuts matched; recorded 80s / 81s)
+  Star Sports Select 2 HD: couldn't line up (21/0 cuts in 78/0s)
+  Sports18 1: backup service is 18.8 s AHEAD (43 of 56 cuts matched; recorded 77s / 81s)
+  Sony Ten 5 HD: backup service is 28.4 s AHEAD (12 of 18 cuts matched; recorded 73s / 74s)
+  Star Sports 1 Tamil: backup service is 9.6 s AHEAD (37 of 53 cuts matched; recorded 82s / 79s)
+  Sony Ten 1 HD: main service is 0.4 s AHEAD (31 of 31 cuts matched; recorded 75s / 81s)
+  Sony Ten 3 Hindi HD: backup service is 14.8 s AHEAD (11 of 12 cuts matched; recorded 74s / 80s)
