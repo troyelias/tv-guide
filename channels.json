@@ -1,0 +1,387 @@
+{
+ "mode": "nightly",
+ "ran_utc": "2026-11-27 22:37",
+ "missing_on": {
+  "main": 64,
+  "backup": 111
+ },
+ "newly_missing": {
+  "main": [],
+  "backup": []
+ },
+ "login": {
+  "main": "ok",
+  "backup": "ok"
+ },
+ "matched": {
+  "main": 380,
+  "backup": 333
+ },
+ "main_days_left": 18.7,
+ "backup_days_left": 164.0,
+ "checkup_utc": "2026-11-27 22:37",
+ "second_try": {
+  "at_ist": "05:45",
+  "tried": 48,
+  "recovered": 2
+ },
+ "services_not_tested": 0,
+ "best_copy": {
+  "compared": 41,
+  "switched_to_better_copy": {
+   "main": [
+    "Discovery World HD",
+    "BOL News FHD"
+   ],
+   "backup": [
+    "Colors HD",
+    "Sony HD",
+    "Sony SAB HD",
+    "Star Movies HD",
+    "&Pictures HD",
+    "Star Gold Select HD"
+   ]
+  },
+  "details": {
+   "Colors HD": "starts 1.13s -> 1.67s",
+   "Sony HD": "576p -> 1080p",
+   "Discovery World HD": "1080p, catch-up",
+   "Sony SAB HD": "576p -> 1080p",
+   "Star Movies HD": "1080p, catch-up",
+   "BOL News FHD": "1080p, catch-up",
+   "&Pictures HD": "1080p, catch-up",
+   "Star Gold Select HD": "1080p, catch-up"
+  }
+ },
+ "tested": {
+  "main": 380,
+  "backup": 333
+ },
+ "working": {
+  "main": 366,
+  "backup": 301
+ },
+ "drops": {},
+ "week": {
+  "from": "2026-11-22",
+  "to": "2026-11-28",
+  "mornings": 7,
+  "late_starts": [],
+  "reliability": {
+   "main": {
+    "avg_pct": 96.2,
+    "worst_pct": 95.5,
+    "mornings": 7
+   },
+   "backup": {
+    "avg_pct": 90.0,
+    "worst_pct": 89.8,
+    "mornings": 3
+   }
+  },
+  "flaky": [
+   "Bhojpuri Cinema (failed 3 of 7 mornings)",
+   "Peace TV (UK) (failed 3 of 7 mornings)",
+   "Express News (failed 2 of 7 mornings)",
+   "Manoranjan Grand (failed 2 of 7 mornings)",
+   "Ramdhenu (failed 2 of 7 mornings)",
+   "Rang (failed 2 of 7 mornings)"
+  ],
+  "newly_down": [
+   "Bhojpuri Cinema",
+   "Jalwa Music"
+  ],
+  "back_again": [
+   "Dangal",
+   "Manoranjan Grand",
+   "Ramdhenu",
+   "Rang"
+  ],
+  "down_all_week": [
+   "Dabangg",
+   "Dhamaal HD",
+   "Hungama Dil Se HD",
+   "Hungama Nazrana HD",
+   "Krishna Vani HD",
+   "Mastii",
+   "Mta Muslim (UK)",
+   "Saama News"
+  ],
+  "switched_now": [
+   "Dawn News",
+   "Hungama Kadak Hits",
+   "Hungama Pop Pataka",
+   "NDTV Good Times"
+  ]
+ },
+ "weekly_due": false,
+ "trend": [
+  {
+   "date": "2026-11-03",
+   "main_pct": 93.54005167958657,
+   "backup_pct": 90.8256880733945,
+   "down": 29
+  },
+  {
+   "date": "2026-11-05",
+   "main_pct": 91.51670951156812,
+   "backup_pct": 90.44776119402985,
+   "down": 33
+  },
+  {
+   "date": "2026-11-06",
+   "main_pct": 93.31619537275064,
+   "backup_pct": 90.74626865671642,
+   "down": 28
+  },
+  {
+   "date": "2026-11-07",
+   "main_pct": null,
+   "backup_pct": 90.08746355685132,
+   "down": 21
+  },
+  {
+   "date": "2026-11-08",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  },
+  {
+   "date": "2026-11-09",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  },
+  {
+   "date": "2026-11-10",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.69069069069069,
+   "down": 19
+  },
+  {
+   "date": "2026-11-11",
+   "main_pct": 95.52631578947368,
+   "backup_pct": 90.3903903903904,
+   "down": 19
+  },
+  {
+   "date": "2026-11-12",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 91.5915915915916,
+   "down": 20
+  },
+  {
+   "date": "2026-11-13",
+   "main_pct": 95.78947368421052,
+   "backup_pct": 90.990990990991,
+   "down": 20
+  },
+  {
+   "date": "2026-11-14",
+   "main_pct": 90.52631578947368,
+   "backup_pct": 90.69069069069069,
+   "down": 33
+  },
+  {
+   "date": "2026-11-15",
+   "main_pct": 95.26315789473684,
+   "backup_pct": 90.69069069069069,
+   "down": 23
+  },
+  {
+   "date": "2026-11-16",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.3903903903904,
+   "down": 21
+  },
+  {
+   "date": "2026-11-17",
+   "main_pct": 97.10526315789474,
+   "backup_pct": 91.29129129129129,
+   "down": 17
+  },
+  {
+   "date": "2026-11-18",
+   "main_pct": 96.57894736842105,
+   "backup_pct": 90.69069069069069,
+   "down": 19
+  },
+  {
+   "date": "2026-11-19",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.3903903903904,
+   "down": 20
+  },
+  {
+   "date": "2026-11-20",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 90.09009009009009,
+   "down": 19
+  },
+  {
+   "date": "2026-11-21",
+   "main_pct": 96.05263157894737,
+   "backup_pct": 90.990990990991,
+   "down": 19
+  },
+  {
+   "date": "2026-11-22",
+   "main_pct": 95.78947368421052,
+   "backup_pct": 89.7897897897898,
+   "down": 21
+  },
+  {
+   "date": "2026-11-23",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 89.7897897897898,
+   "down": 21
+  },
+  {
+   "date": "2026-11-24",
+   "main_pct": 96.84210526315789,
+   "backup_pct": null,
+   "down": 12
+  },
+  {
+   "date": "2026-11-25",
+   "main_pct": 96.3157894736842,
+   "backup_pct": null,
+   "down": 14
+  },
+  {
+   "date": "2026-11-26",
+   "main_pct": 96.3157894736842,
+   "backup_pct": null,
+   "down": 14
+  },
+  {
+   "date": "2026-11-27",
+   "main_pct": 95.52631578947368,
+   "backup_pct": null,
+   "down": 17
+  },
+  {
+   "date": "2026-11-28",
+   "main_pct": 96.3157894736842,
+   "backup_pct": 90.3903903903904,
+   "down": 19
+  }
+ ],
+ "shadow": {
+  "about": "Proposal: sports channels play from whichever service runs ahead (closer to live), when it plays properly.",
+  "differs": [
+   "Star Sports 1 HD: now main, proposed backup",
+   "Star Sports 2 HD: now main, proposed backup",
+   "Star Sports Select 1 HD: now main, proposed backup",
+   "Star Sports Select 2 HD: now main, proposed backup",
+   "Sports18 1: now main, proposed backup",
+   "Sony Ten 5 HD: now main, proposed backup",
+   "Star Sports 1 Tamil: now main, proposed backup",
+   "Sony Ten 1 HD: now main, proposed backup",
+   "Sony Ten 3 Hindi HD: now main, proposed backup"
+  ]
+ },
+ "channels": 428,
+ "from_main": 376,
+ "from_backup": 52,
+ "spare_folder": 25,
+ "favourites_folder": 28,
+ "on_backup": [
+  "Dawn News",
+  "Hungama Kadak Hits",
+  "Hungama Pop Pataka",
+  "NDTV Good Times"
+ ],
+ "down_on_both": [
+  "BTV Kannada",
+  "Bhojpuri Cinema",
+  "Dabangg",
+  "Dhamaal HD",
+  "Dish Cine Active",
+  "Filmworld",
+  "Housefull Movies",
+  "Hungama Dil Se HD",
+  "Hungama Nazrana HD",
+  "Jalwa Music",
+  "K News India",
+  "Krishna Vani HD",
+  "Mastii",
+  "Mta Muslim (UK)",
+  "News9 Live",
+  "Prajaa TV",
+  "Romedy Now HD",
+  "Saama News",
+  "SuperSport Cricket HD"
+ ],
+ "not_on_either": [
+  "ATV Entertainment",
+  "Colors Cineplex Bollywood",
+  "Colors Cineplex Superhits",
+  "ET Now Swadesh",
+  "Filmazia Entertainment",
+  "Food XP",
+  "Gtv HD",
+  "Kohinoor News",
+  "Ltn Family",
+  "News One",
+  "News18 Assam North East",
+  "News18 Delhi NCR Jammu Kashmir",
+  "News18 Punjab Haryana",
+  "Rohi TV",
+  "Sindh Entertainment",
+  "Zee Biskope"
+ ],
+ "outage": false,
+ "not_working_folder": [
+  "Dabangg",
+  "Hungama Nazrana HD",
+  "Hungama Dil Se HD",
+  "Mastii",
+  "Krishna Vani HD",
+  "Dhamaal HD",
+  "Mta Muslim (UK)",
+  "Saama News"
+ ],
+ "replacements": {},
+ "down_days": {
+  "Mta Muslim (UK)": 25,
+  "Saama News": 25,
+  "Jalwa Music": 1,
+  "Filmworld": 1,
+  "Housefull Movies": 1,
+  "Dabangg": 25,
+  "Dish Cine Active": 1,
+  "Hungama Nazrana HD": 25,
+  "Hungama Dil Se HD": 25,
+  "Mastii": 25,
+  "Romedy Now HD": 1,
+  "K News India": 1,
+  "News9 Live": 1,
+  "BTV Kannada": 1,
+  "Prajaa TV": 1,
+  "SuperSport Cricket HD": 1,
+  "Bhojpuri Cinema": 3,
+  "Dhamaal HD": 25,
+  "Krishna Vani HD": 25
+ },
+ "down_guide_ids": [
+  "BTVKannada",
+  "Dabangg",
+  "DhamaalHD",
+  "DishCineActive",
+  "HousefullMovies",
+  "HungamaDilSeHD",
+  "HungamaNazranaHD",
+  "KNewsIndia",
+  "KrishnaVaniHD",
+  "MTAMuslim.uk",
+  "Mastiii.in",
+  "News9Live",
+  "PrajaaTV",
+  "ts174",
+  "ts181"
+ ],
+ "playlist_changed": true,
+ "hold": false,
+ "uploaded": true
+}
